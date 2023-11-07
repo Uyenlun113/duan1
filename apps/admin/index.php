@@ -19,7 +19,7 @@
         //include sidebar
         @include "page/layout/sidebar.php";
         //include dashboard
-        @include "page/dashboard/dashboard.php";
+        @include "page/dashboard.php";
         //include footer
         @include "page/layout/footer.php";
       ?>
