@@ -19,7 +19,6 @@
     <li class="nav-item">
       <a class="nav-link" data-widget="navbar-search" href="#" role="button">
         <i class="fas fa-search"></i>
-        qưejirqyweiruqwieruqowieurqwuerioqwuerio
       </a>
       <div class="navbar-search-block">
         <form class="form-inline">
