@@ -83,10 +83,8 @@
                 <h2>Intercontinental LA <br />Westlake Hotel</h2>
               </div>
               <p class="f-para">Sona.com là trang web cung cấp chỗ ở trực tuyến hàng đầu. Chúng tôi đam mê
-                 du lịch mỗi ngày. Chúng tôi truyền cảm hứng và tiếp cận hàng triệu khách du lịch trên 90 trang web địa phương bằng 41 ngôn ngữ. 
-                Vì vậy, khi cần đặt phòng khách sạn, nhà nghỉ cho thuê, khu nghỉ dưỡng, căn hộ, nhà khách hoặc nhà trên cây hoàn hảo, chúng tôi sẽ hỗ trợ bạn </p>
-              <p class="s-para">So when it comes to booking the perfect hotel, vacation rental, resort,
-                apartment, guest house, or tree house, we’ve got you covered.</p>
+                 du lịch mỗi ngày. Chúng tôi truyền cảm hứng và tiếp cận hàng triệu khách du lịch trên 90 trang web địa phương bằng 41 ngôn ngữ. </p>
+              <p class="s-para">Vì vậy, khi cần đặt phòng khách sạn, nhà nghỉ cho thuê, khu nghỉ dưỡng, căn hộ, nhà khách hoặc nhà trên cây hoàn hảo, chúng tôi sẽ hỗ trợ bạn</p>
               <a href="#" class="primary-btn about-btn">Read More</a>
             </div>
           </div>
@@ -123,48 +121,42 @@
             <div class="service-item">
               <i class="flaticon-036-parking"></i>
               <h4>Travel Plan</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna.</p>
+              
             </div>
           </div>
           <div class="col-lg-4 col-sm-6">
             <div class="service-item">
               <i class="flaticon-033-dinner"></i>
               <h4>Catering Service</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna.</p>
+             
             </div>
           </div>
           <div class="col-lg-4 col-sm-6">
             <div class="service-item">
               <i class="flaticon-026-bed"></i>
               <h4>Babysitting</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna.</p>
+              
             </div>
           </div>
           <div class="col-lg-4 col-sm-6">
             <div class="service-item">
               <i class="flaticon-024-towel"></i>
               <h4>Laundry</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna.</p>
+              
             </div>
           </div>
           <div class="col-lg-4 col-sm-6">
             <div class="service-item">
               <i class="flaticon-044-clock-1"></i>
               <h4>Hire Driver</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna.</p>
+              
             </div>
           </div>
           <div class="col-lg-4 col-sm-6">
             <div class="service-item">
               <i class="flaticon-012-cocktail"></i>
               <h4>Bar & Drink</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna.</p>
+              
             </div>
           </div>
         </div>
