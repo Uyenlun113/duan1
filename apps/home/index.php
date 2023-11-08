@@ -82,9 +82,9 @@
                 <span>About Us</span>
                 <h2>Intercontinental LA <br />Westlake Hotel</h2>
               </div>
-              <p class="f-para">Sona.com is a leading online accommodation site. We’re passionate about
-                travel. Every day, we inspire and reach millions of travelers across 90 local websites in 41
-                languages.</p>
+              <p class="f-para">Sona.com là trang web cung cấp chỗ ở trực tuyến hàng đầu. Chúng tôi đam mê
+                 du lịch mỗi ngày. Chúng tôi truyền cảm hứng và tiếp cận hàng triệu khách du lịch trên 90 trang web địa phương bằng 41 ngôn ngữ. 
+                Vì vậy, khi cần đặt phòng khách sạn, nhà nghỉ cho thuê, khu nghỉ dưỡng, căn hộ, nhà khách hoặc nhà trên cây hoàn hảo, chúng tôi sẽ hỗ trợ bạn </p>
               <p class="s-para">So when it comes to booking the perfect hotel, vacation rental, resort,
                 apartment, guest house, or tree house, we’ve got you covered.</p>
               <a href="#" class="primary-btn about-btn">Read More</a>
