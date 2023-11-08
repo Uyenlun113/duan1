@@ -7,11 +7,8 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=project1", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-              echo "Connection failed";
-
       return $conn;
     } catch(PDOException $e) {
-      echo "Connection failed: " . $e->getMessage();
       return null;
     }
 }
@@ -19,7 +16,6 @@
 function get_all($table, $options = array()) {
     $conn = pdo_get_connection();
     if ($conn === null) {
-        echo "qưeqwe failed";
         return array();
     }
 
@@ -39,10 +35,23 @@ function get_all($table, $options = array()) {
         }
         return $data;
     } catch (PDOException $e) {
-        echo "Query failed: " . $e->getMessage();
         return array();
     }
 }
 
+function save_and_get_result($table, $data = array())
+{
+    $values = array();
+    global $linkConnectDB;
+    foreach ($data as $key => $value) {
+        $value = mysqli_real_escape_string($linkConnectDB, $value);
+        $values[] = "`$key`='$value'";
+    }
+    $sql = "INSERT INTO `$table` SET " . implode(',', $values);
+    $result = mysqli_query($linkConnectDB, $sql);
+    if (!$result) {
+        $result = mysqli_error($linkConnectDB);
+    }
+}
 
 ?>

@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Du an 1 | Nhom 3</title>
-    <?php @include "library.php" ?>
+    <?php include "../library.php" ?>
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
       <?php 
-        @include_once  "../controllers/category.php";
-        @include "layout/navbar.php";
-        @include "layout/sidebar.php";
+        include "../../controllers/category.php";
+        include "../layout/navbar.php" ; 
+        include "../layout/sidebar.php";
       ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -43,9 +43,11 @@
               <h3 class="card-title">Quản lý loại phòng</h3>
 
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
+                <a class="btn btn-success btn-sm" href="create_category.php">
+                  <i class="fas fa-plus">
+                  </i>&nbsp;
+                  Thêm loại phòng
+                </a>
               </div>
             </div>
             <div class="card-body p-0">
@@ -53,7 +55,7 @@
                 <thead>
                   <tr style="text-align:center;">
                     <th style="width: 5%">
-                      #
+                      #+
                     </th>
                     <th style="width: 10%">
                       Mã phòng
@@ -110,11 +112,6 @@
                       </span>
                     </td>
                     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="#">
-                        <i class="fas fa-eye">
-                        </i>&nbsp;
-                        View
-                      </a>
                       <a class="btn btn-info btn-sm" href="#">
                         <i class="fas fa-pencil-alt">
                         </i>&nbsp;
@@ -143,7 +140,7 @@
       </div>
       <!-- /.content-wrapper -->
       <?php 
-        @include "layout/footer.php";
+        @include "../layout/footer.php";
       ?>
     </div>
   </body>
