@@ -17,6 +17,8 @@
         return save_and_get_result('category', $data);
     }
 
+
+
     function updateCategory($id, $code, $name, $description, $status) {
         $data = array(
             'code' => $code,
@@ -50,9 +52,15 @@
         } 
     }
 
-    // cập nhật data
-    if (isset($_POST["update_category"])) {
-            $id = $_POST["update_category"];
+    // lấy ra thông tin sản phẩm vào form sửa
+    if (intval($_GET['update_category'])) {
+        $subCateId = intval($_GET['update_category']);
+        return $detailCategory = get_a_data('category', $subCateId);
+    }
+            
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+       if (isset($_POST["update_category"])) {
+            $id = $_POST["id"];
             $code = $_POST["code"];
             $name = $_POST["name"];
             $description = $_POST["description"];
@@ -65,6 +73,8 @@
                 echo "Chưa cập nhật được loại phòng. $updateResult";
             }
         }  
+    }
+    
 
     //Xóa data
     if (isset($_GET["delete_category_id"])) {

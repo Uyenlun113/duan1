@@ -24,12 +24,7 @@
               <div class="col-sm-6">
                 <h1>Quản lý loại phòng</h1>
               </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Projects</li>
-                </ol>
-              </div>
+
             </div>
           </div><!-- /.container-fluid -->
         </section>
@@ -111,7 +106,8 @@
                       </span>
                     </td>
                     <td class="project-actions text-right">
-                      <a class="btn btn-info btn-sm" href="#">
+                      <a class="btn btn-info btn-sm"
+                        href="update_category.php?action=update&update_category=<?= $categories['id'] ?>">
                         <i class="fas fa-pencil-alt">
                         </i>&nbsp;
                         Edit
