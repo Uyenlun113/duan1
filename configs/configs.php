@@ -41,17 +41,25 @@ function get_all($table, $options = array()) {
 
 function save_and_get_result($table, $data = array())
 {
-    $values = array();
-    global $linkConnectDB;
-    foreach ($data as $key => $value) {
-        $value = mysqli_real_escape_string($linkConnectDB, $value);
-        $values[] = "`$key`='$value'";
+    $conn = pdo_get_connection();
+    
+    if ($conn === null) {
+        return "Error: Unable to connect to the database.";
     }
-    $sql = "INSERT INTO `$table` SET " . implode(',', $values);
-    $result = mysqli_query($linkConnectDB, $sql);
-    if (!$result) {
-        $result = mysqli_error($linkConnectDB);
+
+    $keys = array_keys($data);
+    $columns = implode(',', $keys);
+    $placeholders = ':' . implode(',:', $keys);
+    
+    try {
+        $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
+        $stmt->execute($data);
+        return true; // Success
+    } catch (PDOException $e) {
+        return "Error: " . $e->getMessage(); // Failure with error message
     }
 }
+
+
 
 ?>
