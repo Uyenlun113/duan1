@@ -39,7 +39,7 @@
               <li class="nav-item menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
-                  
+
                   <p>
                     LOẠI PHÒNG
                     <span class="badge badge-info right">2</span>
@@ -67,7 +67,7 @@
                   <i class="nav-icon far fa-envelope"></i>
                   <p>
                     ĐẶT PHÒNG
-                    
+
                   </p>
                 </a>
 
@@ -77,17 +77,17 @@
                   <i class="nav-icon fas fa-book"></i>
                   <p>
                     HÓA ĐƠN
-              
+
                   </p>
                 </a>
-              
+
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-plus-square"></i>
                   <p>
                     QUẢN LÝ HÓA ĐƠN
-                    
+
                   </p>
                 </a>
 
@@ -96,12 +96,12 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-search"></i>
                   <p>
-                  TÀi KHOẢN
-              
+                    TÀi KHOẢN
+
                   </p>
                 </a>
-        
-              </li>  
+
+              </li>
           </nav>
           <!-- /.sidebar-menu -->
         </div>

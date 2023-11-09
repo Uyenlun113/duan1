@@ -44,38 +44,38 @@
                    </div>
                    <!-- /.card-header -->
                    <!-- form start -->
-                   <form id="quickForm">
+                   <form id="quickForm" method="POST" action="create_category.php">
                      <div class="card-body">
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Mã loại phòng</label>
-                         <input type="text" name="email" class="form-control" id="exampleInputEmail1"
-                           placeholder="Enter email">
+                         <label for="ma_loai_phong">Mã loại phòng</label>
+                         <input type="text" name="code" class="form-control" id="ma_loai_phong"
+                           placeholder="Enter code">
                        </div>
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Tên loại phòng</label>
-                         <input type="text" name="email" class="form-control" id="exampleInputEmail1"
-                           placeholder="Enter email">
+                         <label for="ten_loai_phong">Tên loại phòng</label>
+                         <input type="text" name="name" class="form-control" id="ten_loai_phong"
+                           placeholder="Enter name">
                        </div>
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Trạng thái</label>
-                         <select type="text" name="email" class="form-control" id="exampleInputEmail1"
-                           placeholder="Enter email">
+                         <label for="trang_thai">Trạng thái</label>
+                         <select name="status" class="form-control" id="trang_thai" placeholder="Select status">
                            <option value="">-- Trạng thái --</option>
                            <option value="1">Hoạt Động</option>
                            <option value="0">Tạm Ẩn</option>
                          </select>
                        </div>
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Mô tả chi tiết</label>
-                         <textarea id="summernote"></textarea>
+                         <label for="mo_ta_chi_tiet">Mô tả chi tiết</label>
+                         <textarea name="description" id="summernote"></textarea>
                        </div>
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer">
                        <button type="submit" class="btn btn-success">Thêm mới loại phòng</button>
-                       <button type="submit" class="btn btn-secondary ml-2"><a href="category.php">Quay lại</a></button>
+                       <a href="category.php" class="btn btn-secondary ml-2">Quay lại</a>
                      </div>
                    </form>
+
                  </div>
                  <!-- /.card -->
                </div>
