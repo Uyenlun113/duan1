@@ -1,15 +1,15 @@
 <?php
 
-  function pdo_get_connection(){
+function pdo_get_connection(){
     $servername = "localhost";
     $username = "root";
     $password = "";
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=project1", $username, $password);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      return $conn;
+        $conn = new PDO("mysql:host=$servername;dbname=project1", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
     } catch(PDOException $e) {
-      return null;
+        return null;
     }
 }
 
@@ -42,7 +42,7 @@ function get_all($table, $options = array()) {
 function save_and_get_result($table, $data = array())
 {
     $conn = pdo_get_connection();
-    
+
     if ($conn === null) {
         return "Error: Unable to connect to the database.";
     }
@@ -50,7 +50,7 @@ function save_and_get_result($table, $data = array())
     $keys = array_keys($data);
     $columns = implode(',', $keys);
     $placeholders = ':' . implode(',:', $keys);
-    
+
     try {
         $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
         $stmt->execute($data);
@@ -60,6 +60,44 @@ function save_and_get_result($table, $data = array())
     }
 }
 
+function update_data($table, $data = array(), $where)
+{
+    $conn = pdo_get_connection();
 
+    if ($conn === null) {
+        return "Error: Unable to connect to the database.";
+    }
+
+    $setClause = '';
+    foreach ($data as $key => $value) {
+        $setClause .= "`$key`=:$key,";
+    }
+    $setClause = rtrim($setClause, ',');
+
+    try {
+        $stmt = $conn->prepare("UPDATE `$table` SET $setClause WHERE $where");
+        $stmt->execute($data);
+        return true; // Success
+    } catch (PDOException $e) {
+        return "Error: " . $e->getMessage(); // Failure with error message
+    }
+}
+
+function delete_data($table, $where)
+{
+    $conn = pdo_get_connection();
+
+    if ($conn === null) {
+        return "Error: Unable to connect to the database.";
+    }
+
+    try {
+        $stmt = $conn->prepare("DELETE FROM `$table` WHERE $where ");
+        $stmt->execute();
+        return true; // Success
+    } catch (PDOException $e) {
+        return "Error: " . $e->getMessage(); // Failure with error message
+    }
+}
 
 ?>

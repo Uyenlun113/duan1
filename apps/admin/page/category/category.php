@@ -41,7 +41,6 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Quản lý loại phòng</h3>
-
               <div class="card-tools">
                 <a class="btn btn-success btn-sm" href="create_category.php">
                   <i class="fas fa-plus">
@@ -55,7 +54,7 @@
                 <thead>
                   <tr style="text-align:center;">
                     <th style="width: 5%">
-                      #+
+                      #
                     </th>
                     <th style="width: 10%">
                       Mã phòng
@@ -79,10 +78,10 @@
                 <tbody>
                   <?php
                   if (isset($list_categories) && is_array($list_categories)) {
-                    foreach ($list_categories as $categories): ?>
+                    foreach ($list_categories as $index => $categories): ?>
                   <tr style="text-align:center;">
                     <td>
-                      #
+                      <?php echo $index + 1 ?>
                     </td>
                     <td>
                       <?php echo $categories['code'] ?>
@@ -117,11 +116,8 @@
                         </i>&nbsp;
                         Edit
                       </a>
-                      <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fas fa-trash">
-                        </i>&nbsp;
-                        Delete
-                      </a>
+                      <a href="category.php?action=delete&delete_category_id=<?= $categories['id'] ?>"
+                        class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>&nbsp;Delete</a>
                     </td>
                   </tr>
                   <?php endforeach;

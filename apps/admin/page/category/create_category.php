@@ -71,7 +71,7 @@
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer">
-                       <button type="submit" class="btn btn-success">Thêm mới loại phòng</button>
+                       <button type="submit" name="add_category" class="btn btn-success">Thêm mới loại phòng</button>
                        <a href="category.php" class="btn btn-secondary ml-2">Quay lại</a>
                      </div>
                    </form>
