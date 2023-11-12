@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Du an 1 | Nhom 3</title>
     <?php include "../library.php" ?>
+    <style>
+    p {
+      margin: 0px;
+    }
+    </style>
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -60,13 +65,12 @@
                     <th style="width: 10%">
                       Giá
                     </th>
-                    
+
                     <th style="width: 20%" class="text-center">
                       Trạng thái
                     </th>
                     <th style="width: 20%">
                       Thao tác
-                    
                   </tr>
                 </thead>
                 <tbody>
@@ -81,9 +85,8 @@
                       <?php echo $service['name'] ?>
                     </td>
                     <td>
-                    <?php echo $service['description'] ?>
+                      <?php echo $service['description'] ?>
                     </td>
-                    
                     <td>
                       <?php echo $service['price'] ?>
                     </td>
@@ -103,7 +106,7 @@
                         </i>&nbsp;
                         Edit
                       </a>
-                      <a href="room_service.php?action=delete&delete_service_id=<?= $service['id'] ?>"
+                      <a href="listservice.php?action=delete&delete_service_id=<?= $service['id'] ?>"
                         class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>&nbsp;Delete</a>
                     </td>
                   </tr>

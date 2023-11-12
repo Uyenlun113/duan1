@@ -16,7 +16,7 @@
 
 
 
-    function updateServer($id, $code, $name, $description, $status) {
+    function updateServer($id, $code, $name, $description, $status, $price) {
         $data = array(
             'name' => $name,
             'description' => $description,
@@ -26,7 +26,7 @@
         return update_data('room_service', $data, $where);
     }
 
-    function deleteCategory($id) {
+    function deleteService($id) {
         $where = "id = $id";
         return delete_data('room_service', $where);
     }
@@ -75,7 +75,7 @@
         $id = $_GET["delete_service_id"];
         $deleteResult = deleteService($id);
         if ($deleteResult) {
-          hheader('location:listservice.php?controller=room_service');
+            header('location:listservice.php?controller=room_service');
             echo "Xóa thành công!";
         } else {
             echo "Chưa xóa được loại phòng. $deleteResult";
