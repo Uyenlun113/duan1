@@ -1,5 +1,6 @@
 <?php
     include_once "../../../../configs/configs.php";
+    //list danh sách
     function getAllCategories() {
         $options = array('order_by' => 'id');
         return get_all('category', $options);
@@ -35,7 +36,7 @@
         $where = "id = $id";
         return delete_data('category', $where);
     }
-
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["add_category"])) {
             $code = $_POST["code"];
@@ -45,9 +46,7 @@
             $addResult = addCategory($code, $name, $description, $status);
             if ($addResult) {
                 header('location:category.php?controller=category');
-                echo "Thêm mới thành công!";
             } else {
-                echo "Chưa thêm được loại phòng. $addResult";
             }
         } 
     }
@@ -56,8 +55,7 @@
     if (intval($_GET['update_category'])) {
         $subCateId = intval($_GET['update_category']);
         return $detailCategory = get_a_data('category', $subCateId);
-    }
-            
+    }   
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        if (isset($_POST["update_category"])) {
             $id = $_POST["id"];
@@ -68,23 +66,18 @@
             $updateResult = updateCategory($id, $code, $name, $description, $status);
             if ($updateResult) {
                 header('location:category.php?controller=category');
-                echo "Cập nhật thành công!";
             } else {
-                echo "Chưa cập nhật được loại phòng. $updateResult";
             }
         }  
     }
     
-
     //Xóa data
     if (isset($_GET["delete_category_id"])) {
         $id = $_GET["delete_category_id"];
         $deleteResult = deleteCategory($id);
         if ($deleteResult) {
             header('location:category.php?controller=category');
-            echo "Xóa thành công!";
         } else {
-            echo "Chưa xóa được loại phòng. $deleteResult";
         }
     }
 ?>

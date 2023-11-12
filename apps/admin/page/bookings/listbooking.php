@@ -11,7 +11,7 @@
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
       <?php 
-        include "../../controllers/category.php";
+        include "../../controllers/bookingrooms.php";
         include "../layout/navbar.php" ; 
         include "../layout/sidebar.php";
       ?>
@@ -22,7 +22,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Quản lý loại phòng</h1>
+                <h1>Quản lý đặt phòng</h1>
               </div>
 
             </div>
@@ -35,12 +35,12 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Quản lý loại phòng</h3>
+              <h3 class="card-title">Quản lý đặt phòng</h3>
               <div class="card-tools">
-                <a class="btn btn-success btn-sm" href="create_category.php">
+                <a class="btn btn-success btn-sm" href="create_bookings.php">
                   <i class="fas fa-plus">
                   </i>&nbsp;
-                  Thêm loại phòng
+                  Đặt phòng
                 </a>
               </div>
             </div>
@@ -52,16 +52,22 @@
                       #
                     </th>
                     <th style="width: 10%">
-                      Mã phòng
+                      Tên khách hàng
                     </th>
-                    <th style="width: 25%;text-align:start;">
-                      Tên loại phòng
+                    <th style="width: 15%;text-align:start;">
+                      Tên phòng
                     </th>
                     <th style="width: 10%">
-                      Ngày cập nhật
+                      Check-in
                     </th>
-                    <th style="width: 20%">
-                      Mô tả chi tiết
+                    <th style="width: 10%">
+                      Check-out
+                    </th>
+                    <th style="width: 10%" class="text-center">
+                      Tổng tiền
+                    </th>
+                    <th style="width: 15%" class="text-center">
+                      Phương thức thanh toán
                     </th>
                     <th style="width: 10%" class="text-center">
                       Trạng thái
@@ -72,36 +78,49 @@
                 </thead>
                 <tbody>
                   <?php
-                  if (isset($list_categories) && is_array($list_categories)) {
-                    foreach ($list_categories as $index => $categories): ?>
+                  if (isset($list_booking) && is_array($list_booking)) {
+
+                    foreach ($list_booking as $index => $booking): ?>
                   <tr style="text-align:center;">
                     <td>
                       <?php echo $index + 1 ?>
                     </td>
                     <td>
-                      <?php echo $categories['code'] ?>
+                      <?php echo isset($booking['name_account']) ? $booking['name_account'] : ''; ?>
                     </td>
                     <td style="text-align:start;">
                       <a>
-                        <?php echo $categories['name'] ?>
+                        <?php echo $booking['id_room'] ?>
                       </a>
                       <br />
                       <small>
-                        Ngày tạo <?php echo $categories['create_date'] ?>
+                        Ngày đặt <?php echo $booking['create_date'] ?>
                       </small>
                     </td>
                     <td>
-                      <span><?php echo $categories['update_date'] ?></span>
+                      <span><?php echo $booking['checkin'] ?></span>
                     </td>
                     <td class="project_progress">
-                      <span><?php echo $categories['description'] ?></span>
+                      <span><?php echo $booking['check_out'] ?></span>
+                    </td>
+                    <td class="project_progress">
+                      <span><?php echo $booking['total_price'] ?></span>
                     </td>
                     <td class="project-state">
                       <span>
-                        <?php if ($categories['status'] == 1): ?>
-                        <span class="badge badge-success">Hoạt động</span>
+                        <?php if ($booking['payment'] == 1): ?>
+                        <span class="badge badge-success">Tiền mặt</span>
                         <?php else: ?>
-                        <span class="badge badge-danger">Tạm ẩn</span>
+                        <span class="badge badge-success">Chuyển khoản</span>
+                        <?php endif; ?>
+                      </span>
+                    </td>
+                    <td class="project-state">
+                      <span>
+                        <?php if ($booking['status'] == 1): ?>
+                        <span class="badge badge-success">Đã thanh toán</span>
+                        <?php else: ?>
+                        <span class="badge badge-danger">Chưa thanh toán</span>
                         <?php endif; ?>
                       </span>
                     </td>

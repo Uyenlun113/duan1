@@ -1,5 +1,5 @@
 <?php
-
+// connect database
     function pdo_get_connection(){
         $servername = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@
             return null;
         }
     }
-
+//lấy ra list danh sách
     function get_all($table, $options = array()) {
         $conn = pdo_get_connection();
         if ($conn === null) {
@@ -39,7 +39,7 @@
             return array();
         }
     }
-
+//lấy ra list danh sách theo id
    function get_a_data($table, $id, $select = '*')
 {
     $id = intval($id);
@@ -59,7 +59,7 @@
     }
 }
 
-
+//insert dữ liệu
     function save_and_get_result($table, $data = array()) {
         $conn = pdo_get_connection();
         if ($conn === null) {
@@ -76,7 +76,7 @@
             return "Error: " . $e->getMessage();
         }
     }
-
+//update dữ liệu
     function update_data($table, $data = array(), $where)
     {
         $conn = pdo_get_connection();
@@ -99,7 +99,7 @@
             return "Error: " . $e->getMessage(); // Failure with error message
         }
     }
-
+//xóa dữ liệu 
     function delete_data($table, $where)
     {
         $conn = pdo_get_connection();
