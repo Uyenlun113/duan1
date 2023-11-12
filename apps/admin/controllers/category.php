@@ -20,7 +20,7 @@
 
 
 
-    function updateCategory($id, $code, $name, $description, $status) {
+    function updateService($id, $code, $name, $description, $status) {
         $data = array(
             'code' => $code,
             'name' => $name,
