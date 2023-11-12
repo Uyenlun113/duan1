@@ -1,50 +1,44 @@
 <?php
     include_once "../../../../configs/configs.php";
-    function getAllCategories() {
+    function getAllService() {
         $options = array('order_by' => 'id');
-        return get_all('category', $options);
+        return get_all('room_service', $options);
     }
-    $list_categories = getAllCategories();
-    function addCategory($code, $name, $description, $status) {
+    $list_service = getAllService();
+    function addService($name, $description, $price) {
         $data = array(
-            'code' => $code,
             'name' => $name,
             'description' => $description,
-            'status' => $status,
-            'create_date' => date('Y-m-d'),
-            'update_date' => date('Y-m-d')
+            'price' => $price,
         );
-        return save_and_get_result('category', $data);
+        return save_and_get_result('room_service', $data);
     }
 
 
 
-    function updateService($id, $code, $name, $description, $status) {
+    function updateServer($id, $code, $name, $description, $status) {
         $data = array(
-            'code' => $code,
             'name' => $name,
             'description' => $description,
-            'status' => $status,
-            'update_date' => date('Y-m-d')
+            'price' => $price,
         );
         $where = "id = $id";
-        return update_data('category', $data, $where);
+        return update_data('room_service', $data, $where);
     }
 
     function deleteCategory($id) {
         $where = "id = $id";
-        return delete_data('category', $where);
+        return delete_data('room_service', $where);
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["add_category"])) {
-            $code = $_POST["code"];
-            $name = $_POST["name"];
-            $description = $_POST["description"];
-            $status = $_POST["status"];
-            $addResult = addCategory($code, $name, $description, $status);
+        if (isset($_POST["add_service"])){
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $price = $_POST['price'];
+            $addResult = addService($name, $description, $price);
             if ($addResult) {
-                header('location:category.php?controller=category');
+                header('location:listservice.php?controller=room_service');
                 echo "Thêm mới thành công!";
             } else {
                 echo "Chưa thêm được loại phòng. $addResult";
@@ -53,9 +47,9 @@
     }
 
     // lấy ra thông tin sản phẩm vào form sửa
-    if (intval($_GET['update_category'])) {
-        $subCateId = intval($_GET['update_category']);
-        return $detailCategory = get_a_data('category', $subCateId);
+    if (intval($_GET['update_service'])) {
+        $subCateId = intval($_GET['update_room_service']);
+        return $detailService = get_a_data('room_service', $subRoomId);
     }
             
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -77,11 +71,11 @@
     
 
     //Xóa data
-    if (isset($_GET["delete_category_id"])) {
-        $id = $_GET["delete_category_id"];
-        $deleteResult = deleteCategory($id);
+    if (isset($_GET["delete_service_id"])) {
+        $id = $_GET["delete_service_id"];
+        $deleteResult = deleteService($id);
         if ($deleteResult) {
-            header('location:category.php?controller=category');
+          hheader('location:listservice.php?controller=room_service');
             echo "Xóa thành công!";
         } else {
             echo "Chưa xóa được loại phòng. $deleteResult";
