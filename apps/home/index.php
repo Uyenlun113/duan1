@@ -25,9 +25,8 @@
           <div class="col-lg-6">
             <div class="hero-text">
               <h1>Sona A Luxury Hotel</h1>
-              <p>Here are the best hotel booking sites, including recommendations for international
-                travel and for finding low-priced hotel rooms.</p>
-              <a href="#" class="primary-btn">Discover Now</a>
+              <p>Dưới đây là các trang web đặt phòng khách sạn tốt nhất và tìm phòng khách sạn giá rẻ.</p>
+              <a href="#" class="primary-btn">Khám phá ngay</a>
             </div>
           </div>
           <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
@@ -85,7 +84,7 @@
               <p class="f-para">Sona.com là trang web cung cấp chỗ ở trực tuyến hàng đầu. Chúng tôi đam mê
                  du lịch mỗi ngày. Chúng tôi truyền cảm hứng và tiếp cận hàng triệu khách du lịch trên 90 trang web địa phương bằng 41 ngôn ngữ. </p>
               <p class="s-para">Vì vậy, khi cần đặt phòng khách sạn, nhà nghỉ cho thuê, khu nghỉ dưỡng, căn hộ, nhà khách hoặc nhà trên cây hoàn hảo, chúng tôi sẽ hỗ trợ bạn</p>
-              <a href="#" class="primary-btn about-btn">Read More</a>
+              <a href="#" class="primary-btn about-btn">Xem thêm</a>
             </div>
           </div>
           <div class="col-lg-6">
@@ -111,8 +110,8 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="section-title">
-              <span>What We Do</span>
-              <h2>Discover Our Services</h2>
+              <span>Những dịch vụ</span>
+              <h2>Sona cung cấp</h2>
             </div>
           </div>
         </div>
@@ -172,7 +171,7 @@
             <div class="col-lg-3 col-md-6">
               <div class="hp-room-item set-bg" data-setbg="assets/img/room/room-b1.jpg">
                 <div class="hr-text">
-                  <h3>Double Room</h3>
+                  <h3>Family Rooms</h3>
                   <h2>199$<span>/Pernight</span></h2>
                   <table>
                     <tbody>
@@ -194,43 +193,43 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="primary-btn">More Details</a>
+                  <a href="#" class="primary-btn">Chi tiết</a>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
               <div class="hp-room-item set-bg" data-setbg="assets/img/room/room-b2.jpg">
                 <div class="hr-text">
-                  <h3>Premium King Room</h3>
+                  <h3> Non-Smoking Rooms</h3>
                   <h2>159$<span>/Pernight</span></h2>
                   <table>
                     <tbody>
                       <tr>
-                        <td class="r-o">Size:</td>
+                        <td class="r-o">Kích thước:</td>
                         <td>30 ft</td>
                       </tr>
                       <tr>
-                        <td class="r-o">Capacity:</td>
+                        <td class="r-o">Sức chứa:</td>
                         <td>Max persion 5</td>
                       </tr>
                       <tr>
-                        <td class="r-o">Bed:</td>
+                        <td class="r-o">Giường:</td>
                         <td>King Beds</td>
                       </tr>
                       <tr>
-                        <td class="r-o">Services:</td>
+                        <td class="r-o">Dịch vụ:</td>
                         <td>Wifi, Television, Bathroom,...</td>
                       </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="primary-btn">More Details</a>
+                  <a href="#" class="primary-btn">Chi tiết</a>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
               <div class="hp-room-item set-bg" data-setbg="assets/img/room/room-b3.jpg">
                 <div class="hr-text">
-                  <h3>Deluxe Room</h3>
+                  <h3>Soundproof Rooms</h3>
                   <h2>198$<span>/Pernight</span></h2>
                   <table>
                     <tbody>
@@ -252,14 +251,14 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="primary-btn">More Details</a>
+                  <a href="#" class="primary-btn">Chi tiết</a>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
               <div class="hp-room-item set-bg" data-setbg="assets/img/room/room-b4.jpg">
                 <div class="hr-text">
-                  <h3>Family Room</h3>
+                  <h3>Disabled Facilities/Rooms</h3>
                   <h2>299$<span>/Pernight</span></h2>
                   <table>
                     <tbody>
@@ -281,7 +280,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="primary-btn">More Details</a>
+                  <a href="#" class="primary-btn">Chi tiết</a>
                 </div>
               </div>
             </div>
