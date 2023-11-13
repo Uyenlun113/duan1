@@ -37,7 +37,7 @@
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="../category/category.php" class="nav-link active">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
 
                   <p>
@@ -55,7 +55,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/kanban.html" class="nav-link">
+                <a href="../room_service/listservice.php" class="nav-link">
                   <i class="nav-icon fas fa-columns"></i>
                   <p>
                     DỊCH VỤ PHÒNG
@@ -63,7 +63,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../bookings/listbooking.php" class="nav-link">
                   <i class="nav-icon far fa-envelope"></i>
                   <p>
                     ĐẶT PHÒNG

@@ -24,6 +24,7 @@ CREATE TABLE `rooms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_category` int(11) NOT NULL,
   `name` text NOT NULL,
+  `img` text NOT NULL,
   `price` float NOT NULL,
   `number_adult` int NOT NULL,
   `number_children` int NOT NULL,
@@ -33,12 +34,12 @@ CREATE TABLE `rooms` (
   `description` text,
   `status` int(11),
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_category`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Cấu trúc bảng cho bảng `accounts` (tài khoản)
 CREATE TABLE `accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
   `user` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -57,10 +58,10 @@ CREATE TABLE `bookings` (
   `id_room` int(11) NOT NULL,
   `checkin` date NOT NULL,
   `check_out` date NOT NULL,
+  `create_date` date,
+  `payment` text,
   `total_price` float NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_account`) REFERENCES `accounts` (`id`),
-  FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Cấu trúc bảng cho bảng `bill` (chi tiết hóa đơn)
@@ -70,7 +71,6 @@ CREATE TABLE `bill` (
   `total_price` float,
   `status` int(11),
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_booking`) REFERENCES `bookings` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Cấu trúc bảng cho bảng `bill_management` (quản lý hóa đơn)
@@ -81,5 +81,4 @@ CREATE TABLE `bill_management` (
   `total_price` float NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_booking`) REFERENCES `bookings` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
