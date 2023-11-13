@@ -101,7 +101,7 @@
                     </td>
                     <td class="project-actions text-right">
                       <a class="btn btn-info btn-sm"
-                        href="update_category.php?action=update&update_category=<?= $service['id'] ?>">
+                        href="update_service.php?action=update&update_service=<?= $service['id'] ?>">
                         <i class="fas fa-pencil-alt">
                         </i>&nbsp;
                         Edit
