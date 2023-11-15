@@ -6,6 +6,7 @@
         return get_all('category', $options);
     }
     $list_categories = getAllCategories();
+    
     function addCategory($code, $name, $description, $status) {
         $data = array(
             'code' => $code,
