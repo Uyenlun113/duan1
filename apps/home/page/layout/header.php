@@ -53,8 +53,8 @@
     <a href="#"><i class="fa fa-instagram"></i></a>
   </div>
   <ul class="top-widget">
-    <li><i class="fa fa-phone"></i> 0378453200</li>
-    <li><i class="fa fa-envelope"></i> cuongqc04@gmail.com</li>
+    <li><i class="fa fa-phone"></i> 0938388888</li>
+    <li><i class="fa fa-envelope"></i> SonaHotel@gmail.com</li>
   </ul>
 </div>
 <!-- Offcanvas Menu Section End -->
@@ -66,8 +66,8 @@
       <div class="row">
         <div class="col-lg-6">
           <ul class="tn-left">
-            <li><i class="fa fa-phone"></i> 0378453200</li>
-            <li><i class="fa fa-envelope"></i> cuongqc04@gmail.com</li>
+            <li><i class="fa fa-phone"></i> 0938388888</li>
+            <li><i class="fa fa-envelope"></i> SonaHotel@gmail.com</li>
           </ul>
         </div>
         <div class="col-lg-6">
