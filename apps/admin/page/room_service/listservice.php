@@ -117,7 +117,7 @@
                 </tbody>
               </table>
             </div>
-            <!-- /.card-body -->
+
           </div>
           <!-- /.card -->
 

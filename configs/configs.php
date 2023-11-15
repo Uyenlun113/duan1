@@ -12,13 +12,16 @@
             return null;
         }
     }
+
+
+    
+  
 //lấy ra list danh sách
     function get_all($table, $options = array()) {
         $conn = pdo_get_connection();
         if ($conn === null) {
             return array();
         }
-
         $select = isset($options['select']) ? $options['select'] : '*';
         $where = isset($options['where']) ? 'WHERE ' . $options['where'] : '';
         $order_by = isset($options['order_by']) ? 'ORDER BY ' . $options['order_by'] : '';
@@ -26,6 +29,7 @@
 
         try {
             $sql = "SELECT $select FROM `$table` $where $order_by $limit";
+
             $query = $conn->query($sql);
 
             $data = array();
@@ -71,7 +75,11 @@
         try{
             $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
             $stmt->execute($data);
-            return true; // Success
+            $lastInsertId = $conn->lastInsertId();
+            return array(
+            'success' => true,
+            'lastInsertId' => $lastInsertId
+        );
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
         }

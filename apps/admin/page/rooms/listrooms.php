@@ -48,37 +48,47 @@
               <table class="table table-striped projects">
                 <thead>
                   <tr style="text-align:center;">
+<<<<<<< Updated upstream
                   <th style="width: 3%">
                     #
+=======
+                    <th style="width: 3%">
+                      #
+>>>>>>> Stashed changes
                     </th>
                     <th style="width: 11%">
-                    tên phong 
+                      tên phong
                     </th>
                     <th style="width: 11%">
-                    Ảnh phòng 
+                      Ảnh phòng
                     </th>
                     <th style="width: 11%">
-                    giá phòng 
+                      giá phòng
                     </th>
                     <th style="width: 11%;text-align:start;">
-                    số người lớn
+                      số người lớn
                     </th>
                     <th style="width: 11%">
                       số trẻ em
                     </th>
                     <th style="width: 11%">
-                    dịch vụ
+                      dịch vụ
                     </th>
-                  
+
                     <th style="width: 11%">
-                     Ngày cập nhật
+                      Ngày cập nhật
                     </th>
                     <th style="width: 11%">
                       mô tả
                     </th>
                     <th style="width: 11%">
+<<<<<<< Updated upstream
                      trang thái
                      </th>
+=======
+                      trang thái
+                    </th>
+>>>>>>> Stashed changes
                   </tr>
                 </thead>
                 <tbody>
@@ -101,7 +111,7 @@
                     <td>
                       <?php echo $rooms['img'] ?>
                     </td>
-                    
+
                     <td>
                       <span><?php echo $rooms['price'] ?></span>
                     </td>
@@ -117,11 +127,11 @@
                     <td>
                       <span><?php echo $rooms['update_date'] ?></span>
                     </td>
-                    <td >
+                    <td>
                       <span><?php echo $rooms['description'] ?></span>
                     </td>
-                    
-                    
+
+
                     <td class="project-state">
                       <span>
                         <?php if ($rooms['status'] == 1): ?>
