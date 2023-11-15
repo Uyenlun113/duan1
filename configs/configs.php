@@ -50,7 +50,6 @@
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     
     return $data;

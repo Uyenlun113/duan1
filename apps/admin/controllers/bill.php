@@ -5,11 +5,13 @@
         $options = array('order_by' => 'id');
         return get_all('bill', $options);
     }
-    $list_bill = getAllBill();
+    $list_Bill = getAllBill();
+
+
     function addBill($id_booking, $total_price, $status) {
         $data = array(
             'id_booking' => $id_booking,
-            'total_price' => $price,
+            'total_price' => $total_price,
             'status' => $status,
         );
         return save_and_get_result('bill', $data);
@@ -17,7 +19,7 @@
 
 
 
-    function updateBill($id, $id_booking, $total_price, $status) {
+    function updateBill($id_booking, $total_price, $status) {
         $data = array(
             'id_booking' => $id_booking,
             'total_price' => $total_price,
@@ -45,22 +47,23 @@
         } 
     }
 
-    // lấy ra thông tin sản phẩm vào form sửa
-    if (intval($_GET['update_bill'])) {
-        $subCateId = intval($_GET['update_bill']);
+    if (isset($_GET['update_bill']) && intval($_GET['update_bill'])) {
+        $subBillId = intval($_GET['update_bill']);
         return $detailBill = get_a_data('bill', $subBillId);
-    }   
+    } 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-       if (isset($_POST["update_bill"])) {
+        if (isset($_GET['update_bill']) && intval($_GET['update_bill'])) {
             $id = $_POST["id"];
             $id_booking = $_POST["id_booking"];
             $total_price = $_POST["total_price"];
             $status = $_POST["status"];
-            $updateResult = updateCategory($id, $id_booking, $total_price, $status);
+            $updateResult = updateBill($id, $id_booking, $total_price, $status);
             if ($updateResult) {
                 header('location:bill.php?controller=bill');
             } else {
+               
             }
+            
         }  
     }
     

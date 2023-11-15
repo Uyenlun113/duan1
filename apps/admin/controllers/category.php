@@ -58,6 +58,7 @@
     }   
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        if (isset($_POST["update_category"])) {
+        var_dump($_POST);
             $id = $_POST["id"];
             $code = $_POST["code"];
             $name = $_POST["name"];

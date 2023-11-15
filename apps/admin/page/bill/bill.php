@@ -12,8 +12,8 @@
     <div class="wrapper">
       <?php 
         include "../../controllers/bill.php";
-        include "../layout/navbar.php" ; 
-        include "../layout/sidebar.php";
+        // include "../layout/navbar.php" ; 
+        // include "../layout/sidebar.php";
       ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -22,7 +22,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Quản lý hóa đơn</h1>
+                <h1>Hóa đơn</h1>
               </div>
 
             </div>
@@ -35,7 +35,7 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Quản lý hóa đơn</h3>
+              <h3 class="card-title">Hóa đơn</h3>
               <div class="card-tools">
                 <a class="btn btn-success btn-sm" href="create_bill.php">
                   <i class="fas fa-plus">
@@ -54,20 +54,21 @@
                     <th style="width: 10%">
                       Mã hóa đơn
                     </th>
-                    <th style="width: 25%;text-align:start;">
+                    <th style="width: 20%;text-align:start;">
                       Giá
                     </th>
                     <th style="width: 10%" class="text-center">
                       Trạng thái
                     </th>
                     <th style="width: 20%">
+                    Thao tác
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  if (isset($list_bill) && is_array($list_bill)) {
-                    foreach ($list_bill as $index => $bill): ?>
+                  if (isset($list_Bill) && is_array($list_Bill)) {
+                    foreach ($list_Bill as $index => $bill): ?>
                   <tr style="text-align:center;">
                     <td>
                       <?php echo $index + 1 ?>
@@ -83,7 +84,7 @@
                     </td>
                     <td class="project-state">
                       <span>
-                        <?php if ($categories['status'] == 1): ?>
+                        <?php if ($bill['status'] == 1): ?>
                         <span class="badge badge-success">Hoạt động</span>
                         <?php else: ?>
                         <span class="badge badge-danger">Tạm ẩn</span>
