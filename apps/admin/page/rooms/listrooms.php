@@ -37,7 +37,7 @@
             <div class="card-header">
               <h3 class="card-title">Quản lý loại phòng</h3>
               <div class="card-tools">
-                <a class="btn btn-success btn-sm" href="create_rooms.php">
+                <a class="btn btn-success btn-sm" href="addroms.php">
                   <i class="fas fa-plus">
                   </i>&nbsp;
                   Thêm phòng
@@ -48,9 +48,7 @@
               <table class="table table-striped projects">
                 <thead>
                   <tr style="text-align:center;">
-                  <th style="width: 3%">
-                    #
-                    </th>
+                  
                     <th style="width: 11%">
                     tên phong 
                     </th>
