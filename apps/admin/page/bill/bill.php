@@ -11,9 +11,9 @@
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
       <?php 
-        include "../../controllers/rooms.php";
-        include "../layout/navbar.php" ; 
-        include "../layout/sidebar.php";
+        include "../../controllers/bill.php";
+        // include "../layout/navbar.php" ; 
+        // include "../layout/sidebar.php";
       ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -22,7 +22,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Quản lý loại phòng</h1>
+                <h1>Hóa đơn</h1>
               </div>
 
             </div>
@@ -35,12 +35,12 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Quản lý loại phòng</h3>
+              <h3 class="card-title">Hóa đơn</h3>
               <div class="card-tools">
-                <a class="btn btn-success btn-sm" href="addroms.php">
+                <a class="btn btn-success btn-sm" href="create_bill.php">
                   <i class="fas fa-plus">
                   </i>&nbsp;
-                  Thêm phòng
+                  Thêm hóa đơn
                 </a>
               </div>
             </div>
@@ -48,88 +48,43 @@
               <table class="table table-striped projects">
                 <thead>
                   <tr style="text-align:center;">
-                  <th style="width: 3%">
-                    #
+                    <th style="width: 5%">
+                      #
                     </th>
-                    <th style="width: 11%">
-                      tên phong
+                    <th style="width: 10%">
+                      Mã hóa đơn
                     </th>
-                    <th style="width: 11%">
-                      Ảnh phòng
+                    <th style="width: 20%;text-align:start;">
+                      Giá
                     </th>
-                    <th style="width: 11%">
-                      giá phòng
+                    <th style="width: 10%" class="text-center">
+                      Trạng thái
                     </th>
-                    <th style="width: 11%;text-align:start;">
-                      số người lớn
+                    <th style="width: 20%">
+                    Thao tác
                     </th>
-                    <th style="width: 11%">
-                      số trẻ em
-                    </th>
-                    <th style="width: 11%">
-                      dịch vụ
-                    </th>
-
-                    <th style="width: 11%">
-                      Ngày cập nhật
-                    </th>
-                    <th style="width: 11%">
-                      mô tả
-                    </th>
-                    <th style="width: 11%">
-<<<<<<< Updated upstream
-                     trang thái
-                     </th>
-=======
-                      trang thái
-                    </th>
->>>>>>> Stashed changes
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  if (isset($list_rooms) && is_array($list_rooms)) {
-                    foreach ($list_rooms as $index => $rooms): ?>
+                  if (isset($list_Bill) && is_array($list_Bill)) {
+                    foreach ($list_Bill as $index => $bill): ?>
                   <tr style="text-align:center;">
                     <td>
                       <?php echo $index + 1 ?>
                     </td>
+                    <td>
+                      <?php echo $bill['id_booking'] ?>
+                    </td>
                     <td style="text-align:start;">
                       <a>
-                        <?php echo $rooms['name'] ?>
+                        <?php echo $bill['total_price'] ?>
                       </a>
                       <br />
-                      <small>
-                        Ngày tạo <?php echo $rooms['create_date'] ?>
-                      </small>
                     </td>
-                    <td>
-                      <?php echo $rooms['img'] ?>
-                    </td>
-
-                    <td>
-                      <span><?php echo $rooms['price'] ?></span>
-                    </td>
-                    <td>
-                      <span><?php echo $rooms['number_adult'] ?></span>
-                    </td>
-                    <td>
-                      <span><?php echo $rooms['number_children'] ?></span>
-                    </td>
-                    <td>
-                      <span><?php echo $rooms['id_service'] ?></span>
-                    </td>
-                    <td>
-                      <span><?php echo $rooms['update_date'] ?></span>
-                    </td>
-                    <td>
-                      <span><?php echo $rooms['description'] ?></span>
-                    </td>
-
-
                     <td class="project-state">
                       <span>
-                        <?php if ($rooms['status'] == 1): ?>
+                        <?php if ($bill['status'] == 1): ?>
                         <span class="badge badge-success">Hoạt động</span>
                         <?php else: ?>
                         <span class="badge badge-danger">Tạm ẩn</span>
@@ -138,12 +93,12 @@
                     </td>
                     <td class="project-actions text-right">
                       <a class="btn btn-info btn-sm"
-                        href="update_rooms.php?action=update&update_rooms=<?= $rooms['id'] ?>">
+                        href="update_bill.php?action=update&update_bill=<?= $bill['id'] ?>">
                         <i class="fas fa-pencil-alt">
                         </i>&nbsp;
                         Edit
                       </a>
-                      <a href="rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>"
+                      <a href="bill.php?action=delete&delete_bill_id=<?= $bill['id'] ?>"
                         class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>&nbsp;Delete</a>
                     </td>
                   </tr>

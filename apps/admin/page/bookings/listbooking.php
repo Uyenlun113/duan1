@@ -54,23 +54,11 @@
                     <th style="width: 10%">
                       Tên khách hàng
                     </th>
-                    <th style="width: 15%;text-align:start;">
-                      Tên phòng
-                    </th>
-                    <th style="width: 10%">
-                      Check-in
-                    </th>
-                    <th style="width: 10%">
-                      Check-out
-                    </th>
-                    <th style="width: 10%" class="text-center">
-                      Tổng tiền
+                    <th style="width: 15%;">
+                      Ngày đặt
                     </th>
                     <th style="width: 15%" class="text-center">
                       Phương thức thanh toán
-                    </th>
-                    <th style="width: 10%" class="text-center">
-                      Trạng thái
                     </th>
                     <th style="width: 20%">
                     </th>
@@ -79,7 +67,6 @@
                 <tbody>
                   <?php
                   if (isset($list_booking) && is_array($list_booking)) {
-
                     foreach ($list_booking as $index => $booking): ?>
                   <tr style="text-align:center;">
                     <td>
@@ -87,24 +74,13 @@
                     </td>
                     <td>
                       <?php echo isset($booking['name_account']) ? $booking['name_account'] : ''; ?>
-                    </td>
-                    <td style="text-align:start;">
-                      <a>
-                        <?php echo $booking['id_room'] ?>
-                      </a>
                       <br />
                       <small>
-                        Ngày đặt <?php echo $booking['create_date'] ?>
+                        SĐT : <?php echo $booking['tel'] ?>
                       </small>
                     </td>
                     <td>
-                      <span><?php echo $booking['checkin'] ?></span>
-                    </td>
-                    <td class="project_progress">
-                      <span><?php echo $booking['check_out'] ?></span>
-                    </td>
-                    <td class="project_progress">
-                      <span><?php echo $booking['total_price'] ?></span>
+                      <?php echo $booking['create_date'] ?>
                     </td>
                     <td class="project-state">
                       <span>
@@ -115,24 +91,10 @@
                         <?php endif; ?>
                       </span>
                     </td>
-                    <td class="project-state">
-                      <span>
-                        <?php if ($booking['status'] == 1): ?>
-                        <span class="badge badge-success">Đã thanh toán</span>
-                        <?php else: ?>
-                        <span class="badge badge-danger">Chưa thanh toán</span>
-                        <?php endif; ?>
-                      </span>
-                    </td>
                     <td class="project-actions text-right">
-                      <a class="btn btn-info btn-sm"
-                        href="update_category.php?action=update&update_category=<?= $categories['id'] ?>">
-                        <i class="fas fa-pencil-alt">
-                        </i>&nbsp;
-                        Edit
+                      <a class="btn btn-info btn-sm" href="details_booking.php?detail_booking_id=<?= $booking['id'] ?>">
+                        <i class="fas fa-info-circle"></i>&nbsp;Xem chi tiết đặt phòng
                       </a>
-                      <a href="category.php?action=delete&delete_category_id=<?= $categories['id'] ?>"
-                        class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>&nbsp;Delete</a>
                     </td>
                   </tr>
                   <?php endforeach;
@@ -142,9 +104,8 @@
                 </tbody>
               </table>
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+
 
         </section>
         <!-- /.content -->

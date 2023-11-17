@@ -12,15 +12,16 @@
     <div class="wrapper">
       <?php
         include "../../controllers/bookingrooms.php";
-        include "../layout/navbar.php";
-        include "../layout/sidebar.php";
+        include "../../controllers/detail_booking.php";
+        // include "../layout/navbar.php";
+        // include "../layout/sidebar.php";
         ?>
       <div class="content-wrapper">
         <section class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Đặt phòng</h1>
+                <h1>Cập nhật đặt phòng</h1>
               </div>
             </div>
           </div><!-- /.container-fluid -->
@@ -34,16 +35,21 @@
                 <!-- jquery validation -->
                 <div class="card card-success">
                   <div class="card-header">
-                    <h3 class="card-title">Đặt phòng</h3>
+                    <h3 class="card-title">Cập nhật đặt phòng</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form id="quickForm" method="POST" action="create_bookings.php">
+                  <form id="quickForm" method="POST" action="update_bookingrooms.php">
                     <div class="card-body">
+                      <div class="form-group">
+                        <input type="text" name="id" hidden class="form-control" id="ma_loai_phong"
+                          placeholder="Enter code" value="<?php echo $booking['id'] ?>">
+                      </div>
                       <div class="form-group">
                         <label for="customer_name">Tên khách hàng</label>
                         <input type="text" name="name_account" class="form-control" id="name_account"
-                          placeholder="Nhập tên khách hàng">
+                          placeholder="Nhập tên khách hàng"
+                          value="<?php echo isset($booking['name_account']) ? $booking['name_account'] : ''; ?>">
                       </div>
                       <div class="form-group">
                         <label for="cccd">Số CCCD</label>

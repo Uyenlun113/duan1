@@ -6,6 +6,7 @@
         return get_all('category', $options);
     }
     $list_categories = getAllCategories();
+    
     function addCategory($code, $name, $description, $status) {
         $data = array(
             'code' => $code,
@@ -58,6 +59,7 @@
     }   
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        if (isset($_POST["update_category"])) {
+        var_dump($_POST);
             $id = $_POST["id"];
             $code = $_POST["code"];
             $name = $_POST["name"];

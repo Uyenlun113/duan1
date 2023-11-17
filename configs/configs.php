@@ -12,33 +12,38 @@
             return null;
         }
     }
+
+
+    
+  
 //lấy ra list danh sách
     function get_all($table, $options = array()) {
-        $conn = pdo_get_connection();
-        if ($conn === null) {
-            return array();
-        }
-
-        $select = isset($options['select']) ? $options['select'] : '*';
-        $where = isset($options['where']) ? 'WHERE ' . $options['where'] : '';
-        $order_by = isset($options['order_by']) ? 'ORDER BY ' . $options['order_by'] : '';
-        $limit = isset($options['offset']) && isset($options['limit']) ? 'LIMIT ' . $options['offset'] . ',' . $options['limit'] : '';
-
-        try {
-            $sql = "SELECT $select FROM `$table` $where $order_by $limit";
-            $query = $conn->query($sql);
-
-            $data = array();
-            if ($query) {
-                while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                    $data[] = $row;
-                }
-            }
-            return $data;
-        } catch (PDOException $e) {
-            return array();
-        }
+    $conn = pdo_get_connection();
+    if ($conn === null) {
+        return array();
     }
+
+    $select = isset($options['select']) ? $options['select'] : '*';
+    $where = isset($options['where']) ? 'WHERE ' . $options['where'] : '';
+    $order_by = isset($options['order_by']) ? 'ORDER BY ' . $options['order_by'] : '';
+    $limit = isset($options['offset']) && isset($options['limit']) ? 'LIMIT ' . $options['offset'] . ',' . $options['limit'] : '';
+    $join = isset($options['join']) ? $options['join'] : '';
+
+    try {
+        $sql = "SELECT $select FROM `$table` $join $where $order_by $limit";
+        $query = $conn->query($sql);
+        $data = array();
+        if ($query) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    } catch (PDOException $e) {
+        return array();
+    }
+}
+
 //lấy ra list danh sách theo id
    function get_a_data($table, $id, $select = '*')
 {
@@ -50,7 +55,6 @@
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     
     return $data;
@@ -71,7 +75,11 @@
         try{
             $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
             $stmt->execute($data);
-            return true; // Success
+            $lastInsertId = $conn->lastInsertId();
+            return array(
+            'success' => true,
+            'lastInsertId' => $lastInsertId
+        );
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
         }
