@@ -95,9 +95,6 @@
                       <a class="btn btn-info btn-sm" href="details_booking.php?detail_booking_id=<?= $booking['id'] ?>">
                         <i class="fas fa-info-circle"></i>&nbsp;Xem chi tiết đặt phòng
                       </a>
-
-                      <!-- <a href="listbooking.php?action=cancel&cancel_booking_id=<?= $booking['id'] ?>"
-                        class="btn btn-danger btn-sm mt-2 rounded-2"><i class="fas fa-trash"></i>&nbsp;Hủy đặt phòng</a> -->
                     </td>
                   </tr>
                   <?php endforeach;

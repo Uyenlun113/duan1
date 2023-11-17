@@ -1,70 +1,58 @@
 <?php
     include_once "../../../../configs/configs.php";
-    //list danh sách
     function getAllBooking() {
             $options = array('order_by' => 'id');
             return get_all('bookings', $options);
         }
     $list_booking = getAllBooking();
- function getAllDetialBooking($id_booking) {
-            $options = array('where'=>"id_booking = $id_booking");
-            
-            return get_all('bookingroom', $options);
-        }
-
-        if (isset($_GET['detail_booking_id'])) {
-    $id_booking = $_GET['detail_booking_id'];
-    $list_detail_booking = getAllDetialBooking($id_booking);
-
    
+function getAllDetailBooking($id_booking) {
+    $options = array(
+        'select' => 'bookingroom.*, rooms.name AS room_name, rooms.price AS room_price, rooms.id_service',
+        'where' => "bookingroom.id_booking = $id_booking",
+        'join' => 'JOIN rooms ON bookingroom.id_room = rooms.id'
+    );
+    $list_detail_booking = get_all('bookingroom', $options);
+
+    // Iterate through the result and fetch the service price
+    foreach ($list_detail_booking as &$bookingroom) {
+        $service_id = $bookingroom['id_service'];
+        $service_price = getServicePrice($service_id);
+        $bookingroom['service_price'] = $service_price;
+    }
+
+    return $list_detail_booking;
 }
 
+// Function to get the service price by ID
+function getServicePrice($service_id) {
+    $service = get_a_data('room_service', $service_id);
+    return $service ? $service['price'] : 0;
+}
+
+
+
+    if (isset($_GET['detail_booking_id'])) {
+        $id_booking = $_GET['detail_booking_id'];
+        $list_detail_booking = getAllDetailBooking($id_booking);
+    }
 
     if (intval($_GET['detail_booking_id'])) {
         $subCateId = intval($_GET['detail_booking_id']);
         return $detailbooking = get_a_data('bookings', $subCateId);
     }
-   
         function getAllRoom() {
             $options = array('order_by' => 'id');
             return get_all('rooms', $options);
         }
         $list_rooms = getAllRoom();
-        
+       
 
-function getBookingDetails($bookingId) {
-    $where = "id = $bookingId"; 
-    return get_a_data('bookings', $where);
-}
+        function getBookingDetails($bookingId) {
+            $where = "id = $bookingId"; 
+            return get_a_data('bookings', $where);
+        }
 
-
-
-function cancelBooking($id){
-    try {
-        $conn = pdo_get_connection(); 
-        $sql = "UPDATE bookings SET status = 0 WHERE id = :id";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return true;
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-        return false;
-    }
-}
-
-if (isset($_GET['cancel_booking_id'])) {
-    $id = $_GET['cancel_booking_id'];
-    $deleteResult = cancelBooking($id);
-    if ($deleteResult) {
-        header('location: listbooking.php?controller=bookingrooms');
-        exit;
-    } else {
-        echo "Error cancelling booking!";
-    }
-}
-
-    
 
  function addBooking($name_account, $CCCD, $tel, $payment,$address,$status) {
         $data = array(
@@ -79,19 +67,30 @@ if (isset($_GET['cancel_booking_id'])) {
         return save_and_get_result('bookings', $data);
     }
 
-    function addBookingRoom($id_booking, $id_room, $checkin, $check_out) {
-        $data = array(
-            'id_booking' => $id_booking,
-            'id_room' => $id_room,
-            'checkin' => $checkin,
-            'check_out' => $check_out,
-            'total_price' => 100,
-            'status' => 1,
-            'create_date' => date('Y-m-d')
-        );
-        $result = save_and_get_result('bookingroom', $data);
-        return $result;
-    }
+   // ...
+
+// ...
+
+// ...
+
+function addBookingRoom($id_booking, $id_room, $checkin, $check_out) {
+    $data = array(
+        'id_booking' => $id_booking,
+        'id_room' => $id_room,
+        'checkin' => $checkin,
+        'check_out' => $check_out,
+        'status' => 1,
+        'create_date' => date('Y-m-d')
+    );
+
+    $result = save_and_get_result('bookingroom', $data);
+    return $result;
+}
+
+// ...
+
+
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["add_booking"])) {
