@@ -13,8 +13,8 @@
       <?php
         include "../../controllers/bookingrooms.php";
         include "../../controllers/detail_booking.php";
-        include "../layout/navbar.php";
-        include "../layout/sidebar.php";
+        // include "../layout/navbar.php";
+        // include "../layout/sidebar.php";
         ?>
       <div class="content-wrapper ">
         <section class="content-header">
@@ -100,15 +100,19 @@
             </div>
             <!-- /.col -->
           </div>
-          <!-- /.row -->
+
           <div class="row">
-            <div class="col-6 ">
+            <div class="col-6">
               <p class="lead">Thanh toán</p>
               <div class="table-responsive">
                 <table class="table">
+                  <?php
+                if (isset($detailbooking) && is_array($detailbooking)) {
+                     $booking = $detailbooking;
+                        ?>
                   <tr>
                     <th style="width:50%">Tổng tiền:</th>
-                    <td><?php echo $bookingroom['total_price'] ?></td>
+                    <td><?php echo $booking['total_price'] ?></td>
                   </tr>
                   <tr>
                     <th>Tax (9.3%)</th>
@@ -122,6 +126,8 @@
                     <th>Total:</th>
                     <td>$265.24</td>
                   </tr>
+                  <?php
+                  }?>
                 </table>
               </div>
             </div>
@@ -131,6 +137,7 @@
         </section>
         <!-- /.content -->
       </div>
+
       <!-- /.content-wrapper -->
       <?php
         @include "../layout/footer.php";
