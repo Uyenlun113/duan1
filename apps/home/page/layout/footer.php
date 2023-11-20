@@ -24,8 +24,8 @@
               <div class="ft-contact">
                 <h6>Liên hệ chúng tôi</h6>
                 <ul>
-                  <li>0378453200</li>
-                  <li>cuongqc04@gmail.com</li>
+                  <li>0938388888</li>
+                  <li>SonaHotel@gmail.com</li>
                   <li>Cao Đẳng FPT Phố Trịnh Văn Bô, Phường Phương Canh, quận Nam Từ Liêm, Hà Nội</li>
                 </ul>
               </div>
