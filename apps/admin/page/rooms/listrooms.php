@@ -22,7 +22,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Quản lý loại phòng</h1>
+                <h1>Quản lý phòng</h1>
               </div>
 
             </div>
@@ -37,7 +37,7 @@
             <div class="card-header">
               <h3 class="card-title">Quản lý loại phòng</h3>
               <div class="card-tools">
-                <a class="btn btn-success btn-sm" href="addroms.php">
+                <a class="btn btn-success btn-sm" href="create_room.php">
                   <i class="fas fa-plus">
                   </i>&nbsp;
                   Thêm phòng
@@ -48,34 +48,39 @@
               <table class="table table-striped projects">
                 <thead>
                   <tr style="text-align:center;">
-                 
+                  <th style="width: 5%">
+                      #
+                    </th>
                     <th style="width: 11%">
-                      tên phong
+                      Tên phòng
                     </th>
                     <th style="width: 11%">
                       Ảnh phòng
                     </th>
                     <th style="width: 11%">
-                      giá phòng
+                      Giá phòng
                     </th>
                     <th style="width: 11%;text-align:start;">
-                      số người lớn
+                      Số người lớn
+                    </th>
+                    <th style="width: 10%">
+                      Số trẻ em
                     </th>
                     <th style="width: 11%">
-                      số trẻ em
-                    </th>
-                    <th style="width: 11%">
-                      dịch vụ
+                      Dịch vụ
                     </th>
 
                     <th style="width: 11%">
                       Ngày cập nhật
                     </th>
                     <th style="width: 11%">
-                      mô tả
+                      Mô tả
                     </th>
                     <th style="width: 11%">
-                     trang thái
+                     Trạng thái
+                     </th>
+                    <th style="width: 11%">
+                     Thao tác
                      </th>
                   </tr>
                 </thead>
@@ -136,7 +141,7 @@
                         </i>&nbsp;
                         Edit
                       </a>
-                      <a href="rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>"
+                      <a href="listrooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>"
                         class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>&nbsp;Delete</a>
                     </td>
                   </tr>

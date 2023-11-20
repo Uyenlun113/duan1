@@ -20,14 +20,9 @@
            <div class="container-fluid">
              <div class="row mb-2">
                <div class="col-sm-6">
-                 <h1>Thêm Phòng</h1>
+                 <h1>Cập nhật phòng</h1>
                </div>
-               <div class="col-sm-6">
-                 <ol class="breadcrumb float-sm-right">
-                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                   <li class="breadcrumb-item active">Project Add</li>
-                 </ol>
-               </div>
+
              </div>
            </div><!-- /.container-fluid -->
          </section>
@@ -40,15 +35,20 @@
                  <!-- jquery validation -->
                  <div class="card card-success">
                    <div class="card-header">
-                     <h3 class="card-title">Quản lý phòng</h3>
+                     <h3 class="card-title">Cập nhật phòng</h3>
                    </div>
                    <!-- /.card-header -->
                    <!-- form start -->
-                   <form id="quickForm" method="POST" action="create_rooms.php">
+                   <form id="quickForm" method="POST" action="update_rooms.php">
+                     <div class="card-body">
                        <div class="form-group">
-                         <label for="ten_dich_vu">Tên phòng</label>
+                       <input type="hidden" name="id" value="<?php echo $detailrooms['id']; ?>">
+                        </div>
+                       </div>
+                       <div class="form-group">
+                         <label for="ten_dich_vu">Tên Phòng</label>
                          <input type="text" name="name" class="form-control" id="ten_phong"
-                           placeholder="Enter name">
+                           placeholder="Enter name" value="<?php echo $detailrooms['name'] ?>">
                        </div>
                        <div class="form-group">
                          <label for="anh">Ảnh</label>
@@ -69,12 +69,14 @@
                            placeholder="Enter children">
                        </div>
                        <div class="form-group">
-                         
-                       </div>
-                       <div class="form-group">
                          <label for="number_adult">Dịch vụ </label>
                          <input type="text" name="id_service" class="form-control" id="id_service"
                            placeholder="Enter service">
+                       </div>
+                       <div class="form-group">
+                         <label for="gia">Giá</label>
+                         <input type="text" name="price" class="form-control" id="gia"
+                           placeholder="Enter price" value="<?php echo $detailrooms['price'] ?>">
                        </div>
                        <div class="form-group">
                          <label for="number_adult">Ngày cập nhật </label>
@@ -88,16 +90,21 @@
                        </div>
                        <div class="form-group">
                          <label for="trang_thai">Trạng thái</label>
-                         <select name="status" class="form-control" id="trang_thai" placeholder="Select status">
-                           <option value="">-- Trạng thái --</option>
-                           <option value="1">Hoạt Động</option>
-                           <option value="0">Tạm Ẩn</option>
+                         <select name="status" class="form-control" id="trang_thai" placeholder="Select status"
+                           required>
+                           <option value="" <?php echo ($detailrooms['status'] == '') ? 'selected' : ''; ?>>--
+                             Trạng thái --</option>
+                           <option value="1" <?php echo ($detailrooms['status'] == '1') ? 'selected' : ''; ?>>Hoạt
+                             Động</option>
+                           <option value="0" <?php echo ($detailrooms['status'] == '0') ? 'selected' : ''; ?>>Tạm
+                             Ẩn</option>
                          </select>
                        </div>
+                       
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer">
-                       <button type="submit" name="" class="btn btn-success">Thêm Phòng</button>
+                       <button type="submit" name="update_rooms" class="btn btn-success">Cập nhật dịch vụ</button>
                        <a href="listrooms.php" class="btn btn-secondary ml-2">Quay lại</a>
                      </div>
                    </form>
