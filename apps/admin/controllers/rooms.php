@@ -5,6 +5,11 @@
         return get_all('rooms', $options);
     }
     $list_rooms = getAllrooms();
+    function getAllCategories() {
+        $options = array('order_by' => 'id');
+        return get_all('category', $options);
+    }
+    $list_categories = getAllCategories();
     function addrooms($id_category, $name, $img, $price, $number_adult, $number_children, $id_service, $description, $status) {
         $data = array(
             'id_category' => $id_category,
