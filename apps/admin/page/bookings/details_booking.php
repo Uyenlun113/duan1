@@ -12,8 +12,9 @@
     <div class="wrapper">
       <?php
         include "../../controllers/bookingrooms.php";
-        // include "../layout/navbar.php";
-        // include "../layout/sidebar.php";
+        include "../../controllers/detail_booking.php";
+        include "../layout/navbar.php";
+        include "../layout/sidebar.php";
         ?>
       <div class="content-wrapper ">
         <section class="content-header">
@@ -53,42 +54,46 @@
                 </thead>
                 <tbody>
                   <?php
-
-                  if (isset($list_detail_booking) && is_array($list_detail_booking)) {
+                if (isset($list_detail_booking) && is_array($list_detail_booking)) {
                     foreach ($list_detail_booking as $index => $bookingroom):
+                     
                   ?>
+
                   <tr>
                     <td><?php echo $index + 1 ?></td>
-                    <td>
-                      <?php
-                    if (isset($list_rooms) && is_array($list_rooms)) {
-                      foreach ($list_rooms as $rooms): ?>
-                      <?php echo $rooms['name'] ?>
-                      <?php endforeach;
-                    } else {
-                      echo "Không có dữ liệu phòng nào.";
-                    } ?>
-
-                    </td>
-                    <td><?php echo $bookingroom['total_price'] ?></td>
+                    <td><?php echo $bookingroom['room_name'] ?></td>
+                    <td><?php echo $bookingroom['room_price'] ?></td>
                     <td><?php echo $bookingroom['checkin'] ?></td>
                     <td><?php echo $bookingroom['check_out'] ?></td>
-                    <td><?php echo $bookingroom['status'] == 1 ? 'Đã đặt phòng' : 'Đã hủy'; ?></td>
+                    <td class="project-state">
+                      <span>
+                        <?php if ($bookingroom['status'] == 1): ?>
+                        <span class="badge badge-success">Đã đặt phòng</span>
+                        <?php else: ?>
+                        <span class="badge badge-danger">Đã hủy</span>
+                        <?php endif; ?>
+                      </span>
+                    </td>
+                    <?php if ($bookingroom['status'] == 1): ?>
                     <td class="project-actions text-right">
-                      <a class="btn btn-info btn-sm" href="#">
-                        <i class="fas fa-pencil-alt"></i>&nbsp;Edit
+                      <a class="btn btn-info btn-sm"
+                        href="update_bookingrooms.php?detail_booking_id=<?= $booking['id'] ?>&action=update&update_booking_id=<?= $bookingroom['id'] ?>">
+                        <i class="fas fa-pencil-alt"></i>&nbsp;Sửa đặt phòng
                       </a>
-                      <a href="#" class="btn btn-danger btn-sm">
-                        <i class="fas fa-trash"></i>&nbsp;Delete
+                      <a href="details_booking.php?detail_booking_id=<?= $booking['id'] ?>&action=cancel&cancel_booking_id=<?= $bookingroom['id'] ?>"
+                        class="btn btn-danger btn-sm rounded-2">
+                        <i class="fas fa-trash"></i>&nbsp;Hủy đặt phòng
                       </a>
                     </td>
+                    <?php endif; ?>
                   </tr>
                   <?php
-        endforeach;
-    } else {
-        echo "<tr><td colspan='7'>Không có dữ liệu danh mục.</td></tr>";
-    }
-    ?>
+    endforeach;
+} else {
+    echo "<tr><td colspan='7'>Không có dữ liệu danh mục.</td></tr>";
+}
+?>
+
                 </tbody>
 
               </table>
@@ -98,12 +103,12 @@
           <!-- /.row -->
           <div class="row">
             <div class="col-6 ">
-              <p class="lead">Amount Due 2/22/2014</p>
+              <p class="lead">Thanh toán</p>
               <div class="table-responsive">
                 <table class="table">
                   <tr>
-                    <th style="width:50%">Subtotal:</th>
-                    <td>$250.30</td>
+                    <th style="width:50%">Tổng tiền:</th>
+                    <td><?php echo $bookingroom['total_price'] ?></td>
                   </tr>
                   <tr>
                     <th>Tax (9.3%)</th>

@@ -25,7 +25,7 @@
             'total_price' => $total_price,
             'status' => $status,
         );
-        $where = "id = $id";
+        $where = "id = $id_booking";
         return update_data('bill', $data, $where);
     }
 
