@@ -48,9 +48,7 @@
               <table class="table table-striped projects">
                 <thead>
                   <tr style="text-align:center;">
-                  <th style="width: 3%">
-                    #
-                    </th>
+                 
                     <th style="width: 11%">
                       tên phong
                     </th>
@@ -77,13 +75,8 @@
                       mô tả
                     </th>
                     <th style="width: 11%">
-<<<<<<< Updated upstream
                      trang thái
                      </th>
-=======
-                      trang thái
-                    </th>
->>>>>>> Stashed changes
                   </tr>
                 </thead>
                 <tbody>

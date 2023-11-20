@@ -20,7 +20,7 @@
            <div class="container-fluid">
              <div class="row mb-2">
                <div class="col-sm-6">
-                 <h1>Thêm Dịch vụ</h1>
+                 <h1>Thêm Phòng</h1>
                </div>
                <div class="col-sm-6">
                  <ol class="breadcrumb float-sm-right">
@@ -44,23 +44,31 @@
                    </div>
                    <!-- /.card-header -->
                    <!-- form start -->
-                   <form id="quickForm" method="POST" action="create_service.php">
+                   <form id="quickForm" method="POST" action="create_rooms.php">
                        <div class="form-group">
                          <label for="ten_dich_vu">tên phòng</label>
                          <input type="text" name="name" class="form-control" id="ten_dich_vu"
                            placeholder="Enter name">
                        </div>
                        <div class="form-group">
-                         <label for="gia">số người lớn</label>
-                         <input type="text" name="price" class="form-control" id="gia"
+                         <label for="number_adult">số người lớn</label>
+                         <input type="number" name="number_adult" min="1" max="5"id="number_adult"
+                           placeholder="Enter price">
+                           <label for="number_adult">số trẻ em</label>
+                         <input type="number" name="number_children" min="1" max="5"  id="number_children"
                            placeholder="Enter price">
                        </div>
                        <div class="form-group">
-                         <label for="description">Số trẻ em</label>
-                         <textarea name="description" id="summernote"></textarea>
+                         
                        </div>
                        <div class="form-group">
-                         <label for="trang_thai">Dịch vụ</label>
+                         <label for="number_adult">Dịch vụ </label>
+                         <input type="text" name="id_service" class="form-control" id="id_service"
+                           placeholder="Enter service">
+                       </div>
+                       
+                       <div class="form-group">
+                         <label for="ngay-cap">Ngày cập  nhật</label>
                          <select name="status" class="form-control" id="trang_thai" placeholder="Select status">
                            <option value="">-- Trạng thái --</option>
                            <option value="1">Hoạt Động</option>
@@ -70,8 +78,8 @@
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer">
-                       <button type="submit" name="add_service" class="btn btn-success">Thêm Dịch vụ</button>
-                       <a href="listservice.php" class="btn btn-secondary ml-2">Quay lại</a>
+                       <button type="submit" name="" class="btn btn-success">Thêm Dịch vụ</button>
+                       <a href="create_rooms.php" class="btn btn-secondary ml-2">Quay lại</a>
                      </div>
                    </form>
 

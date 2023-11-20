@@ -11,7 +11,7 @@
    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
      <div class="wrapper">
        <?php 
-        include "../../controllers/category.php";
+        include "../../controllers/rooms.php";
         include "../layout/navbar.php" ; 
         include "../layout/sidebar.php";
       ?>
@@ -39,7 +39,7 @@
                    </div>
                    <!-- /.card-header -->
                    <!-- form start -->
-                   <form id="quickForm" method="POST" action="update_roms.php"  enctype="multipart/form">
+                   <form id="quickForm" method="POST" action="listrooms.php"  enctype="multipart/form-data">>
                      <div class="card-body">
                        <div class="form-group">
                          <input type="text" name="id" hidden class="form-control" id="ma_loai_phong"
@@ -76,7 +76,7 @@
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer">
-                       <button type="submit" name="addroms.php" class="btn btn-success">Cập nhật loại phòng</button>
+                       <button type="submit" name="" class="btn btn-success">Cập nhật loại phòng</button>
                        <a href="rooms.php" class="btn btn-secondary ml-2">Quay lại</a>
                      </div>
                    </form>
