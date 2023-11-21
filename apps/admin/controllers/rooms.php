@@ -14,7 +14,7 @@
         $data = array(
             'id_category' => $id_category,
             'name' => $name,
-            'img' => $img,
+            'img' => $img, // Cần xử lý tệp tin ảnh ở đây
             'price' => $price,
             'number_adult' => $number_adult,
             'number_children' => $number_children,
@@ -29,7 +29,7 @@
 
 
 
-    function updaterooms($id_category, $name, $img, $price, $number_adult, $number_children, $id_service, $description, $status) {
+    function updaterooms($id, $id_category, $name, $img, $price, $number_adult, $number_children, $id_service, $description, $status) {
         $data = array(
             'id_category' => $id_category,
             'name' => $name,
@@ -64,7 +64,7 @@
             $status = $_POST["status"];
             $addResult = addrooms($id_category, $name, $img, $price, $number_adult, $number_children, $id_service, $description, $status);
             if ($addResult) {
-                header('location:listrooms.php?controller=rooms');
+                header('Location:listrooms.php?controller=rooms');
                 echo "Thêm mới thành công!";
             } else {
                 echo "Chưa thêm được loại phòng. $addResult";
@@ -91,7 +91,7 @@
         $status = $_POST["status"];
             $updateResult = updaterooms($id_category, $name, $img, $price, $number_adult, $number_children, $id_service, $description, $status);
             if ($updateResult) {
-                header('location:listrooms.php?controller=rooms');
+                header('Location:listrooms.php?controller=rooms');
                 echo "Cập nhật thành công!";
             } else {
                 echo "Chưa cập nhật được loại phòng. $updateResult";
