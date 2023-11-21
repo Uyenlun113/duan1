@@ -62,9 +62,10 @@
                   <tr>
                     <td><?php echo $index + 1 ?></td>
                     <td><?php echo $bookingroom['room_name'] ?></td>
-                    <td><?php echo $bookingroom['room_price'] ?></td>
-                    <td><?php echo $bookingroom['checkin'] ?></td>
-                    <td><?php echo $bookingroom['check_out'] ?></td>
+                    <td>$<?php echo number_format($bookingroom['room_price'], 2, '.', ',');  ?></td>
+                    <td><?php echo date("H:i - d/m/Y ", strtotime($bookingroom['checkin'])); ?></td>
+                    <td><?php echo date("H:i - d/m/Y ", strtotime($bookingroom['check_out'])); ?></td>
+
                     <td class="project-state">
                       <span>
                         <?php if ($bookingroom['status'] == 1): ?>
@@ -106,28 +107,19 @@
               <p class="lead">Thanh toán</p>
               <div class="table-responsive">
                 <table class="table">
-                  <?php
-                if (isset($detailbooking) && is_array($detailbooking)) {
-                     $booking = $detailbooking;
-                        ?>
+
                   <tr>
                     <th style="width:50%">Tổng tiền:</th>
-                    <td><?php echo $booking['total_price'] ?></td>
+                    <td>$<?php echo number_format($total_money, 2, '.', ','); ?></td>
                   </tr>
                   <tr>
                     <th>Tax (9.3%)</th>
-                    <td>$10.34</td>
-                  </tr>
-                  <tr>
-                    <th>Shipping:</th>
-                    <td>$5.80</td>
+                    <td>$10.00</td>
                   </tr>
                   <tr>
                     <th>Total:</th>
-                    <td>$265.24</td>
+                    <td>$<?php echo   number_format($total_money+10, 2, '.', ','); ?></td>
                   </tr>
-                  <?php
-                  }?>
                 </table>
               </div>
             </div>

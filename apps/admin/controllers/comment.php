@@ -20,7 +20,7 @@
 
 
 
-    function updateComment($id_user, $id_room, $content, $vote) {
+    function updateComment($id,$id_user, $id_room, $content, $vote) {
         $data = array(
             'id_user' => $id_user,
             'id_room' => $id_room,
@@ -63,7 +63,7 @@
         $id_room = $_POST["id_room"];
         $content = $_POST["content"];
         $vote = $_POST["vote"];
-            $updateResult = updateComment($id_user, $id_room, $content, $vote);
+            $updateResult = updateComment($id,$id_user, $id_room, $content, $vote);
             if ($updateResult) {
                 header('location:comment.php?controller=comment');
             } else {

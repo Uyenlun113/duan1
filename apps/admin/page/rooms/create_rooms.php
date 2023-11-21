@@ -12,8 +12,8 @@
     <div class="wrapper">
       <?php 
         include "../../controllers/rooms.php";
-        include "../layout/navbar.php" ; 
-        include "../layout/sidebar.php";
+        // include "../layout/navbar.php" ; 
+        // include "../layout/sidebar.php";
       ?>
       <div class="content-wrapper">
         <section class="content-header">
@@ -29,29 +29,24 @@
                 </ol>
               </div>
             </div>
-          </div><!-- /.container-fluid -->
+          </div>
         </section>
-
         <section class="content">
           <div class="container-fluid">
             <div class="row">
-              <!-- left column -->
               <div class="col-md-12">
-                <!-- jquery validation -->
                 <div class="card card-success">
                   <div class="card-header">
                     <h3 class="card-title">Quản lý phòng</h3>
                   </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form id="quickForm" method="POST" action="create_rooms.php">
+                  <form id="quickForm" method="POST" action="create_rooms.php" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="ten_dich_vu">Tên phòng</label>
                       <input type="text" name="name" class="form-control" id="ten_phong" placeholder="Enter name">
                     </div>
                     <div class="form-group">
-                      <label for="anh">Ảnh</label>
-                      <input type="file" name="img" class="form-control" id="anh" placeholder="Enter img">
+                      <label for="anh_phong">Ảnh phòng</label>
+                      <input type="file" name="img" id="anh_phong">
                     </div>
                     <div class="form-group">
                       <label for="id">Loại Phòng</label>
@@ -73,12 +68,18 @@
                       <input type="number" name="number_children" min="1" max="5" id="number_children">
                     </div>
                     <div class="form-group">
-
-                    </div>
-                    <div class="form-group">
-                      <label for="number_adult">Dịch vụ </label>
-                      <input type="text" name="id_service" class="form-control" id="id_service"
-                        placeholder="Enter service">
+                      <label for="id_service">Dịch vụ</label>
+                      <?php
+                      foreach ($allServices as $service) :
+                      ?>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="id_service[]"
+                          value="<?php echo $service['id']; ?>" id="service_<?php echo $service['id']; ?>">
+                        <label class="form-check-label" for="service_<?php echo $service['id']; ?>">
+                          <?php echo $service['name']; ?>
+                        </label>
+                      </div>
+                      <?php endforeach; ?>
                     </div>
 
                     <div class="form-group">
@@ -94,25 +95,17 @@
                       </select>
                     </div>
                 </div>
-                <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" name="" class="btn btn-success">Thêm Phòng</button>
+                  <button type="submit" name="add_rooms" class="btn btn-success">Thêm Phòng</button>
                   <a href="listrooms.php" class="btn btn-secondary ml-2">Quay lại</a>
                 </div>
                 </form>
-
               </div>
-              <!-- /.card -->
             </div>
-            <!--/.col (left) -->
-            <!-- right column -->
             <div class="col-md-6">
-
             </div>
-            <!--/.col (right) -->
           </div>
-          <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
       </section>
     </div>
     <?php 

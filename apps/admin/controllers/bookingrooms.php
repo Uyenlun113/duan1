@@ -18,6 +18,10 @@ function getAllDetailBooking($id_booking) {
     if (isset($_GET['detail_booking_id'])) {
         $id_booking = $_GET['detail_booking_id'];
         $list_detail_booking = getAllDetailBooking($id_booking);
+        $total_money = 0;
+        foreach ($list_detail_booking as $booking) {
+            $total_money += $booking['room_price'];
+        }
     }
 
     if (intval($_GET['detail_booking_id'])) {
