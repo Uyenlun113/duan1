@@ -46,9 +46,15 @@
                            placeholder="Enter id_booking" value="<?php echo $detailBill['id'] ?>">
                        </div> -->
                        <div class="form-group">
+<<<<<<< HEAD
                          <label for="ma_hoa_don">Mã Hoá đơn</label>
                          <input type="text" name="id_booking" class="form-control" id="ma_hoa_don" placeholder="Enter id_booking"
                            value="<?php echo $detailBill['id_booking'] ?>">
+=======
+                         <label for="ma_hoa_don">Mã hóa đơn</label>
+                         <input type="text" name="id_booking" class="form-control" id="ma_hoa_don"
+                           placeholder="Enter id_booking" value="<?php echo $detailBill['id_booking'] ?>">
+>>>>>>> 159a2bfb574028ab957a91381d5d40cc8cd026d9
                        </div>
                        <div class="form-group">
                          <label for="gia">Giá</label>

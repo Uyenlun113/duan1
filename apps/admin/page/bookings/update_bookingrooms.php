@@ -43,8 +43,9 @@
                     <div class="card-body">
                       <div class="form-group">
                         <input type="text" name="id" hidden class="form-control" id="ma_loai_phong"
-                          placeholder="Enter code" value="<?php echo $booking['id'] ?>">
+                          placeholder="Enter code" value="<?php echo $detailbookingroom['id'] ?>">
                       </div>
+                      <?php echo $detailbookingroom['id']; ?>
                       <div class="form-group">
                         <label for="customer_name">Tên khách hàng</label>
                         <input type="text" name="name_account" class="form-control" id="name_account"
@@ -90,7 +91,7 @@
                       </div>
                     </div>
                     <div class="card-footer">
-                      <button type="submit" name="add_booking" class="btn btn-success">Đặt
+                      <button type="submit" name="update_bookingroom" class="btn btn-success">Đặt
                         phòng</button>
                       <a href="listbooking.php" class="btn btn-secondary ml-2">Quay lại</a>
                     </div>

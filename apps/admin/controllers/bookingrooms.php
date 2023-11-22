@@ -8,33 +8,20 @@
    
 function getAllDetailBooking($id_booking) {
     $options = array(
-        'select' => 'bookingroom.*, rooms.name AS room_name, rooms.price AS room_price, rooms.id_service',
+        'select' => 'bookingroom.*, rooms.name AS room_name, rooms.price AS room_price',
         'where' => "bookingroom.id_booking = $id_booking",
         'join' => 'JOIN rooms ON bookingroom.id_room = rooms.id'
     );
-    $list_detail_booking = get_all('bookingroom', $options);
-
-    // Iterate through the result and fetch the service price
-    foreach ($list_detail_booking as &$bookingroom) {
-        $service_id = $bookingroom['id_service'];
-        $service_price = getServicePrice($service_id);
-        $bookingroom['service_price'] = $service_price;
-    }
-
-    return $list_detail_booking;
+    return get_all('bookingroom', $options);
+    
 }
-
-// Function to get the service price by ID
-function getServicePrice($service_id) {
-    $service = get_a_data('room_service', $service_id);
-    return $service ? $service['price'] : 0;
-}
-
-
-
     if (isset($_GET['detail_booking_id'])) {
         $id_booking = $_GET['detail_booking_id'];
         $list_detail_booking = getAllDetailBooking($id_booking);
+        $total_money = 0;
+        foreach ($list_detail_booking as $booking) {
+            $total_money += $booking['room_price'];
+        }
     }
 
     if (intval($_GET['detail_booking_id'])) {
@@ -67,12 +54,6 @@ function getServicePrice($service_id) {
         return save_and_get_result('bookings', $data);
     }
 
-   // ...
-
-// ...
-
-// ...
-
 function addBookingRoom($id_booking, $id_room, $checkin, $check_out) {
     $data = array(
         'id_booking' => $id_booking,
@@ -86,10 +67,6 @@ function addBookingRoom($id_booking, $id_room, $checkin, $check_out) {
     $result = save_and_get_result('bookingroom', $data);
     return $result;
 }
-
-// ...
-
-
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

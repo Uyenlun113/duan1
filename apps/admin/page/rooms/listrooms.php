@@ -12,8 +12,8 @@
     <div class="wrapper">
       <?php 
         include "../../controllers/rooms.php";
-        include "../layout/navbar.php" ; 
-        include "../layout/sidebar.php";
+        // include "../layout/navbar.php" ; 
+        // include "../layout/sidebar.php";
       ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -22,7 +22,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Quản lý loại phòng</h1>
+                <h1>Quản lý phòng</h1>
               </div>
 
             </div>
@@ -37,7 +37,7 @@
             <div class="card-header">
               <h3 class="card-title">Quản lý loại phòng</h3>
               <div class="card-tools">
-                <a class="btn btn-success btn-sm" href="addroms.php">
+                <a class="btn btn-success btn-sm" href="create_rooms.php">
                   <i class="fas fa-plus">
                   </i>&nbsp;
                   Thêm phòng
@@ -48,48 +48,45 @@
               <table class="table table-striped projects">
                 <thead>
                   <tr style="text-align:center;">
-                  <th style="width: 3%">
-                    #
+                    <th style="width: 5%">
+                      #
                     </th>
-                    <th style="width: 11%">
-                      tên phong
+                    <th style="width: 11%;text-align:start;">
+                      Tên phòng
                     </th>
                     <th style="width: 11%">
                       Ảnh phòng
                     </th>
                     <th style="width: 11%">
-                      giá phòng
+                      Giá phòng
                     </th>
-                    <th style="width: 11%;text-align:start;">
-                      số người lớn
+                    <th style="width: 11%;">
+                      Số người lớn
+                    </th>
+                    <th style="width: 10%">
+                      Số trẻ em
                     </th>
                     <th style="width: 11%">
-                      số trẻ em
-                    </th>
-                    <th style="width: 11%">
-                      dịch vụ
+                      Dịch vụ
                     </th>
 
                     <th style="width: 11%">
-                      Ngày cập nhật
+                      Mô tả
                     </th>
                     <th style="width: 11%">
-                      mô tả
+                      Trạng thái
                     </th>
                     <th style="width: 11%">
-<<<<<<< Updated upstream
-                     trang thái
-                     </th>
-=======
-                      trang thái
+                      Thao tác
                     </th>
->>>>>>> Stashed changes
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   if (isset($list_rooms) && is_array($list_rooms)) {
-                    foreach ($list_rooms as $index => $rooms): ?>
+                    foreach ($list_rooms as $index => $rooms): 
+                     $hinhpath = "/../../upload/" . $rooms['img'];
+                    $rooms['img'] = (is_file($hinhpath)) ? $hinhpath : "";?>
                   <tr style="text-align:center;">
                     <td>
                       <?php echo $index + 1 ?>
@@ -104,7 +101,11 @@
                       </small>
                     </td>
                     <td>
+                      <?php if ($rooms['img'] !== "không có hình"): ?>
+                      <img src="<?php echo $rooms['img'] ?>" height="80" alt="">
+                      <?php else: ?>
                       <?php echo $rooms['img'] ?>
+                      <?php endif; ?>
                     </td>
 
                     <td>
@@ -117,10 +118,7 @@
                       <span><?php echo $rooms['number_children'] ?></span>
                     </td>
                     <td>
-                      <span><?php echo $rooms['id_service'] ?></span>
-                    </td>
-                    <td>
-                      <span><?php echo $rooms['update_date'] ?></span>
+                      <?php echo $rooms['id_service'] ?>
                     </td>
                     <td>
                       <span><?php echo $rooms['description'] ?></span>
@@ -143,7 +141,7 @@
                         </i>&nbsp;
                         Edit
                       </a>
-                      <a href="rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>"
+                      <a href="listrooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>"
                         class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>&nbsp;Delete</a>
                     </td>
                   </tr>

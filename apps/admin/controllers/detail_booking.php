@@ -25,4 +25,5 @@ if (isset($_GET['cancel_booking_id'])) {
         echo "Error cancelling booking!";
     }
 }
+
 ?>

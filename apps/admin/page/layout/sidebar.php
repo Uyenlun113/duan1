@@ -93,6 +93,16 @@
 
               </li>
               <li class="nav-item">
+                <a href="../comment/comment.php" class="nav-link">
+                  <i class="nav-icon far fa-envelope"></i>
+                  <p>
+                    BÌNH LUẬN
+
+                  </p>
+                </a>
+
+              </li>
+              <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-search"></i>
                   <p>
