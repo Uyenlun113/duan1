@@ -31,6 +31,7 @@
 
     try {
         $sql = "SELECT $select FROM `$table` $join $where $order_by $limit";
+        echo json_encode($sql);
         $query = $conn->query($sql);
         $data = array();
         if ($query) {
