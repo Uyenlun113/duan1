@@ -15,17 +15,22 @@
   <div class="search-icon  search-switch">
     <i class="icon_search"></i>
   </div>
-  <div class="header-configure-area">
-
-    <a href="#" class="bk-btn">Đăng ký</a>
-    <a href="#" class="bk-btn">Đăng nhập</a>
-  </div>
+  <!-- Đăng ký -->
+<div id="register-form">
+  <h2>Đăng ký</h2>
+  <form>
+    <input type="text" placeholder="Tên đăng nhập" id="register-username">
+    <input type="email" placeholder="Email" id="register-email">
+    <input type="password" placeholder="Mật khẩu" id="register-password">
+    <button type="submit">Đăng ký</button>
+  </form>
+</div>
   <nav class="mainmenu mobile-menu">
     <ul>
-      <li class="active"><a href="./index.html">Home</a></li>
-      <li><a href="./rooms.html">Rooms</a></li>
+      <li class="active"><a href="./index.html">Trang Chủ</a></li>
+      <li><a href="./rooms.html">Phòng</a></li>
       <li><a href="./about-us.html">About Us</a></li>
-      <li><a href="./pages.html">Pages</a>
+      <li><a href="./pages.html">Trang</a>
         <ul class="dropdown">
           <li><a href="./room-details.html">Room Details</a></li>
           <li><a href="#">Deluxe Room</a></li>
@@ -33,8 +38,8 @@
           <li><a href="#">Premium Room</a></li>
         </ul>
       </li>
-      <li><a href="./blog.html">News</a></li>
-      <li><a href="./contact.html">Contact</a></li>
+      <li><a href="./blog.html">Mới</a></li>
+      <li><a href="./contact.html">Liên Hệ</a></li>
     </ul>
   </nav>
   <div id="mobile-menu-wrap"></div>
@@ -100,10 +105,10 @@
           <div class="nav-menu">
             <nav class="mainmenu">
               <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./rooms.html">Rooms</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./pages.html">Pages</a>
+                <li class="active"><a href="./index.html">Trang Chủ</a></li>
+                <li><a href="./rooms.html">Phòng</a></li>
+                <li><a href="./about-us.html">Về Chúng Tôi</a></li>
+                <li><a href="./pages.html">Trang</a>
                   <ul class="dropdown">
                     <li><a href="./room-details.html">Room Details</a></li>
                     <li><a href="./blog-details.html">Blog Details</a></li>
@@ -111,8 +116,8 @@
                     <li><a href="#">Premium Room</a></li>
                   </ul>
                 </li>
-                <li><a href="./blog.html">News</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./blog.html">Mới</a></li>
+                <li><a href="./contact.html">Liên Hệ</a></li>
               </ul>
             </nav>
             <div class="nav-right search-switch">

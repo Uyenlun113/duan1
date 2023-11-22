@@ -31,20 +31,20 @@
           </div>
           <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
             <div class="booking-form">
-              <h3>Booking Your Hotel</h3>
+              <h3>Đặt phòng khách sạn</h3>
               <form action="#">
                 <div class="check-date">
-                  <label for="date-in">Check In:</label>
+                  <label for="date-in">Kiểm Tra:</label>
                   <input type="text" class="date-input" id="date-in">
                   <i class="icon_calendar"></i>
                 </div>
                 <div class="check-date">
-                  <label for="date-out">Check Out:</label>
+                  <label for="date-out">Thanh Toán:</label>
                   <input type="text" class="date-input" id="date-out">
                   <i class="icon_calendar"></i>
                 </div>
                 <div class="select-option">
-                  <label for="guest">Guests:</label>
+                  <label for="guest">Khách:</label>
                   <select id="guest">
                     <option value="">2 Adults</option>
                     <option value="">3 Adults</option>
