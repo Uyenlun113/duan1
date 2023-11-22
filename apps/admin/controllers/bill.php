@@ -53,11 +53,10 @@
     } 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_GET['update_bill']) && intval($_GET['update_bill'])) {
-            $id = $_POST["id"];
             $id_booking = $_POST["id_booking"];
             $total_price = $_POST["total_price"];
             $status = $_POST["status"];
-            $updateResult = updateBill($id, $id_booking, $total_price, $status);
+            $updateResult = updateBill($id_booking, $total_price, $status);
             if ($updateResult) {
                 header('location:bill.php?controller=bill');
             } else {
