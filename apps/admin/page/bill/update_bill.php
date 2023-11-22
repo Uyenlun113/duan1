@@ -12,8 +12,8 @@
      <div class="wrapper">
        <?php 
         include "../../controllers/bill.php";
-        // include "../layout/navbar.php" ; 
-        // include "../layout/sidebar.php";
+        include "../layout/navbar.php" ; 
+        include "../layout/sidebar.php";
       ?>
        <div class="content-wrapper">
          <section class="content-header">
@@ -41,18 +41,18 @@
                    <!-- form start -->
                    <form id="quickForm" method="POST" action="update_bill.php">
                      <div class="card-body">
-                       <div class="form-group">
+                       <!-- <div class="form-group">
                          <input type="text" name="id" hidden class="form-control" id="ma_hoa_don"
                            placeholder="Enter id_booking" value="<?php echo $detailBill['id'] ?>">
-                       </div>
+                       </div> -->
                        <div class="form-group">
-                         <label for="id_booking">Mã hóa đơn</label>
+                         <label for="ma_hoa_don">Mã Hoá đơn</label>
                          <input type="text" name="id_booking" class="form-control" id="ma_hoa_don" placeholder="Enter id_booking"
                            value="<?php echo $detailBill['id_booking'] ?>">
                        </div>
                        <div class="form-group">
-                         <label for="gitotal_pricea">Giá</label>
-                         <input type="text" name="total_price" class="form-control" id="total_price"
+                         <label for="gia">Giá</label>
+                         <input type="text" name="total_price" class="form-control" id="gia"
                            placeholder="Enter total_price" value="<?php echo $detailBill['total_price'] ?>">
                        </div>
                        <div class="form-group">

@@ -12,8 +12,8 @@
     <div class="wrapper">
       <?php 
         include "../../controllers/bill.php";
-        // include "../layout/navbar.php" ; 
-        // include "../layout/sidebar.php";
+        include "../layout/navbar.php" ; 
+        include "../layout/sidebar.php";
       ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
