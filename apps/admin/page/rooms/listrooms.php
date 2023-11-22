@@ -116,7 +116,7 @@
                       <span><?php echo $rooms['number_children'] ?></span>
                     </td>
                     <td>
-                      <?php echo $rooms['id_service'] ?>
+                      <?php echo $rooms['name_service'] ?>
                     </td>
 
                     <td class="project-state">

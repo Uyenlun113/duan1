@@ -1,14 +1,14 @@
 <?php
     include_once "../../../../configs/configs.php";
     function getAllrooms() {
-        $options = array(
-           'select' => 'rooms.*,category.name as name_category',
-            'order_by' => 'id',
-            'join' => 'JOIN category ON rooms.id_category = category.id'
-            
-        );
-        return get_all('rooms', $options);
-    }
+    $options = array(
+        'select' => 'rooms.*, category.name as name_category, room_service.name as name_service',
+        'order_by' => 'rooms.id',
+        'join' => 'JOIN category ON rooms.id_category = category.id JOIN room_service ON rooms.id_service = room_service.id'
+    );
+    return get_all('rooms', $options);
+}
+
     $list_rooms = getAllrooms();
     function getAllCategories() {
         $options = array('order_by' => 'id');
