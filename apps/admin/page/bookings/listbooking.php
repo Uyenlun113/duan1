@@ -84,7 +84,7 @@
                     </td>
                     <td class="project-state">
                       <span>
-                        <?php if ($booking['payment'] == 1): ?>
+                        <?php if ($booking['payment'] == 0): ?>
                         <span class="badge badge-success">Tiền mặt</span>
                         <?php else: ?>
                         <span class="badge badge-success">Chuyển khoản</span>

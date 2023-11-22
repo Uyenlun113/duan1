@@ -126,11 +126,11 @@
           </div>
           <div class="col-sm-3">
             <label>Check-in:</label>
-            <input type="date" class="form-control" name="checkin[]">
+            <input type="datetime-local" class="form-control" name="checkin[]">
           </div>
           <div class="col-sm-3">
             <label>Check-out:</label>
-            <input type="date" class="form-control" name="checkout[]">
+            <input type="datetime-local" class="form-control" name="checkout[]">
           </div>
           <button type="button" class="btn btn-danger remove-btn ml-2" onclick="removeField(this)">Xóa phòng</button>
         </div>
