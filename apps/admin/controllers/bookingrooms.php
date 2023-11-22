@@ -15,6 +15,7 @@ function getAllDetailBooking($id_booking) {
     return get_all('bookingroom', $options);
     
 }
+
     if (isset($_GET['detail_booking_id'])) {
         $id_booking = $_GET['detail_booking_id'];
         $list_detail_booking = getAllDetailBooking($id_booking);

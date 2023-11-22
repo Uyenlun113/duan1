@@ -1,7 +1,12 @@
 <?php
     include_once "../../../../configs/configs.php";
     function getAllrooms() {
-        $options = array('order_by' => 'id');
+        $options = array(
+           'select' => 'rooms.*,category.name as name_category',
+            'order_by' => 'id',
+            'join' => 'JOIN category ON rooms.id_category = category.id'
+            
+        );
         return get_all('rooms', $options);
     }
     $list_rooms = getAllrooms();
@@ -44,8 +49,8 @@ function addrooms($id_category, $name, $img, $price, $number_adult, $number_chil
             $number_children = $_POST["number_children"];
             $description = $_POST["description"];
             $status = $_POST["status"];
-            $img = $_FILES['img']['name'];
-            $target_dir = "../../upload/";
+            $img = "rooms/".$_FILES['img']['name'];
+            $target_dir = "../../upload/rooms/";
             if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);
 }

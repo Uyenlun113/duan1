@@ -55,6 +55,7 @@
                 <tbody>
                   <?php
                 if (isset($list_detail_booking) && is_array($list_detail_booking)) {
+                    echo json_encode($list_detail_booking);
                     foreach ($list_detail_booking as $index => $bookingroom):
                      
                   ?>

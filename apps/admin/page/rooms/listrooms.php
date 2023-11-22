@@ -12,8 +12,8 @@
     <div class="wrapper">
       <?php 
         include "../../controllers/rooms.php";
-        // include "../layout/navbar.php" ; 
-        // include "../layout/sidebar.php";
+        include "../layout/navbar.php" ; 
+        include "../layout/sidebar.php";
       ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -51,6 +51,9 @@
                     <th style="width: 5%">
                       #
                     </th>
+                    <th style="width: 11%">
+                      Loại phòng
+                    </th>
                     <th style="width: 11%;text-align:start;">
                       Tên phòng
                     </th>
@@ -69,10 +72,6 @@
                     <th style="width: 11%">
                       Dịch vụ
                     </th>
-
-                    <th style="width: 11%">
-                      Mô tả
-                    </th>
                     <th style="width: 11%">
                       Trạng thái
                     </th>
@@ -85,11 +84,13 @@
                   <?php
                   if (isset($list_rooms) && is_array($list_rooms)) {
                     foreach ($list_rooms as $index => $rooms): 
-                     $hinhpath = "/../../upload/" . $rooms['img'];
-                    $rooms['img'] = (is_file($hinhpath)) ? $hinhpath : "";?>
+?>
                   <tr style="text-align:center;">
                     <td>
                       <?php echo $index + 1 ?>
+                    </td>
+                    <td>
+                      <span><?php echo $rooms['name_category'] ?></span>
                     </td>
                     <td style="text-align:start;">
                       <a>
@@ -101,11 +102,8 @@
                       </small>
                     </td>
                     <td>
-                      <?php if ($rooms['img'] !== "không có hình"): ?>
-                      <img src="<?php echo $rooms['img'] ?>" height="80" alt="">
-                      <?php else: ?>
-                      <?php echo $rooms['img'] ?>
-                      <?php endif; ?>
+                      <img src="../../../upload/<?= $rooms['img'] ?>" height="80" width="100" class="rounded" alt="">
+
                     </td>
 
                     <td>
@@ -120,10 +118,6 @@
                     <td>
                       <?php echo $rooms['id_service'] ?>
                     </td>
-                    <td>
-                      <span><?php echo $rooms['description'] ?></span>
-                    </td>
-
 
                     <td class="project-state">
                       <span>

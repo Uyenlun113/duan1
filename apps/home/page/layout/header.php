@@ -1,7 +1,7 @@
 <!-- Page Preloder -->
-<div id="preloder">
+<!-- <div id="preloder">
   <div class="loader"></div>
-</div>
+</div> -->
 
 <!-- Offcanvas Menu Section Begin -->
 <div class="offcanvas-menu-overlay"></div>
