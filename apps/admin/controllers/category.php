@@ -53,13 +53,12 @@
     }
 
     // lấy ra thông tin sản phẩm vào form sửa
-    if (intval($_GET['update_category'])) {
+    if (isset($_GET['update_category'])) {
         $subCateId = intval($_GET['update_category']);
         return $detailCategory = get_a_data('category', $subCateId);
     }   
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        if (isset($_POST["update_category"])) {
-        var_dump($_POST);
             $id = $_POST["id"];
             $code = $_POST["code"];
             $name = $_POST["name"];

@@ -93,7 +93,7 @@
 }
 
 //update dữ liệu
-    function update_data($table, $data = array(), $where)
+ function update_data($table, $data = array(), $where)
     {
         $conn = pdo_get_connection();
 
@@ -109,12 +109,14 @@
 
         try {
             $stmt = $conn->prepare("UPDATE `$table` SET $setClause WHERE $where");
+            echo json_encode($stmt);
             $stmt->execute($data);
             return true; // Success
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage(); // Failure with error message
         }
     }
+
 //xóa dữ liệu 
     function delete_data($table, $where)
     {

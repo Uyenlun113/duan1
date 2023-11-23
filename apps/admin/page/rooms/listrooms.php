@@ -107,7 +107,7 @@
                     </td>
 
                     <td>
-                      <span><?php echo $rooms['price'] ?></span>
+                      <span><?php echo number_format($rooms['price'], 2, '.', ',') ?></span>
                     </td>
                     <td>
                       <span><?php echo $rooms['number_adult'] ?></span>
@@ -122,9 +122,9 @@
                     <td class="project-state">
                       <span>
                         <?php if ($rooms['status'] == 1): ?>
-                        <span class="badge badge-success">Hoạt động</span>
+                        <span class="badge badge-success">Còn phòng</span>
                         <?php else: ?>
-                        <span class="badge badge-danger">Tạm ẩn</span>
+                        <span class="badge badge-danger">Hết phòng</span>
                         <?php endif; ?>
                       </span>
                     </td>

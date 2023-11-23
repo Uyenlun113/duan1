@@ -12,8 +12,8 @@
     <div class="wrapper">
       <?php 
         include "../../controllers/rooms.php";
-        // include "../layout/navbar.php" ; 
-        // include "../layout/sidebar.php";
+        include "../layout/navbar.php" ; 
+        include "../layout/sidebar.php";
       ?>
       <div class="content-wrapper">
         <section class="content-header">
@@ -90,8 +90,8 @@
                       <label for="trang_thai">Trạng thái</label>
                       <select name="status" class="form-control" id="trang_thai" placeholder="Select status">
                         <option value="">-- Trạng thái --</option>
-                        <option value="1">Hoạt Động</option>
-                        <option value="0">Tạm Ẩn</option>
+                        <option value="1">Còn phòng</option>
+                        <option value="0">Hết phòng</option>
                       </select>
                     </div>
                 </div>
