@@ -8,10 +8,12 @@
     );
     return get_all('rooms', $options);
 }
-
     $list_rooms = getAllrooms();
     function getAllCategories() {
-        $options = array('order_by' => 'id');
+        $options = array(
+            'order_by' => 'id',
+            'where' => 'status = 1'
+        );
         return get_all('category', $options);
     }
     $list_categories = getAllCategories();
@@ -63,7 +65,7 @@ function addrooms($id_category, $name, $img, $price, $number_adult, $number_chil
             $addResult = addrooms($id_category, $name, $img, $price, $number_adult, $number_children, $selectedServices, $description, $status);
 
             if ($addResult) {
-                //header('location:listrooms.php?controller=rooms');
+                header('location:listrooms.php?controller=rooms');
                 echo "Thêm mới thành công!";
             } else {
                 echo "Chưa thêm được loại phòng. $addResult";
@@ -73,66 +75,68 @@ function addrooms($id_category, $name, $img, $price, $number_adult, $number_chil
 
 
 
-    function updaterooms($id,$id_category, $name, $img, $price, $number_adult, $number_children, $id_service, $description, $status) {
-        $data = array(
-            'id_category' => $id_category,
-            'name' => $name,
-            'img' => $img,
-            'price' => $price,
-            'number_adult' => $number_adult,
-            'number_children' => $number_children,
-            'id_service' => $id_service,
-            'description' => $description,
-            'status' => $status,
-            'update_date' => date('Y-m-d')
-        );
-        $where = "id = $id";
-        return update_data('rooms', $data, $where);
-    }
+ 
+function updaterooms($id, $id_category, $name, $img, $price, $number_adult, $number_children, $description, $status)
+{
+    $data = array(
+        'id_category' => $id_category,
+        'name' => $name,
+        'price' => $price,
+        'number_adult' => $number_adult,
+        'number_children' => $number_children,
+        'description' => $description,
+        'status' => $status,
+        'update_date' => date('Y-m-d'),
+        'img' =>$_FILES["img"]["name"]
+    );
+    $where = "id = $id";
+return update_data('rooms', $data, $where);
+}
 
-    function deleterooms($id) {
-        $where = "id = $id";
-        return delete_data('rooms', $where);
-    }
+// lấy ra thông tin sản phẩm vào form sửa
+if (isset($_GET['update_rooms'])) {
+    $subRoomsId = intval($_GET['update_rooms']);
+    $detailrooms = get_a_data('rooms', $subRoomsId);
+}
 
-    
-    // lấy ra thông tin sản phẩm vào form sửa
-    // if (intval($_GET['update_rooms'])) {
-    //     $subRoomsId = intval($_GET['update_rooms']);
-    //     return $detailrooms = get_a_data('rooms', $subRoomsId);
-    // }
-            
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //    if (isset($_POST["update_rooms"])) {
-    //     $id_category = $_POST["id_category"];
-    //     $name = $_POST["name"];
-    //     $img = $_POST["img"];
-    //     $price = $_POST["price"];
-    //     $number_adult = $_POST["number_adult"];
-    //     $number_children = $_POST["number_children"];
-    //     $id_service = $_POST["id_service"];
-    //     $description = $_POST["description"];
-    //     $status = $_POST["status"];
-    //         $updateResult = updaterooms($id,$id_category, $name, $img, $price, $number_adult, $number_children, $id_service, $description, $status);
-    //         if ($updateResult) {
-    //             header('location:listrooms.php?controller=rooms');
-    //             echo "Cập nhật thành công!";
-    //         } else {
-    //             echo "Chưa cập nhật được loại phòng. $updateResult";
-    //         }
-    //     }  
-    // }    
-    
-
-    //Xóa data
-    if (isset($_GET["delete_rooms_id"])){
-        $id = $_GET["delete_rooms_id"];
-        $deleteResult = deleterooms($id);
-        if ($deleteResult) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["update_rooms"])) {
+        $id = $_POST["id"];
+        $id_category = $_POST["id_category"];
+        $name = $_POST["name"];
+        $price = $_POST["price"];
+        $number_adult = $_POST["number_adult"];
+        $number_children = $_POST["number_children"];
+        $description = $_POST["description"];
+        $status = $_POST["status"];
+        $img = "rooms/".$_FILES['img']['name'];
+        $target_dir = "../../upload/rooms/"; 
+        $targetFile = $target_dir . basename($_FILES["img"]["name"]);
+        $updateResult = updaterooms($id, $id_category, $name, $img, $price, $number_adult, $number_children, $description, $status);
+        if ($updateResult) {
             header('location:listrooms.php?controller=rooms');
-            echo "Xóa thành công!";
+            echo "Cập nhật thành công!";
         } else {
-            echo "Chưa xóa được loại phòng. $deleteResult";
+            echo "Chưa cập nhật được loại phòng. $updateResult";
         }
     }
+}
+
+
+function deleterooms($id) {
+$where = "id = $id";
+return delete_data('rooms', $where);
+}
+
+//Xóa data
+if (isset($_GET["delete_rooms_id"])){
+$id = $_GET["delete_rooms_id"];
+$deleteResult = deleterooms($id);
+if ($deleteResult) {
+header('location:listrooms.php?controller=rooms');
+echo "Xóa thành công!";
+} else {
+echo "Chưa xóa được loại phòng. $deleteResult";
+}
+}
 ?>

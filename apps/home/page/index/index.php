@@ -200,7 +200,10 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="primary-btn">Chi tiết</a>
+                  <a href="../detail_rooms/detail_rooms.php?action=detail&detail_rooms=<?= $rooms_popular_top_4['id'] ?>"
+                    class="primary-btn">
+                    Chi tiếtqưe
+                  </a>
                 </div>
               </div>
             </div>
