@@ -16,7 +16,7 @@ function getAllDetailBooking($id_booking) {
     
 }
     if (isset($_GET['detail_booking_id'])) {
-        $id_booking = $_GET['detail_booking_id'];
+        $id_booking = $_GET['detail_booking_id'];   
         $list_detail_booking = getAllDetailBooking($id_booking);
         $total_money = 0;
         foreach ($list_detail_booking as $booking) {
@@ -24,7 +24,7 @@ function getAllDetailBooking($id_booking) {
         }
     }
 
-    if (intval($_GET['detail_booking_id'])) {
+    if (isset($_GET['detail_booking_id'])&&intval($_GET['detail_booking_id'])) {
         $subCateId = intval($_GET['detail_booking_id']);
         return $detailbooking = get_a_data('bookings', $subCateId);
     }
@@ -68,6 +68,12 @@ function addBookingRoom($id_booking, $id_room, $checkin, $check_out) {
     return $result;
 }
 
+    function getAllBookingRoomByIdRooms($id_room) {
+            $options = array('order_by' => 'id',
+        "where" => "id_room = $id_room");
+            return get_all('bookingroom', $options);
+        }
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["add_booking"])) {
@@ -81,12 +87,34 @@ function addBookingRoom($id_booking, $id_room, $checkin, $check_out) {
             $rooms = isset($_POST["room_id"]) ? $_POST["room_id"] : array();
             $checkinDates = isset($_POST["checkin"]) ? $_POST["checkin"] : array();
             $checkoutDates = isset($_POST["checkout"]) ? $_POST["checkout"] : array();
+            $overlapMessages = []; // Mảng lưu trữ các thông báo về sự trùng lặp
+ 
+                        if (empty($overlapMessages)) {
+                            $addResultBookings = addBooking($name_account, $CCCD, $tel, $payment,$address,$status);
+     }
+        
+            }  
+
              for ($i = 0; $i < count($rooms); $i++) {
                 $room_id = $rooms[$i];
                 $checkin_date = $checkinDates[$i];
                 $checkout_date = $checkoutDates[$i];
-                $addResultBookingsRoom = addBookingRoom($addResultBookings['lastInsertId'],  $room_id, $checkin_date, $checkout_date);                 
-            }  
+                                $listRoomsById = getAllBookingRoomByIdRooms($room_id);
+
+                        foreach ($listRoomsById as $booking) {
+                            $checkin = ($booking['checkin']);
+                            $checkout = ($booking['check_out']);
+
+                            if (($checkin >= $checkin_date && $checkin <= $checkout_date) || ($checkout >= $checkin_date && $checkout <= $checkout_date)) {
+                                $overlapMessages[$i] = "Phòng nay đã được đặt vui lòng chọn phòng khác hoặc khung giờ khác!";
+                                break;
+                            }
+                        }
+            if (empty($overlapMessages)) {
+       $addResultBookingsRoom = addBookingRoom($addResultBookings['lastInsertId'],  $room_id, $checkin_date, $checkout_date); 
+     }
+        
+            
             if ($addResultBookings && $addResultBookingsRoom) {
                 header('location: listbooking.php?controller=bookingrooms');
             }

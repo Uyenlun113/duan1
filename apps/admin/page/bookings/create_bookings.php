@@ -108,7 +108,10 @@
       <script src="../../dist/js/demo.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script>
+      $currentRoomIndex = -1;
+
       function addFields() {
+        $currentRoomIndex++;
         let fieldHtml = `
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Chọn phòng:</label>
@@ -126,12 +129,14 @@
           </div>
           <div class="col-sm-3">
             <label>Check-in:</label>
-            <input type="datetime-local" class="form-control" name="checkin[]">
+             <input type="datetime-local" class="form-control" name="checkin[]" id="checkin" required min="<?php echo date('Y-m-d') . 'T00:00'; ?>">
+
           </div>
           <div class="col-sm-3">
             <label>Check-out:</label>
-            <input type="datetime-local" class="form-control" name="checkout[]">
+               <input type="datetime-local" class="form-control" name="checkout[]" id="checkout" required min="<?php echo date('Y-m-d') . 'T00:00'; ?>">
           </div>
+<span style="color:red;font-size:12px;"><?php echo isset($overlapMessages[0]) ? $overlapMessages[0] : ''; ?></span>
           <button type="button" class="btn btn-danger remove-btn ml-2" onclick="removeField(this)">Xóa phòng</button>
         </div>
       `;
@@ -146,6 +151,7 @@
 
       function removeField(button) {
         $(button).closest('.form-group').remove();
+        $currentRoomIndex--;
 
         // Ẩn nút xóa cho field đầu tiên nếu chỉ còn một field
         if ($("#additionalFields .form-group").length === 1) {
