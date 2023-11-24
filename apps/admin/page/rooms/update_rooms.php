@@ -62,12 +62,12 @@
                     </div>
                     <div class="form-group">
                       <label for="current_img">Ảnh hiện tại</label>
-                      <img src="../../../upload/<?= $detailrooms['img'] ?>" height="80" width="100" class="rounded"
-                        alt="">
+                      <img id="currentImage" src="../../../upload/<?= $detailrooms['img'] ?>" height="80" width="100"
+                        class="rounded" alt="">
                     </div>
                     <div class="form-group">
                       <label for="anh_phong">Chọn ảnh mới</label>
-                      <input type="file" name="img" id="anh_phong">
+                      <input type="file" name="img" id="anh_phong" value="<?php echo( $detailrooms['img']) ?>">
                     </div>
                     <div class="form-group">
                       <label for="gia">Giá</label>
@@ -130,6 +130,23 @@
     <script src="../../plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
+    <script>
+    function displaySelectedImage(input) {
+      // Lấy đối tượng hình ảnh hiện tại
+      var currentImage = document.getElementById('currentImage');
+
+      // Kiểm tra xem người dùng đã chọn ảnh mới chưa
+      if (input.files && input.files[0]) {
+        // Đọc đường dẫn của ảnh mới
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          // Hiển thị ảnh mới
+          currentImage.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    </script>
     </div>
   </body>
 

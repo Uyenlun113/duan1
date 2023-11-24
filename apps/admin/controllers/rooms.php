@@ -74,10 +74,16 @@ function addrooms($id_category, $name, $img, $price, $number_adult, $number_chil
     }
 
 
+ // lấy ra thông tin sản phẩm vào form sửa
+if (isset($_GET['update_rooms'])) {
+    $subRoomsId = intval($_GET['update_rooms']);
+    $detailrooms = get_a_data('rooms', $subRoomsId);
+}
 
- 
 function updaterooms($id, $id_category, $name, $img, $price, $number_adult, $number_children, $description, $status)
 {
+        $detailrooms = get_a_data('rooms', $id);
+
     $data = array(
         'id_category' => $id_category,
         'name' => $name,
@@ -87,17 +93,14 @@ function updaterooms($id, $id_category, $name, $img, $price, $number_adult, $num
         'description' => $description,
         'status' => $status,
         'update_date' => date('Y-m-d'),
-        'img' =>$_FILES["img"]["name"]
+        'img' => $img == "rooms/" ? $detailrooms["img"]  : $img
     );
+
     $where = "id = $id";
 return update_data('rooms', $data, $where);
 }
 
-// lấy ra thông tin sản phẩm vào form sửa
-if (isset($_GET['update_rooms'])) {
-    $subRoomsId = intval($_GET['update_rooms']);
-    $detailrooms = get_a_data('rooms', $subRoomsId);
-}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["update_rooms"])) {
@@ -109,8 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $number_children = $_POST["number_children"];
         $description = $_POST["description"];
         $status = $_POST["status"];
-        $img = "rooms/".$_FILES['img']['name'];
-        $target_dir = "../../upload/rooms/"; 
+        $img =  (isset($_FILES['img']['name'])) ? "rooms/".$_FILES['img']['name'] :[];
+        $target_dir = "../../upload/rooms/";
         $targetFile = $target_dir . basename($_FILES["img"]["name"]);
         $updateResult = updaterooms($id, $id_category, $name, $img, $price, $number_adult, $number_children, $description, $status);
         if ($updateResult) {
