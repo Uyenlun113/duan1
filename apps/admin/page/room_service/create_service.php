@@ -75,7 +75,7 @@
                               <input type="text" class="form-control" placeholder="Nhập tên danh mục"
                                 name="category_name" required>
                               <div class="invalid-feedback">
-                                Mời bạn nhập tên loại phòng!
+                                Mời bạn nhập tên dịch vụ!
                               </div>
                             </div>
                           </div>
