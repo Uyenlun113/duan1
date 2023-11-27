@@ -58,16 +58,16 @@
                     <div class="col-12 col-lg-8">
                       <div class="card mb-4">
                         <div class="card-header">
-                          <h5 class="card-tile mb-0">Thông tin danh mục</h5>
+                          <h5 class="card-tile mb-0">Thông tin loại phòng</h5>
                         </div>
                         <div class="card-body">
                           <div class="row">
                             <div class="mb-3 col-md-3">
-                              <label class="form-label" for="ecommerce-product-name">Mã danh mục</label>
+                              <label class="form-label" for="ecommerce-product-name">Mã loại phòng</label>
                               <input type="text" class="form-control" placeholder="Nhập mã danh mục"
                                 name="category_code" required>
                               <div class="invalid-feedback">
-                                Mời bạn nhập mã danh mục!
+                                Mời bạn nhập mã loại phòng!
                               </div>
                             </div>
                             <div class="mb-3 col-md-9">
@@ -75,13 +75,13 @@
                               <input type="text" class="form-control" placeholder="Nhập tên danh mục"
                                 name="category_name" required>
                               <div class="invalid-feedback">
-                                Mời bạn nhập tên danh mục!
+                                Mời bạn nhập tên loại phòng!
                               </div>
                             </div>
                           </div>
                           <input type="hidden" name="category_description" id="categoryDescriptionInput">
                           <div class="has-validation">
-                            <label class="form-label">Mô tả danh mục<span class="text-muted"></span></label>
+                            <label class="form-label">Mô tả loại phòng<span class="text-muted"></span></label>
                             <div id="snow-toolbar">
                               <span class="ql-formats">
                                 <select class="ql-font"></select>
