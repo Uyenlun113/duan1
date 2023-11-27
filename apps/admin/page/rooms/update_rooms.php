@@ -1,153 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr"
+  data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template">
 
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cập nhật phòng | Nhom 3</title>
-    <?php include "../library.php" ?>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>eCommerce Add Product - Apps | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <meta name="description"
+      content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
+    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+    <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
+    </script>
+    <?php @include "../layout/import_link.php" ?>
   </head>
 
-  <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-    <div class="wrapper">
-      <?php 
-        include "../../controllers/rooms.php";
-        include "../layout/navbar.php";
-        include "../layout/sidebar.php";
-      ?>
-      <div class="content-wrapper">
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1>Cập nhật phòng</h1>
-              </div>
-            </div>
-          </div><!-- /.container-fluid -->
-        </section>
-
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <!-- left column -->
-              <div class="col-md-12">
-                <!-- jquery validation -->
-                <div class="card card-success">
-                  <div class="card-header">
-                    <h3 class="card-title">Cập nhật phòng</h3>
+  <body>
+    <?php @include "../../controllers/rooms_controller.php" ?>
+    <div class="layout-wrapper layout-content-navbar ">
+      <div class="layout-container">
+        <?php @include "../layout/sidebar.php" ?>
+        <div class="layout-page">
+          <?php @include "../layout/navbar.php" ?>
+          <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="py-3 mb-4">
+                <span class="text-muted fw-light">Trang quản trị /</span><span> Cập nhật phòng</span>
+              </h4>
+              <form class="row g-3" method="POST" action="update_rooms.php" enctype="multipart/form-data" novalidate>
+                <div class="app-ecommerce">
+                  <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h4 class="mb-1 mt-3">Cập nhật phòng</h4>
+                      <p class="text-muted">Cập nhật lại thông tin phòng <?php echo($detail_rooms["room_name"]) ?></p>
+                    </div>
+                    <div class="d-flex align-content-center flex-wrap gap-3">
+                      <a href="list_rooms.php"><button type="button" class="btn btn-label-secondary">Hủy bỏ</button></a>
+                      <button type="submit" name="update_rooms" class="btn btn-primary">Lưu lại</button>
+                    </div>
                   </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form id="quickForm" method="POST" action="update_rooms.php" enctype="multipart/form-data">
-                    <div class="card-body">
-                      <div class="form-group">
-                        <input type="hidden" name="id" value="<?php echo $detailrooms['id']; ?>">
+                  <div class="row">
+                    <div class="col-12 col-lg-8">
+                      <div class="card mb-4">
+                        <div class="card-header">
+                          <h5 class="card-tile mb-0">Thông tin phòng</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="mb-3 col-md-3">
+                              <input type="hidden" name="id" value="<?php echo $detail_rooms['id']; ?>">
+
+                              <label class="form-label" for="ecommerce-product-name">Mã phòng</label>
+                              <input type="text" class="form-control" placeholder="Nhập mã phòng" name="room_code"
+                                value=" <?php echo($detail_rooms["room_code"]) ?>" required>
+                              <div class="invalid-feedback">
+                                Mời bạn nhập mã phòng!
+                              </div>
+                            </div>
+                            <div class="mb-3 col-md-9">
+                              <label class="form-label" for="ecommerce-product-name">Tên phòng</label>
+                              <input type="text" class="form-control" placeholder="Nhập tên phòng" name="room_name"
+                                value=" <?php echo($detail_rooms["room_name"]) ?>" required>
+                              <div class="invalid-feedback">
+                                Mời bạn nhập tên phòng!
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="mb-3 col-md-10">
+                              <label class="form-label" for="ecommerce-product-name">Hình ảnh</label>
+                              <input type="file" class="form-control" name="room_image" id="basic-default-upload-file"
+                                value=" <?php echo($detail_rooms["room_image"]) ?>" required="">
+                              <div class="invalid-feedback">
+                                Mời bạn nhập tên phòng!
+                              </div>
+                            </div>
+                            <div class=" col-md-2">
+                              <img src="../../upload/<?php echo($detail_rooms["room_image"]) ?>" height="65" width="100"
+                                class="mt-3 rounded" alt="">
+                            </div>
+                          </div>
+                          <input type="hidden" value="<?php echo($detail_rooms["room_description"]) ?>"
+                            name="room_description" id="roomDescriptionInput">
+                          <div class="has-validation">
+                            <label class="form-label">Mô tả phòng<span class="text-muted"></span></label>
+                            <div id="snow-toolbar">
+                              <span class="ql-formats">
+                                <select class="ql-font"></select>
+                                <select class="ql-size"></select>
+                              </span>
+                              <span class="ql-formats">
+                                <button class="ql-bold"></button>
+                                <button class="ql-italic"></button>
+                                <button class="ql-underline"></button>
+                                <button class="ql-strike"></button>
+                              </span>
+                              <span class="ql-formats">
+                                <select class="ql-color"></select>
+                                <select class="ql-background"></select>
+                              </span>
+                              <span class="ql-formats">
+                                <button class="ql-script" value="sub"></button>
+                                <button class="ql-script" value="super"></button>
+                              </span>
+                              <span class="ql-formats">
+                                <button class="ql-header" value="1"></button>
+                                <button class="ql-header" value="2"></button>
+                                <button class="ql-blockquote"></button>
+                                <button class="ql-code-block"></button>
+                              </span>
+                            </div>
+                            <div id="snow-editor" data-placeholder="Mời bạn nhập mô tả chi tiết">
+                              <?php echo($detail_rooms["room_description"]) ?>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="id_category">Loại Phòng</label>
-                      <select name="id_category" class="form-control" id="id_category" placeholder="Select category">
-                        <option value="">-- Chọn loại phòng --</option>
-                        <?php foreach($list_categories as $lct) :?>
-                        <option value="<?= $lct['id'] ?>"
-                          <?php echo ($lct['id'] == $detailrooms['id_category']) ? 'selected' : ''; ?>>
-                          <?= $lct['name'] ?></option>
-                        <?php endforeach;?>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="ten_phong">Tên Phòng</label>
-                      <input type="text" name="name" class="form-control" id="ten_phong" placeholder="Nhập tên phòng"
-                        value="<?php echo $detailrooms['name'] ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="current_img">Ảnh hiện tại</label>
-                      <img id="currentImage" src="../../../upload/<?= $detailrooms['img'] ?>" height="80" width="100"
-                        class="rounded" alt="">
-                    </div>
-                    <div class="form-group">
-                      <label for="anh_phong">Chọn ảnh mới</label>
-                      <input type="file" name="img" id="anh_phong" value="<?php echo( $detailrooms['img']) ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="gia">Giá</label>
-                      <input type="text" name="price" class="form-control" id="gia" placeholder="Nhập giá"
-                        value="<?php echo $detailrooms['price'] ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="number_adult">Số người lớn</label>
-                      <input type="number" name="number_adult" min="1" max="5" id="number_adult"
-                        placeholder="Nhập số người lớn" value="<?php echo $detailrooms['number_adult'] ?>">
-                      <label for="number_children">Số trẻ em</label>
-                      <input type="number" name="number_children" min="1" max="5" id="number_children"
-                        placeholder="Nhập số trẻ em" value="<?php echo $detailrooms['number_children'] ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="summernote">Mô tả chi tiết</label>
-                      <textarea name="description" id="summernote"><?php echo $detailrooms['description']; ?></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="trang_thai">Trạng thái</label>
-                      <select name="status" class="form-control" id="trang_thai" required>
-                        <option value="" <?php echo ($detailrooms['status'] == '') ? 'selected' : ''; ?>>--
-                          Trạng thái --</option>
-                        <option value="1" <?php echo ($detailrooms['status'] == '1') ? 'selected' : ''; ?>>Còn phòng
-                        </option>
-                        <option value="0" <?php echo ($detailrooms['status'] == '0') ? 'selected' : ''; ?>>Hết phòng
-                        </option>
-                      </select>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" name="update_rooms" class="btn btn-success">Cập nhật phòng</button>
-                  <a href="listrooms.php" class="btn btn-secondary ml-2">Quay lại</a>
-                </div>
-                </form>
+                    <div class="col-12 col-lg-4">
+                      <div class="card mb-4">
+                        <div class="card-header">
+                          <h5 class="card-title mb-0">Thông tin bổ sung</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="mb-3">
+                            <label class="form-label" for="ecommerce-product-price">Giá phòng</label>
+                            <input type="number" class="form-control" placeholder="Nhập giá phòng" name="room_price"
+                              value="<?php echo($detail_rooms["room_price"]) ?>
+">
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="ecommerce-product-price">Giá khuyến mãi</label>
+                            <input type="number" class="form-control" placeholder="Nhập giá khuyến mãi"
+                              name="room_price_sales" value="<?php echo($detail_rooms["room_sales_price"]) ?>">
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="ecommerce-product-price">Số người tối đa</label>
+                            <input type="number" class="form-control" placeholder="Nhập số người tối đa"
+                              name="room_max_people" value="<?php echo($detail_rooms["room_max_people"]) ?>">
+                          </div>
+                          <div class="mb-3 col ecommerce-select2-dropdown">
+                            <label class="form-label mb-1 d-flex justify-content-between align-items-center"
+                              for="category-org">
+                              <span>Loại phòng</span><a href="javascript:void(0);" class="fw-medium">Thêm loại phòng</a>
+                            </label>
+                            <select class="select2 form-select" name="category_id"
+                              data-placeholder="-- Chọn loại phòng --">
+                              <option value="">-- Chọn loại phòng --</option>
+                              <?php foreach($list_categories as $category) :?>
 
-              </div>
-              <!-- /.card -->
+                              <option value="<?= $category['id'] ?>"
+                                <?php echo ($category['id'] == $detail_rooms['category_id']) ? 'selected' : ''; ?>>
+                                <?= $category['category_name'] ?></option>
+                              <?php endforeach;?>
+                            </select>
+                          </div>
+                          <!-- Status -->
+                          <div class="mb-3 col ecommerce-select2-dropdown">
+                            <label class="form-label mb-1" for="status-org">Trạng thái phòng
+                            </label>
+                            <select disabled value="<?php echo($detail_rooms["room_status"]) ?>"
+                              class="select2 form-select" name="room_status" data-placeholder="-- Trạng thái --">
+                              <option value="" <?php echo ($detail_rooms['room_status'] == '') ? 'selected' : ''; ?>>--
+                                Trạng
+                                thái --</option>
+                              <option value="1" <?php echo ($detail_rooms['room_status'] == '1') ? 'selected' : ''; ?>>
+                                Còn
+                                trống
+                              </option>
+                              <option value="0" <?php echo ($detail_rooms['room_status'] == '0') ? 'selected' : ''; ?>>
+                                Đã đặt
+                              </option>
+                              <option value="2" <?php echo ($detail_rooms['room_status'] == '2') ? 'selected' : ''; ?>>
+                                Hết
+                                phòng
+                              </option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="ecommerce-product-tags" class="form-label mb-1">Dịch vụ phòng</label>
+                            <input id="ecommerce-product-tags" class="form-control" name="ecommerce-product-tags"
+                              value="Normal,Standard,Premium" aria-label="Product Tags" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
-            <!--/.col (left) -->
-            <!-- right column -->
-            <div class="col-md-6">
-
-            </div>
-            <!--/.col (right) -->
+            <?php @include "../layout/footer.php" ?>
+            <div class="content-backdrop fade"></div>
           </div>
-          <!-- /.row -->
-      </div><!-- /.container-fluid -->
-      </section>
+        </div>
+      </div>
     </div>
-    <?php 
-        @include "../layout/footer.php";
-      ?>
-    <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- CodeMirror -->
-    <script src="../../plugins/codemirror/codemirror.js"></script>
-    <script src="../../plugins/codemirror/mode/css/css.js"></script>
-    <script src="../../plugins/codemirror/mode/xml/xml.js"></script>
-    <script src="../../plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
-    <script>
-    function displaySelectedImage(input) {
-      // Lấy đối tượng hình ảnh hiện tại
-      var currentImage = document.getElementById('currentImage');
+    <?php @include "../layout/import_script.php" ?>
 
-      // Kiểm tra xem người dùng đã chọn ảnh mới chưa
-      if (input.files && input.files[0]) {
-        // Đọc đường dẫn của ảnh mới
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          // Hiển thị ảnh mới
-          currentImage.src = e.target.result;
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
+    <script>
+    (function() {
+      'use strict'
+      var forms = document.querySelectorAll('.needs-validation')
+      Array.prototype.slice.call(forms)
+        .forEach(function(form) {
+          form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
     </script>
-    </div>
+    <script>
+    var quill = new Quill('#snow-editor', {
+      theme: 'snow'
+    });
+    quill.on('text-change', function() {
+      var content = quill.root.innerHTML;
+      document.getElementById('roomDescriptionInput').value = content;
+    });
+    </script>
   </body>
 
 </html>
