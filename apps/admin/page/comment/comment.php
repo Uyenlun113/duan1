@@ -2,6 +2,30 @@
 <html lang="en">
 
   <head>
+  <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var stars = document.querySelectorAll('.star');
+
+            stars.forEach(function (star) {
+                star.addEventListener('change', function () {
+                    var rating = this.value;
+                    var commentId = this.name.replace('rating', '');
+
+                    // Gửi dữ liệu đánh giá bằng sao lên server bằng Ajax hoặc fetch API.
+                    // Bạn cần xử lý dữ liệu này trong file comment.php của mình.
+
+                    // Ví dụ sử dụng fetch API:
+                    fetch('comment.php?action=rate&comment_id=' + commentId + '&rating=' + rating)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Xử lý phản hồi từ server nếu cần.
+                            console.log(data);
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+            });
+        });
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Du an 1 | Nhom 3</title>
@@ -86,9 +110,17 @@
                     <td class="project_progress">
                       <span><?php echo $comment['content'] ?></span>
                     </td>
+                   
                     <td class="project_progress">
-                      <span><?php echo $comment['vote'] ?></span>
-                    </td>
+                    <span><?php echo $comment['vote'] ?></span>
+                    <div class="rating">
+                        <input type="radio" name="rating<?php echo $comment['id']; ?>" value="1" class="star"/>
+                        <input type="radio" name="rating<?php echo $comment['id']; ?>" value="2" class="star"/>
+                        <input type="radio" name="rating<?php echo $comment['id']; ?>" value="3" class="star"/>
+                        <input type="radio" name="rating<?php echo $comment['id']; ?>" value="4" class="star"/>
+                        <input type="radio" name="rating<?php echo $comment['id']; ?>" value="5" class="star"/>
+                    </div>
+                </td>
                     <td style="text-align:start;">
                         <?php echo $comment['create_date'] ?>
                       </td>

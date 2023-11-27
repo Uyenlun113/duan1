@@ -12,7 +12,7 @@
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <script>
     (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
+      w[l] = w[l] || [];  
       w[l].push({
         'gtm.start': new Date().getTime(),
         event: 'gtm.js'
@@ -39,14 +39,14 @@
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
-                <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm loại phòng</span>
+                <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm dịch vụ</span>
               </h4>
               <form class="row g-3" method="POST" action="create_category.php" enctype="multipart/form-data" novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
                       <h4 class="mb-1 mt-3">Thêm mới</h4>
-                      <p class="text-muted">Thêm một loại phòng mới vào hệ thống</p>
+                      <p class="text-muted">Thêm một dịch vụ vào hệ thống</p>
                     </div>
                     <div class="d-flex align-content-center flex-wrap gap-3">
                       <a href="list_category.php"><button type="button" class="btn btn-label-secondary">Hủy
@@ -58,30 +58,21 @@
                     <div class="col-12 col-lg-8">
                       <div class="card mb-4">
                         <div class="card-header">
-                          <h5 class="card-tile mb-0">Thông tin loại phòng</h5>
+                          <h5 class="card-tile mb-0">Thông tin dịch vụ</h5>
                         </div>
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="mb-3 col-md-3">
-                              <label class="form-label" for="ecommerce-product-name">Mã loại phòng</label>
-                              <input type="text" class="form-control" placeholder="Nhập mã danh mục"
-                                name="category_code" required>
-                              <div class="invalid-feedback">
-                                Mời bạn nhập mã loại phòng!
-                              </div>
-                            </div>
+                        
                             <div class="mb-3 col-md-9">
-                              <label class="form-label" for="ecommerce-product-name">Tên danh mục</label>
+                              <label class="form-label" for="ecommerce-product-name">Tên dịch vụ</label>
                               <input type="text" class="form-control" placeholder="Nhập tên danh mục"
-                                name="category_name" required>
+                                name="name" required>
                               <div class="invalid-feedback">
                                 Mời bạn nhập tên dịch vụ!
                               </div>
                             </div>
                           </div>
-                          <input type="hidden" name="category_description" id="categoryDescriptionInput">
+                          <input type="hidden" name="description" id="servicescriptionInput">
                           <div class="has-validation">
-                            <label class="form-label">Mô tả loại phòng<span class="text-muted"></span></label>
+                            <label class="form-label">Mô tả dịch vụ<span class="text-muted"></span></label>
                             <div id="snow-toolbar">
                               <span class="ql-formats">
                                 <select class="ql-font"></select>
@@ -122,7 +113,7 @@
                           <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1" for="status-org">Trạng thái
                             </label>
-                            <select class="select2 form-select" name="category_status"
+                            <select class="select2 form-select" name="status"
                               data-placeholder="-- Trạng thái --">
                               <option value="">-- Trạng thái --</option>
                               <option value="1">Hoạt động</option>
