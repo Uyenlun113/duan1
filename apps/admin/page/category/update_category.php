@@ -66,9 +66,9 @@
                           <div class="row">
                             <div class="mb-3 col-md-3">
                               <input type="hidden" name="id" value="<?php echo $detailCategory['id']; ?>">
-                              <label class="form-label" for="ecommerce-product-name">Mã danh mục</label>
+                              <label class="form-label" for="ecommerce-product-name">Mã loại phòng</label>
                               <input type="text" class="form-control" placeholder="Nhập mã danh mục"
-                                name="category_code" required>
+                                name="category_code" value="<?php echo $detailCategory['category_code'];  ?>" required>
                               <div class="invalid-feedback">
                                 Mời bạn nhập mã danh mục!
                               </div>
@@ -76,7 +76,7 @@
                             <div class="mb-3 col-md-9">
                               <label class="form-label" for="ecommerce-product-name">Tên danh mục</label>
                               <input type="text" class="form-control" placeholder="Nhập tên danh mục"
-                                name="category_name" required>
+                                name="category_name" value="<?php echo $detailCategory['category_code'];  ?>" required>
                               <div class="invalid-feedback">
                                 Mời bạn nhập tên danh mục!
                               </div>
