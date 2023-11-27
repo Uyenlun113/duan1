@@ -13,8 +13,8 @@
       <?php
         include "../../controllers/bookingrooms.php";
         include "../../controllers/detail_booking.php";
-        // include "../layout/navbar.php";
-        // include "../layout/sidebar.php";
+        include "../layout/navbar.php";
+        include "../layout/sidebar.php";
         ?>
       <div class="content-wrapper ">
         <section class="content-header">

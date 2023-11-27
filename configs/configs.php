@@ -64,33 +64,24 @@
 }
 
 //insert dữ liệu
-    function save_and_get_result($table, $data = array()) {
-    $conn = pdo_get_connection();
-    if ($conn === null) {
-        return "Error: Unable to connect to the database.";
-    }
+   function save_and_get_result($table, $data = array()) {
+        $conn = pdo_get_connection();
+        if ($conn === null) {
+            return "Error: Unable to connect to the database.";
+        }
 
-    // Check if id_service is an array and convert it to a string
-    if (isset($data['id_service']) && is_array($data['id_service'])) {
-        $data['id_service'] = implode(',', $data['id_service']);
-    }
+        $keys = array_keys($data);
+        $columns = implode(',', $keys);
+        $placeholders = ':' . implode(',:', $keys);
 
-    $keys = array_keys($data);
-    $columns = implode(',', $keys);
-    $placeholders = ':' . implode(',:', $keys);
-
-    try {
-        $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
-        $stmt->execute($data);
-        $lastInsertId = $conn->lastInsertId();
-        return array(
-            'success' => true,
-            'lastInsertId' => $lastInsertId
-        );
-    } catch (PDOException $e) {
-        return "Error: " . $e->getMessage();
+        try {
+            $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
+            $stmt->execute($data);
+            return true; // Success
+        } catch (PDOException $e) {
+            return "Error: " . $e->getMessage();
+        }
     }
-}
 
 //update dữ liệu
  function update_data($table, $data = array(), $where)
@@ -109,7 +100,6 @@
 
         try {
             $stmt = $conn->prepare("UPDATE `$table` SET $setClause WHERE $where");
-            echo json_encode($stmt);
             $stmt->execute($data);
             return true; // Success
         } catch (PDOException $e) {

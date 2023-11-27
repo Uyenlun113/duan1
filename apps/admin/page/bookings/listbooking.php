@@ -60,6 +60,9 @@
                     <th style="width: 15%" class="text-center">
                       Phương thức thanh toán
                     </th>
+                    <th style="width: 15%" class="text-center">
+                      Trạng thái
+                    </th>
                     <th style="width: 20%">
                     </th>
                   </tr>
@@ -88,6 +91,15 @@
                         <span class="badge badge-success">Tiền mặt</span>
                         <?php else: ?>
                         <span class="badge badge-success">Chuyển khoản</span>
+                        <?php endif; ?>
+                      </span>
+                    </td>
+                    <td class="project-state">
+                      <span>
+                        <?php if ($booking['status'] == 0): ?>
+                        <span class="badge badge-danger">Chờ xác nhận</span>
+                        <?php else: ?>
+                        <span class="badge badge-success">Đã đặt phòng</span>
                         <?php endif; ?>
                       </span>
                     </td>

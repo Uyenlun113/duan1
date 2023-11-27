@@ -78,8 +78,8 @@
                         <label for="status">Trạng thái</label>
                         <select name="status" class="form-control" id="status" placeholder="Select status">
                           <option value="">-- Trạng thái --</option>
-                          <option value="1">Đã thanh toán</option>
-                          <option value="0">Chưa thanh toán</option>
+                          <option value="1">Đã đặt phòng</option>
+                          <option value="0">Chờ xác nhận</option>
                         </select>
                       </div>
                     </div>
