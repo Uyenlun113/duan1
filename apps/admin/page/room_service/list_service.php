@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <?php @include "../../controllers/categories_controller.php" ?>
+    <?php @include "../../controllers/room_service_controller.php" ?>
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <?php @include "../layout/sidebar.php" ?>
@@ -44,21 +44,19 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
-                <span class="text-muted fw-light">Trang quản trị /</span> Danh sách danh mục
+                <span class="text-muted fw-light">Trang quản trị /</span> Danh sách dịch vụ
               </h4>
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title">Danh sách danh mục</h5>
+                  <h5 class="card-title">Danh sách dịch vụ</h5>
                   <div class="row justify-content-between">
                     <div class="col-sm-12 col-md-6 justify-content-md-end">
                       <input type="search" class="form-control col-sm-12 col-md-3"
-                        placeholder="Tìm kiếm theo tên danh mục">
+                        placeholder="Tìm kiếm theo tên dịch vụ">
                     </div>
-                    <a href="create_category.php" class="col-sm-12 col-md-2">
-
+                    <a href="create_service.php" class="col-sm-12 col-md-2">
                       <button class="dt-button add-new btn btn-primary ms-2  w-100" tabindex="0"><span> <i
                             class="bx bx-plus me-sm-1"></i>
-
                           Thêm mới
                         </span></button>
                     </a>
@@ -70,36 +68,29 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Mã loại phòng</th>
-                        <th>Tên loại phòng</th>
-                        <th>Giá tiền</th>
-                        <th>Ngày tạo</th>
+                        <th>Tên dịch vụ</th>
+                        <th>Giá dịch vụ</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
+
                       <?php
-                  if (isset($list_categories) && is_array($list_categories)) {
-                    foreach ($list_categories as $index => $catrgory): 
+                  if (isset($list_service) && is_array($list_service)) {
+                    foreach ($list_service as $index => $service): 
 ?>
                       <tr>
-                        <td style="width:10px"><?php echo $index + 1 ?></td>
-                        <td style="width:20%">
-                          <?php echo $catrgory['category_code'] ?>
+                        <td style="width:15px"><?php echo $index + 1 ?></td>
+                        <td style="width:30%">
+                          <?php echo $service['name_service'] ?>
                         </td>
                         <td style="width:20%">
-                          <?php echo $catrgory['category_name'] ?>
-                        </td>
-                        <td>
-                          <?php echo $catrgory['category_price'] ?>
-                        </td>
-                        <td>
-                          <?php echo $catrgory['create_date'] ?>
+                          <?php echo $service['price_service'] ?>
                         </td>
                         <td>
                           <span>
-                            <?php if ($catrgory['category_status'] == 1): ?>
+                            <?php if ($service['status_service'] == 1): ?>
                             <span class="badge bg-label-primary me-1">Hoạt động</span>
                             <?php else: ?>
                             <span class="badge bg-label-primary me-1">Tạm ẩn</span>
@@ -107,12 +98,12 @@
                           </span>
                         </td>
                         <td>
-                          <a href="update_category.php?action=update&update_category=<?= $catrgory['id'] ?>">
+                          <a href="update_service.php?action=update&update_service=<?= $service['id'] ?>">
                             <button class="btn btn-sm btn-warning btn-icon">
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
-                          <a href="list_category.php?action=delete&delete_category_id=<?= $catrgory['id'] ?>">
+                          <a href="list_service.php?action=delete&delete_service_id=<?= $service['id'] ?>">
                             <button class=" btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>

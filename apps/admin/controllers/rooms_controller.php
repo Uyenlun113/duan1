@@ -1,5 +1,32 @@
 <?php
     include_once "../../../../configs/configs.php";
+
+        session_start();
+   
+if (isset($_SESSION['data_login'])) {
+    // Retrieve the value of the session variable
+    $dataLogin = $_SESSION['data_login'];
+
+    // Now you can use $dataLogin in your code
+    echo "Data from session: " . json_encode($dataLogin);
+} else {
+    echo "Session variable does not exist!";
+}
+    function checkLogin() {
+         session_start(); // Start the session
+
+        // Check if a specific session variable exists
+        if (isset($_SESSION['data_login'])) {
+            // Session variable exists
+            // Your code here
+            echo "Session variable exists!";
+        } else {
+            // Session variable does not exist
+            echo "Session variable does not exist!";
+        }
+    }
+        checkLogin();
+
     function getListRooms() {
         $options = array(
             'select' => 'rooms.*, category.category_name',
@@ -26,15 +53,12 @@
         $list_rooms = getListRooms();
     $list_categories = getAllCategories();
     $allServices = getAllService();
-    function handleCreateRooms($category_id, $room_code,$room_name, $room_image, $room_price, $room_max_people, $room_sales_price, $room_description, $room_status) {
+    function handleCreateRooms($category_id, $room_code,$room_name, $room_image,  $room_description, $room_status) {
         $data = array(
             'category_id' => (int)$category_id,
             'room_code' => $room_code,
             'room_name' => $room_name,
             'room_image' => $room_image,
-            'room_price' => (int)$room_price,
-            'room_max_people' => (int)$room_max_people,
-            'room_sales_price' => (int)$room_sales_price,
             'room_description' => $room_description,
             'room_status' =>  (int)$room_status,
             'create_date' => date('Y-m-d'),
@@ -48,16 +72,13 @@
         $category_id = $_POST["category_id"];
         $room_code = $_POST["room_code"];
         $room_name = $_POST["room_name"];
-        $room_price = $_POST["room_price"];
-        $room_max_people = $_POST["room_max_people"];
-        $room_sales_price = $_POST["room_sales_price"];
         $room_description = $_POST["room_description"];
         $room_status = $_POST["room_status"];
         if ($_FILES['room_image']['error'] === UPLOAD_ERR_OK) {
             $room_image = "rooms/" . $_FILES['room_image']['name'];
             $temp_path = $_FILES['room_image']['tmp_name'];
             move_uploaded_file($temp_path, $room_image);
-            $addResult = handleCreateRooms($category_id, $room_code,$room_name, $room_image, $room_price, $room_max_people, $room_sales_price, $room_description, $room_status);
+            $addResult = handleCreateRooms($category_id, $room_code,$room_name, $room_image, $room_description, $room_status);
             if ($addResult) {
                 echo "<script>window.top.location='list_rooms.php'</script>";
             } else {
@@ -76,7 +97,7 @@ if (isset($_GET['update_rooms'])) {
     $detail_rooms = get_a_data('rooms', $room_id);
 }
 
-function updaterooms($id, $category_id, $room_code,$room_name, $room_image, $room_price, $room_max_people, $room_sales_price, $room_description, $room_status)
+function updaterooms($id, $category_id, $room_code,$room_name, $room_image,$room_description, $room_status)
 {
         $detail_rooms = get_a_data('rooms', $id);
 
@@ -85,9 +106,6 @@ function updaterooms($id, $category_id, $room_code,$room_name, $room_image, $roo
             'room_code' => $room_code,
             'room_name' => $room_name,
             'room_image' =>  $room_image == "rooms/" ? $detail_rooms["room_image"]  : $room_image,
-            'room_price' => (int)$room_price,
-            'room_max_people' => (int)$room_max_people,
-            'room_sales_price' => (int)$room_sales_price,
             'room_description' => $room_description,
             'room_status' =>  (int)$room_status,
             'update_date' => date('Y-m-d')
@@ -105,15 +123,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $category_id = $_POST["category_id"];
           $room_code = $_POST["room_code"];
         $room_name = $_POST["room_name"];
-        $room_price = $_POST["room_price"];
-        $room_max_people = $_POST["room_max_people"];
-        $room_sales_price = $_POST["room_sales_price"];
         $room_description = $_POST["room_description"];
         $room_status = $_POST["room_status"];
         $room_image =  (isset($_FILES['room_image']['name'])) ? "rooms/".$_FILES['room_image']['name'] :[];
         $target_dir = "../../upload/rooms/";
         $targetFile = $target_dir . basename($_FILES["room_image"]["name"]);
-        $updateResult = updaterooms($id, $category_id, $room_code,$room_name, $room_image, $room_price, $room_max_people, $room_sales_price, $room_description, $room_status);
+        $updateResult = updaterooms($id, $category_id, $room_code,$room_name, $room_image, $room_description, $room_status);
         if ($updateResult) {
             echo "<script>window.top.location='list_rooms.php'</script>";
             echo "Cập nhật thành công!";

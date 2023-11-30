@@ -1,112 +1,188 @@
 <!DOCTYPE html>
- <html lang="en">
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr"
+  data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template">
 
-   <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>Du an 1 | Nhom 3</title>
-     <?php include "../library.php" ?>
-   </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>eCommerce Add Product - Apps | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <meta name="description"
+      content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
+    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+    <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
+    </script>
+    <?php @include "../layout/import_link.php" ?>
+  </head>
 
-   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-     <div class="wrapper">
-       <?php 
-        include "../../controllers/room_service.php";
-        include "../layout/navbar.php" ; 
-        include "../layout/sidebar.php";
-      ?>
-       <div class="content-wrapper">
-         <section class="content-header">
-           <div class="container-fluid">
-             <div class="row mb-2">
-               <div class="col-sm-6">
-                 <h1>Cập nhật dịch vụ</h1>
-               </div>
+  <body>
+    <?php @include "../../controllers/room_service_controller.php" ?>
+    <div class="layout-wrapper layout-content-navbar ">
+      <div class="layout-container">
+        <?php @include "../layout/sidebar.php" ?>
+        <div class="layout-page">
+          <?php @include "../layout/navbar.php" ?>
+          <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="py-3 mb-4">
+                <span class="text-muted fw-light">Trang quản trị /</span><span> Cập nhật dịch vụ</span>
+              </h4>
+              <form class="row g-3" method="POST" action="update_service.php" enctype="multipart/form-data" novalidate>
+                <div class="app-ecommerce">
+                  <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h4 class="mb-1 mt-3">Cập nhật</h4>
 
-             </div>
-           </div><!-- /.container-fluid -->
-         </section>
-
-         <section class="content">
-           <div class="container-fluid">
-             <div class="row">
-               <!-- left column -->
-               <div class="col-md-12">
-                 <!-- jquery validation -->
-                 <div class="card card-success">
-                   <div class="card-header">
-                     <h3 class="card-title">Cập nhật dịch vụ</h3>
-                   </div>
-                   <!-- /.card-header -->
-                   <!-- form start -->
-                   <form id="quickForm" method="POST" action="update_service.php">
-                     <div class="card-body">
-                       <div class="form-group">
-                       <input type="hidden" name="id" value="<?php echo $detailService['id']; ?>">
+                    </div>
+                    <div class="d-flex align-content-center flex-wrap gap-3">
+                      <a href="list_service.php"><button type="button" class="btn btn-label-secondary">Hủy
+                          bỏ</button></a>
+                      <button type="submit" name="update_service" class="btn btn-primary">Lưu lại</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-lg-8">
+                      <div class="card mb-4">
+                        <div class="card-header">
+                          <h5 class="card-tile mb-0">Thông tin dịch vụ</h5>
                         </div>
-                       </div>
-                       <div class="form-group">
-                         <label for="ten_dich_vu">Tên Dịch vụ</label>
-                         <input type="text" name="name" class="form-control" id="ten_dich_vu"
-                           placeholder="Enter name" value="<?php echo $detailService['name'] ?>">
-                       </div>
-                       <div class="form-group">
-                         <label for="mo_ta_chi_tiet">Mô tả chi tiết</label>
-                         <textarea name="description"
-                           id="summernote"><?php echo $detailService['description']; ?></textarea>
-                       </div>
-                       <div class="form-group">
-                         <label for="gia">Giá</label>
-                         <input type="text" name="price" class="form-control" id="gia"
-                           placeholder="Enter price" value="<?php echo $detailService['price'] ?>">
-                       </div>
-                       <div class="form-group">
-                         <label for="trang_thai">Trạng thái</label>
-                         <select name="status" class="form-control" id="trang_thai" placeholder="Select status"
-                           required>
-                           <option value="" <?php echo ($detailService['status'] == '') ? 'selected' : ''; ?>>--
-                             Trạng thái --</option>
-                           <option value="1" <?php echo ($detailService['status'] == '1') ? 'selected' : ''; ?>>Hoạt
-                             Động</option>
-                           <option value="0" <?php echo ($detailService['status'] == '0') ? 'selected' : ''; ?>>Tạm
-                             Ẩn</option>
-                         </select>
-                       </div>
-                       
-                     </div>
-                     <!-- /.card-body -->
-                     <div class="card-footer">
-                       <button type="submit" name="update_service" class="btn btn-success">Cập nhật dịch vụ</button>
-                       <a href="listservice.php" class="btn btn-secondary ml-2">Quay lại</a>
-                     </div>
-                   </form>
+                        <div class="card-body">
+                          <div class="row">
 
-                 </div>
-                 <!-- /.card -->
-               </div>
-               <!--/.col (left) -->
-               <!-- right column -->
-               <div class="col-md-6">
+                            <div class="mb-3 col-md-9">
+                              <input type="hidden" name="id" value="<?php echo $detailService['id']; ?>">
+                              <label class="form-label" for="ecommerce-product-name">Tên dịch vụ</label>
+                              <input type="text" class="form-control" placeholder="Nhập tên danh mục"
+                                name="name_service" value="<?php echo $detailService['name_service'] ?>" required>
+                              <div class="invalid-feedback">
+                                Mời bạn nhập tên dịch vụ!
+                              </div>
+                            </div>
+                          </div>
+                          <input type="hidden" name="description_service" id="serviceDescriptionInput">
+                          <div class="has-validation">
+                            <label class="form-label">Mô tả dịch vụ<span class="text-muted"></span></label>
+                            <div id="snow-toolbar">
+                              <span class="ql-formats">
+                                <select class="ql-font"></select>
+                                <select class="ql-size"></select>
+                              </span>
+                              <span class="ql-formats">
+                                <button class="ql-bold"></button>
+                                <button class="ql-italic"></button>
+                                <button class="ql-underline"></button>
+                                <button class="ql-strike"></button>
+                              </span>
+                              <span class="ql-formats">
+                                <select class="ql-color"></select>
+                                <select class="ql-background"></select>
+                              </span>
+                              <span class="ql-formats">
+                                <button class="ql-script" value="sub"></button>
+                                <button class="ql-script" value="super"></button>
+                              </span>
+                              <span class="ql-formats">
+                                <button class="ql-header" value="1"></button>
+                                <button class="ql-header" value="2"></button>
+                                <button class="ql-blockquote"></button>
+                                <button class="ql-code-block"></button>
+                              </span>
+                            </div>
+                            <div id="snow-editor" data-placeholder="Mời bạn nhập mô tả chi tiết">
+                              <?php echo $detailService['description_service']?>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                      <div class="card mb-4">
+                        <div class="card-header">
+                          <h5 class="card-title mb-0">Thông tin bổ sung</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="mb-3 col ecommerce-select2-dropdown">
+                            <label class="form-label mb-1" for="status-org">Giá dịch vụ
+                            </label>
+                            <input type="text" class="form-control" placeholder="Nhập giá dịch vụ" name="price_service"
+                              value="<?php echo $detailService['price_service'] ?>" required>
+                          </div>
+                          <div class="mb-3 col ecommerce-select2-dropdown">
+                            <label class="form-label mb-1" for="status-org">Trạng thái
+                            </label>
+                            <select class="select2 form-select" name="status_service"
+                              value="<?php echo $detailService['status_service'];?>"
+                              data-placeholder="-- Trạng thái --">
+                              <option value=""
+                                <?php echo ($detailService['status_service'] == '') ? 'selected' : ''; ?>>--
+                                Trạng
+                                thái --</option>
+                              <option value="1"
+                                <?php echo ($detailService['status_service'] == '1') ? 'selected' : ''; ?>>
+                                Hoạt động
+                              </option>
+                              <option value="0"
+                                <?php echo ($detailService['status_service'] == '0') ? 'selected' : ''; ?>>
+                                Tạm ẩn
+                              </option>
 
-               </div>
-               <!--/.col (right) -->
-             </div>
-             <!-- /.row -->
-           </div><!-- /.container-fluid -->
-         </section>
-       </div>
-       <?php 
-        @include "../layout/footer.php";
-      ?>
-       <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
-       <!-- CodeMirror -->
-       <script src="../../plugins/codemirror/codemirror.js"></script>
-       <script src="../../plugins/codemirror/mode/css/css.js"></script>
-       <script src="../../plugins/codemirror/mode/xml/xml.js"></script>
-       <script src="../../plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-       <!-- AdminLTE for demo purposes -->
-       <script src="../../dist/js/demo.js"></script>
-     </div>
-   </body>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <?php @include "../layout/footer.php" ?>
+            <div class="content-backdrop fade"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php @include "../layout/import_script.php" ?>
 
- </html>
+    <script>
+    (function() {
+      'use strict'
+      var forms = document.querySelectorAll('.needs-validation')
+      Array.prototype.slice.call(forms)
+        .forEach(function(form) {
+          form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+    </script>
+    <script>
+    var quill = new Quill('#snow-editor', {
+      theme: 'snow'
+    });
+    quill.on('text-change', function() {
+      var content = quill.root.innerHTML;
+      document.getElementById('serviceDescriptionInput').value = content;
+    });
+    </script>
+  </body>
+
+</html>

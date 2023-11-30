@@ -71,12 +71,26 @@
                               </div>
                             </div>
                             <div class="mb-3 col-md-9">
-                              <label class="form-label" for="ecommerce-product-name">Tên danh mục</label>
+                              <label class="form-label" for="ecommerce-product-name">Tên loại phòng</label>
                               <input type="text" class="form-control" placeholder="Nhập tên danh mục"
                                 name="category_name" required>
                               <div class="invalid-feedback">
                                 Mời bạn nhập tên loại phòng!
                               </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="mb-3 col-md-10">
+                              <label class="form-label" for="ecommerce-product-name">Hình ảnh</label>
+                              <input type="file" class="form-control" name="room_image" id="basic-default-upload-file"
+                                required="">
+                              <div class="invalid-feedback">
+                                Mời bạn nhập tên phòng!
+                              </div>
+                            </div>
+                            <div class=" col-md-2">
+                              <img src="../../upload/img_room_4.jpg" height="65" width="100" class="mt-3 rounded"
+                                alt="">
                             </div>
                           </div>
                           <input type="hidden" name="category_description" id="categoryDescriptionInput">
@@ -119,6 +133,17 @@
                           <h5 class="card-title mb-0">Thông tin bổ sung</h5>
                         </div>
                         <div class="card-body">
+                          <div class="mb-3">
+                            <label class="form-label" for="ecommerce-product-price">Giá tiền</label>
+                            <input type="number" class="form-control" placeholder="Nhập giá phòng"
+                              name="category_price">
+                          </div>
+
+                          <div class="mb-3">
+                            <label class="form-label" for="ecommerce-product-price">Số người tối đa</label>
+                            <input type="number" class="form-control" placeholder="Nhập số người tối đa"
+                              name="category_adult">
+                          </div>
                           <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1" for="status-org">Trạng thái
                             </label>

@@ -7,7 +7,7 @@
     <meta name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <title>
-      Danh mục
+      Product List - eCommerce
     </title>
     <meta name="description"
       content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
@@ -29,12 +29,19 @@
       f.parentNode.insertBefore(j, f);
     })(window, document, "script", "dataLayer", "GTM-5DDHKGP");
     </script>
-
+    <style>
+    .multiline-ellipsis {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    </style>
     <?php @include "../layout/import_link.php" ?>
   </head>
 
   <body>
-    <?php @include "../../controllers/categories_controller.php" ?>
+    <?php @include "../../controllers/comments_controller.php" ?>
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <?php @include "../layout/sidebar.php" ?>
@@ -44,25 +51,16 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
-                <span class="text-muted fw-light">Trang quản trị /</span> Danh sách danh mục
+                <span class="text-muted fw-light">Trang quản trị /</span> Danh sách bình luận
               </h4>
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title">Danh sách danh mục</h5>
+                  <h5 class="card-title">Danh sách bình luận</h5>
                   <div class="row justify-content-between">
                     <div class="col-sm-12 col-md-6 justify-content-md-end">
                       <input type="search" class="form-control col-sm-12 col-md-3"
-                        placeholder="Tìm kiếm theo tên danh mục">
+                        placeholder="Tìm kiếm theo tên phòng">
                     </div>
-                    <a href="create_category.php" class="col-sm-12 col-md-2">
-
-                      <button class="dt-button add-new btn btn-primary ms-2  w-100" tabindex="0"><span> <i
-                            class="bx bx-plus me-sm-1"></i>
-
-                          Thêm mới
-                        </span></button>
-                    </a>
-
                   </div>
                 </div>
                 <div class="card-datatable table-responsive">
@@ -70,49 +68,32 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Mã loại phòng</th>
-                        <th>Tên loại phòng</th>
-                        <th>Giá tiền</th>
-                        <th>Ngày tạo</th>
-                        <th>Trạng thái</th>
+                        <th>Phòng</th>
+                        <th>Người bình luận</th>
+                        <th>Đánh giá</th>
+                        <th>Ngày viết</th>
+                        <th>Nội dung</th>
                         <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                  if (isset($list_categories) && is_array($list_categories)) {
-                    foreach ($list_categories as $index => $catrgory): 
+                  if (isset($list_comment) && is_array($list_comment)) {
+                    foreach ($list_comment as $index => $comment): 
 ?>
                       <tr>
-                        <td style="width:10px"><?php echo $index + 1 ?></td>
-                        <td style="width:20%">
-                          <?php echo $catrgory['category_code'] ?>
-                        </td>
-                        <td style="width:20%">
-                          <?php echo $catrgory['category_name'] ?>
-                        </td>
+                        <td><?php echo $index + 1 ?></td>
+                        <td><span><?php echo $comment['room_name'] ?></span></td>
+                        <td><span><?php echo $comment['user_name'] ?></span></td>
+                        <td><span><?php echo $comment['comment_vote'] ?></span></td>
+                        <td><span><?php echo $comment['create_date'] ?></span></td>
+                        <td style="width:35%"><span>
+                            <div class="multiline-ellipsis">
+                              <?php echo $comment['comment_content'] ?>
+                            </div>
+                          </span></td>
                         <td>
-                          <?php echo $catrgory['category_price'] ?>
-                        </td>
-                        <td>
-                          <?php echo $catrgory['create_date'] ?>
-                        </td>
-                        <td>
-                          <span>
-                            <?php if ($catrgory['category_status'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Hoạt động</span>
-                            <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Tạm ẩn</span>
-                            <?php endif; ?>
-                          </span>
-                        </td>
-                        <td>
-                          <a href="update_category.php?action=update&update_category=<?= $catrgory['id'] ?>">
-                            <button class="btn btn-sm btn-warning btn-icon">
-                              <i class="fa-regular fa-pen-to-square fa-md"></i>
-                            </button>
-                          </a>
-                          <a href="list_category.php?action=delete&delete_category_id=<?= $catrgory['id'] ?>">
+                          <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
                             <button class=" btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
