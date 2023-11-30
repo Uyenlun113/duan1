@@ -1,5 +1,9 @@
 <?php
 // connect database
+session_start();
+$session_timeout = 1800; 
+session_set_cookie_params($session_timeout);
+
     function pdo_get_connection(){
         $servername = "localhost";
         $username = "root";
@@ -13,7 +17,16 @@
         }
     }
 
+function generateRandomString($type,$length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
 
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
+    }
+
+    return `{$type}-{$randomString}`;
+}
     
   
 //lấy ra list danh sách
@@ -33,6 +46,7 @@
         $sql = "SELECT $select FROM `$table` $join $where $order_by $limit";
         $query = $conn->query($sql);
         $data = array();
+        
         if ($query) {
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $row;
@@ -65,23 +79,27 @@
 
 //insert dữ liệu
    function save_and_get_result($table, $data = array()) {
-        $conn = pdo_get_connection();
-        if ($conn === null) {
-            return "Error: Unable to connect to the database.";
-        }
-
-        $keys = array_keys($data);
-        $columns = implode(',', $keys);
-        $placeholders = ':' . implode(',:', $keys);
-
-        try {
-            $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
-            $stmt->execute($data);
-            return true; // Success
-        } catch (PDOException $e) {
-            return "Error: " . $e->getMessage();
-        }
+    $conn = pdo_get_connection();
+    if ($conn === null) {
+        return "Error: Unable to connect to the database.";
     }
+    $keys = array_keys($data);
+    $columns = implode(',', $keys);
+    $placeholders = ':' . implode(',:', $keys);
+    try {
+        $stmt = $conn->prepare("INSERT INTO `$table` ($columns) VALUES ($placeholders)");
+        $stmt->execute($data);
+        $lastInsertId = $conn->lastInsertId();
+        $selectStmt = $conn->prepare("SELECT * FROM `$table` WHERE id = :lastInsertId");
+        $selectStmt->bindParam(':lastInsertId', $lastInsertId, PDO::PARAM_INT);
+        $selectStmt->execute();
+        $insertedData = $selectStmt->fetch(PDO::FETCH_ASSOC);
+
+        return $insertedData;
+    } catch (PDOException $e) {
+        return "Error: " . $e->getMessage();
+    }
+}
 
 //update dữ liệu
  function update_data($table, $data = array(), $where)

@@ -6,27 +6,27 @@
     }
     $list_service = getAllService();
 
-    function addService($name, $description, $price,$status) {
+    function addService($name_service,$description_service, $price_service,$status_service) {
         $data = array(
-            'name' => $name,
-            'description' => $description,
-            'price' => $price,
-            'status' => $status
-            
+            'name_service' => $name_service,
+            'description_service' => $description_service,
+            'price_service' => $price_service,
+            'status_service' => $status_service
         );
         return save_and_get_result('room_service', $data);
     }
 
 
 
-    function updateService($id, $name, $description, $price, $status) {
+    function updateService($id, $name_service, $description_service, $price_service, $status_service) {
         $data = array(
-            'name' => $name,
-            'description' => $description,
-            'price' => $price,
-            'status' => $status
+            'name_service' => $name_service,
+            'description_service' => $description_service,
+            'price_service' => $price_service,
+            'status_service' => $status_service
         );
         $where = "id = $id";
+        echo json_encode($data);
         return update_data('room_service', $data, $where);
     }
     
@@ -37,14 +37,13 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["add_service"])){
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $price = $_POST['price'];
-            $status = $_POST['status'];
-            $addResult = addService($name, $description, $price,$status);
+            $name_service = $_POST['name_service'];
+            $description_service = $_POST['description_service'];
+            $price_service = $_POST['price_service'];
+            $status_service = $_POST['status_service'];
+            $addResult = addService($name_service, $description_service, $price_service,$status_service);
             if ($addResult) {
-                header('location:listservice.php?controller=room_service');
-                echo "Thêm mới thành công!";
+                echo "<script>window.top.location='list_service.php'</script>";
             } else {
                 echo "Chưa thêm được loại phòng. $addResult";
             }
@@ -61,15 +60,14 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["update_service"])) {
       $id = $_POST['id'];
-      $name = $_POST['name'];
-      $description = $_POST['description'];
-      $price = $_POST['price'];
-      $status = $_POST['status'];
-      $updateResult = updateService($id, $name, $description, $price, $status);
+      $name_service = $_POST['name_service'];
+      $description_service = $_POST['description_service'];
+      $price_service = $_POST['price_service'];
+      $status_service = $_POST['status_service'];
+      $updateResult = updateService($id, $name_service, $description, $price_service, $status_service);
 
       if ($updateResult) {
-        header('location:listservice.php?controller=room_service');
-        echo "Cập nhật thành công!";
+       echo "<script>window.top.location='list_service.php'</script>";
       } else {
         echo "Chưa cập nhật được loại phòng. $updateResult";
       }
@@ -82,8 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_GET["delete_service_id"];
         $deleteResult = deleteService($id);
         if ($deleteResult) {
-            header('location:listservice.php?controller=room_service');
-            echo "Xóa thành công!";
+            echo "<script>window.top.location='list_service.php'</script>";
+           
         } else {
             echo "Chưa xóa được loại phòng. $deleteResult";
         }

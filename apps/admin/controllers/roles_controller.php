@@ -1,19 +1,22 @@
 <?php
     include_once "../../../../configs/configs.php";
     //list danh sách
-    function getListCategory() {
-        $options = array('order_by' => 'id');
-        return get_all('category', $options);
+
+    session_start();
+    if (!isset($_SESSION['data_login'])) {
+    echo "<script>window.top.location='../auth/login.php'</script>";
     }
-    $list_categories = getListCategory();
     
-    function addCategory($category_code, $category_name,$category_image, $category_price,$category_adult,$category_description, $category_status) {
+    function getListRoles() {
+        $options = array('order_by' => 'id');
+        return get_all('roles', $options);
+    }
+    $list_roles = getListRoles();
+    
+    function addCategory($category_code, $category_name, $category_description, $category_status) {
         $data = array(
             'category_code' => $category_code,
             'category_name' => $category_name,
-            'category_image' => $category_image,
-            'category_price' => $category_price,
-            'category_adult' => $category_adult,
             'category_description' => $category_description,
             'category_status' => $category_status,
             'create_date' => date('Y-m-d'),
@@ -22,14 +25,10 @@
         return save_and_get_result('category', $data);
     }
 
-    function updateCategory($id, $category_code, $category_name,$category_image,$category_price,$category_adult, $category_description, $category_status) {
-        $detailCategory = get_a_data('category', $id);
+    function updateCategory($id, $category_code, $category_name, $category_description, $category_status) {
         $data = array(
             'category_code' => $category_code,
             'category_name' => $category_name,
-            'category_image' =>  $category_image == "rooms/" ? $detailCategory["category_image"]  : $category_image,
-            'category_price' => $category_price,
-            'category_adult' => $category_adult,
             'category_description' => $category_description,
             'category_status' => $category_status,
             'update_date' => date('Y-m-d')
@@ -47,24 +46,14 @@
         if (isset($_POST["create_category"])) {
             $category_code = $_POST["category_code"];
             $category_name = $_POST["category_name"];
-             $category_price = $_POST["category_price"];
-            $category_adult = $_POST["category_adult"];
             $category_description = $_POST["category_description"];
-           $category_status = $_POST["category_status"];
-            if ($_FILES['category_image']['error'] === UPLOAD_ERR_OK) {
-            $category_image = "rooms/" . $_FILES['category_image']['name'];
-            $temp_path = $_FILES['category_image']['tmp_name'];
-            move_uploaded_file($temp_path, $category_image);
-            $addResult = addCategory($category_code, $category_name,$category_image,$category_adult,$category_price, $category_description, $category_status);
+            $category_status = $_POST["category_status"];
+            $addResult = addCategory($category_code, $category_name, $category_description, $category_status);
             if ($addResult) {
-                echo "<script>window.top.location='list_rooms.php'</script>";
+                            echo "<script>window.top.location='list_category.php'</script>";
             } else {
-                echo "Chưa thêm được loại phòng. $addResult";
             }
-        } else {
-            echo "Lỗi tải lên hình ảnh: " . $_FILES['category_image']['error'];
-        }
-    } 
+        } 
     }
 
     // lấy ra thông tin sản phẩm vào form sửa
@@ -77,14 +66,9 @@
             $id = $_POST["id"];
             $category_code = $_POST["category_code"];
             $category_name = $_POST["category_name"];
-             $category_price = $_POST["category_price"];
-            $category_adult = $_POST["category_adult"];
             $category_description = $_POST["category_description"];
             $category_status = $_POST["category_status"];
-            $category_image = (isset($_FILES['category_image']['name'])) ? "rooms/" . $_FILES['category_image']['name'] : '';
-            $target_dir = "../../upload/rooms/";
-            $targetFile = $target_dir . basename($_FILES["category_image"]["name"]);
-            $updateResult = updateCategory($id, $category_code, $category_name,$category_image,$category_price,$category_adult, $category_description, $category_status);
+            $updateResult = updateCategory($id, $category_code, $category_name, $category_description, $category_status);
             if ($updateResult) {
                 echo "<script>window.top.location='list_category.php'</script>";
             } else {

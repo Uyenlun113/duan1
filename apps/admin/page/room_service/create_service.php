@@ -12,7 +12,7 @@
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <script>
     (function(w, d, s, l, i) {
-      w[l] = w[l] || [];  
+      w[l] = w[l] || [];
       w[l].push({
         'gtm.start': new Date().getTime(),
         event: 'gtm.js'
@@ -30,7 +30,7 @@
   </head>
 
   <body>
-    <?php @include "../../controllers/categories_controller.php" ?>
+    <?php @include "../../controllers/room_service_controller.php" ?>
     <div class="layout-wrapper layout-content-navbar ">
       <div class="layout-container">
         <?php @include "../layout/sidebar.php" ?>
@@ -41,17 +41,17 @@
               <h4 class="py-3 mb-4">
                 <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm dịch vụ</span>
               </h4>
-              <form class="row g-3" method="POST" action="create_category.php" enctype="multipart/form-data" novalidate>
+              <form class="row g-3" method="POST" action="create_service.php" enctype="multipart/form-data" novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
                       <h4 class="mb-1 mt-3">Thêm mới</h4>
-                      <p class="text-muted">Thêm một dịch vụ vào hệ thống</p>
+                      <p class="text-muted">Thêm một loại phòng mới vào hệ thống</p>
                     </div>
                     <div class="d-flex align-content-center flex-wrap gap-3">
-                      <a href="list_category.php"><button type="button" class="btn btn-label-secondary">Hủy
+                      <a href="list_service.php"><button type="button" class="btn btn-label-secondary">Hủy
                           bỏ</button></a>
-                      <button type="submit" name="create_category" class="btn btn-primary">Thêm mới</button>
+                      <button type="submit" name="add_service" class="btn btn-primary">Thêm mới</button>
                     </div>
                   </div>
                   <div class="row">
@@ -60,17 +60,19 @@
                         <div class="card-header">
                           <h5 class="card-tile mb-0">Thông tin dịch vụ</h5>
                         </div>
-                        
+                        <div class="card-body">
+                          <div class="row">
+
                             <div class="mb-3 col-md-9">
                               <label class="form-label" for="ecommerce-product-name">Tên dịch vụ</label>
                               <input type="text" class="form-control" placeholder="Nhập tên danh mục"
-                                name="name" required>
+                                name="name_service" required>
                               <div class="invalid-feedback">
                                 Mời bạn nhập tên dịch vụ!
                               </div>
                             </div>
                           </div>
-                          <input type="hidden" name="description" id="servicescriptionInput">
+                          <input type="hidden" name="description_service" id="serviceDescriptionInput">
                           <div class="has-validation">
                             <label class="form-label">Mô tả dịch vụ<span class="text-muted"></span></label>
                             <div id="snow-toolbar">
@@ -111,16 +113,21 @@
                         </div>
                         <div class="card-body">
                           <div class="mb-3 col ecommerce-select2-dropdown">
+                            <label class="form-label mb-1" for="status-org">Giá dịch vụ
+                            </label>
+                            <input type="text" class="form-control" placeholder="Nhập giá dịch vụ" name="price_service"
+                              required>
+                          </div>
+                          <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1" for="status-org">Trạng thái
                             </label>
-                            <select class="select2 form-select" name="status"
+                            <select class="select2 form-select" name="status_service"
                               data-placeholder="-- Trạng thái --">
                               <option value="">-- Trạng thái --</option>
                               <option value="1">Hoạt động</option>
                               <option value="0">Tạm ẩn</option>
                             </select>
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -159,7 +166,7 @@
     });
     quill.on('text-change', function() {
       var content = quill.root.innerHTML;
-      document.getElementById('categoryDescriptionInput').value = content;
+      document.getElementById('serviceDescriptionInput').value = content;
     });
     </script>
   </body>

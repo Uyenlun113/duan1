@@ -5,6 +5,12 @@
             return get_all('bookings', $options);
         }
     $list_booking = getAllBooking();
+
+        function getAllCategory() {
+            $options = array('order_by' => 'id');
+            return get_all('category', $options);
+        }
+    $list_category = getAllCategory();
    
 function getAllDetailBooking($id_booking) {
     $options = array(
@@ -41,82 +47,56 @@ function getAllDetailBooking($id_booking) {
         }
 
 
- function addBooking($name_account, $CCCD, $tel, $payment,$address,$status) {
+ function addBooking($users_name, $users_phone_number,$users_email) {
         $data = array(
-            'name_account' => $name_account,
-            'CCCD' => $CCCD,
-            'tel' => $tel,
-            'payment' => $payment,
-            'address' =>$address,
-            'status' =>$status,
+            'booking_code' => generateRandomString("DP",6),
+            'users_name' => $users_name,
+            'users_phone_number' => $users_phone_number,
+            'users_email' => $users_email,
             'create_date' => date('Y-m-d')
         );
         return save_and_get_result('bookings', $data);
     }
 
-function addBookingRoom($id_booking, $id_room, $checkin, $check_out) {
+function addBookingRoom($booking_id, $category_id, $booking_room_checkin, $booking_room_checkout, $booking_quantity) {
     $data = array(
-        'id_booking' => $id_booking,
-        'id_room' => $id_room,
-        'checkin' => $checkin,
-        'check_out' => $check_out,
-        'status' => 1,
+        'booking_id' => $booking_id,
+        'category_id' => $category_id,
+        'booking_room_checkin' => $booking_room_checkin,
+        'booking_room_checkout' => $booking_room_checkout,
+        'booking_quantity' => $booking_quantity,
+        'booking_total_price' =>10000,
         'create_date' => date('Y-m-d')
     );
+    echo json_encode($data);
 
     $result = save_and_get_result('bookingroom', $data);
     return $result;
 }
 
-    function getAllBookingRoomByIdRooms($id_room) {
+    function getAllBookingRoomByIdRooms($category_id) {
             $options = array('order_by' => 'id',
-        "where" => "id_room = $id_room");
+        "where" => "category_id = $category_id");
             return get_all('bookingroom', $options);
         }
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["add_booking"])) {
-            $name_account = $_POST["name_account"];
-            $CCCD = $_POST["CCCD"];
-            $tel = $_POST["tel"];
-            $payment = $_POST["payment"];
-            $address = $_POST["address"];
-            $status = $_POST["status"];
-            $addResultBookings = addBooking($name_account, $CCCD, $tel, $payment,$address,$status);
-            $rooms = isset($_POST["room_id"]) ? $_POST["room_id"] : array();
-            $checkinDates = isset($_POST["checkin"]) ? $_POST["checkin"] : array();
-            $checkoutDates = isset($_POST["checkout"]) ? $_POST["checkout"] : array();
-            $overlapMessages = []; // Mảng lưu trữ các thông báo về sự trùng lặp
- 
-                        if (empty($overlapMessages)) {
-                            $addResultBookings = addBooking($name_account, $CCCD, $tel, $payment,$address,$status);
-     }
-        
-            }  
-
-             for ($i = 0; $i < count($rooms); $i++) {
-                $room_id = $rooms[$i];
-                $checkin_date = $checkinDates[$i];
-                $checkout_date = $checkoutDates[$i];
-                                $listRoomsById = getAllBookingRoomByIdRooms($room_id);
-
-                        foreach ($listRoomsById as $booking) {
-                            $checkin = ($booking['checkin']);
-                            $checkout = ($booking['check_out']);
-
-                            if (($checkin >= $checkin_date && $checkin <= $checkout_date) || ($checkout >= $checkin_date && $checkout <= $checkout_date)) {
-                                $overlapMessages[$i] = "Phòng nay đã được đặt vui lòng chọn phòng khác hoặc khung giờ khác!";
-                                break;
-                            }
-                        }
-            if (empty($overlapMessages)) {
-       $addResultBookingsRoom = addBookingRoom($addResultBookings['lastInsertId'],  $room_id, $checkin_date, $checkout_date); 
-     }
-        
-            
+            $users_name = $_POST["users_name"];
+            $users_phone_number = $_POST["users_phone_number"];
+            $users_email = $_POST["users_email"];
+            $list_booking_rooms = isset($_POST["repeater"]) ? $_POST["repeater"] : array();
+                $addResultBookings = addBooking($users_name, $users_phone_number,$users_email);
+             for ($i = 0; $i < count($list_booking_rooms); $i++) {
+                $category_id = $list_booking_rooms[$i]['category_id'];
+                $booking_room_checkin = $list_booking_rooms[$i]['booking_room_checkin'];
+                $booking_room_checkout =$list_booking_rooms[$i]['booking_room_checkout'];
+                $booking_quantity =$list_booking_rooms[$i]['booking_quantity'];
+                $addResultBookingsRoom = addBookingRoom($addResultBookings['id'],  $category_id, $booking_room_checkin, $booking_room_checkout, $booking_quantity); 
+             }  
             if ($addResultBookings && $addResultBookingsRoom) {
-                header('location: listbooking.php?controller=bookingrooms');
+                echo "<script>window.top.location='list_booking.php'</script>";
             }
         } 
     }

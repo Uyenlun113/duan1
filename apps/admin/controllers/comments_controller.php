@@ -2,8 +2,12 @@
     include_once "../../../../configs/configs.php";
     //list danh sách
     function getAllComment() {
-        $options = array('order_by' => 'id');
-        return get_all('comment', $options);
+        $options = array(
+            'select' => 'comments.*,rooms.room_name as room_name,users.users_name as user_name',
+            'order_by' => 'comments.id',
+            'join' => 'JOIN rooms ON comments.room_id = rooms.id JOIN users ON comments.user_id = users.id'
+        );
+        return get_all('comments', $options);
     }
     $list_comment = getAllComment();
     

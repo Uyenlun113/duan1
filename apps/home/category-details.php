@@ -10,12 +10,12 @@
   <body>
     <div class="page-wrapper">
       <div class="preloader"></div>
-      <?php @include "./controllers/room-details.php" ?>
+      <?php @include "./controllers/category-details.php" ?>
       <?php @include "./layouts/header2.php" ?>
       <section class="page-title" style="background-image: url(images/background/page-title-bg.png);">
         <div class="auto-container">
           <div class="title-outer text-center">
-            <h1 class="title"><?php echo($roomsDetail["name"]) ?></h1>
+            <h1 class="title"><?php echo($categoryDetail["category_name"]) ?></h1>
             <ul class="page-breadcrumb">
               <li><a href="index.html">Home</a></li>
               <li>Room Details</li>
@@ -32,92 +32,14 @@
             <div class="col-xl-8 col-lg-7 product-details rd-page">
               <div class="bxslider">
                 <div class="slider-content">
-                  <figure class="image-box"><a href="../upload/<?php echo($roomsDetail["img"]) ?>"
-                      class="lightbox-image" data-fancybox="gallery"><img src="images/resource/room-1.jpg" alt=""></a>
-                  </figure>
-                  <div class="slider-pager">
-                    <ul class="thumb-box">
-                      <li class="mb-0"><a class="active" data-slide-index="0" href="#">
-                          <figure><img src="../upload/<?php echo($roomsDetail["img"]) ?>" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="1" href="#">
-                          <figure><img src="../upload/<?php echo($roomsDetail["img"]) ?>" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="2" href="#">
-                          <figure><img src="../upload/<?php echo($roomsDetail["img"]) ?>" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="3" href="#">
-                          <figure><img src="../upload/<?php echo($roomsDetail["img"]) ?>" alt=""></figure>
-                        </a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slider-content">
-                  <figure class="image-box"><a href="../upload/<?php echo($roomsDetail["img"]) ?>"
-                      class="lightbox-image" data-fancybox="gallery"><img
-                        src="../upload/<?php echo($roomsDetail["img"]) ?>" alt=""></a></figure>
-                  <div class="slider-pager">
-                    <ul class="thumb-box">
-                      <li class="mb-0"><a class="active" data-slide-index="0" href="#">
-                          <figure><img src="../upload/<?php echo($roomsDetail["img"]) ?>" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="1" href="#">
-                          <figure><img src="images/resource/room-2.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="2" href="#">
-                          <figure><img src="images/resource/room-4.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="3" href="#">
-                          <figure><img src="images/resource/room-6.jpg" alt=""></figure>
-                        </a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slider-content">
-                  <figure class="image-box"><a href="images/resource/room-4.jpg" class="lightbox-image"
-                      data-fancybox="gallery"><img src="images/resource/room-4.jpg" alt=""></a></figure>
-                  <div class="slider-pager">
-                    <ul class="thumb-box">
-                      <li class="mb-0"><a class="active" data-slide-index="0" href="#">
-                          <figure><img src="images/resource/room-1.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="1" href="#">
-                          <figure><img src="images/resource/room-2.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="2" href="#">
-                          <figure><img src="images/resource/room-4.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="3" href="#">
-                          <figure><img src="images/resource/room-6.jpg" alt=""></figure>
-                        </a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slider-content">
-                  <figure class="image-box"><a href="images/resource/room-6.jpg" class="lightbox-image"
-                      data-fancybox="gallery"><img src="images/resource/room-6.jpg" alt=""></a></figure>
-                  <div class="slider-pager">
-                    <ul class="thumb-box">
-                      <li class="mb-0"><a class="active" data-slide-index="0" href="#">
-                          <figure><img src="images/resource/room-1.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="1" href="#">
-                          <figure><img src="images/resource/room-2.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="2" href="#">
-                          <figure><img src="images/resource/room-4.jpg" alt=""></figure>
-                        </a></li>
-                      <li class="mb-0"><a data-slide-index="3" href="#">
-                          <figure><img src="images/resource/room-6.jpg" alt=""></figure>
-                        </a></li>
-                    </ul>
-                  </div>
+                  <img src="../upload/<?php echo($categoryDetail["category_image"]) ?>" height="200"
+                    style="width:100%;height:400px;border-radius:16px;" alt="">
                 </div>
               </div>
               <div class="room-details__left">
                 <div class="wrapper">
                   <h3>Description of Room</h3>
-                  <p class="text"><?php echo($roomsDetail["description"]) ?></p>
+                  <p class="text"><?php echo($categoryDetail["category_description"]) ?></p>
                   <div class="row justify-content-center">
                     <div class="col-xl-12">
                       <div class="room-details__content-right mb-40 mt-20">
@@ -275,7 +197,7 @@
                   </form>
                 </div>
                 <div class="sidebar__single sidebar__post">
-                  <h3 class="sidebar__title">Compare Room</h3>
+                  <h3 class="sidebar__title">Phòng liên quan</h3>
                   <ul class="sidebar__post-list list-unstyled">
                     <li>
                       <div class="sidebar__post-image"> <img src="images/resource/news-info-1.jpg" alt=""> </div>
@@ -310,35 +232,19 @@
       <!--Blog Details End-->
       <?php @include "./layouts/footer.php" ?>
     </div>
-    <?php @include "./layouts/script.php" ?>
-    <script>
-    (function($) {
-      $("#contact_form").validate({
-        submitHandler: function(form) {
-          var form_btn = $(form).find('button[type="submit"]');
-          var form_result_div = '#form-result';
-          $(form_result_div).remove();
-          form_btn.before(
-            '<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-          var form_btn_old_msg = form_btn.html();
-          form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-          $(form).ajaxSubmit({
-            dataType: 'json',
-            success: function(data) {
-              if (data.status == 'true') {
-                $(form).find('.form-control').val('');
-              }
-              form_btn.prop('disabled', false).html(form_btn_old_msg);
-              $(form_result_div).html(data.message).fadeIn('slow');
-              setTimeout(function() {
-                $(form_result_div).fadeOut('slow')
-              }, 6000);
-            }
-          });
-        }
-      });
-    })(jQuery);
-    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/bxslider.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/script.js"></script>
+    <!-- form submit -->
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.form.min.js"></script>
   </body>
 
 </html>
