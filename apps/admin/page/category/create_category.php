@@ -82,8 +82,8 @@
                           <div class="row">
                             <div class="mb-3 col-md-10">
                               <label class="form-label" for="ecommerce-product-name">Hình ảnh</label>
-                              <input type="file" class="form-control" name="room_image" id="basic-default-upload-file"
-                                required="">
+                              <input type="file" class="form-control" name="category_image"
+                                id="basic-default-upload-file" required="">
                               <div class="invalid-feedback">
                                 Mời bạn nhập tên phòng!
                               </div>

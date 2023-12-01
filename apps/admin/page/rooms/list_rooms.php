@@ -55,7 +55,7 @@
                           class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
                           <div>
                             <h6 class="mb-2">Tổng số phòng</h6>
-                            <h4 class="mb-2">200</h4>
+                            <h4 class="mb-2"></h4>
                           </div>
                           <div class="avatar me-sm-4">
                             <span class="avatar-initial rounded bg-label-secondary">
@@ -138,6 +138,7 @@
                         <th></th>
                         <th>Phòng</th>
                         <th>Loại phòng</th>
+                        <th>Số người ở</th>
                         <th>Giá phòng</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
@@ -153,9 +154,10 @@
                         <td style="width:90px"><img src="../../../upload/<?= $rooms['room_image'] ?>" height="60"
                             width="80" class="rounded">
                         </td>
-                        <td style="width:25%"><span><?php echo $rooms['room_name'] ?></span></td>
+                        <td><span><?php echo $rooms['room_name'] ?></span></td>
                         <td><span><?php echo $rooms['category_name'] ?></span></td>
-                        <td><span>$<?php echo number_format($rooms['room_price'], 2, '.', ',') ?></span></td>
+                        <td><span><?php echo $rooms['category_adult'] ?></span></td>
+                        <td><span>$<?php echo number_format($rooms['category_price'], 2, '.', ',') ?></span></td>
                         <td>
                           <span>
                             <?php if ($rooms['room_status'] == 1): ?>

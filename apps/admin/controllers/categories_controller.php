@@ -55,9 +55,10 @@
             $category_image = "rooms/" . $_FILES['category_image']['name'];
             $temp_path = $_FILES['category_image']['tmp_name'];
             move_uploaded_file($temp_path, $category_image);
-            $addResult = addCategory($category_code, $category_name,$category_image,$category_adult,$category_price, $category_description, $category_status);
+            $addResult = addCategory($category_code, $category_name, $category_image, $category_price, $category_adult, $category_description, $category_status);
+
             if ($addResult) {
-                echo "<script>window.top.location='list_rooms.php'</script>";
+                echo "<script>window.top.location='list_category.php'</script>";
             } else {
                 echo "Chưa thêm được loại phòng. $addResult";
             }
@@ -81,10 +82,12 @@
             $category_adult = $_POST["category_adult"];
             $category_description = $_POST["category_description"];
             $category_status = $_POST["category_status"];
-            $category_image = (isset($_FILES['category_image']['name'])) ? "rooms/" . $_FILES['category_image']['name'] : '';
+           $category_image = (isset($_FILES['category_image']['name'])) ? "rooms/" . $_FILES['category_image']['name'] : '';
+
             $target_dir = "../../upload/rooms/";
             $targetFile = $target_dir . basename($_FILES["category_image"]["name"]);
-            $updateResult = updateCategory($id, $category_code, $category_name,$category_image,$category_price,$category_adult, $category_description, $category_status);
+            $updateResult = updateCategory($id, $category_code, $category_name, $category_image, $category_price, $category_adult, $category_description, $category_status);
+
             if ($updateResult) {
                 echo "<script>window.top.location='list_category.php'</script>";
             } else {

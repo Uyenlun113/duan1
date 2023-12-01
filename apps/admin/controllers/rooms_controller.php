@@ -29,7 +29,7 @@ if (isset($_SESSION['data_login'])) {
 
     function getListRooms() {
         $options = array(
-            'select' => 'rooms.*, category.category_name',
+            'select' => 'rooms.*, category.category_name as category_name , category.category_price as category_price , category.category_adult as category_adult',
             'order_by' => 'rooms.id',
             'join' => 'JOIN category ON rooms.category_id = category.id'
         );

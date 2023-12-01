@@ -93,16 +93,26 @@
                         <td><span><?php echo ($booking['booking_count_room']) ?></span></td>
                         <td><span><?php echo ($booking['total_price']) ?></span></td>
                         <td><span><?php echo ($booking['deposit']) ?></span></td>
-                        <td><span><?php echo ($booking['booking_payment']) ?></span></td>
-
                         <td>
                           <span>
-                            <?php if ($booking['booking_status'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Đã thanh toán</span>
+                            <?php if ($booking['booking_payment'] == 1): ?>
+                            <span class="badge bg-label-primary me-1">Chuyển khoản</span>
                             <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Chưa thanh toán</span>
+                            <span class="badge bg-label-primary me-1">Tiền mặt</span>
                             <?php endif; ?>
                           </span>
+                        </td>
+                        <td>
+                          <span>
+                            <?php if ($booking['booking_status'] == 0): ?>
+                            <span class="badge bg-label-primary me-1">Chờ xác nhận</span>
+                            <?php elseif ($booking['booking_status'] == 1): ?>
+                            <span class="badge bg-label-primary me-1">Đã xác nhận</span>
+                            <?php else: ?>
+                            <span class="badge bg-label-primary me-1">Đã thanh toán</span>
+                            <?php endif; ?>
+                          </span>
+
                         </td>
                         <td>
                           <a href="update_rooms.php?action=update&update_rooms=<?= $rooms['id'] ?>">
@@ -110,7 +120,7 @@
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
-                          <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
+                          <a href="details_booking.php?detail_booking_id=<?= $booking['id'] ?>">
                             <button class=" btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
