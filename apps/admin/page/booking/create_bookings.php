@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <?php             include "../../controllers/bookingrooms.php"; ?>
+    <?php   include "../../controllers/bookingrooms.php"; ?>
 
     <div class="layout-wrapper layout-content-navbar  ">
       <div class="layout-container">
@@ -133,7 +133,7 @@
                                         <div class="col-md-8 col-12 mb-md-0 mb-3">
                                           <p class="mb-2 repeater-title">Giá tiền ($ / đêm)</p>
                                           <input type="number" disabled class="form-control invoice-item-qty"
-                                            placeholder="1" value="131" name="booking_total_price" />
+                                            placeholder="1" value="" name="booking_total_price" />
                                         </div>
                                       </div>
 
@@ -164,17 +164,22 @@
                         </div>
                         <div class="card-body">
                           <div class="mb-3">
-                            <label class="form-label" for="ecommerce-product-price">Base Price</label>
-                            <input type="number" class="form-control" id="ecommerce-product-price" placeholder="Price"
-                              name="productPrice" aria-label="Product price">
+                            <label class="form-label" for="ecommerce-product-discount-price">Tổng tiền</label>
+                            <input type="text" class="form-control" id="ecommerce-product-discount-price"
+                              placeholder="Discounted Price" name="total_price" aria-label="Product discounted price">
+                          </div>
+                          <div class="mb-3 col ecommerce-select2-dropdown">
+                            <label class="form-label mb-1" for="status-org">Phương thức thanh toán
+                            </label>
+                            <select class="select2 form-select" name="booking_payment"
+                              data-placeholder="Phương thức thanh toán">
+                              <option value="">Phương thức thanh toán</option>
+                              <option value="1">Chuyển khoản</option>
+                              <option value="0">Tiền mặt</option>
+                            </select>
                           </div>
                           <!-- Discounted Price -->
-                          <div class="mb-3">
-                            <label class="form-label" for="ecommerce-product-discount-price">Discounted Price</label>
-                            <input type="number" class="form-control" id="ecommerce-product-discount-price"
-                              placeholder="Discounted Price" name="productDiscountedPrice"
-                              aria-label="Product discounted price">
-                          </div>
+
                           <!-- Charge tax check box -->
                           <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="" id="price-charge-tax" checked>

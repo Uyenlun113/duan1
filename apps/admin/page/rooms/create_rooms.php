@@ -132,20 +132,7 @@
                           <h5 class="card-title mb-0">Thông tin bổ sung</h5>
                         </div>
                         <div class="card-body">
-                          <div class="mb-3">
-                            <label class="form-label" for="ecommerce-product-price">Giá phòng</label>
-                            <input type="number" class="form-control" placeholder="Nhập giá phòng" name="room_price">
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="ecommerce-product-price">Giá khuyến mãi</label>
-                            <input type="number" class="form-control" placeholder="Nhập giá khuyến mãi"
-                              name="room_sales_price">
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="ecommerce-product-price">Số người tối đa</label>
-                            <input type="number" class="form-control" placeholder="Nhập số người tối đa"
-                              name="room_max_people">
-                          </div>
+
                           <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1 d-flex justify-content-between align-items-center"
                               for="category-org">

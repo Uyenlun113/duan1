@@ -46,7 +46,6 @@ function generateRandomString($type,$length = 10) {
         $sql = "SELECT $select FROM `$table` $join $where $order_by $limit";
         $query = $conn->query($sql);
         $data = array();
-        
         if ($query) {
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $row;
@@ -70,7 +69,6 @@ function generateRandomString($type,$length = 10) {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    
     return $data;
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
