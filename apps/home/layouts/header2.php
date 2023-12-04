@@ -18,6 +18,14 @@
                   <button>
                     ĐĂNG KÍ
                   </button>
+                  <button>
+                    &nbsp;|&nbsp;
+                  </button>
+                  <a href="history.php">
+                    <button>
+                      LỊCH SỬ GIAO DỊCH
+                    </button>
+                  </a>
                 </ul>
               </div>
             </div>
@@ -66,7 +74,7 @@
                       <li><a href="news-details.html">News Details</a></li>
                     </ul>
                   </li>
-                  <li><a href="page-contact.html">Contact</a></li>
+                  <li><a href="page-contact.html">Lịch sử giao dịch</a></li>
                 </ul>
               </nav>
             </div>
