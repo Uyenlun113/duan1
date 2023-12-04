@@ -5,6 +5,39 @@
     <meta charset="utf-8">
     <title>Hoexr | Hotel HTML Template Template</title>
     <?php @include "./layouts/link.php" ?>
+    <style>
+    .ratings {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      direction: rtl;
+      text-align: left;
+    }
+
+    .star {
+      position: relative;
+      line-height: 20px;
+      display: inline-block;
+      transition: color 0.2s ease;
+      color: #ebebeb;
+    }
+
+    .star:before {
+      content: '\2605';
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+    }
+
+    .star:hover,
+    .star.selected,
+    .star:hover~.star,
+    .star.selected~.star {
+      transition: color 0.8s ease;
+      color: orange;
+    }
+    </style>
   </head>
 
   <body>
@@ -112,47 +145,52 @@
                     </div>
                   </div>
                 </div>
-                <div class="d-sm-flex align-items-sm-center justify-content-sm-between pt-40 pb-40 border-top">
-                  <h6 class="my-sm-0">Share Details</h6>
-                  <div class="blog-details__social-list"> <a href="news-details.html"><i class="fab fa-twitter"></i></a>
-                    <a href="news-details.html"><i class="fab fa-facebook"></i></a> <a href="news-details.html"><i
-                        class="fab fa-pinterest-p"></i></a> <a href="news-details.html"><i
-                        class="fab fa-instagram"></i></a>
+                <div class="comment-one">
+                  <h3 class="comment-one__title">2 Comments</h3>
+                  <?php
+                  if (isset($list_comments) && is_array($list_comments)) {
+                    foreach ($list_comments as $index => $comment): ?>
+                  <div class="comment-one__single">
+                    <div class="comment-one__image">
+                      <img src="../upload/<?php echo($comment["users_avatar"]) ?>" alt="">
+                    </div>
+                    <div class="comment-one__content">
+                      <h3><?php echo($comment['users_name']) ?></h3>
+                      <p><?php echo($comment['comment_content']) ?>
+                      </p>
+
+                    </div>
                   </div>
-                </div>
-                <div class="p-4 p-lg-5 bg-light">
-                  <h4 class="mt-0">Send Us Your Question</h4>
-                  <form id="contact_form" name="contact_form" class=""
-                    action="https://kodesolution.com/html/2023/hoexr-html/includes/sendmail.php" method="post">
-                    <div class="row">
-                      <div class="col-sm-6 col-xl-4">
-                        <div class="mb-3">
-                          <input name="form_name" class="form-control bg-white" type="text" placeholder="Enter Name">
-                        </div>
+                  <?php endforeach;
+                          } ?>
+                  <div class="comment-form">
+                    <h3 class="comment-form__title">Viết đánh giá</h3>
+                    <form method="POST" enctype="application/x-www-form-urlencoded" action="category-details.php">
+                      <ul class="ratings">
+                        <li class="star"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
+                      </ul>
+                      <input type="text" id="comment_vote" name="comment_vote" hidden>
+                      <input type="text" id="category_id" name="category_id"
+                        value="<?php echo($categoryDetail["id"]) ?>" hidden>
+
+                      <div class="mb-3">
+                        <textarea name="comment_content" class="form-control required" rows="3"
+                          placeholder="Mời bạn viết đánh giá ..."></textarea>
                       </div>
-                      <div class="col-sm-6 col-xl-4">
-                        <div class="mb-3">
-                          <input name="form_email" class="form-control bg-white required email" type="email"
-                            placeholder="Enter Email">
-                        </div>
+                      <div class="mb-3">
+                        <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                        <button type="submit" name="comment" class="theme-btn btn-style-one">
+                          <span class="btn-title">
+                            Đánh giá
+                          </span>
+                        </button>
                       </div>
-                      <div class="col-xl-4">
-                        <div class="mb-3">
-                          <input name="form_phone" class="form-control bg-white required phone" type="number"
-                            placeholder="Enter Phone">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <textarea name="form_message" class="form-control bg-white required" rows="5"
-                        placeholder="Enter Message"></textarea>
-                    </div>
-                    <div class="mb-0">
-                      <input name="form_botcheck" class="form-control" type="hidden" value="">
-                      <button type="submit" class="theme-btn btn-style-one" data-loading-text="Please wait..."><span
-                          class="btn-title">Submit Comment</span></button>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -218,6 +256,24 @@
     <!-- form submit -->
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/jquery.form.min.js"></script>
+    <script>
+    $(function() {
+      var star = '.star',
+        selected = '.selected';
+
+      $(star).on('click', function() {
+        var selectedIndex = $(this).index() + 1;
+        console.log('Số sao được chọn:', selectedIndex);
+        $("#comment_vote").val(selectedIndex == 1 ? 5 : selectedIndex == 2 ? 4 : selectedIndex == 3 ?
+          3 : selectedIndex == 4 ? 2 : selectedIndex == 5 ? 1 : 0);
+        $(selected).each(function() {
+
+          $(this).removeClass('selected');
+        });
+        $(this).addClass('selected');
+      });
+    });
+    </script>
   </body>
 
 </html>
