@@ -3,9 +3,9 @@
     //list danh sách
     function getAllComment() {
         $options = array(
-            'select' => 'comments.*,rooms.room_name as room_name,users.users_name as user_name',
+            'select' => 'comments.*,category.category_name as category_name,users.users_name as user_name',
             'order_by' => 'comments.id',
-            'join' => 'JOIN rooms ON comments.room_id = rooms.id JOIN users ON comments.user_id = users.id'
+            'join' => 'JOIN category ON comments.category_id = category.id JOIN users ON comments.user_id = users.id'
         );
         return get_all('comments', $options);
     }
@@ -38,7 +38,7 @@
 
     function deleteComment($id) {
         $where = "id = $id";
-        return delete_data('comment', $where);
+        return delete_data('comments', $where);
     }
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -80,7 +80,7 @@
         $id = $_GET["delete_comment_id"];
         $deleteResult = deleteComment($id);
         if ($deleteResult) {
-            header('location:comment.php?controller=comment');
+            echo "<script>window.top.location='list_comment.php'</script>";
         } else {
         }
     }

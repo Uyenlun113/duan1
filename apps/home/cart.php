@@ -33,11 +33,10 @@
                     <thead>
                       <tr>
                         <th></th>
-                        <th>Photo</th>
+                        <th>Tên loại phòng</th>
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Số lượng</th>
-                        <th>Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -61,12 +60,11 @@
                             Check out: <?php echo $item_cart['cart_item_checkin'] ?>
                           </span>
                         </td>
+
+                        <td class="product-subtotal"><span class="amount">$36.00</span></td>
+
                         <td class="product-quantity">
                           <span class="amount">1</span>
-                        </td>
-                        <td class="product-subtotal"><span class="amount">$36.00</span></td>
-                        <td class="product-remove">
-                          <a title="Remove this item" class="remove" href="#">×</a>
                         </td>
                       </tr>
                       <?php endforeach;

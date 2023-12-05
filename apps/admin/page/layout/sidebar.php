@@ -127,36 +127,30 @@
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-door-open"></i>
-        <div class="text-truncate">Quản lí hóa đơn</div>
+        <div class="text-truncate">Quản lí người dùng</div>
       </a>
       <ul class="menu-sub">
-        <li class="menu-item ">
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="app-ecommerce-product-list.html" class="menu-link">
-                <div class="text-truncate">
-                  Danh sách phòng
-                </div>
-              </a>
-            </li>
-
-          </ul>
-        </li>
         <li class="menu-item">
-          <a href="app-ecommerce-manage-reviews.html" class="menu-link">
+          <a href="../users/list_staff.php" class="menu-link">
             <div class="text-truncate">
-              Thêm phòng mới
+              Danh sách nhân viên
             </div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="app-ecommerce-manage-reviews.html" class="menu-link">
+          <a href="../users/list_customer.php" class="menu-link">
             <div class="text-truncate">
-              Danh sách loại phòng
+              Danh sách khách hàng
             </div>
           </a>
         </li>
-
+        <li class="menu-item">
+          <a href="../roles/roles.php" class="menu-link">
+            <div class="text-truncate">
+              Quản lý vai trò
+            </div>
+          </a>
+        </li>
       </ul>
     </li>
     <li class="menu-item">
@@ -180,9 +174,9 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="../users/list_roles.php" class="menu-link">
+          <a href="../roles/roles.php" class="menu-link">
             <div class="text-truncate">
-              Phân quyền
+              Quản lý vai trò
             </div>
           </a>
         </li>

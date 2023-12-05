@@ -1,10 +1,14 @@
 <?php
     include_once "../../../../configs/configs.php";
     function getAllBooking() {
-            $options = array('order_by' => 'id');
-            return get_all('bookings', $options);
-        }
-    $list_booking = getAllBooking();
+        $options = array(
+        'select' => 'orders.*, users.users_name, users.id as users_id',
+        'order_by' => 'id',
+        "join" => "join users on users.id = orders.users_id"
+        );
+        return get_all('orders', $options);
+    }
+    $list_orders = getAllBooking();
 
         function getAllCategory() {
             $options = array('order_by' => 'id');
@@ -12,22 +16,32 @@
         }
     $list_category = getAllCategory();
    
-function getAllDetailBooking($id_booking) {
-    $options = array(    
-        'where' => "bookingroom.id_booking = $id_booking",  
-    );
-    return get_a_data('bookingroom', $options);
-    
-}
-    if (isset($_GET['detail_booking_id'])) {
-        $id_booking = $_GET['detail_booking_id'];   
-        $list_detail_booking = getAllDetailBooking($id_booking);
+function getAllDetailBooking($orders_id) {
+    $conn = pdo_get_connection();
+   $sql = "SELECT oi.*, c.category_name
+            FROM orders_item as oi
+            JOIN category as c ON oi.category_id = c.id
+            WHERE oi.orders_id = :orders_id";
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':orders_id', $orders_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    } catch (PDOException $e) {
+        echo json_encode(array("error" => $e->getMessage()));
     }
+}
 
-    // if (isset($_GET['detail_booking_id'])&&intval($_GET['detail_booking_id'])) {
-    //     $subCateId = intval($_GET['detail_booking_id']);
-    //     return $detailbooking = get_a_data('bookings', $subCateId);
-    // }
+if (isset($_GET['detail_oders_item'])&&intval($_GET['detail_oders_item'])) {
+    $orders_id = intval($_GET['detail_oders_item']);    
+    $list_detail_oders = getAllDetailBooking($orders_id);
+}
+
+    if (isset($_GET['detail_oders_item'])&&intval($_GET['detail_oders_item'])) {
+        $orders_id = intval($_GET['detail_oders_item']);
+        return $detail_oders = get_a_data('orders', $orders_id);
+    }
         function getAllRoom() {
             $options = array('order_by' => 'id');
             return get_all('rooms', $options);

@@ -71,7 +71,6 @@
                         <th>Mã phiếu</th>
                         <th>Người đặt</th>
                         <th>Ngày đặt</th>
-                        <th>Số phòng</th>
                         <th>Tổng tiền</th>
                         <th>Đã cọc</th>
                         <th>Phương thức cọc</th>
@@ -81,38 +80,28 @@
                     </thead>
                     <tbody>
                       <?php
-                  if (isset($list_booking) && is_array($list_booking)) {
-                    foreach ($list_booking as $index => $booking): 
+                  if (isset($list_orders) && is_array($list_orders)) {
+                    foreach ($list_orders as $index => $orders): 
 ?>
                       <tr>
                         <td style="width:10px"><?php echo $index + 1 ?></td>
-                        <td style="width:90px"><?php echo $booking['booking_code'] ?>
+                        <td style="width:90px"><?php echo $orders['orders_code'] ?>
                         </td>
-                        <td style="width:15%"><span><?php echo $booking['users_name'] ?></span></td>
-                        <td><span><?php echo $booking['create_date'] ?></span></td>
-                        <td><span><?php echo ($booking['booking_count_room']) ?></span></td>
-                        <td><span><?php echo ($booking['total_price']) ?></span></td>
-                        <td><span><?php echo ($booking['deposit']) ?></span></td>
+                        <td style="width:15%"><span><?php echo $orders['users_name'] ?></span></td>
+                        <td><span><?php echo $orders['create_date'] ?></span></td>
+                        <td><span><?php echo ($orders['orders_total']) ?></span></td>
+                        <td><span><?php echo ($orders['orders_deposit']) ?></span></td>
+                        <td><span><?php echo ($orders['orders_payment_method']) ?></span></td>
                         <td>
                           <span>
-                            <?php if ($booking['booking_payment'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Chuyển khoản</span>
-                            <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Tiền mặt</span>
-                            <?php endif; ?>
-                          </span>
-                        </td>
-                        <td>
-                          <span>
-                            <?php if ($booking['booking_status'] == 0): ?>
+                            <?php if ($orders['orders_status'] == 0): ?>
                             <span class="badge bg-label-primary me-1">Chờ xác nhận</span>
-                            <?php elseif ($booking['booking_status'] == 1): ?>
+                            <?php elseif ($orders['orders_status'] == 1): ?>
                             <span class="badge bg-label-primary me-1">Đã xác nhận</span>
                             <?php else: ?>
                             <span class="badge bg-label-primary me-1">Đã thanh toán</span>
                             <?php endif; ?>
                           </span>
-
                         </td>
                         <td>
                           <a href="update_rooms.php?action=update&update_rooms=<?= $rooms['id'] ?>">
@@ -120,7 +109,7 @@
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
-                          <a href="details_booking.php?detail_booking_id=<?= $booking['id'] ?>">
+                          <a href="details_booking.php?detail_oders_item=<?= $orders['id'] ?>">
                             <button class=" btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>

@@ -76,9 +76,9 @@
                     </thead>
                     <tbody>
                       <?php
-                  if (isset($list_roles) && is_array($list_roles)) {
-                    foreach ($list_roles as $index => $roles): 
-?>
+                    if (isset($list_roles) && is_array($list_roles)) {
+                      foreach ($list_roles as $index => $roles) :
+                    ?>
                       <tr>
                         <td style="width:10px"><?php echo $index + 1 ?></td>
                         <td style="width:15%">
@@ -99,11 +99,11 @@
                             </button>
                           </a>
                         </td>
-                      </tr>
+                      </tr>Ï
                       <?php endforeach;
-                  }else {
-    echo "Không có dữ liệu danh mục.";
-} ?>
+                    } else {
+                      echo "Không có dữ liệu danh mục.";
+                    } ?>
                     </tbody>
                   </table>
                   <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-end me-3 mt-3">
