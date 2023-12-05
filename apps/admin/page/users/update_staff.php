@@ -33,15 +33,15 @@
     <?php @include "../../controllers/users_controller.php" ?>
     <div class="layout-wrapper layout-content-navbar ">
       <div class="layout-container">
-        <?php @include "../layout/sidebar.php" ?>
+        <?php @include "../layout/sidebar.php1" ?>
         <div class="layout-page">
-          <?php @include "../layout/navbar.php" ?>
+          <?php @include "../layout/navbar.php1" ?>
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
                 <span class="text-muted fw-light">Trang quản trị /</span><span>Cập nhật thông tin nhân viên</span>
               </h4>
-              <form class="row g-3" method="POST" action="create_staff.php" enctype="multipart/form-data" novalidate>
+              <form class="row g-3" method="POST" action="update_staff.php" enctype="multipart/form-data" novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
@@ -118,19 +118,6 @@
                               Mời bạn nhập mật khẩu!
                             </div>
                           </div>
-                          <div class="mb-3 col ecommerce-select2-dropdown">
-                            <label class="form-label mb-1 d-flex justify-content-between align-items-center"
-                              for="category-org">
-                              <span>Chức vụ</span><a href="javascript:void(0);" class="fw-medium">Thêm chức vụ</a>
-                            </label>
-                            <select class="select2 form-select" name="users_position"
-                              data-placeholder="-- Chọn chức vụ --">
-                              <option value="">-- Chọn chức vụ --</option>
-                              <?php foreach($list_categories as $category) :?>
-                              <option value="<?= $category['id'] ?>"><?= $category['category_name']?></option>
-                              <?php endforeach;?>
-                            </select>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -160,11 +147,26 @@
                             <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="users_address"
                               value="<?php echo $detail_staff['users_address']; ?>">
                           </div>
-                          <!-- <div class="mb-3">
-                            <label for="ecommerce-product-tags" class="form-label mb-1">Dịch vụ phòng</label>
-                            <input id="ecommerce-product-tags" class="form-control" name="ecommerce-product-tags"
-                              value="Normal,Standard,Premium" aria-label="Product Tags" />
-                          </div> -->
+                          <div class="mb-3">
+                            <label for="ecommerce-product-tags" class="form-label mb-1">Chức vụ</label>
+                            <select id="select2Dark" name="list_roles_staff[]" class="select2 form-select" multiple>
+                              <?php
+                            if (isset($list_roles) && is_array($list_roles)) {
+                              foreach ($list_roles as $index => $roles) :
+
+                            ?>
+
+                              <option
+                                <?php echo(in_array($roles['id'], array_column($list_roles_users_detail, 'roles_id'))  ? 'selected' : '') ?>
+                                value="<?php echo($roles['id']) ?>">
+                                <?php echo($roles['roles_name']) ?>
+                              </option>
+                              <?php endforeach;
+                            } else {
+                              echo "Không có dữ liệu danh mục.";
+                            } ?>
+                            </select>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -206,6 +208,19 @@
       document.getElementById('roomDescriptionInput').value = content;
     });
     </script>
+    <script src="../../assets/vendor/libs/select2/select2.js"></script>
+    <script src="../../assets/vendor/libs/tagify/tagify.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/libs/bloodhound/bloodhound.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="../../assets/js/forms-selects.js"></script>
+    <script src="../../assets/js/forms-tagify.js"></script>
+    <script src="../../assets/js/forms-typeahead.js"></script>
   </body>
 
 </html>

@@ -1,5 +1,5 @@
 <?php 
-include_once "../../../../configs/configs.php";
+// include_once "../../../../configs/configs.php";
 function cancelBooking($id){
     try {
         $conn = pdo_get_connection(); 
@@ -19,7 +19,7 @@ if (isset($_GET['cancel_booking_id'])) {
     $id_booking = $_GET['detail_booking_id'];
     $deleteResult = cancelBooking($id);
     if ($deleteResult) {
-          header("location: details_booking.php?detail_booking_id=$id_booking");
+        //   header("location: details_booking.php?detail_booking_id=$id_booking");
         exit;
     } else {
         echo "Error cancelling booking!";

@@ -146,7 +146,7 @@
                   </div>
                 </div>
                 <div class="comment-one">
-                  <h3 class="comment-one__title">2 Comments</h3>
+                  <h3 class="comment-one__title">Đánh giá</h3>
                   <?php
                   if (isset($list_comments) && is_array($list_comments)) {
                     foreach ($list_comments as $index => $comment): ?>

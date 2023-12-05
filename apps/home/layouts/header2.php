@@ -15,9 +15,11 @@
                   <button>
                     &nbsp;|&nbsp;
                   </button>
-                  <button>
-                    ĐĂNG KÍ
-                  </button>
+                  <a href="register.php">
+                    <button>
+                      ĐĂNG KÍ
+                    </button>
+                  </a>
                   <button>
                     &nbsp;|&nbsp;
                   </button>

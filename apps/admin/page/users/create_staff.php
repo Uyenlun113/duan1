@@ -27,6 +27,12 @@
     })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
     </script>
     <?php @include "../layout/import_link.php" ?>
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/tagify/tagify.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
   </head>
 
   <body>
@@ -112,19 +118,6 @@
                               Mời bạn nhập tên nhân viên!
                             </div>
                           </div>
-                          <div class="mb-3 col ecommerce-select2-dropdown">
-                            <label class="form-label mb-1 d-flex justify-content-between align-items-center"
-                              for="category-org">
-                              <span>Chức vụ</span><a href="javascript:void(0);" class="fw-medium">Thêm chức vụ</a>
-                            </label>
-                            <select class="select2 form-select" name="users_position"
-                              data-placeholder="-- Chọn chức vụ --">
-                              <option value="">-- Chọn chức vụ --</option>
-                              <?php foreach($list_categories as $category) :?>
-                              <option value="<?= $category['id'] ?>"><?= $category['category_name']?></option>
-                              <?php endforeach;?>
-                            </select>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -153,9 +146,18 @@
                             <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="users_address">
                           </div>
                           <div class="mb-3">
-                            <label for="ecommerce-product-tags" class="form-label mb-1">Dịch vụ phòng</label>
-                            <input id="ecommerce-product-tags" class="form-control" name="ecommerce-product-tags"
-                              value="Normal,Standard,Premium" aria-label="Product Tags" />
+                            <label for="ecommerce-product-tags" class="form-label mb-1">Chức vụ</label>
+                            <select id="select2Dark" name="list_roles_staff[]" class="select2 form-select" multiple>
+                              <?php
+                            if (isset($list_roles) && is_array($list_roles)) {
+                              foreach ($list_roles as $index => $roles) :
+                            ?> <option value="<?php echo($roles['id']) ?>"><?php echo($roles['roles_name']) ?>
+                              </option>
+                              <?php endforeach;
+                            } else {
+                              echo "Không có dữ liệu danh mục.";
+                            } ?>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -172,6 +174,14 @@
     </div>
     <?php @include "../layout/import_script.php" ?>
 
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
     <script>
     (function() {
       'use strict'
@@ -198,6 +208,19 @@
       document.getElementById('roomDescriptionInput').value = content;
     });
     </script>
+    <script src="../../assets/vendor/libs/select2/select2.js"></script>
+    <script src="../../assets/vendor/libs/tagify/tagify.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/libs/bloodhound/bloodhound.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="../../assets/js/forms-selects.js"></script>
+    <script src="../../assets/js/forms-tagify.js"></script>
+    <script src="../../assets/js/forms-typeahead.js"></script>
   </body>
 
 </html>

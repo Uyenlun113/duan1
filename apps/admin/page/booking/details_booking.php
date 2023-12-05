@@ -37,9 +37,9 @@
     <?php @include "../../controllers/bookingrooms.php" ?>
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-        <!-- <?php @include "../layout/sidebar.php" ?> -->
+        <?php @include "../layout/sidebar.php" ?>
         <div class="layout-page">
-          <!-- <?php @include "../layout/navbar.php" ?> -->
+          <?php @include "../layout/navbar.php" ?>
           <div class="content-wrapper">
 
             <div class="container-xxl flex-grow-1 container-p-y">
@@ -55,52 +55,28 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Mã phiếu</th>
-                        <th>Người đặt</th>
-                        <th>Ngày đặt</th>
+                        <th>Loại phòng</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
                         <th>Số phòng</th>
-                        <th>Tổng tiền</th>
-                        <th>Đã cọc</th>
-                        <th>Phương thức cọc</th>
-                        <th>Trạng thái</th>
+                        <th>Giá tiền</th>
+
                         <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                  if (isset($detailbooking) && is_array($detailbooking)) {
-                    foreach ($detailbooking as $index => $bookingroom): 
+                  if (isset($list_detail_oders) && is_array($list_detail_oders)) {
+                    foreach ($list_detail_oders as $index => $oders_item): 
 ?>
                       <tr>
-                        <td style="width:10px"><?php echo (int)$index + 1 ?></td>
-                        <td style="width:90px"><?php echo $bookingroom['category_id'] ?>
+                        <td><?php echo (int)$index + 1 ?></td>
+                        <td><?php echo $oders_item['category_name'] ?>
                         </td>
-                        <td style="width:15%"><span><?php echo $bookingroom['users_name'] ?></span></td>
-                        <td><span><?php echo $booking['create_date'] ?></span></td>
-                        <td><span><?php echo ($booking['booking_count_room']) ?></span></td>
-                        <td><span><?php echo ($booking['total_price']) ?></span></td>
-                        <td><span><?php echo ($booking['deposit']) ?></span></td>
-                        <td>
-                          <span>
-                            <?php if ($booking['booking_payment'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Chuyển khoản</span>
-                            <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Tiền mặt</span>
-                            <?php endif; ?>
-                          </span>
-                        </td>
-                        <td>
-                          <span>
-                            <?php if ($booking['booking_status'] == 0): ?>
-                            <span class="badge bg-label-primary me-1">Chờ xác nhận</span>
-                            <?php elseif ($booking['booking_status'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Đã xác nhận</span>
-                            <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Đã thanh toán</span>
-                            <?php endif; ?>
-                          </span>
-
-                        </td>
+                        <td><span><?php echo $oders_item['orders_item_checkin'] ?></span></td>
+                        <td><span><?php echo $oders_item['orders_item_checkout'] ?></span></td>
+                        <td><span><?php echo ($oders_item['orders_item_quantity']) ?></span></td>
+                        <td><span><?php echo ($oders_item['orders_item_price']) ?></span></td>
                         <td>
                           <a href="update_rooms.php?action=update&update_rooms=<?= $rooms['id'] ?>">
                             <button class="btn btn-sm btn-warning btn-icon">
