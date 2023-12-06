@@ -176,11 +176,7 @@
                               </option>
                             </select>
                           </div>
-                          <div class="mb-3">
-                            <label for="ecommerce-product-tags" class="form-label mb-1">Dịch vụ phòng</label>
-                            <input id="ecommerce-product-tags" class="form-control" name="ecommerce-product-tags"
-                              value="Normal,Standard,Premium" aria-label="Product Tags" />
-                          </div>
+
                         </div>
                       </div>
                     </div>

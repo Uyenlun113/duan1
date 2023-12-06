@@ -157,11 +157,7 @@
                               <option value="2">Đang thuê</option>
                             </select>
                           </div>
-                          <div class="mb-3">
-                            <label for="ecommerce-product-tags" class="form-label mb-1">Dịch vụ phòng</label>
-                            <input id="ecommerce-product-tags" class="form-control" name="ecommerce-product-tags"
-                              value="Normal,Standard,Premium" aria-label="Product Tags" />
-                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -177,6 +173,7 @@
     </div>
     <?php @include "../layout/import_script.php" ?>
 
+    <!-- JavaScript for Form Validation -->
     <script>
     (function() {
       'use strict'
@@ -194,6 +191,7 @@
         })
     })()
     </script>
+
     <script>
     var quill = new Quill('#snow-editor', {
       theme: 'snow'

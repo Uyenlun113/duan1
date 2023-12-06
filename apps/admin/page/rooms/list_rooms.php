@@ -201,16 +201,24 @@
                           </span>
                         </td>
                         <td>
+                          <?php if ($isUpdateRoom): ?>
                           <a href="update_rooms.php?action=update&update_rooms=<?= $rooms['id'] ?>">
                             <button class="btn btn-sm btn-warning btn-icon">
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
+                          <?php else: ?>
+                          <div></div>
+                          <?php endif; ?>
+                          <?php if ($isDeleteRoom): ?>
                           <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
                             <button class=" btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
                           </a>
+                          <?php else: ?>
+                          <div></div>
+                          <?php endif; ?>
                         </td>
                       </tr>
                       <?php endforeach;

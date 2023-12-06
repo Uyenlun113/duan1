@@ -266,6 +266,7 @@
     <!-- Page JS -->
     <script src="../../assets/js/offcanvas-send-invoice.js"></script>
     <script src="../../assets/js/app-invoice-add.js"></script>
+
   </body>
 
 </html>

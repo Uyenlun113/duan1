@@ -160,4 +160,7 @@ function delete_data($table, $where)
 
 // Kiểm tra quyền CREATE_ROOM
 $isCreateRoom = strpos($dataLoginUser['permission_codes'], 'CREATE_ROOM') !== false;
+$isDeleteRoom = strpos($dataLoginUser['permission_codes'], 'DELETE_ROOM') !== false;
+$isUpdateRoom = strpos($dataLoginUser['permission_codes'], 'UPDATE_ROOM') !== false;
+$isDeleteStaff = strpos($dataLoginUser['permission_codes'], 'DELETE_STAFF') !== false;
 ?>

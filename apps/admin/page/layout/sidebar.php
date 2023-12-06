@@ -80,9 +80,9 @@
           </ul>
         </li>
         <li class="menu-item">
-          <a href="../rooms/create_rooms.php" class="menu-link">
+          <a href="../rooms/list_rooms.php" class="menu-link">
             <div class="text-truncate">
-              Thêm phòng mới
+              Danh sách phòng
             </div>
           </a>
         </li>
