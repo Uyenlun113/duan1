@@ -21,7 +21,7 @@
             <div class="content-column col-xl-6 col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="600ms">
               <div class="inner-column">
                 <div class="sec-title">
-                  <span class="sub-title">Hoexr Luxury Hotel</span>
+                  <span class="sub-title">SONA hottel</span>
                   <h2>Most Safe & Rated <br>Hotel in London.</h2>
                   <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br>tempor
                     incididunt ut labore et dolore magna aliqua. Quis ipsum <br>suspendisse ultrices gravida. Risus
