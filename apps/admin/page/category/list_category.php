@@ -70,8 +70,9 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Mã phòng</th>
-                        <th>Tên phòng</th>
+                        <th>Mã loại phòng</th>
+                        <th>Tên loại phòng</th>
+                        <th>Giá tiền</th>
                         <th>Ngày tạo</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
@@ -89,6 +90,9 @@
                         </td>
                         <td style="width:20%">
                           <?php echo $catrgory['category_name'] ?>
+                        </td>
+                        <td>
+                          <?php echo $catrgory['category_price'] ?>
                         </td>
                         <td>
                           <?php echo $catrgory['create_date'] ?>

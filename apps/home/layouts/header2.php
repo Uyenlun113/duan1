@@ -7,11 +7,27 @@
               </div>
               <div class="top-right">
                 <ul class="social-icon-one">
-                  <li>Follow Us :</li>
-                  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-                  <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                  <a href="login.php">
+                    <button>
+                      ĐĂNG NHẬP
+                    </button>
+                  </a>
+                  <button>
+                    &nbsp;|&nbsp;
+                  </button>
+                  <a href="register.php">
+                    <button>
+                      ĐĂNG KÍ
+                    </button>
+                  </a>
+                  <button>
+                    &nbsp;|&nbsp;
+                  </button>
+                  <a href="history.php">
+                    <button>
+                      LỊCH SỬ GIAO DỊCH
+                    </button>
+                  </a>
                 </ul>
               </div>
             </div>
@@ -26,32 +42,9 @@
             <div class="nav-outer">
               <nav class="nav main-menu">
                 <ul class="navigation">
-                  <li class="dropdown"><a href="#">Home</a>
-                    <ul>
-                      <li><a href="index.html">Home page 01</a></li>
-                      <li><a href="index-2.html">Home page 02</a></li>
-                      <li class="dropdown"><a href="#">Single Styles</a>
-                        <ul>
-                          <li><a href="index-1-single.html">Single Style One</a></li>
-                          <li><a href="index-2-single.html">Single Style Two</a></li>
-                        </ul>
-                      </li>
-                      <li class="dropdown"><a href="#">Dark Styles</a>
-                        <ul>
-                          <li><a href="index-1-dark.html">Dark Style One</a></li>
-                          <li><a href="index-2-dark.html">Dark Style Two</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="index-1-rtl.html">RTL Style One</a></li>
-                    </ul>
+                  <li><a href="index.php">Trang chủ</a>
                   </li>
-                  <li class="dropdown"><a href="#">Rooms & Suites</a>
-                    <ul>
-                      <li><a href="page-rooms.html">Rooms</a></li>
-                      <li><a href="page-rooms-suite.html">Rooms and Suits</a></li>
-                      <li><a href="room-details.html">Room Details</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="category-list.php">Loại phòng</a></li>
                   <li class="dropdown"><a href="#">Pages</a>
                     <ul>
                       <li><a href="page-about.html">About</a></li>
@@ -83,103 +76,57 @@
                       <li><a href="news-details.html">News Details</a></li>
                     </ul>
                   </li>
-                  <li><a href="page-contact.html">Contact</a></li>
+                  <li><a href="page-contact.html">Lịch sử giao dịch</a></li>
                 </ul>
               </nav>
-              <!-- Main Menu End-->
             </div>
             <div class="outer-box">
               <button class="search-btn">
                 <img src="images/icons/search.png" alt="Serch-Btn-Img">
               </button>
-              <div class="mobile-nav-toggler"><i class="icon fa fa-bars"></i></div>
-              <!-- Mobile Nav toggler -->
+              <a href="cart.php">
+                <div class="mobile-nav-toggler"><i class="icon fa-regular fa-cart-shopping"></i>
+              </a>
             </div>
           </div>
-          <!-- Mobile Menu  -->
-          <div class="mobile-menu">
-            <div class="menu-backdrop"></div>
-            <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-            <nav class="menu-box">
-              <div class="upper-box">
-                <div class="nav-logo"><a href="index.html"><img src="images/logo-2.png" alt="" title=""></a></div>
-                <div class="close-btn"><i class="icon fa fa-times"></i></div>
+        </div>
+        <div class="search-popup">
+          <span class="search-back-drop"></span>
+          <button class="close-search"><span class="fa fa-times"></span></button>
+          <div class="search-inner">
+            <form method="post" action="https://kodesolution.com/html/2023/hoexr-html/index.html">
+              <div class="form-group">
+                <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                <button type="submit"><i class="fa fa-search"></i></button>
               </div>
-              <ul class="navigation clearfix">
-                <!--Keep This Empty / Menu will come through Javascript-->
-              </ul>
-              <ul class="contact-list-one">
-                <li>
-                  <!-- Contact Info Box -->
-                  <div class="contact-info-box">
-                    <i class="icon lnr-icon-phone-handset"></i>
-                    <span class="title">Call Now</span>
-                    <a href="tel:+92880098670">+92 (8800) - 98670</a>
-                  </div>
-                </li>
-                <li>
-                  <!-- Contact Info Box -->
-                  <div class="contact-info-box">
-                    <span class="icon lnr-icon-envelope1"></span>
-                    <span class="title">Send Email</span>
-                    <a href="mailto:help@company.com">help@company.com</a>
-                  </div>
-                </li>
-                <li>
-                  <!-- Contact Info Box -->
-                  <div class="contact-info-box">
-                    <span class="icon lnr-icon-clock"></span>
-                    <span class="title">Send Email</span>
-                    Mon - Sat 8:00 - 6:30, Sunday - CLOSED
-                  </div>
-                </li>
-              </ul>
-              <ul class="social-links">
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-              </ul>
-            </nav>
-          </div><!-- End Mobile Menu -->
-          <!-- Header Search -->
-          <div class="search-popup">
-            <span class="search-back-drop"></span>
-            <button class="close-search"><span class="fa fa-times"></span></button>
-            <div class="search-inner">
-              <form method="post" action="https://kodesolution.com/html/2023/hoexr-html/index.html">
-                <div class="form-group">
-                  <input type="search" name="search-field" value="" placeholder="Search..." required="">
-                  <button type="submit"><i class="fa fa-search"></i></button>
-                </div>
-              </form>
-            </div>
+            </form>
           </div>
-          <!-- End Header Search -->
+        </div>
+        <!-- End Header Search -->
 
-          <!-- Sticky Header  -->
-          <div class="sticky-header">
-            <div class="auto-container">
-              <div class="inner-container">
-                <!--Logo-->
-                <div class="logo">
-                  <a href="index.html" title=""><img src="images/logo-v5-black.png" alt="" title=""></a>
-                </div>
-                <!--Right Col-->
-                <div class="nav-outer">
-                  <!-- Main Menu -->
-                  <nav class="main-menu">
-                    <div class="navbar-collapse show collapse clearfix">
-                      <ul class="navigation clearfix">
-                        <!--Keep This Empty / Menu will come through Javascript-->
-                      </ul>
-                    </div>
-                  </nav><!-- Main Menu End-->
-                  <!--Mobile Navigation Toggler-->
-                  <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
-                </div>
+        <!-- Sticky Header  -->
+        <div class="sticky-header">
+          <div class="auto-container">
+            <div class="inner-container">
+              <!--Logo-->
+              <div class="logo">
+                <a href="index.html" title=""><img src="images/logo-v5-black.png" alt="" title=""></a>
+              </div>
+              <!--Right Col-->
+              <div class="nav-outer">
+                <!-- Main Menu -->
+                <nav class="main-menu">
+                  <div class="navbar-collapse show collapse clearfix">
+                    <ul class="navigation clearfix">
+                      <!--Keep This Empty / Menu will come through Javascript-->
+                    </ul>
+                  </div>
+                </nav><!-- Main Menu End-->
+                <!--Mobile Navigation Toggler-->
+                <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
               </div>
             </div>
-          </div><!-- End Sticky Menu -->
+          </div>
+        </div><!-- End Sticky Menu -->
         </div>
       </header>

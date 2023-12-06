@@ -1,14 +1,13 @@
 <?php 
 
    @include "../../configs/configs.php";
-    function getTop4PopularRooms() {
+    function getTop4PopularCategory() {
       $options = array(
-        'order_by' => 'rooms.id',
+        'order_by' => 'category.id',
         "limit" => 4,
         "offset" => 0,
       );
-      return get_all('rooms', $options);
+      return get_all('category', $options);
     }
-    $list_rooms_popular = getTop4PopularRooms();
-
+    $list_category_popular = getTop4PopularCategory();
 ?>

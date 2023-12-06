@@ -12,7 +12,7 @@
       <?php @include "./controllers/index.php" ?>
       <?php @include "./layouts/header.php" ?>
       <?php @include "./layouts/banner.php" ?>
-
+      qưeqwe
       <!-- About Section -->
       <section class="about-section">
         <div class="auto-container">
@@ -85,22 +85,22 @@
           </div>
           <div class="row">
             <?php
-                  if (isset($list_rooms_popular) && is_array($list_rooms_popular)) {
-                    foreach ($list_rooms_popular as $index => $room_popular): ?>
+                  if (isset($list_category_popular) && is_array($list_category_popular)) {
+                    foreach ($list_category_popular as $index => $category): ?>
             <div class="room-block col-lg-6 col-md-6 col-sm-12">
               <div class="inner-box wow fadeIn">
                 <div class="image-box">
                   <figure class="image-2 overlay-anim" style="height: 400px;"><img
-                      src="../upload/<?php echo($room_popular["img"]) ?>" alt="">
+                      src="../upload/<?php echo($category["category_image"]) ?>" alt="">
                   </figure>
                 </div>
                 <div class="content-box">
-                  <h6 class="title"><a href="room-details.html"><?php echo($room_popular["name"]) ?></a></h6>
-                  <span class="price"><?php echo($room_popular["price"]) ?>$ / NIGHT</span>
+                  <h6 class="title"><a href="room-details.html"><?php echo($category["category_name"]) ?></a></h6>
+                  <span class="price"><?php echo($category["category_price"]) ?>$ / NIGHT</span>
                 </div>
                 <div class="box-caption">
-                  <a href="room-details.php?action=detail&room_details=<?= $room_popular['id'] ?>" title=""
-                    class="book-btn">book now</a>
+                  <a href="category-details.php?action=detail&category-details=<?= $category['id'] ?>" title=""
+                    class="book-btn">Đặt ngay</a>
                   <ul class="bx-links">
                     <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
                     <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
@@ -248,7 +248,7 @@
                   sea, prima quidam vim no. Duo nobis persecuti cu.</p>
                 <div class="contact-info">
                   <div class="icon-box"><i class="flaticon-customer-service"></i></div>
-                  <span>Booking Now</span>
+                  <a href="#"><span>Booking Now</span></a>
                   <h4 class="title">956 220 6666</h4>
                 </div>
               </div>

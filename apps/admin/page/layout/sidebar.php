@@ -57,20 +57,20 @@
       <span class="menu-header-text" data-i18n="Quản lý khách sạn">Quản lý khách sạn</span>
     </li>
     <li class="menu-item">
-      <a href="app-email.html" class="menu-link">
+      <a href="../dashboard/index.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div class="text-truncate">Trang quản trị</div>
       </a>
     </li>
-    <li class="menu-item active open">
+    <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-door-open"></i>
         <div class="text-truncate">Quản lí phòng</div>
       </a>
       <ul class="menu-sub">
-        <li class="menu-item active open">
+        <li class="menu-item">
           <ul class="menu-sub">
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="../rooms/list_rooms.php" class="menu-link">
                 <div class="text-truncate">
                   Danh sách phòng
@@ -94,7 +94,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="app-ecommerce-manage-reviews.html" class="menu-link">
+          <a href="../room_service/list_service.php" class="menu-link">
             <div class="text-truncate">
               Danh sách dịch vụ
             </div>
@@ -108,67 +108,20 @@
         <div class="text-truncate">Quản lí đặt phòng</div>
       </a>
       <ul class="menu-sub">
-        <li class="menu-item ">
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="../rooms/list_rooms.php" class="menu-link">
-                <div class="text-truncate">
-                  Danh sách phòng
-                </div>
-              </a>
-            </li>
-
-          </ul>
-        </li>
         <li class="menu-item">
-          <a href="../rooms/create_rooms.php" class="menu-link">
+          <a href="../booking/list_booking.php" class="menu-link">
             <div class="text-truncate">
-              Thêm phòng mới
+              Danh sách phòng đặt
             </div>
           </a>
         </li>
         <li class="menu-item">
           <a href="../category/list_category.php" class="menu-link">
             <div class="text-truncate">
-              Danh sách loại phòng
+              Danh sách phòng đặt
             </div>
           </a>
         </li>
-      </ul>
-    </li>
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-door-open"></i>
-        <div class="text-truncate">Quản lí hóa đơn</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item ">
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="app-ecommerce-product-list.html" class="menu-link">
-                <div class="text-truncate">
-                  Danh sách phòng
-                </div>
-              </a>
-            </li>
-
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="app-ecommerce-manage-reviews.html" class="menu-link">
-            <div class="text-truncate">
-              Thêm phòng mới
-            </div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="app-ecommerce-manage-reviews.html" class="menu-link">
-            <div class="text-truncate">
-              Danh sách loại phòng
-            </div>
-          </a>
-        </li>
-
       </ul>
     </li>
     <li class="menu-item">
@@ -178,16 +131,67 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="app-ecommerce-manage-reviews.html" class="menu-link">
+          <a href="../users/list_staff.php" class="menu-link">
             <div class="text-truncate">
-              Danh sách người dùng
+              Danh sách nhân viên
             </div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="app-ecommerce-manage-reviews.html" class="menu-link">
+          <a href="../users/list_customer.php" class="menu-link">
             <div class="text-truncate">
-              Danh sách loại phòng
+              Danh sách khách hàng
+            </div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../roles/roles.php" class="menu-link">
+            <div class="text-truncate">
+              Quản lý vai trò
+            </div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-door-open"></i>
+        <div class="text-truncate">Quản lí người dùng</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="../users/list_staff.php" class="menu-link">
+            <div class="text-truncate">
+              Danh sách nhân viên
+            </div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../users/list_customer.php" class="menu-link">
+            <div class="text-truncate">
+              Danh sách khách hàng
+            </div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../roles/roles.php" class="menu-link">
+            <div class="text-truncate">
+              Quản lý vai trò
+            </div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-door-open"></i>
+        <div class="text-truncate">Quản lí bài viết</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="../comment/list_comment.php" class="menu-link">
+            <div class="text-truncate">
+              Quản lí bình luận
             </div>
           </a>
         </li>

@@ -8,32 +8,10 @@
             <div class="nav-outer">
               <nav class="nav main-menu">
                 <ul class="navigation">
-                  <li class="dropdown"><a href="#">Home</a>
-                    <ul>
-                      <li><a href="index.html">Home qweqweqweqwepage 01</a></li>
-                      <li><a href="index-2.html">Home page 02</a></li>
-                      <li class="dropdown"><a href="#">Single Styles</a>
-                        <ul>
-                          <li><a href="index-1-single.html">Single Style One</a></li>
-                          <li><a href="index-2-single.html">Single Style Two</a></li>
-                        </ul>
-                      </li>
-                      <li class="dropdown"><a href="#">Dark Styles</a>
-                        <ul>
-                          <li><a href="index-1-dark.html">Dark Style One</a></li>
-                          <li><a href="index-2-dark.html">Dark Style Two</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="index-1-rtl.html">RTL Style One</a></li>
-                    </ul>
+                  <li><a href="index.php">Trang chủ</a>
                   </li>
-                  <li class="dropdown"><a href="#">Rooms & Suites</a>
-                    <ul>
-                      <li><a href="page-rooms.html">Rooms</a></li>
-                      <li><a href="page-rooms-suite.html">Rooms and Suits</a></li>
-                      <li><a href="room-details.html">Room Details</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="category-list.php">Loại phòng</a></li>
+
                   <li class="dropdown"><a href="#">Pages</a>
                     <ul>
                       <li><a href="page-about.html">About</a></li>
