@@ -104,11 +104,13 @@
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
+
                           <a href="list_staff.php?action=delete&delete_staff_id=<?= $staff['id'] ?>">
                             <button class=" btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
                           </a>
+
                         </td>
                       </tr>
                       <?php endforeach;
