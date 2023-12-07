@@ -10,31 +10,14 @@
     <meta name="description"
       content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
-    <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/">
-    <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
-    <script>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
-    </script>
     <link rel="icon" type="image/x-icon"
       href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
-      rel="stylesheet"> <!-- Icons -->
+      rel="stylesheet">
     <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css" />
     <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
     <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" /> <!-- Core CSS -->
@@ -52,28 +35,26 @@
   </head>
 
   <body>
-    <?php @include "../../controllers/rooms_controller.php" ?>
+    <?php @include "../../controllers/checking_rooms.php" ?>
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <?php @include "../layout/sidebar.php" ?>
         <div class="layout-page">
           <?php @include "../layout/navbar.php" ?>
           <div class="content-wrapper">
-
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
-                <span class="text-muted fw-light">Trang quản trị /</span> Danh sách phòng
+                <span class="text-muted fw-light">Trang quản trị /</span> Danh sách phòng đã đặt
               </h4>
-              <!-- Product List Table -->
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title">Danh sách phòng</h5>
+                  <h5 class="card-title">Danh sách phòng đã đặt</h5>
                   <div class="row justify-content-between">
                     <div class="row col-sm-12 col-md-6 justify-content-md-end">
                       <div style="display: flex; gap: 15px;">
                         <input type="search" class="form-control" placeholder="Tìm kiếm theo tên phòng" id="searchInput"
                           onchange="searchRooms()"
-                          value="<?php echo isset($_GET['search_rooms']) ? htmlspecialchars($_GET['search_rooms']) : ''; ?>">
+                          value="<?php echo isset($_GET['search_value']) ? htmlspecialchars($_GET['search_value']) : ''; ?>">
                       </div>
                     </div>
                     <?php if ($isCreateRoom): ?>
@@ -95,42 +76,38 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th></th>
+                        <th>Mã đơn hàng</th>
                         <th>Phòng</th>
-                        <th>Loại phòng</th>
-                        <th>Số người ở</th>
-                        <th>Giá phòng</th>
+                        <th>Checkin</th>
+                        <th>Checkout</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      if (isset($list_rooms) && is_array($list_rooms)) {
-                        foreach ($list_rooms as $index => $rooms):
+                      if (isset($list_checking_rooms) && is_array($list_checking_rooms)) {
+                        foreach ($list_checking_rooms as $index => $item):
                           ?>
                       <tr>
                         <td style="width:10px">
                           <?php echo $index + 1 ?>
                         </td>
-                        <td style="width:90px"><img src="../../../upload/<?= $rooms['room_image'] ?>" height="60"
-                            width="80" class="rounded">
-                        </td>
                         <td><span>
-                            <?php echo $rooms['room_name'] ?>
+                            ĐH-<?php echo $item['orders_code'] ?>
                           </span></td>
                         <td><span>
-                            <?php echo $rooms['category_name'] ?>
+                            <?php echo $item['room_name'] ?>
                           </span></td>
                         <td><span>
-                            <?php echo $rooms['category_adult'] ?>
+                            <?php echo $item['checking_rooms_checkin'] ?>
                           </span></td>
-                        <td><span>$
-                            <?php echo number_format($rooms['category_price'], 2, '.', ',') ?>
+                        <td><span>
+                            <?php echo $item['checking_rooms_checkout'] ?>
                           </span></td>
                         <td>
                           <span>
-                            <?php if ($rooms['room_status'] == 1): ?>
+                            <?php if ($item['room_status'] == 1): ?>
                             <span class="badge bg-label-primary me-1">Còn trống</span>
                             <?php else: ?>
                             <span class="badge bg-label-primary me-1">Đã đặt</span>
@@ -202,10 +179,8 @@
   <script>
   function searchRooms() {
     var searchValue = document.getElementById('searchInput').value;
-    window.location.href = '?search_rooms=' + encodeURIComponent(searchValue);
+    window.location.href = '?search_value=' + encodeURIComponent(searchValue);
   }
   </script>
 
 </html>
-
-<!-- beautify ignore:end -->

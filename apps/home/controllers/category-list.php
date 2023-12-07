@@ -1,6 +1,8 @@
 <?php 
 
    @include "../../configs/configs.php";
+   session_start();
+
     function getListCategory() {
       $options = array(
         'order_by' => 'category.id',

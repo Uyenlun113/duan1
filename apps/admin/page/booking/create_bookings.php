@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <?php   include "../../controllers/bookingrooms.php"; ?>
+    <?php @include "../../controllers/bookingrooms.php"; ?>
 
     <div class="layout-wrapper layout-content-navbar  ">
       <div class="layout-container">

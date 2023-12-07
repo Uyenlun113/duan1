@@ -1,5 +1,6 @@
 <?php
 @include "../../configs/configs.php";
+session_start();
 
 
 if (isset($_POST["login_home"])) {

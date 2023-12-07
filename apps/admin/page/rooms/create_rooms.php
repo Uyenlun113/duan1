@@ -41,7 +41,8 @@
               <h4 class="py-3 mb-4">
                 <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm phòng mới</span>
               </h4>
-              <form class="row g-3" method="POST" action="create_rooms.php" enctype="multipart/form-data" novalidate>
+              <form method="POST" class="needs-validation" action="create_rooms.php" enctype="multipart/form-data"
+                novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
@@ -62,7 +63,7 @@
                         <div class="card-body">
                           <div class="row">
                             <div class="mb-3 col-md-3">
-                              <label class="form-label" for="ecommerce-product-name">Mã phòng</label>
+                              <label class="form-label">Mã phòng</label>
                               <input type="text" class="form-control" placeholder="Nhập mã phòng" name="room_code"
                                 required>
                               <div class="invalid-feedback">
@@ -185,13 +186,11 @@
               event.preventDefault()
               event.stopPropagation()
             }
-
             form.classList.add('was-validated')
           }, false)
         })
     })()
     </script>
-
     <script>
     var quill = new Quill('#snow-editor', {
       theme: 'snow'
@@ -201,6 +200,7 @@
       document.getElementById('roomDescriptionInput').value = content;
     });
     </script>
+    <script src="../../assets/js/form-validation.js"></script>
   </body>
 
 </html>

@@ -1,8 +1,9 @@
 <?php 
    @include "../../configs/configs.php";
+session_start();
 
-if(isset($_SESSION['data_login'])) {
-    $userData = $_SESSION['data_login'];
+if(isset($_SESSION['login_home'])) {
+    $userData = $_SESSION['login_home'];
 } else {
     echo "<script>window.top.location='login.php'</script>";
 }

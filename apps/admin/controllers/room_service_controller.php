@@ -1,5 +1,7 @@
 <?php
     include_once "../../../../configs/configs.php";
+        include_once "../../../../configs/check-auth-admin.php";
+
     function getAllService() {
         $options = array('order_by' => 'id');
         return get_all('room_service', $options);

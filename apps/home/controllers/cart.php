@@ -1,11 +1,10 @@
 <?php 
-
    @include "../../configs/configs.php";
-    if(isset($_SESSION['data_login'])) {
-        $userData = $_SESSION['data_login'];
-    } else {
-        echo "<script>window.top.location='login.php'</script>";
-    }
+   session_start();
+
+    if(isset($_SESSION['login_home'])) {
+        $userData = $_SESSION['login_home'];
+    } 
     function getCart($userData) {
       $options = array(
         'order_by' => 'cart_items.id ',

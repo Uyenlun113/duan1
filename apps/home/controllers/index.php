@@ -1,6 +1,8 @@
 <?php 
 
    @include "../../configs/configs.php";
+   session_start();
+
     function getTop4PopularCategory() {
       $options = array(
         'order_by' => 'category.id',
