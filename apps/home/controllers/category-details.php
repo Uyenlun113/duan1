@@ -1,8 +1,8 @@
 <?php 
-
    @include "../../configs/configs.php";
-    if(isset($_SESSION['data_login'])) {
-        $userData = $_SESSION['data_login'];
+   session_start();
+    if(isset($_SESSION['login_home'])) {
+        $userData = $_SESSION['login_home'];
     }
 
     if (isset($_GET['category-details'])) {

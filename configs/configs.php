@@ -1,13 +1,6 @@
 <?php
 session_start();
-$dataLoginUser = $_SESSION['login_admin'];
-function checkLogin()
-{
-    if (!isset($_SESSION['login_admin'])) {
-        header('Location: ../auth/login.php');
-    }
-}
-checkLogin();
+   
 function pdo_get_connection()
 {
     $servername = 'localhost';
@@ -157,10 +150,4 @@ function delete_data($table, $where)
         return 'Error: ' . $e->getMessage();
     }
 }
-
-// Kiểm tra quyền CREATE_ROOM
-$isCreateRoom = strpos($dataLoginUser['permission_codes'], 'CREATE_ROOM') !== false;
-$isDeleteRoom = strpos($dataLoginUser['permission_codes'], 'DELETE_ROOM') !== false;
-$isUpdateRoom = strpos($dataLoginUser['permission_codes'], 'UPDATE_ROOM') !== false;
-$isDeleteStaff = strpos($dataLoginUser['permission_codes'], 'DELETE_STAFF') !== false;
 ?>

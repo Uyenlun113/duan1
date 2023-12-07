@@ -13,22 +13,6 @@
       content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5" />
 
-    <script>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        "gtm.start": new Date().getTime(),
-        event: "gtm.js"
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src =
-        "../../../../www.googletagmanager.com/gtm5445.html?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-5DDHKGP");
-    </script>
     <style>
     .multiline-ellipsis {
       overflow: hidden;
@@ -38,6 +22,9 @@
     }
     </style>
     <?php @include "../layout/import_link.php" ?>
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/rateyo/rateyo.css" />
   </head>
 
   <body>
@@ -85,7 +72,9 @@
                         <td><?php echo $index + 1 ?></td>
                         <td><span><?php echo $comment['category_name'] ?></span></td>
                         <td><span><?php echo $comment['user_name'] ?></span></td>
-                        <td><span><?php echo $comment['comment_vote'] ?></span></td>
+                        <td><span><?php echo $comment['comment_vote'] ?>
+                            <div class="read-only-ratings" data-rateyo-read-only="true"></div>
+                          </span></td>
                         <td><span><?php echo $comment['create_date'] ?></span></td>
                         <td><span>
                             <div class="multiline-ellipsis">
@@ -141,6 +130,7 @@
 
   </body>
   <?php @include "../layout/import_script.php" ?>
+  <script src="../../assets/js/extended-ui-star-ratings.js"></script>
 
 </html>
 

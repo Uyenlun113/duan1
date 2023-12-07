@@ -1,6 +1,7 @@
 <?php 
-
   @include "../../configs/configs.php";
+  session_start();
+
   function handleRegister($users_avatar,$users_name, $users_CCCD, $users_address, $users_birthday, $users_phone_number, $users_email, $users_account, $users_password) {
         $data = array(
             'users_code' => rand(000000,99999999),

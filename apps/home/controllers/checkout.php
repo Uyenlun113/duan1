@@ -1,12 +1,12 @@
 <?php 
-
     @include "../../configs/configs.php";
+session_start();
 
-    if(isset($_SESSION['data_login'])) {
-        $userData = $_SESSION['data_login'];
-    } else {
-        echo "<script>window.top.location='login.php'</script>";
-    }
+    // if(isset($_SESSION['data_login'])) {
+    //     $userData = $_SESSION['data_login'];
+    // } else {
+    //     echo "<script>window.top.location='login.php'</script>";
+    // }
     function execPostRequest($url, $data){
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");

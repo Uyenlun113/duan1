@@ -1,5 +1,7 @@
 <?php
     include_once "../../../../configs/configs.php";
+        include_once "../../../../configs/check-auth-admin.php";
+
     //list danh sách
     function getAllComment() {
         $options = array(

@@ -1,17 +1,20 @@
 <?php
 include_once '../../../../configs/configs.php';
+    include_once "../../../../configs/check-auth-admin.php";
 
-echo json_encode( $dataLoginUser['permission_codes']);
-
-
-function getListRooms() {
+function getListRooms($search_rooms) {
     $options = array(
         'select' => 'rooms.*, category.category_name as category_name , category.category_price as category_price , category.category_adult as category_adult',
         'order_by' => 'rooms.id',
         'join' => 'JOIN category ON rooms.category_id = category.id'
     );
+    if (!empty($search_rooms)) {
+        $options['where'] = "rooms.room_name LIKE '%$search_rooms%' OR rooms.room_code LIKE '%$search_rooms%'";
+    }
     return get_all( 'rooms', $options );
 }
+$searchValue = isset($_GET['search_rooms']) ? htmlspecialchars($_GET['search_rooms']) : '';
+$list_rooms = getListRooms($searchValue);
 
 function getAllCategories() {
     $options = array(
@@ -29,7 +32,6 @@ function getAllService() {
     return get_all( 'room_service', $options );
 }
 
-$list_rooms = getListRooms();
 $list_categories = getAllCategories();
 $allServices = getAllService();
 

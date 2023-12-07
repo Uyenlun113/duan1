@@ -1,5 +1,7 @@
 <?php
     include_once "../../../../configs/configs.php";
+        include_once "../../../../configs/check-auth-admin.php";
+
     // if (!isset($_SESSION['login_admin'])) {
     //     echo "<script>window.top.location='../auth/login.php'</script>";
     // }
@@ -71,7 +73,6 @@
     }
 
 
-     // lấy ra thông tin sản phẩm vào form sửa
 if (isset($_GET['update-roles'])) {
     $roles_id = intval($_GET['update-roles']);
     $detail_roles = get_a_data('roles', $roles_id);
