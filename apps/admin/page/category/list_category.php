@@ -92,7 +92,8 @@
                           <?php echo $catrgory['category_name'] ?>
                         </td>
                         <td>
-                          <?php echo $catrgory['category_price'] ?>
+                          <?php echo number_format($catrgory['category_price'], 0, '.', ','); ?>
+
                         </td>
                         <td>
                           <?php echo $catrgory['create_date'] ?>

@@ -41,7 +41,8 @@
               <h4 class="py-3 mb-4">
                 <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm loại phòng</span>
               </h4>
-              <form class="row g-3" method="POST" action="create_category.php" enctype="multipart/form-data" novalidate>
+              <form class="needs-validation" method="POST" action="create_category.php" enctype="multipart/form-data"
+                novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
@@ -85,7 +86,7 @@
                               <input type="file" class="form-control" name="category_image"
                                 id="basic-default-upload-file" required="">
                               <div class="invalid-feedback">
-                                Mời bạn nhập tên phòng!
+                                Mời bạn chọn hình ảnh!
                               </div>
                             </div>
                             <div class=" col-md-2">
@@ -135,14 +136,20 @@
                         <div class="card-body">
                           <div class="mb-3">
                             <label class="form-label" for="ecommerce-product-price">Giá tiền</label>
-                            <input type="number" class="form-control" placeholder="Nhập giá phòng"
-                              name="category_price">
+                            <input type="number" class="form-control" placeholder="Nhập giá phòng" name="category_price"
+                              required>
+                            <div class="invalid-feedback">
+                              Mời bạn nhập giá!
+                            </div>
                           </div>
 
                           <div class="mb-3">
                             <label class="form-label" for="ecommerce-product-price">Số người tối đa</label>
                             <input type="number" class="form-control" placeholder="Nhập số người tối đa"
-                              name="category_adult">
+                              name="category_adult" required>
+                            <div class="invalid-feedback">
+                              Mời bạn nhập số người ở!
+                            </div>
                           </div>
                           <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1" for="status-org">Trạng thái
@@ -196,6 +203,7 @@
       document.getElementById('categoryDescriptionInput').value = content;
     });
     </script>
+    <script src="../../assets/js/form-validation.js"></script>
   </body>
 
 </html>

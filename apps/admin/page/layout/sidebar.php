@@ -76,7 +76,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="../category/list_category.php" class="menu-link">
+          <a href="../rooms/create_rooms.php" class="menu-link">
             <div class="text-truncate">
               Thêm mới phòng
             </div>

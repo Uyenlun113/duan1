@@ -126,7 +126,7 @@
                             <?php echo $rooms['category_adult'] ?>
                           </span></td>
                         <td><span>$
-                            <?php echo number_format($rooms['category_price'], 2, '.', ',') ?>
+                            <?php echo number_format($rooms['category_price'], 0, '.', ',') ?>
                           </span></td>
                         <td>
                           <span>

@@ -47,7 +47,8 @@
               <h4 class="py-3 mb-4">
                 <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm mới nhân viên</span>
               </h4>
-              <form class="row g-3" method="POST" action="create_staff.php" enctype="multipart/form-data" novalidate>
+              <form class="needs-validation" method="POST" action="create_staff.php" enctype="multipart/form-data"
+                novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
@@ -115,7 +116,7 @@
                             <input type="password" class="form-control" placeholder="Nhập mật khẩu"
                               name="users_password" required>
                             <div class="invalid-feedback">
-                              Mời bạn nhập tên nhân viên!
+                              Mời bạn nhập mật khẩu!
                             </div>
                           </div>
                         </div>
@@ -129,21 +130,35 @@
                         <div class="card-body">
                           <div class="mb-3">
                             <label class="form-label" for="ecommerce-product-price">Số CCCD</label>
-                            <input type="text" class="form-control" placeholder="Nhập số CCCD" name="users_CCCD">
+                            <input type="text" class="form-control" placeholder="Nhập số CCCD" name="users_CCCD"
+                              required>
+                            <div class="invalid-feedback">
+                              Mời bạn nhập số CCCD!
+                            </div>
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="ecommerce-product-price">Số điện thoại</label>
                             <input type="text" class="form-control" placeholder="Nhập số điện thoại"
-                              name="users_phone_number">
+                              name="users_phone_number" required>
+                            <div class="invalid-feedback">
+                              Mời bạn nhập số điện thoại!
+                            </div>
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="ecommerce-product-price">Ngày tháng năm sinh</label>
                             <input type="date" class="form-control" placeholder="Nhập số điện thoại"
-                              name="users_birthday">
+                              name="users_birthday" required>
+                            <div class="invalid-feedback">
+                              Mời bạn nhập năm sinh!
+                            </div>
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="ecommerce-product-price">Địa chỉ</label>
-                            <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="users_address">
+                            <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="users_address"
+                              required>
+                            <div class="invalid-feedback">
+                              Mời bạn nhập địa chỉ!
+                            </div>
                           </div>
                           <div class="mb-3">
                             <label for="ecommerce-product-tags" class="form-label mb-1">Chức vụ</label>
@@ -158,6 +173,7 @@
                               echo "Không có dữ liệu danh mục.";
                             } ?>
                             </select>
+
                           </div>
                         </div>
                       </div>
@@ -221,6 +237,7 @@
     <script src="../../assets/js/forms-selects.js"></script>
     <script src="../../assets/js/forms-tagify.js"></script>
     <script src="../../assets/js/forms-typeahead.js"></script>
+    <script src="../../assets/js/form-validation.js"></script>
   </body>
 
 </html>

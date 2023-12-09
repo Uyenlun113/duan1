@@ -5,12 +5,20 @@
     <meta charset="utf-8">
     <title>Hoexr | Hotel HTML Template Template</title>
     <?php include "./layouts/link.php" ?>
+    <style>
+    table.tbl-shopping-cart th,
+    table.tbl-shopping-cart td,
+    table.cart-total th,
+    table.cart-total td {
+      padding: 10px 20px;
+    }
+    </style>
   </head>
 
   <body>
     <div class="page-wrapper">
       <div class="preloader"></div>
-      <?php @include "./controllers/cart.php" ?>
+      <?php @include "./controllers/cart-controller.php" ?>
       <?php @include "./layouts/header2.php" ?>
       <section class="page-title" style="background-image: url(images/background/page-title-bg.png);">
         <div class="auto-container">
@@ -34,66 +42,88 @@
                       <tr>
                         <th></th>
                         <th>Tên loại phòng</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
+                        <th>Checkin/Checkout</th>
+                        <th>Giá phòng</th>
                         <th>Số lượng</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                  if (isset($list_cart_items) && is_array($list_cart_items)) {
-                    foreach ($list_cart_items as $index => $item_cart): ?>
+                      if (isset($list_cart_items) && is_array($list_cart_items)) {
+                        foreach ($list_cart_items as $index => $item_cart): ?>
                       <tr class="cart_item">
-
-                        <td class="product-thumbnail"><a href="#"><img alt="product"
-                              src="images/resource/products/1.jpg"></a></td>
+                        <td class="" style="width:100px;padding:10px;">
+                          <img src="../upload/<?php echo ($item_cart["category_image"]) ?>" alt="" style="width:100%">
+                        </td>
                         <td class="product-name">
-                          <a href="shop-product-details.html"><?php echo $item_cart['category_name'] ?></a>
-                          <ul class="variation">
-                            <li class="variation-size">Size: <span>Medium</span></li>
-                          </ul>
+                          <a href="shop-product-details.html">
+                            <?php echo $item_cart['category_name'] ?>
+                          </a>
                         </td>
                         <td class="product-price">
                           <span class="amount">
-                            Check in: <?php echo $item_cart['cart_item_checkin'] ?>
+                            Check in:
+                            <?php echo $item_cart['cart_item_checkin'] ?>
                             <br />
-                            Check out: <?php echo $item_cart['cart_item_checkin'] ?>
+                            Check out:
+                            <?php echo $item_cart['cart_item_checkin'] ?>
                           </span>
                         </td>
-
-                        <td class="product-subtotal"><span class="amount">$36.00</span></td>
-
+                        <td class="product-subtotal">
+                          <span class="amount">
+                            <?php echo (formatMoney($item_cart['cart_item_price'])) ?>
+                          </span>
+                        </td>
                         <td class="product-quantity">
-                          <span class="amount">1</span>
+                          <span class="amount">
+                            <?php echo $item_cart['cart_item_quantity'] ?>
+                          </span>
                         </td>
                       </tr>
                       <?php endforeach;
-                          } ?>
+                      } ?>
                     </tbody>
                   </table>
+                  <a href="index.php">
+                    <span class="btn-title"><i>Tiếp tục đặt phòng &#8250; </i></span>
+                  </a>
                 </div>
               </div>
               <div class="col-md-3">
-                <h4>Cart Totals</h4>
+                <h4>Tổng thanh toán</h4>
                 <table class="table table-bordered cart-total">
                   <tbody>
+                    <?php
+                    if (isset($list_cart_items) && is_array($list_cart_items)) {
+                      foreach ($list_cart_items as $index => $item_cart): ?>
                     <tr>
-                      <td>Cart Subtotal</td>
-                      <td>$180.00</td>
+                      <td>
+                        <span>
+                          <?php echo $item_cart['category_name'] ?>
+                          &times;
+                          <?php echo $item_cart['cart_item_quantity'] ?>
+                        </span>
+                      </td>
+                      <td style="width:110px;padding:10px 10px">
+                        <?php echo (formatMoney($item_cart['cart_item_quantity'] * $item_cart['cart_item_price'] )) ?>
+                      </td>
                     </tr>
+                    <?php endforeach;
+                    } ?>
                     <tr>
-                      <td>Shipping and Handling</td>
-                      <td>$70.00</td>
-                    </tr>
-                    <tr>
-                      <td>Order Total</td>
-                      <td>$250.00</td>
+                      <td>Tổng tiền</td>
+                      <td style="width:110px;padding:10px 10px">
+                        <?php echo (formatMoney($totalPrice)) ?>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
-                <a class="theme-btn btn-style-one" href="checkout.php">
-                  <span class="btn-title">Thanh toán</span>
+                <?php if ($totalPrice > 0): ?>
+                <a class="theme-btn btn-style-one" style="width:100%" href="checkout.php">
+                  <span class="btn-title">Thanh toán ngay</span>
                 </a>
+                <?php endif; ?>
+
               </div>
             </div>
           </div>

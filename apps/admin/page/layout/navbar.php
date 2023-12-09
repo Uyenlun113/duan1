@@ -402,7 +402,7 @@
                 </div>
                 <div class="flex-grow-1">
                   <span class="fw-medium d-block">John Doe</span>
-                  <small class="text-muted">Admin</small>
+
                 </div>
               </div>
             </a>
@@ -411,7 +411,7 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            <a class="dropdown-item" href="pages-profile-user.html">
+            <a class="dropdown-item" href="../profile/profile.php">
               <i class="bx bx-user me-2"></i>
               <span class="align-middle">Thông tin cá nhân</span>
             </a>

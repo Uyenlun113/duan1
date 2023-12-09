@@ -33,15 +33,16 @@
     <?php @include "../../controllers/roles-controller.php" ?>
     <div class="layout-wrapper layout-content-navbar ">
       <div class="layout-container">
-        <?php @include "../layout/sidebar.php1" ?>
+        <?php @include "../layout/sidebar.php" ?>
         <div class="layout-page">
-          <?php @include "../layout/navbar.php1" ?>
+          <?php @include "../layout/navbar.php" ?>
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
                 <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm mới chức vụ</span>
               </h4>
-              <form class="row g-3" method="POST" action="create-roles.php" enctype="multipart/form-data" novalidate>
+              <form class="needs-validation" method="POST" action="create-roles.php" enctype="multipart/form-data"
+                novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
@@ -49,7 +50,7 @@
                       <p class="text-muted">Thêm một nhân viên mới vào hệ thống</p>
                     </div>
                     <div class="d-flex align-content-center flex-wrap gap-3">
-                      <a href="list_staff.php"><button type="button" class="btn btn-label-secondary">Hủy bỏ</button></a>
+                      <a href="roles.php"><button type="button" class="btn btn-label-secondary">Hủy bỏ</button></a>
                       <button type="submit" name="create_roles" class="btn btn-primary">Thêm mới</button>
                     </div>
                   </div>
@@ -74,7 +75,7 @@
                               <input type="text" class="form-control" placeholder="Nhập tên chức vụ" name="roles_name"
                                 required>
                               <div class="invalid-feedback">
-                                Mời bạn nhập tên nhân viên!
+                                Mời bạn nhập tên chức vụ!
                               </div>
                             </div>
                           </div>
@@ -156,6 +157,7 @@
       document.getElementById('roomDescriptionInput').value = content;
     });
     </script>
+    <script src="../../assets/js/form-validation.js"></script>
   </body>
 
 </html>
