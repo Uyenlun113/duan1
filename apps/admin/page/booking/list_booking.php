@@ -117,9 +117,13 @@
                               <td style="width:150px">
                                 <?php echo $orders['orders_code'] ?>
                               </td>
-                              <td style="width:15%"><span>
-                                  <?php echo $orders['users_name'] ?>
-                                </span></td>
+                              <td style="width:15%">
+                                <span>
+                                  <?php echo (!empty($orders['users_id'])) ? $orders['users_name'] : $orders['orders_user_name']; ?>
+                                </span>
+
+
+                              </td>
 
                               <td style="text-align:center"><span>
                                   <?php echo ($orders['orders_total']) ?>
@@ -235,7 +239,7 @@
                                 <?php echo $orders['orders_code'] ?>
                               </td>
                               <td style="width:15%"><span>
-                                  <?php echo $orders['users_name'] ?>
+                                  <?php echo (!empty($orders['users_id'])) ? $orders['users_name'] : $orders['orders_user_name']; ?>
                                 </span></td>
 
                               <td style="text-align:center"><span>
@@ -337,7 +341,7 @@
                                 <?php echo $orders['orders_code'] ?>
                               </td>
                               <td style="width:15%"><span>
-                                  <?php echo $orders['users_name'] ?>
+                                  <?php echo (!empty($orders['users_id'])) ? $orders['users_name'] : $orders['orders_user_name']; ?>
                                 </span></td>
 
                               <td style="text-align:center"><span>
@@ -431,7 +435,7 @@
                                 <?php echo $orders['orders_code'] ?>
                               </td>
                               <td style="width:15%"><span>
-                                  <?php echo $orders['users_name'] ?>
+                                  <?php echo (!empty($orders['users_id'])) ? $orders['users_name'] : $orders['orders_user_name']; ?>
                                 </span></td>
 
                               <td style="text-align:center"><span>
@@ -526,7 +530,7 @@
                                 <?php echo $orders['orders_code'] ?>
                               </td>
                               <td style="width:15%"><span>
-                                  <?php echo $orders['users_name'] ?>
+                                  <?php echo (!empty($orders['users_id'])) ? $orders['users_name'] : $orders['orders_user_name']; ?>
                                 </span></td>
 
                               <td style="text-align:center"><span>

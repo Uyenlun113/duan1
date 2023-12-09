@@ -41,7 +41,8 @@
               <h4 class="py-3 mb-4">
                 <span class="text-muted fw-light">Trang quản trị /</span><span> Thêm dịch vụ</span>
               </h4>
-              <form class="row g-3" method="POST" action="create_service.php" enctype="multipart/form-data" novalidate>
+              <form class="needs-validation" method="POST" action="create_service.php" enctype="multipart/form-data"
+                novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
@@ -117,7 +118,11 @@
                             </label>
                             <input type="text" class="form-control" placeholder="Nhập giá dịch vụ" name="price_service"
                               required>
+                            <div class="invalid-feedback">
+                              Mời bạn nhập giá dịch vụ!
+                            </div>
                           </div>
+
                           <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1" for="status-org">Trạng thái
                             </label>
@@ -169,6 +174,7 @@
       document.getElementById('serviceDescriptionInput').value = content;
     });
     </script>
+    <script src="../../assets/js/form-validation.js"></script>
   </body>
 
 </html>

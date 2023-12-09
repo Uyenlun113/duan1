@@ -8,7 +8,7 @@ function getOrderAll()
     $options = array(
         'select' => 'orders.*, users.users_name, users.id as users_id',
         'order_by' => 'id',
-        'join' => 'join users on users.id = orders.users_id'
+        'join' => 'LEFT JOIN users on users.id = orders.users_id'
     );
     return get_all('orders', $options);
 }
@@ -19,7 +19,7 @@ function getOrderByStatus($status)
     $options = array(
         'select' => 'orders.*, users.users_name, users.id as users_id',
         'order_by' => 'id',
-        'join' => 'join users on users.id = orders.users_id',
+        'join' => 'LEFT JOIN users on users.id = orders.users_id',
         'where' => "orders_status = $status"
     );
     return get_all('orders', $options);
@@ -63,71 +63,70 @@ $list_rooms = getAllRoom();
 
 
 
-function addOrders($users_name, $users_phone_number, $users_email, $total_price, $booking_payment)
+function addOrder($orders_user_name, $orders_user_phone, $orders_user_adders, $orders_payment_method, $orders_total, $orders_deposit, $orders_description,$orders_status)
 {
     $data = array(
-        'booking_code' => generateRandomString('DP', 6),
-        'users_name' => $users_name,
-        'users_phone_number' => $users_phone_number,
-        'users_email' => $users_email,
-        'total_price' => $total_price,
-        'booking_payment' => $booking_payment,
+        'orders_code' => generateRandomString('DP', 6),
+        'orders_user_name' => $orders_user_name,
+        'orders_user_phone' => $orders_user_phone,
+        'orders_user_adders' => $orders_user_adders,
+        'orders_payment_method' => $orders_payment_method,
+        'orders_total' => $orders_total,
+        'orders_deposit' => $orders_deposit,
+         'orders_description' => $orders_description,
+         'orders_status' => 1,
+        
         'create_date' => date('Y-m-d')
     );
-    return save_and_get_result('bookings', $data);
+    return save_and_get_result('orders', $data);
 }
 
-function addBookingRoom($booking_id, $category_id, $booking_room_checkin, $booking_room_checkout, $booking_quantity)
+function addOrderItem($orders_id, $category_id, $orders_item_checkin, $orders_item_checkout, $orders_item_quantity)
 {
     $data = array(
-        'booking_id' => $booking_id,
+        'orders_id' => $orders_id,
         'category_id' => $category_id,
-        'booking_room_checkin' => $booking_room_checkin,
-        'booking_room_checkout' => $booking_room_checkout,
-        'booking_quantity' => $booking_quantity,
-        'booking_total_price' => 10000,
+        'orders_item_checkin' => $orders_item_checkin,
+        'orders_item_checkout' => $orders_item_checkout,
+        'orders_item_quantity' => $orders_item_quantity,
         'create_date' => date('Y-m-d')
     );
-    $result = save_and_get_result('bookingroom', $data);
+    $result = save_and_get_result('orders_item', $data);
     return $result;
-}
-
-function getAllBookingRoomByIdRooms($category_id)
-{
-    $options = array(
-        'order_by' => 'id',
-        'where' => "category_id = $category_id"
-    );
-    return get_all('bookingroom', $options);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_booking'])) {
-        $users_name = $_POST['users_name'];
-        $users_phone_number = $_POST['users_phone_number'];
-        $users_email = $_POST['users_email'];
-        $total_price = $_POST['total_price'];
+        $orders_user_name = $_POST['orders_user_name'];
+        $orders_user_phone = $_POST['orders_user_phone'];
+        $orders_user_adders = $_POST['orders_user_adders'];
         $booking_payment = $_POST['booking_payment'];
-        $list_booking_rooms = isset($_POST['repeater']) ? $_POST['repeater'] : array();
-        $addResultBookings = addOrder($users_name, $users_phone_number, $users_email, $total_price, $booking_payment);
-        for (
-            $i = 0;
-            $i < count($list_booking_rooms);
-            $i++
-        ) {
-            $category_id = $list_booking_rooms[$i]['category_id'];
-            $booking_room_checkin = $list_booking_rooms[$i]['booking_room_checkin'];
-            $booking_room_checkout = $list_booking_rooms[$i]['booking_room_checkout'];
-            $booking_quantity = $list_booking_rooms[$i]['booking_quantity'];
-            $addResultBookingsRoom = addBookingRoom($addResultBookings['id'], $category_id, $booking_room_checkin, $booking_room_checkout, $booking_quantity);
+        $orders_total = 0;
 
+        $list_booking_rooms = isset($_POST['repeater']) ? $_POST['repeater'] : array();
+
+        foreach ($list_booking_rooms as $booking_room) {
+            $orders_total += $booking_room['orders_item_price'];
         }
 
-        if ($addResultBookings && $addResultBookingsRoom) {
-            echo "<script>window.top.location='list_booking.php'</script>";
+        $orders_deposit = $_POST['orders_deposit'];
+        $orders_description = $_POST['orders_description'];
+         $orders_status = $_POST['orders_status'];
+
+        $addResultOrders = addOrder($orders_user_name, $orders_user_phone, $orders_user_adders, $booking_payment, $orders_total, $orders_deposit, $orders_description,$orders_status);
+
+        foreach ($list_booking_rooms as $booking_room) {
+            $category_id = $booking_room['category_id'];
+            $orders_item_checkin = $booking_room['orders_item_checkin'];
+            $orders_item_checkout = $booking_room['orders_item_checkout'];
+            $orders_item_quantity = $booking_room['orders_item_quantity'];
+            $addResultBookingsRoom = addOrderItem($addResultOrders['id'], $category_id, $orders_item_checkin, $orders_item_checkout, $orders_item_quantity);
+        }
+
+        if ($addResultOrders && $addResultBookingsRoom) {
+            echo "thành công";
+            // echo "<script>window.top.location='list_booking.php'</script>";
         }
     }
-
 }
-
 ?>

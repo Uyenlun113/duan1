@@ -97,8 +97,7 @@
                                 width="100" class="mt-3 rounded" alt="">
                             </div>
                           </div>
-                          <input type="hidden" value="<?php echo $detailCategory['category_description']; ?>"
-                            name="category_description" id="categoryDescriptionInput">
+                          <input type="hidden" name="category_description" id="categoryDescriptionInput">
                           <div class="has-validation">
                             <label class="form-label">Mô tả danh mục<span class="text-muted"></span></label>
                             <div id="snow-toolbar">

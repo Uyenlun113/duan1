@@ -45,7 +45,7 @@ session_start();
 
             $data = array(
                 'partnerCode' => $partnerCode,
-                'partnerName' => "qưeqweqwoieuqwioueio",
+                'partnerName' => "test",
                 'storeId' => "MomoTestStore",
                 'requestId' => $requestId,
                 'amount' => $amount,
