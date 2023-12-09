@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <?php @include "../../controllers/bookingrooms.php" ?>
+    <?php @include "../../controllers/order-controller.php" ?>
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <?php @include "../layout/sidebar.php" ?>

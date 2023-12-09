@@ -60,12 +60,11 @@
     <span class="search-back-drop"></span>
     <button class="close-search"><span class="fa fa-times"></span></button>
     <div class="search-inner">
-      <form method="post" action="https://kodesolution.com/html/2023/hoexr-html/index.html">
-        <div class="form-group">
-          <input type="search" name="search-field" value="" placeholder="Search..." required="">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-      </form>
+      <div class="form-group">
+        <input type="search" name="search-field" id="search_category" onchange="searchCategory()"
+          placeholder="Tìm kiếm..."
+          value="<?php echo isset($_GET['search_category']) ? htmlspecialchars($_GET['search_category']) : ''; ?>">
+      </div>
     </div>
   </div>
   <!-- End Header Search -->

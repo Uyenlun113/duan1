@@ -7,7 +7,7 @@ function getOrderAll()
 {
     $options = array(
         'select' => 'orders.*, users.users_name, users.id as users_id',
-        'order_by' => 'id',
+        'order_by' => 'orders.id desc',
         'join' => 'LEFT JOIN users on users.id = orders.users_id'
     );
     return get_all('orders', $options);
@@ -18,7 +18,7 @@ function getOrderByStatus($status)
 {
     $options = array(
         'select' => 'orders.*, users.users_name, users.id as users_id',
-        'order_by' => 'id',
+        'order_by' => 'orders.id',
         'join' => 'LEFT JOIN users on users.id = orders.users_id',
         'where' => "orders_status = $status"
     );

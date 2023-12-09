@@ -24,7 +24,9 @@
               $userData = $_SESSION['login_home'];
               echo '<a href="#" style="color:#fff;">Chào ' . $userData['users_name'] . '</a>';
               echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
-              echo '<a href="history.php"style="color:#fff;">Lịch sử giao dịch</a>';
+              echo '<a href="history.php"style="color:#fff;"><i class="fa-solid fa-clock-rotate-left"></i></a>';
+              echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
+              echo '<a href="cart.php"style="color:#fff;"><i class="fa-regular fa-cart-shopping"></i></a>';
               echo '&nbsp;&nbsp;|&nbsp;&nbsp;';
               echo '<a href="logout.php"style="color:#fff;">Đăng xuất</a>';
             } else {

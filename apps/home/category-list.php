@@ -18,7 +18,7 @@
       <?php @include "./controllers/category-list.php" ?>
       <?php @include "./layouts/header2.php" ?>
       <section class="page-title" style="background-image: url(images/background/page-title-bg.png);">
-        <div class="auto-container" style="z-index:100000">
+        <div class="auto-container" style="z-index:100">
           <div class="title-outer text-center">
             <h1 class="title">Danh sách loại phòng</h1>
             <ul class="page-breadcrumb">
@@ -32,9 +32,13 @@
                 <div class="checkout-form">
                   <div class="checkout-field">
                     <h6>Check in</h6>
+                    <input type="text"
+                      value="<?php echo isset($_GET['search_category']) ? htmlspecialchars($_GET['search_category']) : ''; ?>"
+                      name="search_category">
                     <div class="chk-field">
                       <input class="date-pick" name="check_in_category" type="text" placeholder="dd-mm-yyyy"
-                        value="<?php echo isset($_GET['check_in_category']) ? htmlspecialchars($_GET['check_in_category']) : ''; ?>" />
+                        value="<?php echo isset($_GET['check_in_category']) ? htmlspecialchars($_GET['check_in_category']) : ''; ?>"
+                        id="check_in_category" />
                       <i class="fa fa-calendar"></i>
 
                     </div>
@@ -43,7 +47,8 @@
                     <h6>Check out</h6>
                     <div class="chk-field">
                       <input class="date-pick" name="check_out_category" type="text" placeholder="dd-mm-yyyy"
-                        value="<?php echo isset($_GET['check_out_category']) ? htmlspecialchars($_GET['check_out_category']) : ''; ?>" />
+                        value="<?php echo isset($_GET['check_out_category']) ? htmlspecialchars($_GET['check_out_category']) : ''; ?>"
+                        id="check_out_category" />
                       <i class="fa fa-calendar"></i>
                     </div>
                   </div>
@@ -52,7 +57,8 @@
                     <div class="chk-field">
                       <i class="fa-light fa-arrow-up-9-1"></i>
                       <input type="text" placeholder="Nhập số người" name="category_adult"
-                        value="<?php echo isset($_GET['category_adult']) ? htmlspecialchars($_GET['category_adult']) : ''; ?>">
+                        value="<?php echo isset($_GET['category_adult']) ? htmlspecialchars($_GET['category_adult']) : ''; ?>"
+                        id="category_adult_category" />
                     </div>
                   </div>
                   <button href="#" type="submit" name="filter_category" class="theme-btn btn-style-one"><span
@@ -149,8 +155,6 @@
               }
             }
             ?>
-
-
           </div>
         </div>
       </section>
@@ -173,7 +177,20 @@
     (function($) {
       $("#contact_form").validate({});
     })(jQuery);
+
+    function searchCategory() {
+      var searchValue = document.getElementById('search_category')?.value || '';
+      checkInCategory = document.getElementById('check_in_category')?.value || '';
+      checkOutCategory = document.getElementById('check_out_category')?.value || '';
+      categoryAdultCategory = document.getElementById('category_adult_category')?.value || '';
+      window.location.href =
+        "?check_in_category=" + encodeURIComponent(checkInCategory) +
+        "&check_out_category=" + encodeURIComponent(checkOutCategory) +
+        "&category_adult=" + encodeURIComponent(categoryAdultCategory) +
+        "&search_category=" + encodeURIComponent(searchValue);
+    }
     </script>
+
   </body>
 
 </html>
