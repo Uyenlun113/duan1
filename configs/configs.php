@@ -149,6 +149,28 @@ function delete_data($table, $where)
         return 'Error: ' . $e->getMessage();
     }
 }
+
+function totalRevenueEachMonth()
+{
+    $conn = pdo_get_connection();
+    $sql = "SELECT MONTHNAME(create_date) as month, SUM(orders_total) as revenue FROM orders GROUP BY month";
+    try {
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($results);
+    } catch (PDOException $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+}
+
+// Kiểm tra quyền CREATE_ROOM
+$isCreateRoom = strpos($dataLoginUser['permission_codes'], 'CREATE_ROOM') !== false;
+$isDeleteRoom = strpos($dataLoginUser['permission_codes'], 'DELETE_ROOM') !== false;
+$isUpdateRoom = strpos($dataLoginUser['permission_codes'], 'UPDATE_ROOM') !== false;
+$isDeleteStaff = strpos($dataLoginUser['permission_codes'], 'DELETE_STAFF') !== false;
+
 function formatMoney($money)
 {
     $formattedAmount = number_format($money, 0, ',', '.') . ' ₫';

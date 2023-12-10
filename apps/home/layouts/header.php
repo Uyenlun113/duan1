@@ -57,6 +57,49 @@
               <span class="title">Call Now</span>
               <a href="tel:+92880098670">+92 (8800) - 98670</a>
             </div>
+            <div class="nav-outer">
+              <nav class="nav main-menu">
+                <ul class="navigation">
+                  <li><a href="index.php">Trang chủ</a>
+                  </li>
+                  <li><a href="category-list.php">Loại phòng</a></li>
+
+                  <li class="dropdown"><a href="#">Pages</a>
+                    <ul>
+                      <li><a href="page-about.php">About</a></li>
+                      <li><a href="page-contact.php">Contact</a></li>
+                      <li><a href="page-faq.html">Faq</a></li>
+                      <li><a href="page-pricing.html">Pricing</a></li>
+                      <li><a href="page-testimonial.html">Testimonials</a></li>
+                      <li><a href="page-404.html">404</a></li>
+                      <li class="dropdown"><a href="#">Team</a>
+                        <ul>
+                          <li><a href="page-team.html">Team List</a></li>
+                          <li><a href="page-team-details.html">Team Details</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a href="#">Shop</a>
+                        <ul>
+                          <li><a href="shop-products.html">Products</a></li>
+                          <li><a href="shop-products-sidebar.html">Products with Sidebar</a></li>
+                          <li><a href="shop-product-details.html">Product Details</a></li>
+                          <li><a href="shop-cart.html">Cart</a></li>
+                          <li><a href="shop-checkout.html">Checkout</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="#">News</a>
+                    <ul>
+                      <li><a href="news-grid.html">News Grid</a></li>
+                      <li><a href="news-details.html">News Details</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="page-contact.php">Contact</a></li>
+                  <li><a href="page-about.php">About</a></li>
+                </ul>
+              </nav>
+              <!-- Main Menu End-->
           </li>
           <li>
             <!-- Contact Info Box -->
