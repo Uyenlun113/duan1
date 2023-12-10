@@ -1,5 +1,6 @@
 <?php
 @include "../../configs/configs.php";
+session_start();
 
 
 if (isset($_POST["login_home"])) {
@@ -18,7 +19,7 @@ if (isset($_POST["login_home"])) {
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($data) {
             $_SESSION['login_home'] = $data;
-            echo "<script>window.top.location='index.php'</script>";
+            header('Location: index.php');
             exit();
         }
     } catch (PDOException $e) {

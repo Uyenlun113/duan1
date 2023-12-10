@@ -88,16 +88,18 @@
                         <td><span><?php echo $roles['create_date'] ?></span></td>
                         <td><span><?php echo $roles['roles_description'] ?></span></td>
                         <td>
+                          <?php if ($roles['roles_code'] != "ADMIN") : ?>
                           <a href="update-roles.php?action=update&update-roles=<?= $roles['id'] ?>">
                             <button class="btn btn-sm btn-warning btn-icon">
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
                           <a href="roles.php?action=delete&delete-roles-id=<?= $roles['id'] ?>">
-                            <button class=" btn btn-sm btn-danger btn-icon">
+                            <button class="btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
                           </a>
+                          <?php endif; ?>
                         </td>
                       </tr>
                       <?php endforeach;

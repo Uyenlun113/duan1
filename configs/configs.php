@@ -1,13 +1,6 @@
 <?php
 session_start();
-$dataLoginUser = $_SESSION['login_admin'];
-function checkLogin()
-{
-    if (!isset($_SESSION['login_admin'])) {
-        header('Location: ../auth/login.php');
-    }
-}
-// checkLogin();
+
 function pdo_get_connection()
 {
     $servername = 'localhost';
@@ -105,7 +98,6 @@ function save_and_get_result($table, $data = array())
         $selectStmt->bindParam(':lastInsertId', $lastInsertId, PDO::PARAM_INT);
         $selectStmt->execute();
         $insertedData = $selectStmt->fetch(PDO::FETCH_ASSOC);
-
         return $insertedData;
     } catch (PDOException $e) {
         return 'Error: ' . $e->getMessage();
@@ -178,4 +170,10 @@ $isCreateRoom = strpos($dataLoginUser['permission_codes'], 'CREATE_ROOM') !== fa
 $isDeleteRoom = strpos($dataLoginUser['permission_codes'], 'DELETE_ROOM') !== false;
 $isUpdateRoom = strpos($dataLoginUser['permission_codes'], 'UPDATE_ROOM') !== false;
 $isDeleteStaff = strpos($dataLoginUser['permission_codes'], 'DELETE_STAFF') !== false;
+
+function formatMoney($money)
+{
+    $formattedAmount = number_format($money, 0, ',', '.') . ' ₫';
+    return $formattedAmount;
+}
 ?>

@@ -8,11 +8,10 @@
   </head>
 
   <body>
+    <?php @include "./controllers/index-controller.php" ?>
     <div class="page-wrapper">
-      <?php @include "./controllers/index.php" ?>
       <?php @include "./layouts/header.php" ?>
       <?php @include "./layouts/banner.php" ?>
-      qưeqwe
       <!-- About Section -->
       <section class="about-section">
         <div class="auto-container">
@@ -80,27 +79,31 @@
       <section class="rooms-section pb-100">
         <div class="auto-container">
           <div class="sec-title text-center wow fadeInUp">
-            <span class="sub-title">Hoexr Luxury Rooms</span>
+            <span class="sub-title">Sala Hotel</span>
             <h3>Phòng nghỉ nổi bật</h3>
           </div>
           <div class="row">
             <?php
-                  if (isset($list_category_popular) && is_array($list_category_popular)) {
-                    foreach ($list_category_popular as $index => $category): ?>
+            if (isset($list_category_popular) && is_array($list_category_popular)) {
+              foreach ($list_category_popular as $index => $category): ?>
             <div class="room-block col-lg-6 col-md-6 col-sm-12">
               <div class="inner-box wow fadeIn">
                 <div class="image-box">
-                  <figure class="image-2 overlay-anim" style="height: 400px;"><img
-                      src="../upload/<?php echo($category["category_image"]) ?>" alt="">
+                  <figure class="image-2 overlay-anim" style="height: 350px"><img
+                      src="../upload/<?php echo ($category["category_image"]) ?>" alt="">
                   </figure>
                 </div>
                 <div class="content-box">
-                  <h6 class="title"><a href="room-details.html"><?php echo($category["category_name"]) ?></a></h6>
-                  <span class="price"><?php echo($category["category_price"]) ?>$ / NIGHT</span>
+                  <h6 class="title">
+                    <?php echo ($category["category_name"]) ?>
+                  </h6>
+                  <span class="price">
+                    <?php echo (formatMoney($category["category_price"])) ?> / Đêm
+                  </span>
                 </div>
                 <div class="box-caption">
                   <a href="category-details.php?action=detail&category-details=<?= $category['id'] ?>" title=""
-                    class="book-btn">Đặt ngay</a>
+                    class="book-btn mt-2">Xem chi tiết</a>
                   <ul class="bx-links">
                     <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
                     <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
@@ -111,7 +114,7 @@
               </div>
             </div>
             <?php endforeach;
-                          } ?>
+            } ?>
           </div>
         </div>
       </section>
@@ -256,9 +259,9 @@
           </div>
         </div>
       </section>
-      <?php 
+      <?php
       @include "./layouts/footer.php"
-      ?>
+        ?>
     </div>
     <?php @include "./layouts/script.php" ?>
   </body>

@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <?php   include "../../controllers/bookingrooms.php"; ?>
+    <?php @include "../../controllers/bookingrooms.php"; ?>
 
     <div class="layout-wrapper layout-content-navbar  ">
       <div class="layout-container">
@@ -42,44 +42,24 @@
                         </div>
                         <div class="card-body">
                           <div class="mb-3">
-                            <label class="form-label" for="users_name">Tên khách hàng</label>
-                            <input type="text" class="form-control" id="users_name"
-                              placeholder="Mời bạn nhập tên khách hàng" name="users_name">
+                            <label class="form-label" for="orders_user_name">Tên khách hàng</label>
+                            <input type="text" class="form-control" id="orders_user_name"
+                              placeholder="Mời bạn nhập tên khách hàng" name="orders_user_name">
                           </div>
                           <div class="row mb-3">
-                            <div class="col"><label class="form-label" for="users_phone_number">Số điện thoại</label>
-                              <input type="number" class="form-control" id="users_phone_number"
-                                placeholder="Mời bạn nhập số điện thoại" name="users_phone_number"
+                            <div class="col"><label class="form-label" for="orders_user_phone">Số điện thoại</label>
+                              <input type="text" class="form-control" id="orders_user_phone"
+                                placeholder="Mời bạn nhập số điện thoại" name="orders_user_phone"
                                 aria-label="Product SKU">
                             </div>
-                            <div class="col"><label class="form-label" for="users_email">Email</label>
-                              <input type="text" class="form-control" id="users_email" placeholder="Mời bạn nhập email"
-                                name="users_email" aria-label="Product barcode">
+                            <div class="col"><label class="form-label" for="orders_user_adders">Địa chỉ</label>
+                              <input type="text" class="form-control" id="orders_user_adders"
+                                placeholder="Mời bạn nhập địa chỉ" name="orders_user_adders"
+                                aria-label="Product barcode">
                             </div>
 
                           </div>
-                          <!-- Description -->
-                          <div>
-                            <label class="form-label">Mô tả chi tiết</label>
-                            <div class="form-control p-0 pt-1">
-                              <div class="comment-toolbar border-0 border-bottom">
-                                <div class="d-flex justify-content-start">
-                                  <span class="ql-formats me-0">
-                                    <button class="ql-bold"></button>
-                                    <button class="ql-italic"></button>
-                                    <button class="ql-underline"></button>
-                                    <button class="ql-list" value="ordered"></button>
-                                    <button class="ql-list" value="bullet"></button>
-                                    <button class="ql-link"></button>
-                                    <button class="ql-image"></button>
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="comment-editor border-0 pb-4" id="ecommerce-category-description">
-                              </div>
 
-                            </div>
-                          </div>
                         </div>
                       </div>
                       <div class="card mb-4">
@@ -114,12 +94,12 @@
 
                                           <input type="datetime-local" class="form-control flatpickr-input"
                                             placeholder="YYYY-MM-DD HH:MM" id="flatpickr-multi" fdprocessedid="9xzjwn"
-                                            name="booking_room_checkin">
+                                            name="orders_item_checkin">
                                         </div>
                                         <div class="col-md-6 col-12 mb-md-0 mb-3">
                                           <p class="mb-2 repeater-title">Check out</p>
                                           <input type="datetime-local" class="form-control  flatpickr-input"
-                                            placeholder="1" min="1" max="50" name="booking_room_checkout" />
+                                            placeholder="1" min="1" max="50" name="orders_item_checkout" />
                                         </div>
                                       </div>
                                     </div>
@@ -128,12 +108,12 @@
                                         <div class="col-md-4 col-12 mb-md-0 mb-3">
                                           <p class="mb-2 repeater-title">Số lượng</p>
                                           <input type="number" class="form-control invoice-item-qty" placeholder="1"
-                                            min="1" max="50" name="booking_quantity" />
+                                            min="1" max="50" name="orders_item_quantity" />
                                         </div>
                                         <div class="col-md-8 col-12 mb-md-0 mb-3">
                                           <p class="mb-2 repeater-title">Giá tiền ($ / đêm)</p>
                                           <input type="number" disabled class="form-control invoice-item-qty"
-                                            placeholder="1" value="" name="booking_total_price" />
+                                            placeholder="1" value="" name="orders_item_price" />
                                         </div>
                                       </div>
 
@@ -163,11 +143,7 @@
                           <h5 class="card-title mb-0">Thông tin đặt phòng</h5>
                         </div>
                         <div class="card-body">
-                          <div class="mb-3">
-                            <label class="form-label" for="ecommerce-product-discount-price">Tổng tiền</label>
-                            <input type="text" class="form-control" id="ecommerce-product-discount-price"
-                              placeholder="Discounted Price" name="total_price" aria-label="Product discounted price">
-                          </div>
+
                           <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1" for="status-org">Phương thức thanh toán
                             </label>
@@ -178,29 +154,7 @@
                               <option value="0">Tiền mặt</option>
                             </select>
                           </div>
-                          <!-- Discounted Price -->
 
-                          <!-- Charge tax check box -->
-                          <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="" id="price-charge-tax" checked>
-                            <label class="form-label" for="price-charge-tax">
-                              Charge tax on this product
-                            </label>
-                          </div>
-                          <!-- Instock switch -->
-                          <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                            <span class="mb-0 h6">In stock</span>
-                            <div class="w-25 d-flex justify-content-end">
-                              <label class="switch switch-primary switch-sm me-4 pe-2">
-                                <input type="checkbox" class="switch-input" checked="">
-                                <span class="switch-toggle-slider">
-                                  <span class="switch-on">
-                                    <span class="switch-off"></span>
-                                  </span>
-                                </span>
-                              </label>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>

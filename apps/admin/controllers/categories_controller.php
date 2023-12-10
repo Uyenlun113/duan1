@@ -1,5 +1,7 @@
 <?php
     include_once "../../../../configs/configs.php";
+        include_once "../../../../configs/check-auth-admin.php";
+
     //list danh sách
     function getListCategory() {
         $options = array('order_by' => 'id');
@@ -27,7 +29,7 @@
         $data = array(
             'category_code' => $category_code,
             'category_name' => $category_name,
-            'category_image' =>  $category_image == "rooms/" ? $detailCategory["category_image"]  : $category_image,
+            'category_image' =>  $category_image == "category/" ? $detailCategory["category_image"]  : $category_image,
             'category_price' => $category_price,
             'category_adult' => $category_adult,
             'category_description' => $category_description,
@@ -52,7 +54,7 @@
             $category_description = $_POST["category_description"];
            $category_status = $_POST["category_status"];
             if ($_FILES['category_image']['error'] === UPLOAD_ERR_OK) {
-            $category_image = "rooms/" . $_FILES['category_image']['name'];
+            $category_image = "category/" . $_FILES['category_image']['name'];
             $temp_path = $_FILES['category_image']['tmp_name'];
             move_uploaded_file($temp_path, $category_image);
             $addResult = addCategory($category_code, $category_name, $category_image, $category_price, $category_adult, $category_description, $category_status);
@@ -82,9 +84,9 @@
             $category_adult = $_POST["category_adult"];
             $category_description = $_POST["category_description"];
             $category_status = $_POST["category_status"];
-           $category_image = (isset($_FILES['category_image']['name'])) ? "rooms/" . $_FILES['category_image']['name'] : '';
+           $category_image = (isset($_FILES['category_image']['name'])) ? "category/" . $_FILES['category_image']['name'] : '';
 
-            $target_dir = "../../upload/rooms/";
+            $target_dir = "../../upload/category/";
             $targetFile = $target_dir . basename($_FILES["category_image"]["name"]);
             $updateResult = updateCategory($id, $category_code, $category_name, $category_image, $category_price, $category_adult, $category_description, $category_status);
 

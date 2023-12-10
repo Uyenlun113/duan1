@@ -135,9 +135,12 @@
                 <div class="card-header">
                   <h5 class="card-title">Danh sách phòng</h5>
                   <div class="row justify-content-between">
-                    <div class="col-sm-12 col-md-6 justify-content-md-end">
-                      <input type="search" class="form-control col-sm-12 col-md-3"
-                        placeholder="Tìm kiếm theo tên phòng">
+                    <div class="row col-sm-12 col-md-6 justify-content-md-end">
+                      <div style="display: flex; gap: 15px;">
+                        <input type="search" class="form-control" placeholder="Tìm kiếm theo tên phòng" id="searchInput"
+                          onchange="searchRooms()"
+                          value="<?php echo isset($_GET['search_rooms']) ? htmlspecialchars($_GET['search_rooms']) : ''; ?>">
+                      </div>
                     </div>
                     <?php if ($isCreateRoom): ?>
                     <a href="create_rooms.php" class="col-sm-12 col-md-2">
@@ -189,12 +192,12 @@
                             <?php echo $rooms['category_adult'] ?>
                           </span></td>
                         <td><span>$
-                            <?php echo number_format($rooms['category_price'], 2, '.', ',') ?>
+                            <?php echo number_format($rooms['category_price'], 0, '.', ',') ?>
                           </span></td>
                         <td>
                           <span>
                             <?php if ($rooms['room_status'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Hoạt động</span>
+                            <span class="badge bg-label-primary me-1">Còn trống</span>
                             <?php else: ?>
                             <span class="badge bg-label-primary me-1">Đã đặt</span>
                             <?php endif; ?>
@@ -262,6 +265,12 @@
 
   </body>
   <?php @include "../layout/import_script.php" ?>
+  <script>
+  function searchRooms() {
+    var searchValue = document.getElementById('searchInput').value;
+    window.location.href = '?search_rooms=' + encodeURIComponent(searchValue);
+  }
+  </script>
 
 </html>
 
