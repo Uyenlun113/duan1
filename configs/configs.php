@@ -7,7 +7,7 @@ function checkLogin()
         header('Location: ../auth/login.php');
     }
 }
-checkLogin();
+// checkLogin();
 function pdo_get_connection()
 {
     $servername = 'localhost';
@@ -153,6 +153,21 @@ function delete_data($table, $where)
         $stmt = $conn->prepare("DELETE FROM `$table` WHERE $where ");
         $stmt->execute();
         return true;
+    } catch (PDOException $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+}
+
+function totalRevenueEachMonth()
+{
+    $conn = pdo_get_connection();
+    $sql = "SELECT MONTHNAME(create_date) as month, SUM(orders_total) as revenue FROM orders GROUP BY month";
+    try {
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($results);
     } catch (PDOException $e) {
         return 'Error: ' . $e->getMessage();
     }

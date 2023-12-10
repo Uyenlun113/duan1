@@ -73,7 +73,7 @@
                           class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
                           <div>
                             <h6 class="mb-2">Tổng số phòng</h6>
-                            <h4 class="mb-2"></h4>
+                            <h4 class="mb-2"><?php echo $count_rooms ?></h4>
                           </div>
                           <div class="avatar me-sm-4">
                             <span class="avatar-initial rounded bg-label-secondary">
@@ -88,7 +88,7 @@
                           class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
                           <div>
                             <h6 class="mb-2">Số phòng đang thuê</h6>
-                            <h4 class="mb-2">100</h4>
+                            <h4 class="mb-2"><?php echo $count_orders ?></h4>
                           </div>
                           <div class="avatar me-lg-4">
                             <span class="avatar-initial rounded bg-label-secondary">
@@ -103,7 +103,7 @@
                           class="d-flex justify-content-between align-items-start border-end pb-3 pb-sm-0 card-widget-3">
                           <div>
                             <h6 class="mb-2">Số phòng đã cọc</h6>
-                            <h4 class="mb-2">100</h4>
+                            <h4 class="mb-2"><?php echo $blank_rooms ?></h4>
                           </div>
                           <div class="avatar me-sm-4">
                             <span class="avatar-initial rounded bg-label-secondary">
@@ -116,7 +116,7 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div>
                             <h6 class="mb-2">Số phòng còn trống</h6>
-                            <h4 class="mb-2">100</h4>
+                            <h4 class="mb-2"><?php echo $blank_rooms ?></h4>
                           </div>
                           <div class="avatar">
                             <span class="avatar-initial rounded bg-label-secondary">

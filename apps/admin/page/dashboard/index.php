@@ -31,6 +31,7 @@
     <script src="../../assets/vendor/js/helpers.js"></script>
     <script src="../../assets/vendor/js/template-customizer.js"></script>
     <script src="../../assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -107,10 +108,10 @@
                     <div class="row row-bordered g-0">
                       <div class="col-md-8">
                         <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                        <div id="totalRevenueChart" class="px-2"></div>
+                        <canvas id="myChart"></canvas>
                       </div>
                       <div class="col-md-4">
-                        <div class="card-body">
+                        <!-- <div class="card-body">
                           <div class="text-center">
                             <div class="dropdown">
                               <button class="btn btn-sm btn-label-primary dropdown-toggle" type="button"
@@ -125,8 +126,8 @@
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div id="growthChart"></div>
+                        </div> -->
+                        <!-- <div id="growthChart"></div>
                         <div class="text-center fw-medium pt-3 mb-2">62% Company Growth</div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
@@ -148,7 +149,7 @@
                               <h6 class="mb-0">$41.2k</h6>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -478,6 +479,36 @@
       <div class="layout-overlay layout-menu-toggle"></div>
       <div class="drag-target"></div>
     </div>
+    <script>
+      const data = <?php echo $group_Totalrevenue ?>;
+      // console.log(data);
+      var origin_chart_month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      var origin_chart_revenue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      const convert_bill = data.map(entry => {
+        const stt = origin_chart_month.indexOf(entry.month);
+        origin_chart_revenue[stt] = entry.revenue;
+      })
+      const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: origin_chart_month,
+          datasets: [{
+            label: '# of Votes',
+            data: origin_chart_revenue,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
     <?php include "../layout/import_script.php" ?>
 
   </body>

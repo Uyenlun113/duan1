@@ -29,9 +29,20 @@ function getAllService() {
     return get_all( 'room_service', $options );
 }
 
+function getAllRooms() {
+    return count(get_all('rooms'));
+}
+
+function getAllOrders() {
+    return count(get_all('orders'));
+}
+
 $list_rooms = getListRooms();
 $list_categories = getAllCategories();
 $allServices = getAllService();
+$count_rooms = getAllRooms();
+$count_orders = getAllOrders();
+$blank_rooms = getAllRooms() - getAllOrders();
 
 function handleCreateRooms( $category_id, $room_code, $room_name, $room_image,  $room_description, $room_status ) {
     $data = array(

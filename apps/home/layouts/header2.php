@@ -47,8 +47,8 @@
                   <li><a href="category-list.php">Loại phòng</a></li>
                   <li class="dropdown"><a href="#">Pages</a>
                     <ul>
-                      <li><a href="page-about.html">About</a></li>
-                      <li><a href="page-contact.html">Contact</a></li>
+                      <li><a href="page-about.php">About</a></li>
+                      <li><a href="page-contact.php">Contact</a></li>
                       <li><a href="page-faq.html">Faq</a></li>
                       <li><a href="page-pricing.html">Pricing</a></li>
                       <li><a href="page-testimonial.html">Testimonials</a></li>
@@ -76,7 +76,7 @@
                       <li><a href="news-details.html">News Details</a></li>
                     </ul>
                   </li>
-                  <li><a href="page-contact.html">Lịch sử giao dịch</a></li>
+                  <li><a href="page-contact.php">Lịch sử giao dịch</a></li>
                 </ul>
               </nav>
             </div>
