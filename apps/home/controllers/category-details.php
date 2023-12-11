@@ -43,7 +43,7 @@ function getComment($userData, $categoryDetail)
     $options = array(
         'select' => 'comments.*, users.*, users.id as users_id, comments.id as comments_id',
         'order_by' => 'comments.id desc',
-        'where' => 'category_id = ' . $categoryDetail["id"],
+        'where' => 'comment_parent_id is null and category_id = ' . $categoryDetail["id"],
         'join' => 'right join users on users.id = comments.user_id'
 
     );

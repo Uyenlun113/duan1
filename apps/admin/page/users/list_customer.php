@@ -88,7 +88,7 @@
                           <div><?php echo $customer['users_name'] ?></div>
 
                         </td>
-                        <td><span><?php echo $customer['users_birthday'] ?></span></td>
+                        <td><span><?php echo formatDatetimeVi($customer['users_birthday']) ?></span></td>
 
                         <td><span><?php echo $customer['users_phone_number'] ?></span></td>
 

@@ -6,25 +6,49 @@
     <meta charset="utf-8" />
     <meta name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>
-      Product List - eCommerce
-    </title>
+    <title>Product List - eCommerce | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
     <meta name="description"
       content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
-    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5" />
-
-    <style>
-    .multiline-ellipsis {
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-    </style>
-    <?php @include "../layout/import_link.php" ?>
+    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+    <!-- Canonical SEO -->
+    <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/">
+    <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+    <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
+    </script>
+    <link rel="icon" type="image/x-icon"
+      href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+      rel="stylesheet"> <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" /> <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" /> <!-- Vendors CSS -->
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/rateyo/rateyo.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css"> <!-- Page CSS -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/js/config.js"></script>
   </head>
 
   <body>
@@ -101,7 +125,8 @@
                             </div>
                           </span></td>
                         <td style="text-align:center">
-                          <a href="list_comment.php?feedback=<?php echo $comment['id'] ?>">
+                          <a
+                            href="feedback.php?feedback=<?php echo $comment['id'] ?>&category_id=<?php echo $comment['category_id'] ?>">
                             <button class=" btn btn-sm btn-warning btn-icon">
                               <i class='bx bx-message-square-dots'></i>
                             </button>
@@ -167,52 +192,20 @@
         <div class="modal-body">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="text-center mb-4">
-            <h3>Add New Card</h3>
-            <p>Add new card to complete payment</p>
+            <h3>Phản hồi bình luận</h3>
           </div>
-          <form id="addNewCCForm" class="row g-3" onsubmit="return false">
+          <form method="POST" class="needs-validation" action="list_comment.php" enctype="multipart/form-data"
+            novalidate>
             <div class="col-12">
-              <label class="form-label w-100" for="modalAddCard">Card Number</label>
-              <div class="input-group input-group-merge">
-                <input id="modalAddCard" name="modalAddCard" class="form-control credit-card-mask" type="text"
-                  placeholder="1356 3215 6548 7898" aria-describedby="modalAddCard2" />
-                <span class="input-group-text cursor-pointer p-1" id="modalAddCard2"><span
-                    class="card-type"></span></span>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <label class="form-label" for="modalAddCardName">Name</label>
-              <input type="text" id="modalAddCardName" class="form-control" placeholder="John Doe" />
-            </div>
-            <div class="col-6 col-md-3">
-              <label class="form-label" for="modalAddCardExpiryDate">Exp. Date</label>
-              <input type="text" id="modalAddCardExpiryDate" class="form-control expiry-date-mask"
-                placeholder="MM/YY" />
-            </div>
-            <div class="col-6 col-md-3">
-              <label class="form-label" for="modalAddCardCvv">CVV Code</label>
-              <div class="input-group input-group-merge">
-                <input type="text" id="modalAddCardCvv" class="form-control cvv-code-mask" maxlength="3"
-                  placeholder="654" />
-                <span class="input-group-text cursor-pointer" id="modalAddCardCvv2"><i
-                    class="bx bx-help-circle text-muted" data-bs-toggle="tooltip" data-bs-placement="top"
-                    title="Card Verification Value"></i></span>
-              </div>
-            </div>
-            <div class="col-12">
-              <label class="switch">
-                <input type="checkbox" class="switch-input">
-                <span class="switch-toggle-slider">
-                  <span class="switch-on"></span>
-                  <span class="switch-off"></span>
-                </span>
-                <span class="switch-label">Save card for future billing?</span>
-              </label>
+              <label class="form-label w-100" for="comment_content">Phản hồi</label>
+              <textarea name="comment_content" class="form-control credit-card-mask"></textarea>
             </div>
             <div class="col-12 text-center">
-              <button type="submit" class="btn btn-primary me-sm-3 me-1 mt-3">Submit</button>
-              <button type="reset" class="btn btn-label-secondary btn-reset mt-3" data-bs-dismiss="modal"
-                aria-label="Close">Cancel</button>
+              <button type="submit" name="feedback_comment" class="btn btn-primary me-sm-3 me-1 mt-3">Phản hồi</button>
+              <a href="">
+                <button type="reset" class="btn btn-label-secondary btn-reset mt-3" data-bs-dismiss="modal"
+                  aria-label="Close">Hủy bỏ</button>
+              </a>
             </div>
           </form>
         </div>

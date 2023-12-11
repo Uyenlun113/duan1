@@ -85,7 +85,7 @@
 
                         <td><span><?php echo $roles['roles_code'] ?></span></td>
                         <td><span><?php echo $roles['roles_name'] ?></span></td>
-                        <td><span><?php echo $roles['create_date'] ?></span></td>
+                        <td><span><?php echo formatDatetimeVi($roles['create_date']) ?></span></td>
                         <td><span><?php echo $roles['roles_description'] ?></span></td>
                         <td>
                           <?php if ($roles['roles_code'] != "ADMIN") : ?>
