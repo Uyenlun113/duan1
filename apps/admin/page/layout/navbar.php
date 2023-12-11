@@ -388,21 +388,21 @@
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
           <div class="avatar avatar-online">
-            <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+            <img src="../../../upload/<?= $dataLoginUser['users_avatar'] ?>" alt class="rounded-circle"
+              style="width:40px;height:40px;" />
           </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
           <li>
-            <a class="dropdown-item" href="pages-account-settings-account.html">
+            <a class="dropdown-item" href="#">
               <div class="d-flex">
                 <div class="flex-shrink-0 me-3">
                   <div class="avatar avatar-online">
-                    <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="../../../upload/<?= $dataLoginUser['users_avatar'] ?>" alt class="rounded-circle" />
                   </div>
                 </div>
-                <div class="flex-grow-1">
-                  <span class="fw-medium d-block">John Doe</span>
-
+                <div>
+                  <span class="fw-medium d-block"><?php echo($dataLoginUser['users_name']) ?></span>
                 </div>
               </div>
             </a>

@@ -50,25 +50,6 @@
                 <div class="card-header">
                   <h5 class="card-title">Danh sách phòng đã đặt</h5>
                   <div class="row justify-content-between">
-                    <div class="row col-sm-12 col-md-6 justify-content-md-end">
-                      <div style="display: flex; gap: 15px;">
-                        <input type="search" class="form-control" placeholder="Tìm kiếm theo tên phòng" id="searchInput"
-                          onchange="searchRooms()"
-                          value="<?php echo isset($_GET['search_value']) ? htmlspecialchars($_GET['search_value']) : ''; ?>">
-                      </div>
-                    </div>
-                    <?php if ($isCreateRoom): ?>
-                    <a href="create_rooms.php" class="col-sm-12 col-md-2">
-                      <button type="button" class="btn btn-primary w-100">
-                        <i class="bx bx-plus me-sm-1"></i>
-                        Thêm phòng
-                      </button>
-                    </a>
-                    <?php else: ?>
-                    <div></div>
-                    <?php endif; ?>
-
-
                   </div>
                 </div>
                 <div class="card-datatable table-responsive">
@@ -80,8 +61,6 @@
                         <th>Phòng</th>
                         <th>Checkin</th>
                         <th>Checkout</th>
-                        <th>Trạng thái</th>
-                        <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -94,45 +73,18 @@
                           <?php echo $index + 1 ?>
                         </td>
                         <td><span>
-                            ĐH-<?php echo $item['orders_code'] ?>
+                            ĐH-
+                            <?php echo $item['orders_code'] ?>
                           </span></td>
                         <td><span>
                             <?php echo $item['room_name'] ?>
                           </span></td>
                         <td><span>
-                            <?php echo $item['checking_rooms_checkin'] ?>
+                            <?php echo (new DateTime($item['checking_rooms_checkin'])) -> format("d/m/Y") ?>
                           </span></td>
                         <td><span>
-                            <?php echo $item['checking_rooms_checkout'] ?>
-                          </span></td>
-                        <td>
-                          <span>
-                            <?php if ($item['room_status'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Còn trống</span>
-                            <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Đã đặt</span>
-                            <?php endif; ?>
+                            <?php echo (new DateTime($item['checking_rooms_checkout'])) -> format("d/m/Y") ?>
                           </span>
-                        </td>
-                        <td>
-                          <?php if ($isUpdateRoom): ?>
-                          <a href="update_rooms.php?action=update&update_rooms=<?= $rooms['id'] ?>">
-                            <button class="btn btn-sm btn-warning btn-icon">
-                              <i class="fa-regular fa-pen-to-square fa-md"></i>
-                            </button>
-                          </a>
-                          <?php else: ?>
-                          <div></div>
-                          <?php endif; ?>
-                          <?php if ($isDeleteRoom): ?>
-                          <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
-                            <button class=" btn btn-sm btn-danger btn-icon">
-                              <i class="fas fa-trash fa-md"></i>
-                            </button>
-                          </a>
-                          <?php else: ?>
-                          <div></div>
-                          <?php endif; ?>
                         </td>
                       </tr>
                       <?php endforeach;

@@ -3,46 +3,39 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Hoexr | Hotel HTML Template Template</title>
+    <title>Thanh toán thành công | </title>
     <?php include "./layouts/link.php" ?>
+    <style>
+    .button-buy {
+      width: 250px;
+      height: 50px;
+      background-color: #aa8453;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    </style>
   </head>
 
   <body>
-
     <div class="page-wrapper">
       <div class="preloader"></div>
       <?php @include "./momo_payment/handle_payment_momo.php" ?>
-      <?php include "./layouts/header2.php" ?>
-      <section class="page-title" style="background-image: url(images/background/page-title-bg.png);">
-        <div class="auto-container">
-          <div class="title-outer text-center">
-            <h1 class="title">Checkout</h1>
-            <ul class="page-breadcrumb">
-              <li><a href="index.html">Home</a></li>
-              <li>Shop</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <!-- end main-content -->
-
-      <!--checkout Start-->
       <section>
         <div class="container pt-70">
           <div class="section-content">
-            <div class="row mt-30">
+            <div class="row mt-20">
               <div class="col-md-12 mt-60">
                 <div class="col-12 col-lg-8 mx-auto text-center mb-3">
-                  <h1><i class="icon fa-solid fa-box-check fa-2xl" style="color: #11ff00;"></i></h1>
-                  <h4 class="mt-2">Thank You! 😇</h4>
-                  <br />
-                  <p>Your order <a href="javascript:void(0)">#1536548131</a> has been placed!</p>
-                  <p>We sent an email to <a href="mailto:john.doe@example.com">john.doe@example.com</a> with your order
-                    confirmation and receipt. If the email hasn't arrived within two minutes, please check your spam
-                    folder to see if the email was routed there.</p>
-                  <p><span class="fw-medium"><i class="bx bx-time-five me-1"></i> Time placed:&nbsp;</span> 25/05/2020
-                    13:35pm</p>
-                  <a href="index.php"><span>Tiếp tục mua hàng</span>
+                  <h1><i class="icon fa-solid fa-box-check" style="color: #aa8453;font-size:100px;"></i></h1>
+                  <h4 class="mt-2">Chân thành cảm ơn! 😇</h4>
+                  <p>Đơn đặt phòng của bạn đã được được xác nhận</p>
+                  <p>Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất để xác nhận và thông báo về quá trình đặt
+                    phòng. Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi qua
+                    info@salahotelgroup.com hoặc số điện thoại hotline: 0868582227 / 0868582229.</p>
+                  <p>Một lần nữa, chúng tôi chân thành cảm ơn sự tin tưởng của bạn.</p>
+                  <a href="index.php" class="book-btn mt-2"><button class="button-buy">Tiếp tục mua hàng</button>
                   </a>
                 </div>
               </div>
@@ -50,14 +43,7 @@
           </div>
         </div>
       </section>
-      <?php include "./layouts/footer.php" ?>
-    </div><!-- End Page Wrapper -->
-
-
-    <!-- Scroll To Top -->
-    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
-
+    </div>
     <script src="js/jquery.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

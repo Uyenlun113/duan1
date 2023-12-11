@@ -89,7 +89,7 @@
             <div class="room-block col-lg-6 col-md-6 col-sm-12">
               <div class="inner-box wow fadeIn">
                 <div class="image-box">
-                  <figure class="image-2 overlay-anim" style="height: 350px"><img
+                  <figure class="image-2 overlay-anim" style="height: 350px;border-radius:16px;"><img
                       src="../upload/<?php echo ($category["category_image"]) ?>" alt="">
                   </figure>
                 </div>
@@ -105,10 +105,14 @@
                   <a href="category-details.php?action=detail&category-details=<?= $category['id'] ?>" title=""
                     class="book-btn mt-2">Xem chi tiết</a>
                   <ul class="bx-links">
-                    <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
-                    <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
-                    <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
-                    <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                    <?php
+                        $listServiceByCategory = getServiceByCategory($category["id"]);
+                        if (isset($listServiceByCategory) && is_array($listServiceByCategory)) {
+                          foreach ($listServiceByCategory as $index => $service): ?>
+                    <li><a href="#" title="">
+                        <?php echo($service['service_icon']) ?></a></li>
+                    <?php endforeach;
+                        } ?>
                   </ul>
                 </div>
               </div>

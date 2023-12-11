@@ -51,8 +51,12 @@
                   <h5 class="card-title">Danh sách khách hàng</h5>
                   <div class="row justify-content-between">
                     <div class="col-sm-12 col-md-6 justify-content-md-end">
-                      <input type="search" class="form-control col-sm-12 col-md-3"
-                        placeholder="Tìm kiếm theo tên khách hàng hoặc mã khách hàng">
+                      <div style="display: flex; gap: 15px;">
+                        <input type="search" class="form-control"
+                          placeholder="Tìm kiếm theo tên khách hàng hoặc mã khách hàng" id="searchInput"
+                          onchange="searchCustomer()"
+                          value="<?php echo isset($_GET['search_customer']) ? htmlspecialchars($_GET['search_customer']) : ''; ?>">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -140,6 +144,12 @@
 
   </body>
   <?php @include "../layout/import_script.php" ?>
+  <script>
+  function searchCustomer() {
+    var searchValue = document.getElementById('searchInput').value;
+    window.location.href = '?search_customer=' + encodeURIComponent(searchValue);
+  }
+  </script>
 
 </html>
 

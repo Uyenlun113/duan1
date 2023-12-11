@@ -44,12 +44,13 @@
                         <th>Tên loại phòng</th>
                         <th>Checkin/Checkout</th>
                         <th>Giá phòng</th>
-                        <th>Số lượng</th>
+                        <th style="text-align:center;">Số lượng</th>
+                        <th style="text-align:center;">#</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      if (isset($list_cart_items) && is_array($list_cart_items)) {
+                      if (isset($list_cart_items) && is_array($list_cart_items) && count($list_cart_items) > 0) {
                         foreach ($list_cart_items as $index => $item_cart): ?>
                       <tr class="cart_item">
                         <td class="" style="width:100px;padding:10px;">
@@ -74,13 +75,27 @@
                             <?php echo (formatMoney($item_cart['cart_item_price'])) ?>
                           </span>
                         </td>
-                        <td class="product-quantity">
+                        <td class="product-quantity" style="text-align:center;">
                           <span class="amount">
                             <?php echo $item_cart['cart_item_quantity'] ?>
                           </span>
                         </td>
+                        <td style="text-align:center;">
+                          <a
+                            href="cart.php?action=delete&delete_cart_item_id=<?= $item_cart['cart_items_id'] ?>&delete_cart_id=<?= $item_cart['cart_id'] ?>">
+                            <i class="fa-solid fa-trash-can"></i>
+                          </a>
+                        </td>
                       </tr>
                       <?php endforeach;
+                      } else {
+                        ?>
+                      <tr>
+                        <td colspan="6" style="text-align:center;">
+                          Không có dữ liệu nào trong giỏ hàng!
+                        </td>
+                      </tr>
+                      <?php
                       } ?>
                     </tbody>
                   </table>
@@ -105,7 +120,7 @@
                         </span>
                       </td>
                       <td style="width:110px;padding:10px 10px">
-                        <?php echo (formatMoney($item_cart['cart_item_quantity'] * $item_cart['cart_item_price'] )) ?>
+                        <?php echo (formatMoney($item_cart['cart_item_quantity'] * $item_cart['cart_item_price'])) ?>
                       </td>
                     </tr>
                     <?php endforeach;
@@ -119,11 +134,12 @@
                   </tbody>
                 </table>
                 <?php if ($totalPrice > 0): ?>
+                <?php
+                  ?>
                 <a class="theme-btn btn-style-one" style="width:100%" href="checkout.php">
                   <span class="btn-title">Thanh toán ngay</span>
                 </a>
                 <?php endif; ?>
-
               </div>
             </div>
           </div>

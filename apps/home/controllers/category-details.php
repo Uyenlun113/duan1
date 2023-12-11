@@ -41,14 +41,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function getComment($userData, $categoryDetail)
 {
     $options = array(
+        'select' => 'comments.*, users.*, users.id as users_id, comments.id as comments_id',
         'order_by' => 'comments.id desc',
         'where' => 'category_id = ' . $categoryDetail["id"],
-        'join' => 'join users on users.id = comments.user_id'
+        'join' => 'right join users on users.id = comments.user_id'
 
     );
     return get_all('comments', $options);
 }
+
 $list_comments = getComment($userData, $categoryDetail);
+
 $totalVotes = 0;
 
 if (count($list_comments) > 0) {
@@ -58,5 +61,36 @@ if (count($list_comments) > 0) {
     $totalVotes = round($totalVotes / count($list_comments), 0);
 }
 
-echo ($totalVotes);
+function getCategoteService($categoryDetail)
+{
+    $options = array(
+        'where' => 'category_id = ' . $categoryDetail["id"],
+        'join' => 'join service on service.id = category_service.service_id'
+    );
+    return get_all('category_service', $options);
+}
+$listCategoryService = getCategoteService($categoryDetail);
+
+
+function getCommentChild($comment_parent_id)
+{
+    $options = array(
+        'order_by' => 'comments.id desc',
+        'where' => 'comment_parent_id = ' . $comment_parent_id,
+        'join' => 'join users on users.id = comments.user_id'
+    );
+    return get_all('comments', $options);
+}
+
+function getListCategorySimilar($category_id)
+{
+    $options = array(
+        "where" => "category.id != $category_id",
+        "limit" => 3,
+        "offset" => 0,
+    );
+    return get_all('category', $options);
+
+}
+$listCategorySimilar = getListCategorySimilar($categoryDetail['id']);
 ?>

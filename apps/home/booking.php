@@ -119,6 +119,7 @@
                   <span>
                     Số phòng còn trống:
                     <?php echo $totalRoomsBlank < 0 ? "Mời bạn chọn thời gian đặt phòng" : $totalRoomsBlank; ?>
+                    phòng
                   </span>
                   <div class="text">
                     <?php echo ($detail_category["category_description"]) ?>
@@ -158,13 +159,15 @@
 
     function chooseCheckin() {
       searchValueCheckin = document.getElementById('cart_item_checkin').value
-      window.location.href = '?action=booking&booking=30&cart_item_checkin=' + encodeURIComponent(searchValueCheckin);
+      window.location.href = '?action=booking&booking=<?php echo($detail_category['id']) ?>&cart_item_checkin=' +
+        encodeURIComponent(searchValueCheckin);
     }
 
     function chooseCheckout() {
       searchValueCheckin = document.getElementById('cart_item_checkin').value
       searchValueCheckout = document.getElementById('cart_item_checkout').value
-      window.location.href = '?action=booking&booking=30&cart_item_checkin=' + encodeURIComponent(searchValueCheckin) +
+      window.location.href = '?action=booking&booking=<?php echo($detail_category['id']) ?>&cart_item_checkin=' +
+        encodeURIComponent(searchValueCheckin) +
         '&cart_item_checkout=' + encodeURIComponent(searchValueCheckout);
     }
 

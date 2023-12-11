@@ -2,10 +2,10 @@
 @include "../../configs/configs.php";
 session_start();
 
-if(isset($_SESSION['login_home'])) {
-    $userData = $_SESSION['login_home'];
+if (isset($_SESSION['login_home'])) {
+  $userData = $_SESSION['login_home'];
 } else {
-    header("Location: login.php");
+  header("Location: login.php");
 }
 
 function getAllOrders($userData)
@@ -56,4 +56,22 @@ function getCancelOrders($userData)
   return get_all('orders', $options);
 }
 $list_cancel_orders = getCancelOrders($userData);
+
+
+function handleCancelOrder($id)
+{
+  $data = array(
+    'orders_status' => 0,
+    'update_date' => date('Y-m-d')
+  );
+  $where = "id = $id";
+  return update_data('orders', $data, $where);
+}
+if (isset($_GET['cancel_order_id'])) {
+  $idOrder = $_GET['cancel_order_id'];
+  $cancelOrderResuilt = handleCancelOrder($idOrder);
+  if ($cancelOrderResuilt) {
+    header('Location: history.php');
+  }
+}
 ?>

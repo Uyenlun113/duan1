@@ -11,18 +11,21 @@ function getListStaff() {
     );
     return get_all( 'users', $options );
 }
-
-function getListCustomer() {
+function getListCustomer($search_customer) {
     $options = array(
         'select' => 'users.*',
         'order_by' => 'users.id',
         'where' => 'users.users_type = 2'
     );
+    if (!empty($search_customer)) {
+        $options['where'] = "users.users_name LIKE '%$search_customer%' OR users.users_code LIKE '%$search_customer%'";
+    }
     return get_all( 'users', $options );
 }
+$searchValue = isset($_GET['search_customer']) ? htmlspecialchars($_GET['search_customer']) : '';
 
 $list_staff = getListStaff();
-$list_customer = getListCustomer();
+$list_customer = getListCustomer($searchValue);
 
 function handleCreateStaff( $users_code, $users_name, $users_avatar, $users_email, $users_account, $users_password, $users_CCCD, $users_phone_number, $users_birthday, $users_address ) {
     $data = array(
