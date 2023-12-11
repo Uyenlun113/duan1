@@ -81,8 +81,12 @@
                     <div class="tab-pane fade show active" id="navs-pills-within-card-all" role="tabpanel">
                       <div class="row justify-content-between">
                         <div class="col-sm-12 col-md-6 justify-content-md-end">
-                          <input type="search" class="form-control col-sm-12 col-md-3"
-                            placeholder="Tìm kiếm theo tên khách hàng hoặc mã phiếu">
+                          <div style="display: flex; gap: 15px;">
+                            <input type="search" class="form-control"
+                              placeholder="Tìm kiếm theo tên khách hàng đặt phòng" id="searchInput"
+                              onchange="searchBooking()"
+                              value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
+                          </div>
                         </div>
                         <a href="create_bookings.php" class="col-sm-12 col-md-2">
                           <button type="button" class="btn btn-primary w-100">
@@ -96,10 +100,10 @@
                           <thead>
                             <tr>
                               <th>#</th>
-                              <th>Mã phiếu</th>
+                              <th style="text-align:left">Mã phiếu</th>
                               <th>Người đặt</th>
-                              <th style="text-align:center">Tổng tiền</th>
-                              <th style="text-align:center">Đã cọc</th>
+                              <th style="text-align:left">Tổng tiền</th>
+                              <th style="text-align:left">Đã cọc</th>
                               <th style="text-align:center">Phương thức cọc</th>
                               <th style="text-align:center">Trạng thái</th>
                               <th style="text-align:center">Thao tác</th>
@@ -114,8 +118,8 @@
                               <td style="width:10px">
                                 <?php echo $index + 1 ?>
                               </td>
-                              <td style="width:150px">
-                                <?php echo $orders['orders_code'] ?>
+                              <td style="width:150px;text-align:left;">
+                                ĐH - <?php echo $orders['orders_code'] ?>
                               </td>
                               <td style="width:15%">
                                 <span>
@@ -125,11 +129,11 @@
 
                               </td>
 
-                              <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_total']) ?>
+                              <td style="text-align:left"><span>
+                                  <?php echo formatMoney($orders['orders_total']) ?>
                                 </span></td>
-                              <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_deposit']) ?>
+                              <td style="text-align:left"><span>
+                                  <?php echo formatMoney($orders['orders_deposit']) ?>
                                 </span></td>
                               <td style="text-align:left"><span>
                                   <?php echo ($orders['orders_payment_method']) ?>
@@ -203,8 +207,12 @@
                     <div class="tab-pane fade" id="navs-pills-within-card-pending" role="tabpanel">
                       <div class="row justify-content-between">
                         <div class="col-sm-12 col-md-6 justify-content-md-end">
-                          <input type="search" class="form-control col-sm-12 col-md-3"
-                            placeholder="Tìm kiếm theo tên khách hàng hoặc mã phiếu">
+                          <div style="display: flex; gap: 15px;">
+                            <input type="search" class="form-control"
+                              placeholder="Tìm kiếm theo tên khách hàng đặt phòng" id="searchInput"
+                              onchange="searchBooking()"
+                              value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
+                          </div>
                         </div>
                         <a href="create_bookings.php" class="col-sm-12 col-md-2">
                           <button type="button" class="btn btn-primary w-100">
@@ -243,10 +251,10 @@
                                 </span></td>
 
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_total']) ?>
+                                  <?php echo formatMoney($orders['orders_total']) ?>
                                 </span></td>
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_deposit']) ?>
+                                  <?php echo formatMoney($orders['orders_deposit']) ?>
                                 </span></td>
                               <td style="text-align:left"><span>
                                   <?php echo ($orders['orders_payment_method']) ?>
@@ -305,8 +313,12 @@
                     <div class="tab-pane fade" id="navs-pills-within-card-success" role="tabpanel">
                       <div class="row justify-content-between">
                         <div class="col-sm-12 col-md-6 justify-content-md-end">
-                          <input type="search" class="form-control col-sm-12 col-md-3"
-                            placeholder="Tìm kiếm theo tên khách hàng hoặc mã phiếu">
+                          <div style="display: flex; gap: 15px;">
+                            <input type="search" class="form-control"
+                              placeholder="Tìm kiếm theo tên khách hàng đặt phòng" id="searchInput"
+                              onchange="searchBooking()"
+                              value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
+                          </div>
                         </div>
                         <a href="create_bookings.php" class="col-sm-12 col-md-2">
                           <button type="button" class="btn btn-primary w-100">
@@ -345,10 +357,10 @@
                                 </span></td>
 
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_total']) ?>
+                                  <?php echo formatMoney($orders['orders_total']) ?>
                                 </span></td>
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_deposit']) ?>
+                                  <?php echo formatMoney($orders['orders_deposit']) ?>
                                 </span></td>
                               <td style="text-align:left"><span>
                                   <?php echo ($orders['orders_payment_method']) ?>
@@ -399,8 +411,12 @@
                     <div class="tab-pane fade" id="navs-pills-within-card-reject" role="tabpanel">
                       <div class="row justify-content-between">
                         <div class="col-sm-12 col-md-6 justify-content-md-end">
-                          <input type="search" class="form-control col-sm-12 col-md-3"
-                            placeholder="Tìm kiếm theo tên khách hàng hoặc mã phiếu">
+                          <div style="display: flex; gap: 15px;">
+                            <input type="search" class="form-control"
+                              placeholder="Tìm kiếm theo tên khách hàng đặt phòng" id="searchInput"
+                              onchange="searchBooking()"
+                              value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
+                          </div>
                         </div>
                         <a href="create_bookings.php" class="col-sm-12 col-md-2">
                           <button type="button" class="btn btn-primary w-100">
@@ -439,10 +455,10 @@
                                 </span></td>
 
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_total']) ?>
+                                  <?php echo formatMoney($orders['orders_total']) ?>
                                 </span></td>
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_deposit']) ?>
+                                  <?php echo formatMoney($orders['orders_deposit']) ?>
                                 </span></td>
                               <td style="text-align:left"><span>
                                   <?php echo ($orders['orders_payment_method']) ?>
@@ -493,8 +509,12 @@
                     <div class="tab-pane fade" id="navs-pills-within-card-cancel" role="tabpanel">
                       <div class="row justify-content-between">
                         <div class="col-sm-12 col-md-6 justify-content-md-end">
-                          <input type="search" class="form-control col-sm-12 col-md-3"
-                            placeholder="Tìm kiếm theo tên khách hàng hoặc mã phiếu">
+                          <div style="display: flex; gap: 15px;">
+                            <input type="search" class="form-control"
+                              placeholder="Tìm kiếm theo tên khách hàng đặt phòng" id="searchInput"
+                              onchange="searchBooking()"
+                              value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
+                          </div>
                         </div>
                         <a href="create_bookings.php" class="col-sm-12 col-md-2">
                           <button type="button" class="btn btn-primary w-100">
@@ -534,10 +554,10 @@
                                 </span></td>
 
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_total']) ?>
+                                  <?php echo formatMoney($orders['orders_total']) ?>
                                 </span></td>
                               <td style="text-align:center"><span>
-                                  <?php echo ($orders['orders_deposit']) ?>
+                                  <?php echo formatMoney($orders['orders_deposit']) ?>
                                 </span></td>
                               <td style="text-align:left"><span>
                                   <?php echo ($orders['orders_payment_method']) ?>
@@ -602,6 +622,12 @@
 
   </body>
   <?php @include "../layout/import_script.php" ?>
+  <script>
+  function searchBooking() {
+    var searchValue = document.getElementById('searchInput').value;
+    window.location.href = '?search_booking=' + encodeURIComponent(searchValue);
+  }
+  </script>
 
 </html>
 

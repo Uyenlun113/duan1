@@ -69,35 +69,27 @@
                       <tr>
                         <th>#</th>
                         <th>Tên dịch vụ</th>
-                        <th>Giá dịch vụ</th>
-                        <th>Trạng thái</th>
+                        <th>Mô tả chi tiết</th>
                         <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
 
                       <?php
-                  if (isset($list_service) && is_array($list_service)) {
-                    foreach ($list_service as $index => $service): 
-?>
+                      if (isset($list_service) && is_array($list_service)) {
+                        foreach ($list_service as $index => $service):
+                          ?>
                       <tr>
-                        <td style="width:15px"><?php echo $index + 1 ?></td>
+                        <td style="width:15px">
+                          <?php echo $index + 1 ?>
+                        </td>
                         <td style="width:30%">
-                          <?php echo $service['name_service'] ?>
-                        </td>
-                        <td style="width:20%">
-                          <?php echo $service['price_service'] ?>
+                          <?php echo $service['service_name'] ?>
                         </td>
                         <td>
-                          <span>
-                            <?php if ($service['status_service'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Hoạt động</span>
-                            <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Tạm ẩn</span>
-                            <?php endif; ?>
-                          </span>
+                          <?php echo $service['service_description'] ?>
                         </td>
-                        <td>
+                        <td style="width:150px">
                           <a href="update_service.php?action=update&update_service=<?= $service['id'] ?>">
                             <button class="btn btn-sm btn-warning btn-icon">
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
@@ -111,9 +103,9 @@
                         </td>
                       </tr>
                       <?php endforeach;
-                  }else {
-    echo "Không có dữ liệu danh mục.";
-} ?>
+                      } else {
+                        echo "Không có dữ liệu danh mục.";
+                      } ?>
                     </tbody>
                   </table>
                   <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-end me-3 mt-3">

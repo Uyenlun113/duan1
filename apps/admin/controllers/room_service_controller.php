@@ -4,7 +4,7 @@
 
     function getAllService() {
         $options = array('order_by' => 'id');
-        return get_all('room_service', $options);
+        return get_all('service', $options);
     }
     $list_service = getAllService();
 
@@ -15,7 +15,7 @@
             'price_service' => $price_service,
             'status_service' => $status_service
         );
-        return save_and_get_result('room_service', $data);
+        return save_and_get_result('service', $data);
     }
 
 
@@ -29,12 +29,12 @@
         );
         $where = "id = $id";
         echo json_encode($data);
-        return update_data('room_service', $data, $where);
+        return update_data('service', $data, $where);
     }
     
     function deleteService($id) {
         $where = "id = $id";
-        return delete_data('room_service', $where);
+        return delete_data('service', $where);
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -55,7 +55,7 @@
     // lấy ra thông tin sản phẩm vào form sửa
     if (intval($_GET['update_service'])) {
         $subRoomId = intval($_GET['update_service']);
-        return $detailService = get_a_data('room_service', $subRoomId);
+        return $detailService = get_a_data('service', $subRoomId);
     }
             
     

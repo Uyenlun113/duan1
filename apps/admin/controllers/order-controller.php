@@ -2,17 +2,21 @@
 include_once '../../../../configs/configs.php';
     include_once "../../../../configs/check-auth-admin.php";
 
-
-function getOrderAll()
+function getOrderAll($search_booking)
 {
-    $options = array(
+   $options = array(
         'select' => 'orders.*, users.users_name, users.id as users_id',
         'order_by' => 'orders.id desc',
         'join' => 'LEFT JOIN users on users.id = orders.users_id'
     );
+    if (!empty($search_booking)) {
+        $options['where'] = "users.users_name LIKE '%$search_booking%' OR orders.orders_code LIKE '%$search_booking%'";
+    }
     return get_all('orders', $options);
 }
-$list_orders_all = getOrderAll();
+$searchValue = isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : '';
+$list_orders_all = getOrderAll($searchValue);
+
 
 function getOrderByStatus($status)
 {

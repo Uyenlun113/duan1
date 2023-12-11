@@ -18,22 +18,19 @@
           <div class="title-outer text-center">
             <h1 class="title">Thanh toán</h1>
             <ul class="page-breadcrumb">
-              <li><a href="index.html">Home</a></li>
-              <li>Shop</li>
+              <li><a href="index.php">Trang chủ</a></li>
+              <li>Thanh toán</li>
             </ul>
           </div>
         </div>
       </section>
-      <!-- end main-content -->
-
-      <!--checkout Start-->
       <section>
-        <div class="container pt-70">
+        <div class="container pt-50">
           <div class="section-content">
             <div class="row mt-10">
-              <div class="col-md-12 mt-60">
+              <div class="col-md-12">
                 <div class="payment-method">
-                  <h3>Chọn phương thức thanh toán</h3>
+                  <h4>Chọn phương thức thanh toán</h4>
                   <ul class="accordion-box">
                     <li class="accordion block" data-name="Thanh toán bằng QR">
                       <div class="acc-btn">
@@ -58,7 +55,7 @@
                           <div class="row clearfix">
                             <form method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
                               action="checkout.php">
-                              <button type="submit" name="momo">Thanh toán qua Momo</button>
+                              <button type="submit" name="payUrl">Thanh toán qua Momo</button>
                             </form>
                           </div>
                         </div>
@@ -89,12 +86,13 @@
               <form method="POST" action="checkout.php" enctype="multipart/form-data">
                 <div class="col-md-12 mt-60">
                   <button type="submit" name="checkout" class="theme-btn btn-style-one">
-                    <span class="btn-title">Thanh toán</span>
+                    <span class="btn-title">Xác nhận đã thanh toán</span>
                   </button>
                   <input type="text" id="orders_payment_method" name="orders_payment_method" hidden>
+                  <input type="text" id="orders_code_random" name="orders_code_random" hidden
+                    value="<?php echo ($orders_code_random)  ?>">
                 </div>
               </form>
-
             </div>
           </div>
         </div>

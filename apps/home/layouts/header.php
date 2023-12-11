@@ -13,7 +13,7 @@
             <li><a href="category-list.php">Loại phòng</a></li>
             <li><a href="#">Blog</a>
             </li>
-            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="about.php">Về chúng tôi</a></li>
             <li><a href="contact.php">Liên hệ</a></li>
           </ul>
         </nav>

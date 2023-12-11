@@ -93,10 +93,12 @@ function getListRoomsBlank($id_category)
 $listRoomsBlank = getListRoomsBlank($id_category);
 
 
-function getListRoomsNotBlank($cart_item_checkin, $cart_item_checkout)
+function getListRoomsNotBlank($category_id, $cart_item_checkin, $cart_item_checkout)
 {
     $options = array(
-        'where' => " ('$cart_item_checkin' <=  checking_rooms_checkin and checking_rooms_checkin <= '$cart_item_checkout') or ('$cart_item_checkin' <=  checking_rooms_checkout  and checking_rooms_checkout  <= '$cart_item_checkout')",
+        'select' => "checking_rooms.*, rooms.id as rooms_id, category.id as category_id",
+        'join' => 'join rooms on rooms.id = checking_rooms.rooms_id join category on category.id = rooms.category_id',
+        'where' => "category_id = $category_id and (('$cart_item_checkin' <=  checking_rooms_checkin and checking_rooms_checkin <= '$cart_item_checkout') or ('$cart_item_checkin' <=  checking_rooms_checkout  and checking_rooms_checkout  <= '$cart_item_checkout'))",
     );
     return get_all('checking_rooms', $options);
 }
@@ -120,11 +122,10 @@ if (count($list_cart_items) > 0) {
 }
 
 if (isset($_GET['cart_item_checkin']) && isset($_GET['cart_item_checkout'])) {
-    $cart_item_checkin = $_GET['cart_item_checkin'];
-    $cart_item_checkout = $_GET['cart_item_checkout'];
-    $listRoomsNotBlank = getListRoomsNotBlank($cart_item_checkin, $cart_item_checkout, );
+    $cart_item_checkin = (new DateTime(htmlspecialchars($_GET['cart_item_checkin'])))->format('Y-m-d');
+    $cart_item_checkout = (new DateTime(htmlspecialchars($_GET['cart_item_checkout'])))->format('Y-m-d');
+    $listRoomsNotBlank = getListRoomsNotBlank($detail_category['id'], $cart_item_checkin, $cart_item_checkout);
     $totalRoomsBlank = count($listRoomsBlank) - count($listRoomsNotBlank) - $totalRoomInCart;
 }
-
 
 ?>

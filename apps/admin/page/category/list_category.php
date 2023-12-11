@@ -51,14 +51,15 @@
                   <h5 class="card-title">Danh sách danh mục</h5>
                   <div class="row justify-content-between">
                     <div class="col-sm-12 col-md-6 justify-content-md-end">
-                      <input type="search" class="form-control col-sm-12 col-md-3"
-                        placeholder="Tìm kiếm theo tên danh mục">
+                      <div style="display: flex; gap: 15px;">
+                        <input type="search" class="form-control" placeholder="Tìm kiếm theo tên loại phòng"
+                          id="searchInput" onchange="searchCategory()"
+                          value="<?php echo isset($_GET['search_category']) ? htmlspecialchars($_GET['search_category']) : ''; ?>">
+                      </div>
                     </div>
                     <a href="create_category.php" class="col-sm-12 col-md-2">
-
                       <button class="dt-button add-new btn btn-primary ms-2  w-100" tabindex="0"><span> <i
                             class="bx bx-plus me-sm-1"></i>
-
                           Thêm mới
                         </span></button>
                     </a>
@@ -85,14 +86,14 @@
 ?>
                       <tr>
                         <td style="width:10px"><?php echo $index + 1 ?></td>
-                        <td style="width:20%">
+                        <td style="width:150px">
                           <?php echo $catrgory['category_code'] ?>
                         </td>
                         <td style="width:20%">
                           <?php echo $catrgory['category_name'] ?>
                         </td>
                         <td>
-                          <?php echo number_format($catrgory['category_price'], 0, '.', ','); ?>
+                          <?php echo formatMoney($catrgory['category_price']); ?>
 
                         </td>
                         <td>
@@ -161,6 +162,12 @@
 
   </body>
   <?php @include "../layout/import_script.php" ?>
+  <script>
+  function searchCategory() {
+    var searchValue = document.getElementById('searchInput').value;
+    window.location.href = '?search_category=' + encodeURIComponent(searchValue);
+  }
+  </script>
 
 </html>
 

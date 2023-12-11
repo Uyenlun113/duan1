@@ -46,13 +46,28 @@
       border: 1px solid var(--theme-color1);
       border-radius: 50%;
       display: block;
-      font-size: 20px;
+      font-size: 15px;
       height: 35px;
       line-height: 35px;
       text-align: center;
       width: 35px;
       -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease;
+    }
+
+    .comment-one .comment-one__single {
+      display: block !important;
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+    }
+
+    .sidebar__post .sidebar__post-list li {
+      padding: 10px;
+    }
+
+    .sidebar__post {
+      padding: 20px;
+
     }
     </style>
   </head>
@@ -100,62 +115,22 @@
                           <div class="">
                             <h6>Dịch vụ phòng</h6>
                             <div class="row room-facility-list">
+                              <?php
+                              if (isset($listCategoryService) && is_array($listCategoryService)) {
+                                foreach ($listCategoryService as $index => $categoryService):
+                                  ?>
                               <div class="col-sm-6 col-xl-3">
                                 <div class="list-one d-flex align-items-center me-sm-4 mb-3">
-                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0">
-                                    <i class="far fa-air-conditioner" style="font-size:14px;"></i>
+                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0 icon_service">
+                                    <?php echo ($categoryService['service_icon']) ?>
                                   </div>
-                                  <span class="title m-0">Air Conditionar</span>
+                                  <span class="title m-0">
+                                    <?php echo ($categoryService['service_name']) ?>
+                                  </span>
                                 </div>
                               </div>
-                              <div class="col-sm-6 col-xl-3">
-                                <div class="list-one d-flex align-items-center me-sm-4 mb-3">
-                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0">
-                                    <i class="far fa-air-conditioner" style="font-size:14px;"></i>
-                                  </div>
-                                  <span class="title m-0">Air Conditionar</span>
-                                </div>
-                              </div>
-                              <div class="col-sm-6 col-xl-3">
-                                <div class="list-one d-flex align-items-center me-sm-4 mb-3">
-                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0">
-                                    <i class="far fa-air-conditioner" style="font-size:14px;"></i>
-                                  </div>
-                                  <span class="title m-0">Air Conditionar</span>
-                                </div>
-                              </div>
-                              <div class="col-sm-6 col-xl-3">
-                                <div class="list-one d-flex align-items-center me-sm-4 mb-3">
-                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0">
-                                    <i class="far fa-air-conditioner" style="font-size:14px;"></i>
-                                  </div>
-                                  <span class="title m-0">Air Conditionar</span>
-                                </div>
-                              </div>
-                              <div class="col-sm-6 col-xl-3">
-                                <div class="list-one d-flex align-items-center me-sm-4 mb-3">
-                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0">
-                                    <i class="far fa-air-conditioner" style="font-size:14px;"></i>
-                                  </div>
-                                  <span class="title m-0">Air Conditionar</span>
-                                </div>
-                              </div>
-                              <div class="col-sm-6 col-xl-3">
-                                <div class="list-one d-flex align-items-center me-sm-4 mb-3">
-                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0">
-                                    <i class="far fa-air-conditioner" style="font-size:14px;"></i>
-                                  </div>
-                                  <span class="title m-0">Air Conditionar</span>
-                                </div>
-                              </div>
-                              <div class="col-sm-6 col-xl-3">
-                                <div class="list-one d-flex align-items-center me-sm-4 mb-3">
-                                  <div class="icon text-theme-color1 mr-10 flex-shrink-0">
-                                    <i class="far fa-air-conditioner" style="font-size:14px;"></i>
-                                  </div>
-                                  <span class="title m-0">Air Conditionar</span>
-                                </div>
-                              </div>
+                              <?php endforeach;
+                              } ?>
                             </div>
                           </div>
                         </div>
@@ -169,32 +144,63 @@
                   if (isset($list_comments) && is_array($list_comments)) {
                     foreach ($list_comments as $index => $comment): ?>
                   <div class="comment-one__single">
-                    <div class="comment-one__image">
-                      <img src="../upload/<?php echo ($comment["users_avatar"]) ?>" alt="" width="80px">
-                    </div>
-                    <div class="comment-one__content" style="margin-left:10px;">
-                      <span style="font-size: 22px;">
-                        <?php echo $comment['users_name']; ?>
-                        <br />
-                      </span>
-                      <div>
-                        Ngày đánh giá:
-                        <?php echo (new DateTime($comment['create_date']))->format('d \T\h\á\n\g m - Y') ?>
-                        |
-                        <?php
-                            for ($i = 0; $i < $comment['comment_vote']; $i++) {
-                              echo '<i class="fa-solid fa-star" style="color: orange; font-size: 13px;"></i>';
-                            }
-                            for ($i = 0; $i < 5 - $comment['comment_vote']; $i++) {
-                              echo '<i class="fa-regular fa-star" style="color: orange; font-size: 13px;"></i>';
-                            }
-                            ?>
+                    <div style="display:flex;width:100%;">
+                      <div class="comment-one__image">
+                        <img src="../upload/<?php echo ($comment["users_avatar"]) ?>" alt="" width="80px">
                       </div>
-                      <p>
-                        <?php echo $comment['comment_content']; ?>
-                      </p>
+                      <div class="comment-one__content" style="margin-left:10px;">
+                        <span style="font-size: 22px;">
+                          <?php echo $comment['users_name']; ?>
+                          <br />
+                        </span>
+                        <div>
+                          Ngày đánh giá:
+                          <?php echo (new DateTime($comment['create_date']))->format('d \T\h\á\n\g m - Y') ?>
+                          |
+                          <?php
+                              for ($i = 0; $i < $comment['comment_vote']; $i++) {
+                                echo '<i class="fa-solid fa-star" style="color: orange; font-size: 13px;"></i>';
+                              }
+                              for ($i = 0; $i < 5 - $comment['comment_vote']; $i++) {
+                                echo '<i class="fa-regular fa-star" style="color: orange; font-size: 13px;"></i>';
+                              }
+                              ?>
+                        </div>
+                        <p>
+                          <?php echo $comment['comment_content']; ?>
+                        </p>
+                      </div>
                     </div>
+                    <br />
+                    <?php
+                        $listCommentChild = getCommentChild($comment['comments_id']);
+                        if (isset($listCommentChild) && is_array($listCommentChild)) {
+                          foreach ($listCommentChild as $index => $commentChild): ?>
+                    <div style="display:flex;width:100%;padding-left:120px;">
+                      <div class="comment-one__image">
+                        <img src="../upload/<?php echo ($commentChild["users_avatar"]) ?>"
+                          style="width:60px;height:60px;">
+                      </div>
+                      <div class="comment-one__content" style="margin-left:-10px;">
+                        <span style="font-size: 18px;">
+                          <?php echo $commentChild['users_name']; ?>
+                          <br />
+                        </span>
+                        <div>
+                          <span style="font-size: 14px;">
+                            Ngày đánh giá:
+                            <?php echo (new DateTime($commentChild['create_date']))->format('d \T\h\á\n\g m - Y') ?>
+                          </span>
+                        </div>
+                        <p>
+                          <?php echo $commentChild['comment_content']; ?>
+                        </p>
+                      </div>
+                    </div>
+                    <?php endforeach;
+                        } ?>
                   </div>
+
                   <?php endforeach;
                   } ?>
                   <div class="comment-form">
@@ -250,7 +256,8 @@
                         ?>
                       </div>
                       <span style="font-size:16px">
-                        Số người tối đa: <?php echo ($categoryDetail["category_adult"]) ?> người/phòng
+                        Số người tối đa:
+                        <?php echo ($categoryDetail["category_adult"]) ?> người/phòng
 
                       </span>
                       <br />
@@ -266,29 +273,28 @@
                 <div class="sidebar__single sidebar__post">
                   <h3 class="sidebar__title">Phòng tương tự</h3>
                   <ul class="sidebar__post-list list-unstyled">
+                    <?php
+                    if (isset($listCategorySimilar) && is_array($listCategorySimilar)) {
+                      foreach ($listCategorySimilar as $index => $category_similar): ?>
                     <li>
-                      <div class="sidebar__post-image"> <img src="images/resource/news-info-1.jpg" alt=""> </div>
-                      <div class="sidebar__post-content">
-                        <h3> <span class="sidebar__post-content-meta"><i class="far fa-door-open"></i>Economy
-                            Room</span> <a href="#">$175/Night</a>
-                        </h3>
-                      </div>
+                      <a href="category-details.php?action=detail&category-details=<?= $category_similar['id'] ?>">
+                        <div class="sidebar__post-image">
+                          <img src="../upload/<?php echo ($category_similar["category_image"]) ?>" height="200"
+                            style="width:90px;height:60px;border-radius:8px;" alt="">
+                        </div>
+                        <div class="sidebar__post-content">
+                          <h3>
+                            <span class="sidebar__post-content-meta"><i class="far fa-door-open"></i>
+                              <?php echo ($category_similar["category_name"]) ?>
+                            </span>
+                            <a
+                              style="font-weight:500;font-size:13px;"><?php echo (formatMoney($category_similar["category_price"])) ?>/đêm</a>
+                          </h3>
+                        </div>
+                      </a>
                     </li>
-                    <li>
-                      <div class="sidebar__post-image"> <img src="images/resource/news-info-2.jpg" alt=""> </div>
-                      <div class="sidebar__post-content">
-                        <h3> <span class="sidebar__post-content-meta"><i class="far fa-door-open"></i>Deluxe Room</span>
-                          <a href="#">$250</a>
-                        </h3>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="sidebar__post-image"> <img src="images/resource/news-info-1.jpg" alt=""> </div>
-                      <div class="sidebar__post-content">
-                        <h3> <span class="sidebar__post-content-meta"><i class="far fa-door-open"></i>Super Deluxe
-                            Room</span> <a href="#">$320</a> </h3>
-                      </div>
-                    </li>
+                    <?php endforeach;
+                    } ?>
                   </ul>
                 </div>
               </div>
@@ -319,8 +325,9 @@
         var selectedIndex = $(this).index() + 1;
         console.log('Số sao được chọn:', selectedIndex);
         $("#comment_vote").val(selectedIndex == 1 ? 5 : selectedIndex == 2 ? 4 : selectedIndex == 3 ?
-          3 : selectedIndex == 4 ? 2 : selectedIndex == 5 ? 1 : 0);
+          3 : selectedIndex == 4 ? 2 : selectedndex == 5 ? 1 : 0);
         $(selected).each(function() {
+          I
 
           $(this).removeClass('selected');
         });

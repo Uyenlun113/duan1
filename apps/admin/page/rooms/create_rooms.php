@@ -148,16 +148,7 @@
                             </select>
                           </div>
                           <!-- Status -->
-                          <div class="mb-3 col ecommerce-select2-dropdown">
-                            <label class="form-label mb-1" for="status-org">Trạng thái phòng
-                            </label>
-                            <select class="select2 form-select" name="room_status" data-placeholder="-- Trạng thái --">
-                              <option value="">-- Trạng thái --</option>
-                              <option value="1">Còn trống</option>
-                              <option value="0">Đã đặt</option>
-                              <option value="2">Đang thuê</option>
-                            </select>
-                          </div>
+
 
                         </div>
                       </div>

@@ -5,7 +5,39 @@
     <meta charset="utf-8">
     <title>Hoexr | Hotel HTML Template Template</title>
     <?php include "./layouts/link.php" ?>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.min.css" rel="stylesheet" />
+    <style>
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+      background-color: #aa8453;
+      border-radius: 8px 8px 8px 8px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .nav-tabs {
+      border: none;
+      margin-bottom: 30px !important;
+    }
+
+    .nav-item {
+      margin-right: 20px;
+
+    }
+
+    .nav-item .nav-link {
+      color: #aa8453;
+
+    }
+
+    .nav-item:hover {
+      border: none;
+      color: #aa8453;
+    }
+
+    table {
+      border: 1px solid #dee2e6 !important;
+    }
+    </style>
   </head>
 
   <body>
@@ -17,10 +49,10 @@
       <section class="page-title" style="background-image: url(images/background/page-title-bg.png);">
         <div class="auto-container">
           <div class="title-outer text-center">
-            <h1 class="title">Thanh toán</h1>
+            <h1 class="title">Lịch sử giao dịch</h1>
             <ul class="page-breadcrumb">
-              <li><a href="index.html">Home</a></li>
-              <li>Shop</li>
+              <li><a href="index.php">Trang chủ</a></li>
+              <li>Lịch sử giao dịch</li>
             </ul>
           </div>
         </div>
@@ -29,7 +61,7 @@
 
       <!--checkout Start-->
       <section>
-        <div class="container pt-10">
+        <div class="container pt-10 mt-60">
           <div class="section-content">
             <div class="row mt-10">
               <div class="col-md-12 mt-10">
@@ -61,47 +93,79 @@
                 <!-- Tabs content -->
                 <div class="tab-content" id="ex1-content">
                   <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-                    <table class=" table border-top">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Mã đơn hàng</th>
-                          <th>Tổng tiền</th>
-                          <th>Tiền cọc</th>
-                          <th>Phương thức cọc</th>
-                          <th>Trạng thái</th>
-                          <th>Hành động</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                  if (isset($list_all_orders) && is_array($list_all_orders)) {
-                    foreach ($list_all_orders as $index => $all_orders): 
+
+                    <div class="table-responsive">
+                      <table class="table table-striped tbl-shopping-cart border-top border-right">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Tiền cọc</th>
+                            <th>Phương thức cọc</th>
+                            <th style="text-align:center;">Trạng thái</th>
+                            <th style="text-align:center;">Hành động</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (isset($list_all_orders) && is_array($list_all_orders) && count($list_all_orders) > 0) {
+                            foreach ($list_all_orders as $index => $all_orders):
                               ?>
-                        <tr>
-                          <td style="width:10px"><?php echo $index + 1 ?></td>
-                          <td><span><?php echo $all_orders['orders_code'] ?></span></td>
-                          <td><span><?php echo $all_orders['orders_total'] ?></span></td>
-                          <td><span><?php echo $all_orders['orders_deposit'] ?></span></td>
-                          <td><span><?php echo $all_orders['orders_payment_method'] ?></span></td>
-                          <td><span><?php echo $all_orders['orders_status'] ?></span></td>
-                          <td>
-                            <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
-                              <button class=" btn btn-sm btn-danger btn-icon">
-                                Hủy phòng
-                              </button>
-                            </a>
-                          </td>
-                        </tr>
-                        <?php endforeach;
-                          }else {
-                            echo "Không có dữ liệu danh mục.";
-                        } ?>
-                      </tbody>
-                    </table>
+                          <tr>
+                            <td style="width:10px">
+                              <?php echo $index + 1 ?>
+                            </td>
+                            <td><span>ĐH -
+                                <?php echo $all_orders['orders_code'] ?>
+                              </span></td>
+                            <td><span>
+                                <?php echo formatMoney($all_orders['orders_total']) ?>
+                              </span></td>
+                            <td><span>
+                                <?php echo formatMoney($all_orders['orders_deposit']) ?>
+                              </span></td>
+                            <td><span>
+                                <?php echo $all_orders['orders_payment_method'] ?>
+                              </span></td>
+                            <td style="text-align:center;"><span>
+                                <?php if ($all_orders['orders_status'] == 1): ?>
+                                <span>Chờ xử lý</span>
+                                <?php elseif ($all_orders['orders_status'] == 2): ?>
+                                <span>Thành công</span>
+                                <?php elseif ($all_orders['orders_status'] == 3): ?>
+                                <span>Đã từ chối</span>
+                                <?php else: ?>
+                                <span>Đã hủy</span>
+                                <?php endif; ?>
+                              </span></td>
+                            <td style="text-align:center;">
+                              <?php if ($all_orders['orders_status'] == 1): ?>
+                              <a href="history.php?action=cancel&cancel_order_id=<?= $all_orders['id'] ?>">
+                                <button class="btn btn-sm btn-danger btn-icon">
+                                  Hủy phòng
+                                </button>
+                              </a>
+                              <?php endif; ?>
+                            </td>
+                          </tr>
+                          <?php endforeach;
+                          } else {
+                            ?>
+                          <tr>
+                            <td colspan="5" style="text-align:center;">
+                              Không có dữ liệu hiển thị!
+                            </td>
+                          </tr>
+                          <?php
+                          } ?>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                    <table class=" table border-top">
+                    <table class="table table-striped tbl-shopping-cart border-top">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -109,22 +173,35 @@
                           <th>Tổng tiền</th>
                           <th>Tiền cọc</th>
                           <th>Phương thức cọc</th>
-                          <th>Hành động</th>
+                          <th style="text-align:center">Hành động</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                  if (isset($list_waiting_orders) && is_array($list_waiting_orders)) {
-                    foreach ($list_waiting_orders as $index => $waiting_orders): 
-                              ?>
+                        if (isset($list_waiting_orders) && is_array($list_waiting_orders) && count($list_waiting_orders) > 0) {
+                          foreach ($list_waiting_orders as $index => $waiting_orders):
+                            ?>
                         <tr>
-                          <td style="width:10px"><?php echo $index + 1 ?></td>
-                          <td><span><?php echo $waiting_orders['orders_code'] ?></span></td>
-                          <td><span><?php echo $waiting_orders['orders_total'] ?></span></td>
-                          <td><span><?php echo $waiting_orders['orders_deposit'] ?></span></td>
-                          <td><span><?php echo $waiting_orders['orders_payment_method'] ?></span></td>
+                          <td style="width:10px">
+                            <?php echo $index + 1 ?>
+                          </td>
                           <td>
-                            <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
+                            <span>
+                              ĐH -
+                              <?php echo $waiting_orders['orders_code'] ?>
+                            </span>
+                          </td>
+                          <td><span>
+                              <?php echo formatMoney($waiting_orders['orders_total']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo formatMoney($waiting_orders['orders_deposit']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo $waiting_orders['orders_payment_method'] ?>
+                            </span></td>
+                          <td style="text-align:center">
+                            <a href="history.php?action=cancel&cancel_order_id=<?= $waiting_orders['id'] ?>">
                               <button class=" btn btn-sm btn-danger btn-icon">
                                 Hủy phòng
                               </button>
@@ -132,14 +209,20 @@
                           </td>
                         </tr>
                         <?php endforeach;
-                          }else {
-                            echo "Không có dữ liệu danh mục.";
+                        } else {
+                          ?>
+                        <tr>
+                          <td colspan="5" style="text-align:center;">
+                            Không có dữ liệu hiển thị!
+                          </td>
+                        </tr>
+                        <?php
                         } ?>
                       </tbody>
                     </table>
                   </div>
                   <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                    <table class=" table border-top">
+                    <table class="table table-striped tbl-shopping-cart border-top">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -147,37 +230,48 @@
                           <th>Tổng tiền</th>
                           <th>Tiền cọc</th>
                           <th>Phương thức cọc</th>
-                          <th>Hành động</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                  if (isset($list_success_orders) && is_array($list_success_orders)) {
-                    foreach ($list_success_orders as $index => $success_orders): 
-                              ?>
+                        if (isset($list_success_orders) && is_array($list_success_orders) && count($list_success_orders) > 0) {
+                          foreach ($list_success_orders as $index => $success_orders):
+                            ?>
                         <tr>
-                          <td style="width:10px"><?php echo $index + 1 ?></td>
-                          <td><span><?php echo $success_orders['orders_code'] ?></span></td>
-                          <td><span><?php echo $success_orders['orders_total'] ?></span></td>
-                          <td><span><?php echo $success_orders['orders_deposit'] ?></span></td>
-                          <td><span><?php echo $success_orders['orders_payment_method'] ?></span></td>
-                          <td>
-                            <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
-                              <button class=" btn btn-sm btn-danger btn-icon">
-                                Hủy phòng
-                              </button>
-                            </a>
+                          <td style="width:10px">
+                            <?php echo $index + 1 ?>
+                          </td>
+                          <td><span>
+                              ĐH -
+                              <?php echo $success_orders['orders_code'] ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo formatMoney($success_orders['orders_total']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo formatMoney($success_orders['orders_deposit']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo $success_orders['orders_payment_method'] ?>
+                            </span></td>
+                        </tr>
+                        <?php
+                          endforeach;
+                        } else {
+                          ?>
+                        <tr>
+                          <td colspan="5" style="text-align:center;">
+                            Không có dữ liệu hiển thị!
                           </td>
                         </tr>
-                        <?php endforeach;
-                          }else {
-                            echo "Không có dữ liệu danh mục.";
+                        <?php
                         } ?>
                       </tbody>
                     </table>
+
                   </div>
                   <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
-                    <table class=" table border-top">
+                    <table class="table table-striped tbl-shopping-cart  border-top">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -189,25 +283,42 @@
                       </thead>
                       <tbody>
                         <?php
-                  if (isset($list_reject_orders) && is_array($list_reject_orders)) {
-                    foreach ($list_reject_orders as $index => $reject_orders): 
-                              ?>
+                        if (isset($list_reject_orders) && is_array($list_reject_orders) && count($list_reject_orders) > 0) {
+                          foreach ($list_reject_orders as $index => $reject_orders):
+                            ?>
                         <tr>
-                          <td style="width:10px"><?php echo $index + 1 ?></td>
-                          <td><span><?php echo $reject_orders['orders_code'] ?></span></td>
-                          <td><span><?php echo $reject_orders['orders_total'] ?></span></td>
-                          <td><span><?php echo $reject_orders['orders_deposit'] ?></span></td>
-                          <td><span><?php echo $reject_orders['orders_payment_method'] ?></span></td>
+                          <td style="width:10px">
+                            <?php echo $index + 1 ?>
+                          </td>
+                          <td><span>
+                              ĐH -
+                              <?php echo $reject_orders['orders_code'] ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo formatMoney($reject_orders['orders_total']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo formatMoney($reject_orders['orders_deposit']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo $reject_orders['orders_payment_method'] ?>
+                            </span></td>
                         </tr>
                         <?php endforeach;
-                          }else {
-                            echo "Không có dữ liệu danh mục.";
+                        } else {
+                          ?>
+                        <tr>
+                          <td colspan="5" style="text-align:center;">
+                            Không có dữ liệu hiển thị!
+                          </td>
+                        </tr>
+                        <?php
                         } ?>
                       </tbody>
                     </table>
                   </div>
                   <div class="tab-pane fade" id="ex1-tabs-0" role="tabpanel" aria-labelledby="ex1-tab-0">
-                    <table class=" table border-top">
+                    <table class="table table-striped tbl-shopping-cart border-top">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -219,27 +330,43 @@
                       </thead>
                       <tbody>
                         <?php
-                  if (isset($list_cancel_orders) && is_array($list_cancel_orders)) {
-                    foreach ($list_cancel_orders as $index => $cancel_orders): 
-                              ?>
+                        if (isset($list_cancel_orders) && is_array($list_cancel_orders) && count($list_cancel_orders) > 0) {
+                          foreach ($list_cancel_orders as $index => $cancel_orders):
+                            ?>
                         <tr>
-                          <td style="width:10px"><?php echo $index + 1 ?></td>
-                          <td><span><?php echo $cancel_orders['orders_code'] ?></span></td>
-                          <td><span><?php echo $cancel_orders['orders_total'] ?></span></td>
-                          <td><span><?php echo $cancel_orders['orders_deposit'] ?></span></td>
-                          <td><span><?php echo $cancel_orders['orders_payment_method'] ?></span></td>
+                          <td style="width:10px">
+                            <?php echo $index + 1 ?>
+                          </td>
+                          <td><span>
+                              ĐH -
+                              <?php echo $cancel_orders['orders_code'] ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo formatMoney($cancel_orders['orders_total']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo formatMoney($cancel_orders['orders_deposit']) ?>
+                            </span></td>
+                          <td><span>
+                              <?php echo $cancel_orders['orders_payment_method'] ?>
+                            </span></td>
                         </tr>
-                        <?php endforeach;
-                          }else {
-                            echo "Không có dữ liệu danh mục.";
+                        <?php
+                          endforeach;
+                        } else {
+                          ?>
+                        <tr>
+                          <td colspan="5" style="text-align:center;">
+                            Không có dữ liệu hiển thị!
+                          </td>
+                        </tr>
+                        <?php
                         } ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
-                <!-- Tabs content -->
               </div>
-
             </div>
           </div>
         </div>

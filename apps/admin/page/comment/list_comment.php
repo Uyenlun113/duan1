@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr"
-  data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template">
+  data-theme="theme-default">
 
   <head>
     <meta charset="utf-8" />
@@ -57,7 +57,7 @@
                         <th>#</th>
                         <th>Loại phòng</th>
                         <th>Người bình luận</th>
-                        <th>Đánh giá sao</th>
+                        <th>Đánh giá</th>
                         <th>Ngày viết</th>
                         <th>Nội dung</th>
                         <th>Thao tác</th>
@@ -65,17 +65,34 @@
                     </thead>
                     <tbody>
                       <?php
-                  if (isset($list_comment) && is_array($list_comment)) {
-                    foreach ($list_comment as $index => $comment): 
-?>
+                      if (isset($list_comment) && is_array($list_comment)) {
+                        foreach ($list_comment as $index => $comment):
+                          ?>
                       <tr>
-                        <td><?php echo $index + 1 ?></td>
-                        <td><span><?php echo $comment['category_name'] ?></span></td>
-                        <td><span><?php echo $comment['user_name'] ?></span></td>
-                        <td><span><?php echo $comment['comment_vote'] ?>
-                            <div class="read-only-ratings" data-rateyo-read-only="true"></div>
+                        <td>
+                          <?php echo $index + 1 ?>
+                        </td>
+                        <td><span>
+                            <?php echo $comment['category_name'] ?>
                           </span></td>
-                        <td><span><?php echo $comment['create_date'] ?></span></td>
+                        <td><span>
+                            <?php echo $comment['user_name'] ?>
+                          </span></td>
+                        <td style="text-align:center">
+                          <span>
+                            <?php
+                              for ($i = 0; $i < $comment['comment_vote']; $i++) {
+                                echo '<i class="bx bxs-star" style="color:orange"></i>';
+                              }
+                              for ($i = 0; $i < 5 - $comment['comment_vote']; $i++) {
+                                echo '<i class="bx bx-star" style="color:orange"></i>';
+                              }
+                              ?>
+                          </span>
+                        </td>
+                        <td><span>
+                            <?php echo $comment['create_date'] ?>
+                          </span></td>
                         <td><span>
                             <div class="multiline-ellipsis">
                               <?php echo $comment['comment_content'] ?>
@@ -90,9 +107,9 @@
                         </td>
                       </tr>
                       <?php endforeach;
-                  }else {
-    echo "Không có dữ liệu danh mục.";
-} ?>
+                      } else {
+                        echo "Không có dữ liệu danh mục.";
+                      } ?>
                     </tbody>
                   </table>
                   <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-end me-3 mt-3">

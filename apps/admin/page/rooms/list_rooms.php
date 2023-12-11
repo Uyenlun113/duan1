@@ -100,7 +100,6 @@
                         <th>Loại phòng</th>
                         <th>Số người ở</th>
                         <th>Giá phòng</th>
-                        <th>Trạng thái</th>
                         <th>Thao tác</th>
                       </tr>
                     </thead>
@@ -128,15 +127,7 @@
                         <td><span>$
                             <?php echo number_format($rooms['category_price'], 0, '.', ',') ?>
                           </span></td>
-                        <td>
-                          <span>
-                            <?php if ($rooms['room_status'] == 1): ?>
-                            <span class="badge bg-label-primary me-1">Còn trống</span>
-                            <?php else: ?>
-                            <span class="badge bg-label-primary me-1">Đã đặt</span>
-                            <?php endif; ?>
-                          </span>
-                        </td>
+
                         <td>
                           <?php if ($isUpdateRoom): ?>
                           <a href="update_rooms.php?action=update&update_rooms=<?= $rooms['id'] ?>">
