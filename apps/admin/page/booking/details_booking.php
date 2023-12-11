@@ -41,7 +41,7 @@
   </head>
 
   <body>
-    <?php @include "../../controllers/bookingrooms.php" ?>
+    <?php @include "../../controllers/order-controller.php" ?>
     <div class="layout-wrapper layout-content-navbar  ">
       <div class="layout-container">
         <?php @include "../layout/sidebar.php" ?>
@@ -77,7 +77,7 @@
                               <tr>
                                 <td class="pe-3">Mã đặt phòng :</td>
                                 <td>
-                                  <?php echo $detail_orders['orders_code'] ?>
+                                  ĐH - <?php echo $detail_orders['orders_code'] ?>
                                 </td>
                               </tr>
                               <tr>
@@ -101,7 +101,7 @@
                               <tr>
                                 <td class="pe-3">Ngày đặt :</td>
                                 <td>
-                                  <?php echo $detail_orders['create_date'] ?>
+                                  <?php echo formatDatetimeVi( $detail_orders['create_date']) ?>
                                 </td>
                               </tr>
                             </tbody>
@@ -136,7 +136,7 @@
                               <?php echo $order_detail['category_name'] ?>
                             </td>
                             <td>
-                              <?php echo $order_detail['orders_item_price'] ?>
+                              <?php echo formatMoney($order_detail['orders_item_price'])  ?>
                             </td>
                             <td>
                               <?php echo $order_detail['orders_item_quantity'] ?>
@@ -145,10 +145,10 @@
                               <?php echo $order_detail['orders_item_count_people'] ?>
                             </td>
                             <td>
-                              <?php echo $order_detail['orders_item_checkin'] ?>
+                              <?php echo formatDatetimeEn($order_detail['orders_item_checkin']) ?>
                             </td>
                             <td>
-                              <?php echo $order_detail['orders_item_checkout'] ?>
+                              <?php echo formatDatetimeEn($order_detail['orders_item_checkout']) ?>
                             </td>
                           </tr>
                           <?php endforeach;

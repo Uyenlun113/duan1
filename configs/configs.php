@@ -160,4 +160,10 @@ function formatDatetimeVi($date)
     $formattedDate = date("d", strtotime($date)) . " Tháng " . date("m - Y", strtotime($date));
     return $formattedDate;
 }
+
+function formatDatetimeEn($date)
+{
+    $formattedDate = (new Datetime($date))-> format("d/m/Y");
+    return $formattedDate;
+}
 ?>

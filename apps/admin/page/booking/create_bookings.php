@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <?php @include "../../controllers/bookingrooms.php"; ?>
+    <?php @include "../../controllers/order-controller.php"; ?>
 
     <div class="layout-wrapper layout-content-navbar  ">
       <div class="layout-container">
@@ -19,14 +19,13 @@
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
-                <span class="text-muted fw-light">eCommerce /</span><span> Add Product</span>
+                <span class="text-muted fw-light">Trang chủ /</span><span> Thêm phiếu đặt phòng</span>
               </h4>
               <form id="quickForm" method="POST" action="create_bookings.php" enctype="multipart/form-data" novalidate>
                 <div class="app-ecommerce">
                   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column justify-content-center">
                       <h4 class="mb-1 mt-3">Thêm phiếu đặt phòng</h4>
-                      <p class="text-muted">Orders placed across your store</p>
                     </div>
                     <div class="d-flex align-content-center flex-wrap gap-3">
                       <a href="list_booking.php"><button type="button" class="btn btn-label-secondary">Quay lại</button>
@@ -85,38 +84,34 @@
                                             <?php endforeach;?>
                                           </select>
                                         </div>
-
                                       </div>
-
                                       <div class="row">
                                         <div class="col-md-6 col-12 mb-md-0 mb-3">
                                           <p class="mb-2 repeater-title">Check in</p>
-
-                                          <input type="datetime-local" class="form-control flatpickr-input"
-                                            placeholder="YYYY-MM-DD HH:MM" id="flatpickr-multi" fdprocessedid="9xzjwn"
+                                          <input type="date" class="form-control flatpickr-input"
+                                            placeholder="YYYY-MM-DD" id="flatpickr-multi" fdprocessedid="9xzjwn"
                                             name="orders_item_checkin">
                                         </div>
                                         <div class="col-md-6 col-12 mb-md-0 mb-3">
                                           <p class="mb-2 repeater-title">Check out</p>
-                                          <input type="datetime-local" class="form-control  flatpickr-input"
-                                            placeholder="1" min="1" max="50" name="orders_item_checkout" />
+                                          <input type="date" class="form-control  flatpickr-input" placeholder="1"
+                                            min="1" max="50" name="orders_item_checkout" />
                                         </div>
                                       </div>
                                     </div>
                                     <div class="col-md-5 col-12  mb-md-0 mb-3 ps-md-0">
                                       <div class="row mb-2">
-                                        <div class="col-md-4 col-12 mb-md-0 mb-3">
+                                        <div class="col-md-6 col-12 mb-md-0 mb-3">
                                           <p class="mb-2 repeater-title">Số lượng</p>
                                           <input type="number" class="form-control invoice-item-qty" placeholder="1"
                                             min="1" max="50" name="orders_item_quantity" />
                                         </div>
-                                        <div class="col-md-8 col-12 mb-md-0 mb-3">
-                                          <p class="mb-2 repeater-title">Giá tiền ($ / đêm)</p>
-                                          <input type="number" disabled class="form-control invoice-item-qty"
-                                            placeholder="1" value="" name="orders_item_price" />
+                                        <div class="col-md-6 col-12 mb-md-0 mb-3">
+                                          <p class="mb-2 repeater-title">Số người</p>
+                                          <input type="number" class="form-control invoice-item-qty" placeholder="1"
+                                            value="" name="orders_item_count_people" />
                                         </div>
                                       </div>
-
                                     </div>
 
                                   </div>
@@ -143,15 +138,14 @@
                           <h5 class="card-title mb-0">Thông tin đặt phòng</h5>
                         </div>
                         <div class="card-body">
-
                           <div class="mb-3 col ecommerce-select2-dropdown">
                             <label class="form-label mb-1" for="status-org">Phương thức thanh toán
                             </label>
                             <select class="select2 form-select" name="booking_payment"
                               data-placeholder="Phương thức thanh toán">
-                              <option value="">Phương thức thanh toán</option>
-                              <option value="1">Chuyển khoản</option>
-                              <option value="0">Tiền mặt</option>
+                              <option value="Tiền mặt">Tiền mặt</option>
+                              <option value="Chuyển khoản">Chuyển khoản</option>
+                              <option value="Quẹt thẻ">Quẹt thẻ</option>
                             </select>
                           </div>
 
@@ -161,11 +155,8 @@
                   </div>
                 </div>
               </form>
-
             </div>
             <?php @include "../layout/footer.php" ?>
-
-
             <div class="content-backdrop fade"></div>
           </div>
         </div>
@@ -204,23 +195,13 @@
     <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
     <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
     <script src="../../assets/vendor/js/menu.js"></script>
-
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
     <script src="../../assets/vendor/libs/flatpickr/flatpickr.js"></script>
     <script src="../../assets/vendor/libs/cleavejs/cleave.js"></script>
     <script src="../../assets/vendor/libs/cleavejs/cleave-phone.js"></script>
     <script src="../../assets/vendor/libs/jquery-repeater/jquery-repeater.js"></script>
-
-    <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
-
-
-    <!-- Page JS -->
     <script src="../../assets/js/offcanvas-send-invoice.js"></script>
     <script src="../../assets/js/app-invoice-add.js"></script>
-
   </body>
 
 </html>
