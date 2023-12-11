@@ -47,9 +47,17 @@
                   <div class="post-info"><i class="fas fa-phone"></i>09123456789</div>
                   <div class="post-info">0345678910</div>
                   <div class="post-info"><i class="fa fa-envelope"></i> sonahotel@gmail.com</div>
-                  <div class="post-info"><i class="fas fa-location"></i> 36 – 38 Lâm Hoành, phường Phước Mỹ, quận Sơn
+                  <<<<<<< HEAD <div class="post-info"><i class="fas fa-location"></i> 36 – 38 Lâm Hoành, phường Phước
+                    Mỹ, quận Sơn
                     Trà, Đà Nẵng
-                  </div>
+                </div>
+                =======
+                <div class="post-info"><i class="fas fa-location"></i> Cổng số 1, Tòa nhà FPT Polytechnic, 13 phố Trịnh
+                  Văn Bô, phường Phương Canh, quận Nam Từ Liêm, TP Hà Nội
+
+                  Km12 Cầu Diễn, Phường Phúc Diễn, Quận Bắc Từ Liêm, Hà Nội
+                </div>
+                >>>>>>> 3e29ce692cf25e13e691a866eba382757421c85a
               </article>
             </div>
           </div>
@@ -68,12 +76,16 @@
                 </div>
               </form>
             </div>
-            <div class="text"><i class="fa-regular fa-circle-check"></i>Tôi đồng ý với mọi điều khoản và chính sách
-            </div>
+            <<<<<<< HEAD <div class="text"><i class="fa-regular fa-circle-check"></i>Tôi đồng ý với mọi điều khoản và
+              chính sách
           </div>
+          =======
+          <div class="text"><i class="fa-regular fa-circle-check"></i>Tôi đồng ý với mọi điều khoản và chính sách</div>
+          >>>>>>> 3e29ce692cf25e13e691a866eba382757421c85a
         </div>
       </div>
     </div>
+  </div>
   </div>
   <!--  Footer Bottom -->
   <div class="footer-bottom wow slideInUp">

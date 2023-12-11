@@ -154,4 +154,10 @@ function formatMoney($money)
     $formattedAmount = number_format($money, 0, ',', '.') . ' ₫';
     return $formattedAmount;
 }
+
+function formatDatetimeVi($date)
+{
+    $formattedDate = date("d", strtotime($date)) . " Tháng " . date("m - Y", strtotime($date));
+    return $formattedDate;
+}
 ?>

@@ -57,15 +57,15 @@
                         <th>#</th>
                         <th>Loại phòng</th>
                         <th>Người bình luận</th>
-                        <th>Đánh giá</th>
-                        <th>Ngày viết</th>
+                        <th style="text-align:center">Đánh giá</th>
+                        <th style="text-align:center">Ngày viết</th>
                         <th>Nội dung</th>
-                        <th>Thao tác</th>
+                        <th style="text-align:center">Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      if (isset($list_comment) && is_array($list_comment)) {
+                      if (isset($list_comment) && is_array($list_comment) && count($list_comment) > 0) {
                         foreach ($list_comment as $index => $comment):
                           ?>
                       <tr>
@@ -81,24 +81,31 @@
                         <td style="text-align:center">
                           <span>
                             <?php
-                              for ($i = 0; $i < $comment['comment_vote']; $i++) {
-                                echo '<i class="bx bxs-star" style="color:orange"></i>';
-                              }
-                              for ($i = 0; $i < 5 - $comment['comment_vote']; $i++) {
-                                echo '<i class="bx bx-star" style="color:orange"></i>';
-                              }
-                              ?>
+                                for ($i = 0; $i < $comment['comment_vote']; $i++) {
+                                  echo '<i class="bx bxs-star" style="color:orange;font-size:15px;"></i>';
+                                }
+                                for ($i = 0; $i < 5 - $comment['comment_vote']; $i++) {
+                                  echo '<i class="bx bx-star" style="color:orange;font-size:15px;"></i>';
+                                }
+                                ?>
                           </span>
                         </td>
-                        <td><span>
-                            <?php echo $comment['create_date'] ?>
-                          </span></td>
+                        <td style="text-align:center">
+                          <span>
+                            <?php echo formatDatetimeVi($comment['create_date']) ?>
+                          </span>
+                        </td>
                         <td><span>
                             <div class="multiline-ellipsis">
                               <?php echo $comment['comment_content'] ?>
                             </div>
                           </span></td>
-                        <td>
+                        <td style="text-align:center">
+                          <a href="list_comment.php?feedback=<?php echo $comment['id'] ?>">
+                            <button class=" btn btn-sm btn-warning btn-icon">
+                              <i class='bx bx-message-square-dots'></i>
+                            </button>
+                          </a>
                           <a href="list_comment.php?action=delete&delete_comment_id=<?= $comment['id'] ?>">
                             <button class=" btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
@@ -108,7 +115,13 @@
                       </tr>
                       <?php endforeach;
                       } else {
-                        echo "Không có dữ liệu danh mục.";
+                        ?>
+                      <tr>
+                        <td colspan="7" style="text-align:center;">
+                          Không có dữ liệu hiển thị!
+                        </td>
+                      </tr>
+                      <?php
                       } ?>
                     </tbody>
                   </table>
@@ -148,6 +161,64 @@
   </body>
   <?php @include "../layout/import_script.php" ?>
   <script src="../../assets/js/extended-ui-star-ratings.js"></script>
+  <div class="modal fade" id="addNewCCModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered1 modal-simple modal-add-new-cc">
+      <div class="modal-content p-3 p-md-5">
+        <div class="modal-body">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="text-center mb-4">
+            <h3>Add New Card</h3>
+            <p>Add new card to complete payment</p>
+          </div>
+          <form id="addNewCCForm" class="row g-3" onsubmit="return false">
+            <div class="col-12">
+              <label class="form-label w-100" for="modalAddCard">Card Number</label>
+              <div class="input-group input-group-merge">
+                <input id="modalAddCard" name="modalAddCard" class="form-control credit-card-mask" type="text"
+                  placeholder="1356 3215 6548 7898" aria-describedby="modalAddCard2" />
+                <span class="input-group-text cursor-pointer p-1" id="modalAddCard2"><span
+                    class="card-type"></span></span>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="modalAddCardName">Name</label>
+              <input type="text" id="modalAddCardName" class="form-control" placeholder="John Doe" />
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label" for="modalAddCardExpiryDate">Exp. Date</label>
+              <input type="text" id="modalAddCardExpiryDate" class="form-control expiry-date-mask"
+                placeholder="MM/YY" />
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label" for="modalAddCardCvv">CVV Code</label>
+              <div class="input-group input-group-merge">
+                <input type="text" id="modalAddCardCvv" class="form-control cvv-code-mask" maxlength="3"
+                  placeholder="654" />
+                <span class="input-group-text cursor-pointer" id="modalAddCardCvv2"><i
+                    class="bx bx-help-circle text-muted" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Card Verification Value"></i></span>
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="switch">
+                <input type="checkbox" class="switch-input">
+                <span class="switch-toggle-slider">
+                  <span class="switch-on"></span>
+                  <span class="switch-off"></span>
+                </span>
+                <span class="switch-label">Save card for future billing?</span>
+              </label>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-primary me-sm-3 me-1 mt-3">Submit</button>
+              <button type="reset" class="btn btn-label-secondary btn-reset mt-3" data-bs-dismiss="modal"
+                aria-label="Close">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </html>
 
