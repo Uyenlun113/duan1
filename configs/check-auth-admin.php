@@ -26,4 +26,6 @@ $isViewListCheckingRoom = strpos($dataLoginUser['permission_codes'], 'VIEW_LIST_
 $isComfirmBooking = strpos($dataLoginUser['permission_codes'], 'COMFIRM_BOOKING') !== false ?? false;
 $isCancelBooking = strpos($dataLoginUser['permission_codes'], 'CANCEL_BOOKING') !== false ?? false;
 $isViewListCheckingRoom = strpos($dataLoginUser['permission_codes'], 'VIEW_LIST_CHECKING_ROOM') !== false ?? false;
+
+$isList = strpos($dataLoginUser['permission_codes'], 'VIEW_LIST_THONGKE') !== false ?? false;
 ?>

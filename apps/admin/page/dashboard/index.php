@@ -128,6 +128,7 @@
                     </div>
                   </div>
                 </div>
+                <?php if ($isList): ?>
                 <div class="col-12 mb-4">
                   <div class="card">
                     <div class="card-header header-elements">
@@ -157,6 +158,10 @@
                     </div>
                   </div>
                 </div>
+                <?php else: ?>
+                <div></div>
+                <?php endif; ?>
+
               </div>
             </div>
             <?php include "../layout/footer.php" ?>
