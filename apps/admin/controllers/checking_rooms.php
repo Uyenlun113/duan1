@@ -2,6 +2,7 @@
 include_once '../../../../configs/configs.php';
     include_once "../../../../configs/check-auth-admin.php";
 
+    //xếp phòng
 function getListCheckingRoom($search_value) {
     $options = array(
         'select' => 'checking_rooms.*,orders.*,rooms.*',

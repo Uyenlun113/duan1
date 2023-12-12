@@ -65,7 +65,8 @@
                     <div class="mb-3">
                       <label for="cart_item_checkout">Ngày checkout:</label>
                       <input name="cart_item_checkout" class="form-control required" type="date"
-                        min="<?php echo date('Y-m-d'); ?>" id="cart_item_checkout" onchange="chooseCheckout()"
+                        min="<?php echo isset($cart_item_checkin) ? date('Y-m-d', strtotime($cart_item_checkin)):""; ?>"
+                        id="cart_item_checkout" onchange="chooseCheckout()"
                         value="<?php echo isset($_GET['cart_item_checkout']) ? htmlspecialchars($_GET['cart_item_checkout']) : ''; ?>">
                     </div>
                   </div>

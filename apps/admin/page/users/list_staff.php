@@ -91,7 +91,6 @@
                         <th>Ngày sinh</th>
                         <th>Số điện thoại</th>
                         <th>Tên tài khoản</th>
-                        <th>Chức vụ</th>
                         <th>Thao tác</th>
                       </tr>
                     </thead>
@@ -126,21 +125,22 @@
                         <td><span>
                             <?php echo $staff['users_account'] ?>
                           </span></td>
-                        <td><span>
-                            <?php echo $staff['users_position'] ?>
-                          </span></td>
+
                         <td>
                           <a href="update_staff.php?action=update&update_staff=<?= $staff['id'] ?>">
                             <button class="btn btn-sm btn-warning btn-icon">
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
-
-                          <a href="list_staff.php?action=delete&delete_staff_id=<?= $staff['id'] ?>">
-                            <button class=" btn btn-sm btn-danger btn-icon">
+                          <?php if ($isDeleteStaff): ?>
+                          <a href="#" onclick="confirmDelete(<?= $staff['id'] ?>)">
+                            <button class="btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
                           </a>
+                          <?php else: ?>
+                          <div></div>
+                          <?php endif; ?>
 
                         </td>
                       </tr>
@@ -185,6 +185,14 @@
 
   </body>
   <?php @include "../layout/import_script.php" ?>
+  <script>
+  function confirmDelete(staffId) {
+    var confirmation = confirm("Bạn có chắc muốn xóa nhân viên này không?");
+    if (confirmation) {
+      window.location.href = "list_staff.php?action=delete&delete_staff_id=" + staffId;
+    }
+  }
+  </script>
 
 </html>
 

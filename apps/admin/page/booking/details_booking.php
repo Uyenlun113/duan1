@@ -58,11 +58,10 @@
                         <div class="mb-xl-0 mb-4">
                           <div class="d-flex svg-illustration mb-3 gap-2">
 
-                            <span class="app-brand-text demo text-body fw-bold">Chi tiết đặt phòng</span>
+                            <span class="app-brand-text text-body" style="font-size:30px;">Chi tiết đặt
+                              phòng</span>
                           </div>
-
                         </div>
-
                       </div>
                     </div>
                     <hr class="my-0" />
@@ -70,38 +69,38 @@
                       <div class="row p-sm-3 p-0">
                         <div class="col-xl-6 col-md-12 col-sm-5 col-12 mb-xl-0 mb-md-4 mb-sm-0 mb-4">
                           <h6 class="pb-2">Thông tin khách hàng:</h6>
-
                           <table>
                             <tbody>
-
                               <tr>
                                 <td class="pe-3">Mã đặt phòng :</td>
                                 <td>
-                                  ĐH - <?php echo $detail_orders['orders_code'] ?>
+                                  ĐH -
+                                  <?php echo $detail_orders['orders_code'] ?>
                                 </td>
                               </tr>
                               <tr>
                                 <td class="pe-3">Tên khách hàng :</td>
                                 <td>
-                                  <?php echo $detail_users['users_name'] ?>
+                                  <?php echo (isset($detail_users['users_name']) ? $detail_users['users_name'] : $detail_orders['orders_user_name']) ?>
                                 </td>
                               </tr>
                               <tr>
                                 <td class="pe-3">Số điện thoại :</td>
                                 <td>
-                                  <?php echo $detail_users['users_phone_number'] ?>
+                                  <?php echo (isset($detail_users['users_phone_number']) ? $detail_users['users_phone_number'] : $detail_orders['orders_user_phone']) ?>
+
                                 </td>
                               </tr>
                               <tr>
                                 <td class="pe-3">Địa chỉ :</td>
                                 <td>
-                                  <?php echo $detail_users['users_address'] ?>
+                                  <?php echo (isset($detail_users['users_address']) ? $detail_users['users_address'] : $detail_orders['orders_user_adders']) ?>
                                 </td>
                               </tr>
                               <tr>
                                 <td class="pe-3">Ngày đặt :</td>
                                 <td>
-                                  <?php echo formatDatetimeVi( $detail_orders['create_date']) ?>
+                                  <?php echo formatDatetimeVi($detail_orders['create_date']) ?>
                                 </td>
                               </tr>
                             </tbody>
@@ -136,7 +135,7 @@
                               <?php echo $order_detail['category_name'] ?>
                             </td>
                             <td>
-                              <?php echo formatMoney($order_detail['orders_item_price'])  ?>
+                              <?php echo formatMoney($order_detail['orders_item_price']) ?>
                             </td>
                             <td>
                               <?php echo $order_detail['orders_item_quantity'] ?>
@@ -178,21 +177,12 @@
                 <div class="col-xl-3 col-md-4 col-12 invoice-actions">
                   <div class="card">
                     <div class="card-body">
-                      <button class="btn btn-label-secondary d-grid w-100 mb-3">
-                        Download
-                      </button>
-                      <a class="btn btn-label-secondary d-grid w-100 mb-3" target="_blank"
-                        href="app-invoice-print.html">
-                        Print
+                      <a href="list_booking.php">
+                        <button class="btn btn-primary d-grid w-100" data-bs-toggle="offcanvas"
+                          data-bs-target="#addPaymentOffcanvas">
+                          <span class="d-flex align-items-center justify-content-center text-nowrap">Quay lại</span>
+                        </button>
                       </a>
-                      <a href="app-invoice-edit.html" class="btn btn-label-secondary d-grid w-100 mb-3">
-                        Edit Invoice
-                      </a>
-                      <button class="btn btn-primary d-grid w-100" data-bs-toggle="offcanvas"
-                        data-bs-target="#addPaymentOffcanvas">
-                        <span class="d-flex align-items-center justify-content-center text-nowrap"><i
-                            class="bx bx-dollar bx-xs me-1"></i>Add Payment</span>
-                      </button>
                     </div>
                   </div>
                 </div>

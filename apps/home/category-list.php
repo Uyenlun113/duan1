@@ -96,7 +96,7 @@
                 <div class="inner-column">
                   <div class="content-box">
                     <div class="sec-title">
-                      <span class="sub-title">Sala Hotel</span>
+                      <span class="sub-title">Sona Hotel</span>
                       <h3>
                         <?php echo ($category1["category_name"]) ?>
                       </h3>
@@ -121,7 +121,7 @@
                 <div class="inner-column">
                   <div class="content-box">
                     <div class="sec-title">
-                      <span class="sub-title">Sala Hotel</span>
+                      <span class="sub-title">Sona Hotel</span>
                       <h3>
                         <?php echo ($category2["category_name"]) ?>
                       </h3>

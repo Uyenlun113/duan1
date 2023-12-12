@@ -106,7 +106,7 @@
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
                   <label class="form-label" for="password">Mật khẩu</label>
-                  <a href="auth-forgot-password-cover.html">
+                  <a href="forgot_password.php">
                     <small>Quên mật khẩu</small>
                   </a>
                 </div>
@@ -129,9 +129,9 @@
               </button>
             </form>
             <p class="text-center">
-              <span>New on our platform?</span>
-              <a href="auth-register-cover.html">
-                <span>Create an account</span>
+              <span>Bạn chưa có tài khoản?</span>
+              <a href="register.php">
+                <span>Đăng ký ngay</span>
               </a>
             </p>
 

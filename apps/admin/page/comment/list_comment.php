@@ -131,8 +131,8 @@
                               <i class='bx bx-message-square-dots'></i>
                             </button>
                           </a>
-                          <a href="list_comment.php?action=delete&delete_comment_id=<?= $comment['id'] ?>">
-                            <button class=" btn btn-sm btn-danger btn-icon">
+                          <a href="#" onclick="confirmDelete(<?= $comment['id'] ?>)">
+                            <button class="btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
                           </a>
@@ -212,6 +212,14 @@
       </div>
     </div>
   </div>
+  <script>
+  function confirmDelete(commentId) {
+    var confirmation = confirm("Bạn có chắc muốn xóa bình luận này không?");
+    if (confirmation) {
+      window.location.href = "list_comment.php?action=delete&delete_comment_id=" + commentId;
+    }
+  }
+  </script>
 
 </html>
 

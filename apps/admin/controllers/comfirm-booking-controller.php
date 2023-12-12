@@ -18,11 +18,20 @@ function getListOrderItemById($id_order)
 }
 $list_orders_items = getListOrderItemById($id_order);
 
-function getListRooms($id_category)
+function getListRooms($id_category, $checkin, $checkout)
 {
   $options = array(
     'order_by' => 'id',
-    'where' => 'category_id = ' . $id_category,
+    'where' => "category_id = $id_category AND NOT EXISTS (
+            SELECT 1
+            FROM checking_rooms c
+            WHERE c.rooms_id = rooms.id
+            AND (
+                (c.checking_rooms_checkin <= '$checkin' AND c.checking_rooms_checkout >= '$checkin')
+                OR (c.checking_rooms_checkin <= '$checkout' AND c.checking_rooms_checkout >= '$checkout')
+                OR ('$checkin' <= c.checking_rooms_checkin AND '$checkout' >= c.checking_rooms_checkout)
+            )
+        )",
   );
   return get_all('rooms', $options);
 }
@@ -39,11 +48,20 @@ function addCheckingRooms($orders_id, $rooms_id, $checking_rooms_checkin, $check
   $result = save_and_get_result('checking_rooms', $data);
   return $result;
 }
+
+function handleSuccessOrder($id)
+{
+  $data = array(
+    'orders_status' => 2,
+    'update_date' => date('Y-m-d')
+  );
+  $where = "id = $id";
+  return update_data('orders', $data, $where);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['confirm_booking'])) {
-
     $list_room = $_POST['list_room'];
-
     $finalArray = array();
     foreach ($list_room as $item) {
       $subArray = explode('|', $item);
@@ -55,7 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       );
       $finalArray[] = $resultArray;
     }
-    echo json_encode ($finalArray);
     for (
       $i = 0;
       $i < count($finalArray);
@@ -66,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $checking_rooms_checkin = $finalArray[$i]['checking_rooms_checkin'];
       $checking_rooms_checkout = $finalArray[$i]['checking_rooms_checkout'];
       $addCheckingRooms = addCheckingRooms($orders_id, $rooms_id, $checking_rooms_checkin, $checking_rooms_checkout);
+      handleSuccessOrder($orders_id);
     }
     if ($addCheckingRooms) {
       echo "<script>window.top.location='list_booking.php'</script>";

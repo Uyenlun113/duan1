@@ -3,7 +3,7 @@
     <div class="header-top">
       <div class="inner-box">
         <div class="top-left">
-          <span><i class="icon fa fa-location"></i>1247/Plot No. 39, 15th Phase, USA</span>
+
         </div>
         <div class="top-right">
           <ul class="social-icon-one">

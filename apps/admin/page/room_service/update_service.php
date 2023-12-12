@@ -62,91 +62,58 @@
                         </div>
                         <div class="card-body">
                           <div class="row">
-
                             <div class="mb-3 col-md-9">
                               <input type="hidden" name="id" value="<?php echo $detailService['id']; ?>">
                               <label class="form-label" for="ecommerce-product-name">Tên dịch vụ</label>
                               <input type="text" class="form-control" placeholder="Nhập tên danh mục"
-                                name="name_service" value="<?php echo $detailService['name_service'] ?>" required>
+                                name="service_name" value="<?php echo $detailService['service_name']; ?>" required>
                               <div class="invalid-feedback">
                                 Mời bạn nhập tên dịch vụ!
                               </div>
                             </div>
-                          </div>
-                          <input type="hidden" name="description_service" id="serviceDescriptionInput">
-                          <div class="has-validation">
-                            <label class="form-label">Mô tả dịch vụ<span class="text-muted"></span></label>
-                            <div id="snow-toolbar">
-                              <span class="ql-formats">
-                                <select class="ql-font"></select>
-                                <select class="ql-size"></select>
-                              </span>
-                              <span class="ql-formats">
-                                <button class="ql-bold"></button>
-                                <button class="ql-italic"></button>
-                                <button class="ql-underline"></button>
-                                <button class="ql-strike"></button>
-                              </span>
-                              <span class="ql-formats">
-                                <select class="ql-color"></select>
-                                <select class="ql-background"></select>
-                              </span>
-                              <span class="ql-formats">
-                                <button class="ql-script" value="sub"></button>
-                                <button class="ql-script" value="super"></button>
-                              </span>
-                              <span class="ql-formats">
-                                <button class="ql-header" value="1"></button>
-                                <button class="ql-header" value="2"></button>
-                                <button class="ql-blockquote"></button>
-                                <button class="ql-code-block"></button>
-                              </span>
+                            <div class="mb-3 col-md-9">
+                              <label class="form-label" for="ecommerce-product-name">Icon</label>
+                              <input type="text" class="form-control" placeholder="Thêm icon" name="service_icon"
+                                value="<?php echo isset($detailService['service_icon']) ? htmlspecialchars($detailService['service_icon']) : ''; ?>">
+                              <!-- service_icon là trường dữ liệu chứa thông tin icon cho dịch vụ -->
                             </div>
-                            <div id="snow-editor" data-placeholder="Mời bạn nhập mô tả chi tiết">
-                              <?php echo $detailService['description_service']?>
+                            <input type="hidden" name="service_description" id="serviceDescriptionInput"
+                              value="<?php echo htmlspecialchars($detailService['service_description']); ?>">
+                            <div class="has-validation">
+                              <label class="form-label">Mô tả dịch vụ<span class="text-muted"></span></label>
+                              <div id="snow-toolbar">
+                                <span class="ql-formats">
+                                  <select class="ql-font"></select>
+                                  <select class="ql-size"></select>
+                                </span>
+                                <span class="ql-formats">
+                                  <button class="ql-bold"></button>
+                                  <button class="ql-italic"></button>
+                                  <button class="ql-underline"></button>
+                                  <button class="ql-strike"></button>
+                                </span>
+                                <span class="ql-formats">
+                                  <select class="ql-color"></select>
+                                  <select class="ql-background"></select>
+                                </span>
+                                <span class="ql-formats">
+                                  <button class="ql-script" value="sub"></button>
+                                  <button class="ql-script" value="super"></button>
+                                </span>
+                                <span class="ql-formats">
+                                  <button class="ql-header" value="1"></button>
+                                  <button class="ql-header" value="2"></button>
+                                  <button class="ql-blockquote"></button>
+                                  <button class="ql-code-block"></button>
+                                </span>
+                              </div>
+                              <div id="snow-editor" data-placeholder="Mời bạn nhập mô tả chi tiết">
+                                <?php echo $detailService['service_description']; ?></div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                      <div class="card mb-4">
-                        <div class="card-header">
-                          <h5 class="card-title mb-0">Thông tin bổ sung</h5>
-                        </div>
-                        <div class="card-body">
-                          <div class="mb-3 col ecommerce-select2-dropdown">
-                            <label class="form-label mb-1" for="status-org">Giá dịch vụ
-                            </label>
-                            <input type="text" class="form-control" placeholder="Nhập giá dịch vụ" name="price_service"
-                              value="<?php echo $detailService['price_service'] ?>" required>
-                          </div>
-                          <div class="mb-3 col ecommerce-select2-dropdown">
-                            <label class="form-label mb-1" for="status-org">Trạng thái
-                            </label>
-                            <select class="select2 form-select" name="status_service"
-                              value="<?php echo $detailService['status_service'];?>"
-                              data-placeholder="-- Trạng thái --">
-                              <option value=""
-                                <?php echo ($detailService['status_service'] == '') ? 'selected' : ''; ?>>--
-                                Trạng
-                                thái --</option>
-                              <option value="1"
-                                <?php echo ($detailService['status_service'] == '1') ? 'selected' : ''; ?>>
-                                Hoạt động
-                              </option>
-                              <option value="0"
-                                <?php echo ($detailService['status_service'] == '0') ? 'selected' : ''; ?>>
-                                Tạm ẩn
-                              </option>
 
-                            </select>
-                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
               </form>
             </div>
             <?php @include "../layout/footer.php" ?>

@@ -76,7 +76,7 @@
                           value="<?php echo isset($_GET['search_rooms']) ? htmlspecialchars($_GET['search_rooms']) : ''; ?>">
                       </div>
                     </div>
-                    <?php if ($isCreateRoom): ?>
+                    <?php if ($isCreateBooking): ?>
                     <a href="create_rooms.php" class="col-sm-12 col-md-2">
                       <button type="button" class="btn btn-primary w-100">
                         <i class="bx bx-plus me-sm-1"></i>
@@ -139,11 +139,12 @@
                           <div></div>
                           <?php endif; ?>
                           <?php if ($isDeleteRoom): ?>
-                          <a href="list_rooms.php?action=delete&delete_rooms_id=<?= $rooms['id'] ?>">
-                            <button class=" btn btn-sm btn-danger btn-icon">
+                          <a href="#" onclick="confirmDelete(<?= $rooms['id'] ?>)">
+                            <button class="btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
                           </a>
+
                           <?php else: ?>
                           <div></div>
                           <?php endif; ?>
@@ -194,6 +195,14 @@
   function searchRooms() {
     var searchValue = document.getElementById('searchInput').value;
     window.location.href = '?search_rooms=' + encodeURIComponent(searchValue);
+  }
+  </script>
+  <script>
+  function confirmDelete(roomsId) {
+    var confirmation = confirm("Bạn có chắc muốn xóa phòng này không?");
+    if (confirmation) {
+      window.location.href = "list_rooms.php?action=delete&delete_rooms_id=" + roomsId;
+    }
   }
   </script>
 

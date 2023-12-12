@@ -335,6 +335,21 @@
       });
     });
     </script>
+    <script>
+    function saveScrollPosition() {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    }
+    window.addEventListener('beforeunload', saveScrollPosition);
+
+    function restoreScrollPosition() {
+      var scrollPosition = sessionStorage.getItem('scrollPosition');
+      if (scrollPosition !== null) {
+        window.scrollTo(0, parseInt(scrollPosition));
+        sessionStorage.removeItem('scrollPosition');
+      }
+    }
+    window.addEventListener('load', restoreScrollPosition);
+    </script>
   </body>
 
 </html>

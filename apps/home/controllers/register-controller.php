@@ -1,26 +1,27 @@
-<?php 
-  @include "../../configs/configs.php";
-  session_start();
+<?php
+@include "../../configs/configs.php";
+session_start();
 
-  function handleRegister($users_avatar,$users_name, $users_CCCD, $users_address, $users_birthday, $users_phone_number, $users_email, $users_account, $users_password) {
-        $data = array(
-            'users_code' => rand(000000,99999999),
-            'users_avatar' => $users_avatar,
-            'users_name' => $users_name,
-            'users_CCCD' => $users_CCCD,
-            'users_address' => $users_address,
-            'users_birthday' => $users_birthday,
-            'users_position' => 2,
-            'users_phone_number' => $users_phone_number,
-            'users_email' => $users_email,
-            'users_account' => $users_account,
-            'users_password' => $users_password,
-            'users_type' => 2,
-            'create_date' => date('Y-m-d'),
-            'update_date' => date('Y-m-d')
-        );
-        return save_and_get_result('users', $data);
-    }
+function handleRegister($users_avatar, $users_name, $users_CCCD, $users_address, $users_birthday, $users_phone_number, $users_email, $users_account, $users_password)
+{
+  $data = array(
+    'users_code' => rand(000000, 99999999),
+    'users_avatar' => $users_avatar,
+    'users_name' => $users_name,
+    'users_CCCD' => $users_CCCD,
+    'users_address' => $users_address,
+    'users_birthday' => $users_birthday,
+    'users_position' => 2,
+    'users_phone_number' => $users_phone_number,
+    'users_email' => $users_email,
+    'users_account' => $users_account,
+    'users_password' => $users_password,
+    'users_type' => 2,
+    'create_date' => date('Y-m-d'),
+    'update_date' => date('Y-m-d')
+  );
+  return save_and_get_result('users', $data);
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_POST["register"])) {
@@ -38,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       move_uploaded_file($temp_path, $users_avatar);
       $register = handleRegister($users_avatar, $users_name, $users_CCCD, $users_address, $users_birthday, $users_phone_number, $users_email, $users_account, $users_password);
       if ($register) {
-        echo "<script>window.top.location='login.php'</script>";
+        header('Location: login.php');
+
       } else {
         echo "Đăng kí thất bại";
       }

@@ -6,31 +6,49 @@
     <meta charset="utf-8" />
     <meta name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>
-      Product List - eCommerce
-    </title>
+    <title>Product List - eCommerce | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
     <meta name="description"
       content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
-    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5" />
-
+    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+    <!-- Canonical SEO -->
+    <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/">
+    <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <script>
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({
-        "gtm.start": new Date().getTime(),
-        event: "gtm.js"
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
       });
       var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
+        dl = l != 'dataLayer' ? '&l=' + l : '';
       j.async = true;
-      j.src =
-        "../../../../www.googletagmanager.com/gtm5445.html?id=" + i + dl;
+      j.src = '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-5DDHKGP");
+    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
     </script>
-
-    <?php @include "../layout/import_link.php" ?>
+    <link rel="icon" type="image/x-icon"
+      href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+      rel="stylesheet"> <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" /> <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" /> <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css"> <!-- Page CSS -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/js/config.js"></script>
   </head>
 
   <body>
@@ -94,7 +112,7 @@
                               <i class="fa-regular fa-pen-to-square fa-md"></i>
                             </button>
                           </a>
-                          <a href="roles.php?action=delete&delete-roles-id=<?= $roles['id'] ?>">
+                          <a href="#" onclick="confirmDelete(<?= $roles['id'] ?>)">
                             <button class="btn btn-sm btn-danger btn-icon">
                               <i class="fas fa-trash fa-md"></i>
                             </button>
@@ -143,6 +161,14 @@
 
   </body>
   <?php @include "../layout/import_script.php" ?>
+  <script>
+  function confirmDelete(rolesId) {
+    var confirmation = confirm("Bạn có chắc muốn xóa không?");
+    if (confirmation) {
+      window.location.href = "roles.php?action=delete&delete_roles_id=" + rolesId;
+    }
+  }
+  </script>
 
 </html>
 

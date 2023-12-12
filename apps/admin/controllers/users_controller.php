@@ -181,14 +181,12 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
             $updateStaffResult = handleUpdateStaff( $id, $users_code, $users_name, $users_avatar, $users_email, $users_account, $users_password, $users_CCCD, $users_phone_number, $users_birthday, $users_address );
             $where = "users_id = $id";
             delete_data( 'roles_users', $where );
-            echo json_encode($updateStaffResult);
             if ( isset( $_POST[ 'list_roles_staff' ] ) && is_array( $_POST[ 'list_roles_staff' ] ) ) {
                 $selectedRoles = $_POST[ 'list_roles_staff' ];
                 foreach ( $selectedRoles as $selectedRole ) {
                     handleRolesUser( $id, $selectedRole );
                 }
             }
-            echo json_encode($updateStaffResult);
             if ( $updateStaffResult ) {
                 echo "<script>window.top.location='list_staff.php'</script>";
             } else {

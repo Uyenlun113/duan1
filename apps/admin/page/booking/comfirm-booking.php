@@ -68,7 +68,7 @@
                       <div class="card-body">
                         <div class="row">
                           <?php
-                              $list_rooms = getListRooms($orders_item['category_id']);
+                              $list_rooms = getListRooms($orders_item['category_id'],$orders_item['orders_item_checkin'],$orders_item['orders_item_checkout']);
                               if (isset($list_rooms) && is_array($list_rooms)) {
                                 foreach ($list_rooms as $index => $rooms):
                                   ?>

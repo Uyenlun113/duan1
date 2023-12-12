@@ -98,17 +98,24 @@ function getListRoomsNotBlank($category_id, $cart_item_checkin, $cart_item_check
     $options = array(
         'select' => "checking_rooms.*, rooms.id as rooms_id, category.id as category_id",
         'join' => 'join rooms on rooms.id = checking_rooms.rooms_id join category on category.id = rooms.category_id',
-        'where' => "category_id = $category_id and (('$cart_item_checkin' <=  checking_rooms_checkin and checking_rooms_checkin <= '$cart_item_checkout') or ('$cart_item_checkin' <=  checking_rooms_checkout  and checking_rooms_checkout  <= '$cart_item_checkout'))",
+        'where' => "category_id = $category_id and ( (checking_rooms_checkin  <= '$cart_item_checkin' and '$cart_item_checkin' <= checking_rooms_checkout) 
+    or (checking_rooms_checkin  <= '$cart_item_checkout' and '$cart_item_checkout' <= checking_rooms_checkout) 
+    or ('$cart_item_checkin' <= checking_rooms_checkin  and checking_rooms_checkin  <= '$cart_item_checkout')
+    or ('$cart_item_checkin' <= checking_rooms_checkout and checking_rooms_checkout <= '$cart_item_checkout') )
+        ",
     );
     return get_all('checking_rooms', $options);
 }
-function getCartItemByCategoryIdUsersID($categoryId, $cart_id)
+function getCartItemByCategoryIdUsersID($categoryId, $cart_id,$cart_item_checkin,$cart_item_checkout)
 {
     $options = array(
         'select' => 'cart_items.*',
         'order_by' => 'cart_items.id',
         'join' => "join cart on cart_items.cart_id = cart.id",
-        'where' => "category_id = $categoryId and cart_id = $cart_id",
+        'where' => "category_id = $categoryId and cart_id = $cart_id and ( (cart_items.cart_item_checkin  <= '$cart_item_checkin' and '$cart_item_checkin' <= cart_items.cart_item_checkout) 
+    or (cart_items.cart_item_checkin  <= '$cart_item_checkout' and '$cart_item_checkout' <= cart_items.cart_item_checkout) 
+    or ('$cart_item_checkin' <= cart_items.cart_item_checkin  and cart_items.cart_item_checkin  <= '$cart_item_checkout')
+    or ('$cart_item_checkin' <= cart_items.cart_item_checkout and cart_items.cart_item_checkout <= '$cart_item_checkout') )",
 
     );
     return get_all('cart_items', $options);
@@ -117,8 +124,10 @@ function getCartItemByCategoryIdUsersID($categoryId, $cart_id)
 $totalRoomInCart = 0;
 $totalRoomsBlank = -1;
 if (count($list_cart_items) > 0) {
-    $listCartItemByCategoryIdUsersID = getCartItemByCategoryIdUsersID($detail_category['id'], $list_cart_items[0]['id']);
-    $totalRoomInCart = $listCartItemByCategoryIdUsersID[0]['cart_item_quantity'];
+     $cart_item_checkin = (new DateTime(htmlspecialchars($_GET['cart_item_checkin'])))->format('Y-m-d');
+    $cart_item_checkout = (new DateTime(htmlspecialchars($_GET['cart_item_checkout'])))->format('Y-m-d');
+    $listCartItemByCategoryIdUsersID = getCartItemByCategoryIdUsersID($detail_category['id'], $list_cart_items[0]['id'],$cart_item_checkin,$cart_item_checkout);
+    $totalRoomInCart = $listCartItemByCategoryIdUsersID[0]['cart_item_quantity']??0;
 }
 
 if (isset($_GET['cart_item_checkin']) && isset($_GET['cart_item_checkout'])) {

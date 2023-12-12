@@ -21,7 +21,7 @@ if (isset($_GET['cancel_booking_id'])) {
     $id_booking = $_GET['detail_booking_id'];
     $deleteResult = cancelBooking($id);
     if ($deleteResult) {
-        //   header("location: details_booking.php?detail_booking_id=$id_booking");
+          header("location: details_booking.php?detail_booking_id=$id_booking");
         exit;
     } else {
         echo "Error cancelling booking!";

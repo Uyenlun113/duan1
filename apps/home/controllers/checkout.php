@@ -107,7 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result["returncode"] = 0; // ZaloPay server sẽ callback lại (tối đa 3 lần)
             $result["returnmessage"] = $e->getMessage();
         }
-        echo json_encode($result);
     }
 }
 
@@ -147,7 +146,7 @@ function addOrderItems($orders_id, $category_id, $orders_item_checkin, $orders_i
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["checkout"])) {
         $orders_payment_method = $_POST["orders_payment_method"];
-        $orders_code = $_POST["orders_code_random"];
+        $orders_code = $_POST["orders_code_random"] > 0 ? $_POST["orders_code_random"] :  rand(10000,99999);
         $dataOrders = addOrder($dataLoginUser, $totalAmount, ($totalAmount / 100 * 15), $orders_payment_method, $orders_code);
         $where_cart = 'users_id = ' . $dataLoginUser["id"];
         delete_data('cart', $where_cart);

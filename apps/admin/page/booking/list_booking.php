@@ -6,31 +6,49 @@
     <meta charset="utf-8" />
     <meta name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>
-      Product List - eCommerce
-    </title>
+    <title>Product List - eCommerce | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
     <meta name="description"
       content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
-    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5" />
-
+    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+    <!-- Canonical SEO -->
+    <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/">
+    <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <script>
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({
-        "gtm.start": new Date().getTime(),
-        event: "gtm.js"
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
       });
       var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
+        dl = l != 'dataLayer' ? '&l=' + l : '';
       j.async = true;
-      j.src =
-        "../../../../www.googletagmanager.com/gtm5445.html?id=" + i + dl;
+      j.src = '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-5DDHKGP");
+    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
     </script>
-
-    <?php @include "../layout/import_link.php" ?>
+    <link rel="icon" type="image/x-icon"
+      href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+      rel="stylesheet"> <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" /> <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" /> <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css"> <!-- Page CSS -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/js/config.js"></script>
   </head>
 
   <body>
@@ -88,12 +106,16 @@
                               value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
                           </div>
                         </div>
+                        <?php if ($isCreateRoom): ?>
                         <a href="create_bookings.php" class="col-sm-12 col-md-2">
                           <button type="button" class="btn btn-primary w-100">
                             <i class="bx bx-plus me-sm-1"></i>
                             Thêm phiếu đặt
                           </button>
                         </a>
+                        <?php else: ?>
+                        <div></div>
+                        <?php endif; ?>
                       </div>
                       <div class="table-responsive mt-4">
                         <table class=" table border-top">
@@ -157,19 +179,31 @@
                                     data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                   <div class="dropdown-menu">
                                     <?php if ($orders['orders_status'] == 1): ?>
+                                    <?php if ($isCreateRoom): ?>
                                     <a class="dropdown-item"
                                       href="comfirm-booking.php?action=comfirm&comfirm-booking=<?= $orders['id'] ?>">
                                       <i class='bx bx-calendar-check me-1'></i>Xác nhận
                                     </a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
+                                    <?php if ($isCancelBooking): ?>
                                     <a class="dropdown-item"
-                                      href="update_rooms.php?action=update&update_rooms=<?= $orders['id'] ?>">
+                                      href="list_booking.php?action=reject_order&reject_order=<?= $orders['id'] ?>">
                                       <i class="fa-solid fa-xmark me-1"></i>Từ chối
                                     </a>
+                                    <?php else: ?>
+                                    <div></div>
                                     <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if ($isViewListCheckingRoom): ?>
                                     <a class="dropdown-item"
                                       href="details_booking.php?detail_oders_item=<?= $orders['id'] ?>">
                                       <i class="fa-regular fa-eye me-1"></i>Xem chi tiết
                                     </a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
                                   </div>
                                 </div>
                               </td>
@@ -214,12 +248,6 @@
                               value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
                           </div>
                         </div>
-                        <a href="create_bookings.php" class="col-sm-12 col-md-2">
-                          <button type="button" class="btn btn-primary w-100">
-                            <i class="bx bx-plus me-sm-1"></i>
-                            Thêm phiếu đặt
-                          </button>
-                        </a>
                       </div>
                       <div class="table-responsive mt-4">
                         <table class=" table border-top">
@@ -244,7 +272,7 @@
                                 <?php echo $index + 1 ?>
                               </td>
                               <td style="width:150px">
-                                <?php echo $orders['orders_code'] ?>
+                                ĐH - <?php echo $orders['orders_code'] ?>
                               </td>
                               <td style="width:15%"><span>
                                   <?php echo (!empty($orders['users_id'])) ? $orders['users_name'] : $orders['orders_user_name']; ?>
@@ -264,18 +292,30 @@
                                   <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                     data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                   <div class="dropdown-menu">
+                                    <?php if ($isComfirmBooking): ?>
                                     <a class="dropdown-item"
                                       href="comfirm-booking.php?action=comfirm&comfirm-booking=<?= $orders['id'] ?>">
                                       <i class='bx bx-calendar-check me-1'></i>Xác nhận
                                     </a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
+                                    <?php if ($isCancelBooking): ?>
                                     <a class="dropdown-item"
                                       href="update_rooms.php?action=update&update_rooms=<?= $orders['id'] ?>">
                                       <i class="fa-solid fa-xmark me-1"></i>Từ chối
                                     </a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
+                                    <?php if ($isViewListCheckingRoom): ?>
                                     <a class="dropdown-item"
                                       href="details_booking.php?detail_oders_item=<?= $orders['id'] ?>"><i
                                         class="fa-regular fa-eye me-1"></i>
                                       Xem chi tiết</a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
                                   </div>
                                 </div>
                               </td>
@@ -320,12 +360,7 @@
                               value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
                           </div>
                         </div>
-                        <a href="create_bookings.php" class="col-sm-12 col-md-2">
-                          <button type="button" class="btn btn-primary w-100">
-                            <i class="bx bx-plus me-sm-1"></i>
-                            Thêm phiếu đặt
-                          </button>
-                        </a>
+
                       </div>
                       <div class="table-responsive mt-4">
                         <table class=" table border-top">
@@ -370,10 +405,15 @@
                                   <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                     data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                   <div class="dropdown-menu">
+
+                                    <?php if ($isViewListCheckingRoom): ?>
                                     <a class="dropdown-item"
                                       href="details_booking.php?detail_oders_item=<?= $orders['id'] ?>"><i
                                         class="fa-regular fa-eye me-1"></i>
                                       Xem chi tiết</a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
                                   </div>
                                 </div>
                               </td>
@@ -418,12 +458,6 @@
                               value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
                           </div>
                         </div>
-                        <a href="create_bookings.php" class="col-sm-12 col-md-2">
-                          <button type="button" class="btn btn-primary w-100">
-                            <i class="bx bx-plus me-sm-1"></i>
-                            Thêm phiếu đặt
-                          </button>
-                        </a>
                       </div>
                       <div class="table-responsive mt-4">
                         <table class=" table border-top">
@@ -468,10 +502,14 @@
                                   <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                     data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                   <div class="dropdown-menu">
+                                    <?php if ($isViewListCheckingRoom): ?>
                                     <a class="dropdown-item"
                                       href="details_booking.php?detail_oders_item=<?= $orders['id'] ?>"><i
                                         class="fa-regular fa-eye me-1"></i>
                                       Xem chi tiết</a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
                                   </div>
                                 </div>
                               </td>
@@ -516,12 +554,6 @@
                               value="<?php echo isset($_GET['search_booking']) ? htmlspecialchars($_GET['search_booking']) : ''; ?>">
                           </div>
                         </div>
-                        <a href="create_bookings.php" class="col-sm-12 col-md-2">
-                          <button type="button" class="btn btn-primary w-100">
-                            <i class="bx bx-plus me-sm-1"></i>
-                            Thêm phiếu đặt
-                          </button>
-                        </a>
                       </div>
                       <div class="table-responsive mt-4">
                         <table class=" table border-top">
@@ -567,10 +599,15 @@
                                   <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                     data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                   <div class="dropdown-menu">
+                                    <?php if ($isViewListCheckingRoom): ?>
+
                                     <a class="dropdown-item"
                                       href="details_booking.php?detail_oders_item=<?= $orders['id'] ?>"><i
                                         class="fa-regular fa-eye me-1"></i>
                                       Xem chi tiết</a>
+                                    <?php else: ?>
+                                    <div></div>
+                                    <?php endif; ?>
                                   </div>
                                 </div>
                               </td>

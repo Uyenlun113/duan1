@@ -47,17 +47,11 @@
                   <div class="post-info"><i class="fas fa-phone"></i>09123456789</div>
                   <div class="post-info">0345678910</div>
                   <div class="post-info"><i class="fa fa-envelope"></i> sonahotel@gmail.com</div>
-                  <<<<<<< HEAD <div class="post-info"><i class="fas fa-location"></i> 36 – 38 Lâm Hoành, phường Phước
+                  <div class="post-info"><i class="fas fa-location"></i> 36 – 38 Lâm Hoành, phường Phước
                     Mỹ, quận Sơn
                     Trà, Đà Nẵng
-                </div>
-                =======
-                <div class="post-info"><i class="fas fa-location"></i> Cổng số 1, Tòa nhà FPT Polytechnic, 13 phố Trịnh
-                  Văn Bô, phường Phương Canh, quận Nam Từ Liêm, TP Hà Nội
+                  </div>
 
-                  Km12 Cầu Diễn, Phường Phúc Diễn, Quận Bắc Từ Liêm, Hà Nội
-                </div>
-                >>>>>>> 3e29ce692cf25e13e691a866eba382757421c85a
               </article>
             </div>
           </div>
@@ -65,8 +59,7 @@
         <!-- footer column -->
         <div class="footer-column col-lg-3 col-sm-6">
           <div class="footer-widget news-widget wow fadeInLeft" data-wow-delay="400ms">
-            <h4 class="widget-title">Bản tin</h4>
-            <div class="text">Tôi rất vui khi có thể quảng bá hoạt động này</div>
+            <h4 class="widget-title">Liên hệ</h4>
             <div class="subscribe-form-three">
               <form method="post" action="#">
                 <div class="form-group">
@@ -76,12 +69,9 @@
                 </div>
               </form>
             </div>
-            <<<<<<< HEAD <div class="text"><i class="fa-regular fa-circle-check"></i>Tôi đồng ý với mọi điều khoản và
-              chính sách
           </div>
-          =======
+
           <div class="text"><i class="fa-regular fa-circle-check"></i>Tôi đồng ý với mọi điều khoản và chính sách</div>
-          >>>>>>> 3e29ce692cf25e13e691a866eba382757421c85a
         </div>
       </div>
     </div>

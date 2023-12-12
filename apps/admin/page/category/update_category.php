@@ -6,36 +6,45 @@
     <meta charset="utf-8" />
     <meta name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>eCommerce Add Product - Apps | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Product List - eCommerce | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
     <meta name="description"
       content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
-    <script>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
-    </script>
-    <?php @include "../layout/import_link.php" ?>
+    <!-- Canonical SEO -->
+    <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/">
+    <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+    <link rel="icon" type="image/x-icon"
+      href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+      rel="stylesheet"> <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" /> <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" /> <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css"> <!-- Page CSS -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <link rel="stylesheet" href="../../assets/vendor/libs/quill/editor.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css" />
   </head>
 
   <body>
     <?php @include "../../controllers/categories_controller.php" ?>
     <div class="layout-wrapper layout-content-navbar ">
       <div class="layout-container">
-        <?php @include "../layout/sidebar.php" ?>
+        <?php @include "../layout/sidebar.php1" ?>
         <div class="layout-page">
-          <?php @include "../layout/navbar.php" ?>
+          <?php @include "../layout/navbar.php1" ?>
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="py-3 mb-4">
@@ -92,12 +101,10 @@
                                 Mời bạn nhập tên phòng!
                               </div>
                             </div>
-                            <div class=" col-md-2">
-                              <img src="../../upload/<?php echo($detailCategory["category_image"]) ?>" height="65"
-                                width="100" class="mt-3 rounded" alt="">
-                            </div>
+
                           </div>
-                          <input type="hidden" name="category_description" id="categoryDescriptionInput">
+                          <input type="hidden" name="category_description" id="categoryDescriptionInput"
+                            value=" <?php echo $detailCategory['category_description'];?>">
                           <div class="has-validation">
                             <label class="form-label">Mô tả danh mục<span class="text-muted"></span></label>
                             <div id="snow-toolbar">
@@ -126,8 +133,8 @@
                                 <button class="ql-code-block"></button>
                               </span>
                             </div>
-                            <div id="snow-editor" data-placeholder="Mời bạn nhập mô tả chi tiết"
-                              <?php echo $detailCategory['category_description'];?>></div>
+                            <div id="snow-editor" data-placeholder="Mời bạn nhập mô tả chi tiết">
+                              <?php echo $detailCategory['category_description'];?></div>
                           </div>
                         </div>
                       </div>
@@ -171,7 +178,26 @@
 
                             </select>
                           </div>
-
+                          <div class="mb-3">
+                            <label for="ecommerce-product-tags" class="form-label mb-1">Dịch vụ</label>
+                            <select id="select2Dark" name="list_service_add[]" class="select2 form-select" multiple>
+                              <?php
+                                if (isset($list_service) && is_array($list_service)) {
+                                    foreach ($list_service as $index => $service) :
+                                        $isSelected = in_array($service['id'], array_column($list_detail_category, 'service_id'));
+                                ?>
+                              <option <?php echo $isSelected ? 'selected' : ''; ?>
+                                value="<?php echo $service['id']; ?>">
+                                <?php echo $service['service_name']; ?>
+                              </option>
+                              <?php
+                                    endforeach;
+                                } else {
+                                    echo "Không có dữ liệu danh mục.";
+                                }
+                                ?>
+                            </select>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -213,6 +239,25 @@
       document.getElementById('categoryDescriptionInput').value = content;
     });
     </script>
+    <?php @include "../layout/import_script.php" ?>
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
+    <script src="../../assets/vendor/libs/select2/select2.js"></script>
+    <script src="../../assets/vendor/libs/tagify/tagify.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/libs/bloodhound/bloodhound.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/forms-selects.js"></script>
+    <script src="../../assets/js/forms-tagify.js"></script>
+    <script src="../../assets/js/forms-typeahead.js"></script>
+    <script src="../../assets/js/form-validation.js"></script>
   </body>
 
 </html>
